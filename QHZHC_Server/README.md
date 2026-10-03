@@ -17,5 +17,7 @@ npm run start
 - `src/server/weather.ts`：服务端天气代理与分时缓存；
 - `src/server/app.ts`：HTTP API 与前端静态托管。
 
-实时渲染的背压、分帧调度和自适应控制见项目根目录
-`docs/01-realtime-rendering-backpressure.md`。WebSocket 连接状态机、补发和认证机制后续分别按独立知识点梳理。
+相关知识文档见项目根目录：
+
+- `docs/01-realtime-rendering-backpressure.md`：实时渲染的背压、分帧调度和自适应控制；
+- `docs/02-websocket-auth-recovery.md`：WebSocket 鉴权、会话续期、心跳、故障重连与数据恢复。
