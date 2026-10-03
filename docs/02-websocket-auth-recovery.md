@@ -1254,3 +1254,516 @@ requested cursor < earliest retained cursor ?
 如果成立，立即返回明确 gap，而不是继续把已经被清理的数据解释为空数据。
 
 这属于当前恢复语义值得继续完善的工程点。
+---
+
+## 十九、CORS 不能自动保护 WebSocket，Upgrade 阶段必须单独校验 Origin
+
+很多 Web 项目已经配置 CORS，于是容易产生一个误区：
+
+~~~text
+HTTP API 做了 CORS
+=
+WebSocket 也已经做了跨站保护
+~~~
+
+实际上浏览器 WebSocket 建立时走的是 HTTP Upgrade，但协议升级通常由 HTTP Server 的 `upgrade` 事件直接处理，不一定经过 Express / Nest 等普通 HTTP 中间件链。
+
+因此：
+
+> HTTP CORS Middleware 与 WebSocket Origin Validation 是两个不同安全入口。
+
+OWASP 对 WebSocket 的建议包括：在握手阶段显式校验 `Origin`，使用明确允许列表，避免通配符和模糊字符串匹配。
+
+原因是浏览器在 WebSocket 握手中会自动带 `Origin`。如果系统依赖 Cookie 作为 WebSocket 身份，又不检查 Origin，攻击站点可能诱导已登录用户的浏览器建立跨站 WebSocket，形成 Cross-Site WebSocket Hijacking（跨站 WebSocket 劫持，CSWSH）。
+
+官方资料：
+
+- OWASP WebSocket Security Cheat Sheet：https://cheatsheetseries.owasp.org/cheatsheets/WebSocket_Security_Cheat_Sheet.html
+
+### 项目示例：QHZHC
+
+QHZHC 的普通 HTTP API 使用 Express CORS Middleware，但 WebSocket 是在原始 HTTP Server 的 `upgrade` 事件中直接执行 `handleUpgrade`。
+
+因此 HTTP CORS 逻辑不会自动成为 WebSocket Upgrade 的 Origin 校验。
+
+当前 WebSocket 主要依赖首包中的内存 Access Token 完成身份认证，而不是在 Upgrade 时依赖 Cookie 自动认证，所以相比纯 Cookie WebSocket，CSWSH 的直接风险更低。
+
+但从纵深防御角度，仍建议在 Upgrade 时增加：
+
+~~~text
+Origin allowlist
++
+路径校验
++
+连接频率限制
+~~~
+
+这样可以在建立完整 WebSocket 对象之前尽早拒绝不受信任来源。
+
+### 答辩关注点
+
+如果被问“已经配了 CORS，为什么 WebSocket 还要 Origin 校验”，应回答：因为 WebSocket Upgrade 不一定经过普通 HTTP CORS 中间件，而且 WebSocket 本身也没有与 fetch CORS 完全相同的浏览器访问控制模型。
+
+---
+
+## 二十、认证成功以后仍然要把每一条 WebSocket 消息当成不可信输入
+
+身份可信不代表消息内容可信。
+
+攻击者可能是：
+
+- 已登录但恶意的用户；
+- 被盗用的合法账号；
+- 出现逻辑 Bug 的客户端；
+- 旧版本客户端；
+- 被篡改的非浏览器客户端。
+
+所以消息进入业务处理前至少需要经过：
+
+~~~text
+反序列化
+        ↓
+Schema / Type 校验
+        ↓
+协议版本校验
+        ↓
+状态校验
+        ↓
+资源授权
+        ↓
+速率 / 大小限制
+        ↓
+业务处理
+~~~
+
+### 项目示例：QHZHC
+
+QHZHC 当前通过统一协议类型检查客户端消息，只接受认证、心跳和补发请求几种已知消息类型；非法 JSON、未知消息结构、错误协议版本都会被拒绝。
+
+同时认证状态也参与协议校验：认证前发业务消息、并发重复认证、认证成功后再次认证都会被视为协议错误。
+
+这体现的是：
+
+> Schema Validation 和 State Validation 应该同时存在。
+
+仅检查 JSON 有没有字段是不够的，还必须检查“当前状态下是否允许出现这条消息”。
+
+### 仍需继续强化的边界
+
+当前 WebSocket Server 初始化没有显式展示业务侧的：
+
+- Origin 白名单；
+- 单连接消息频率限制；
+- IP / 用户连接数限制；
+- 应用明确配置的消息最大 Payload；
+- 细粒度资源授权。
+
+这些都属于生产环境 WebSocket 安全治理的一部分。
+
+OWASP 同样建议限制消息大小、消息速率和连接资源，防止持久连接被用于资源耗尽攻击。
+
+---
+
+## 二十一、协议版本必须参与认证阶段，而不是等业务消息报错
+
+实时协议通常比普通 REST API 更需要版本治理，因为连接建立后会长期运行。
+
+如果客户端和服务端对同一个消息字段有不同理解，问题可能不是一次请求失败，而是整条长连接不断产生错误。
+
+因此连接初始化时就应该协商：
+
+~~~text
+protocolVersion
+capabilities
+optional features
+server version
+~~~
+
+不兼容时尽早失败。
+
+### 项目示例：QHZHC
+
+QHZHC 的 authenticate 消息携带协议版本，服务端消息校验要求版本与当前协议一致；服务端 welcome 也返回当前协议版本，客户端再次确认。
+
+如果版本不一致，客户端不会继续进入业务实时状态，而是按协议错误停止自动恢复。
+
+这避免：
+
+~~~text
+客户端不断重连
+但双方协议永远不兼容
+~~~
+
+### 工程规范
+
+协议升级时应该提前定义兼容策略：
+
+| 变化 | 推荐方式 |
+| --- | --- |
+| 新增可选字段 | 尽量向后兼容 |
+| 字段语义改变 | 提升协议版本 |
+| 删除旧消息类型 | 保留迁移窗口 |
+| 客户端版本过旧 | 明确不可恢复关闭语义 |
+
+协议错误属于“重连也不会自动好”的错误，因此一般不应该无限自动重连。
+
+---
+
+## 二十二、退出登录与会话撤销必须能够影响已经建立的长连接
+
+Logout（退出）如果只做：
+
+~~~text
+浏览器删除 Access Token
+~~~
+
+是不完整的。
+
+因为：
+
+- 其他标签页可能仍有旧 Access Token；
+- 其他设备可能仍然登录；
+- 当前 WebSocket 已经建立；
+- 被盗 Token 可能在攻击者手中。
+
+真正的会话撤销需要服务端状态变化。
+
+### 常见撤销粒度
+
+~~~text
+当前 Token
+当前设备 Session
+当前 Token Family
+当前用户全部 Session
+~~~
+
+不同业务应该明确“退出一个页面”和“退出所有设备”是不是同一语义。
+
+### 项目示例：QHZHC
+
+QHZHC logout 会撤销当前 Token Family，并清除 Refresh Cookie。
+
+HTTP 后续请求再次校验 Access Token 时，会因为 family 已撤销而失败。
+
+已经建立的 WebSocket 则会在服务端周期性 Token 重验时发现 family 不再有效，然后被关闭。
+
+因此当前撤销链是：
+
+~~~text
+logout
+        ↓
+revoke family
+        ↓
+HTTP 立即在下一请求失效
+        ↓
+WebSocket 在下一轮会话重验失效
+~~~
+
+如果未来要求秒级主动踢线，可以把 `familyId → active connections` 建立索引，在 revoke 时直接关闭对应连接。
+
+### 答辩关注点
+
+如果被问“JWT 已经发出去怎么实现退出立即失效”，应说明：纯签名 JWT 做不到服务端即时撤销，需要黑名单、Session Version、Token Family 或其他服务端状态参与校验。
+
+---
+
+## 二十三、可恢复实时连接必须设计可观测性，否则无法证明稳定性
+
+稳定性不是“没有报错”，而是故障发生以后能够知道：
+
+~~~text
+哪里断了
+为什么断
+多久恢复
+恢复了多少数据
+有没有无法恢复的缺口
+~~~
+
+因此建议把观测指标按生命周期拆开。
+
+### 【连接建立】
+
+- connect attempt；
+- upgrade failure；
+- authentication success / failure；
+- authentication latency；
+- protocol version mismatch。
+
+### 【在线运行】
+
+- active connections；
+- heartbeat RTT；
+- stale / timeout count；
+- abnormal close code 分布；
+- socket buffered amount / backpressure close。
+
+### 【会话恢复】
+
+- Access Token refresh success rate；
+- refresh latency；
+- Refresh Token reuse detection；
+- Token Family revocation；
+- authentication recovery time。
+
+### 【数据恢复】
+
+- reconnect cursor；
+- replay bucket / event count；
+- replay duration；
+- gap count；
+- unrecoverable gap；
+- reconnect-to-live duration。
+
+### 项目示例：QHZHC
+
+QHZHC welcome 中包含 connectionId，可以把前端一次连接生命周期和服务端日志关联起来。
+
+项目又已经接入 browser-monitor，因此客户端可以进一步上报：
+
+~~~text
+连接建立耗时
+close code
+重连次数
+Token 刷新结果
+从 close 到重新 live 的耗时
+gap / replay 情况
+~~~
+
+但监控日志中不应记录完整 Access Token、Refresh Token、Cookie 或认证消息原文。
+
+OWASP 也明确建议记录连接、认证、异常关闭和安全事件，同时避免日志敏感凭证。
+
+### 工程思想
+
+> 可恢复系统的核心指标不是“断了多少次”，还包括“断了以后多久恢复，以及恢复是否完整”。
+
+---
+
+## 二十四、测试体系必须覆盖状态迁移，而不是只测“能连接”
+
+WebSocket + 鉴权的主要 Bug 往往出现在异常路径，所以测试矩阵应该围绕状态机设计。
+
+### 【认证测试】
+
+- 无 Token；
+- 无效 Token；
+- 已过期 Token；
+- issuer / audience 不匹配；
+- 已撤销 Token Family；
+- Refresh Token 过期；
+- Refresh Token 重放；
+- 并发刷新。
+
+### 【协议状态测试】
+
+- 认证前发送业务消息；
+- 超过认证超时时间不发送认证；
+- 并发两次认证；
+- 已认证后重复认证；
+- 非法 JSON；
+- 未知消息类型；
+- 协议版本不兼容。
+
+### 【连接恢复测试】
+
+- 短暂网络断开；
+- 服务重启；
+- 临时过载；
+- 页面 offline / online；
+- 页面隐藏 / 恢复；
+- Access Token 在线期间过期；
+- Refresh 成功后原游标重连；
+- Refresh 失败后停止恢复。
+
+### 【数据恢复测试】
+
+- 断线一段时间后补发；
+- replay 与 live 不交叉；
+- 重复消息不放大；
+- 空数据窗口仍推进 cursor；
+- 数据留存范围不足；
+- 补发范围超过预算；
+- gap 后客户端跳转策略。
+
+### 项目示例：QHZHC
+
+QHZHC 当前已经有几类关键测试：
+
+- Refresh Token Rotation 与旧 Token 重放导致 family 撤销；
+- WebSocket 第一条消息不是认证时关闭；
+- 无效 Access Token 返回认证失效关闭码；
+- 服务端补发自然秒数据；
+- Access Token 过期后客户端先 refresh 再用同一恢复游标重连；
+- Refresh 失败后停止重连；
+- 空数据窗口仍然推进重连 cursor；
+- 缺口达到条件后发起 resend。
+
+这些测试的价值不是“覆盖函数”，而是验证状态迁移和故障恢复语义。
+
+---
+
+## 二十五、把 WebSocket + 鉴权理解成两个相互连接的状态机
+
+整套体系最终可以压缩成两个状态机。
+
+### 【会话状态机】
+
+~~~text
+UNAUTHENTICATED
+        ↓ login
+ACCESS_VALID
+        ↓ access expires
+REFRESHING
+        ├─ success → ACCESS_VALID
+        └─ failure → UNAUTHENTICATED
+
+任何时刻：
+revoke / reuse detected
+→ SESSION_REVOKED
+~~~
+
+### 【实时连接状态机】
+
+~~~text
+IDLE
+  ↓
+CONNECTING
+  ↓
+AUTH_PENDING
+  ↓
+RECOVERING_DATA
+  ↓
+LIVE
+  ├─ network failure → RECONNECT_WAIT
+  ├─ access expired → AUTH_RECOVERING
+  ├─ forbidden → STOPPED
+  └─ protocol error → STOPPED
+~~~
+
+两个状态机通过 Access Token 过期事件连接：
+
+~~~text
+WebSocket
+发现认证失效
+        ↓
+Session
+执行 refresh
+        ↓
+Session 恢复成功
+        ↓
+WebSocket
+重新认证 + 数据恢复
+~~~
+
+这比把“JWT、心跳、重连、补发”当成四个独立功能更接近真实工程设计。
+
+### 项目示例：QHZHC
+
+QHZHC 当前代码已经基本体现这个结构：HTTP Access Token Manager 负责会话恢复，Realtime Client 负责连接恢复，二者通过认证失效关闭码和共享 refresh 能力串起来。
+
+这也是项目答辩时最值得强调的设计点之一：
+
+> 不是简单做了 WebSocket 重连，而是把认证恢复和数据恢复组织成了一个有状态的故障恢复流程。
+
+---
+
+## 二十六、完整工程框架可以归纳为“可信连接 + 可恢复数据”两条主线
+
+最终知识树如下：
+
+~~~text
+WebSocket + 鉴权 + 恢复
+│
+├─ 一、可信连接
+│   ├─ HTTP Upgrade
+│   ├─ 应用认证握手
+│   ├─ Authentication
+│   ├─ Authorization
+│   ├─ Connection Binding
+│   ├─ Origin Validation
+│   └─ Protocol Version
+│
+├─ 二、会话控制
+│   ├─ Access Token
+│   ├─ Refresh Token
+│   ├─ HttpOnly Cookie
+│   ├─ Token Family
+│   ├─ Rotation
+│   ├─ Reuse Detection
+│   ├─ Single Flight
+│   └─ Revocation
+│
+├─ 三、连接存活
+│   ├─ RFC Ping / Pong
+│   ├─ Application Heartbeat
+│   ├─ Data Watchdog
+│   └─ Stale Connection Cleanup
+│
+├─ 四、故障分类
+│   ├─ Close Code
+│   ├─ Recoverable
+│   ├─ Refreshable
+│   └─ Fatal
+│
+├─ 五、连接恢复
+│   ├─ Exponential Backoff
+│   ├─ Jitter
+│   ├─ online / visibility gating
+│   └─ Auth Recovery
+│
+├─ 六、数据恢复
+│   ├─ Recovery Cursor
+│   ├─ Gap Detection
+│   ├─ Replay
+│   ├─ Replay / Live Boundary
+│   ├─ Dedupe / Idempotency
+│   ├─ Retention Boundary
+│   └─ ACK / Delivery Semantics
+│
+└─ 七、工程保障
+    ├─ Schema Validation
+    ├─ Rate / Payload Limit
+    ├─ Observability
+    ├─ Security Logging
+    ├─ Fault Injection
+    └─ State-machine Tests
+~~~
+
+这套框架适用于设备遥测、实时行情、协作系统、在线聊天、监控大盘等所有“长连接 + 身份 + 故障恢复”场景。
+
+QHZHC 的实践价值在于，它把短期 Access Token、Refresh Rotation、WebSocket 首包认证、持续会话重验、心跳、关闭码、退避重连和时间游标补发连接成了一个真实可运行的恢复闭环，同时也暴露出 Origin 校验、细粒度授权、多标签刷新协调和更严格数据 ACK 等可继续演进的边界。
+
+## 参考资料
+
+### 标准与官方安全资料
+
+- RFC 6455 The WebSocket Protocol：https://www.rfc-editor.org/rfc/rfc6455
+- RFC 7519 JSON Web Token：https://www.rfc-editor.org/rfc/rfc7519
+- RFC 9700 OAuth 2.0 Security Best Current Practice：https://www.rfc-editor.org/rfc/rfc9700
+- MDN WebSocket：https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket
+- MDN WebSocket Constructor：https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/WebSocket
+- OWASP WebSocket Security Cheat Sheet：https://cheatsheetseries.owasp.org/cheatsheets/WebSocket_Security_Cheat_Sheet.html
+
+### Full-Stack-AI-NOTES 已有知识
+
+- [WebSocket 从 0 到 1](https://github.com/cxDlogver/cx-learn-notes/blob/main/Full-Stack-AI-NOTES/11-Websocket%E4%BB%8E0%E5%88%B01.md)
+- [Web 身份认证、会话控制与访问控制体系](https://github.com/cxDlogver/cx-learn-notes/blob/main/Full-Stack-AI-NOTES/Web%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E4%BC%9A%E8%AF%9D%E6%8E%A7%E5%88%B6%E4%B8%8E%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E4%BD%93%E7%B3%BB.md)
+- [Access Token 与 Refresh Token](https://github.com/cxDlogver/cx-learn-notes/blob/main/Full-Stack-AI-NOTES/Access%20Token%E4%B8%8ERefresh%20Token%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0.md)
+
+### QHZHC 当前实践代码
+
+- [服务端认证服务](../QHZHC_Server/src/server/auth.ts)
+- [Refresh Token Family 数据实现](../QHZHC_Server/src/server/database.ts)
+- [HTTP 登录、刷新与退出](../QHZHC_Server/src/server/app.ts)
+- [WebSocket Hub](../QHZHC_Server/src/server/robot-socket-hub.ts)
+- [实时协议](../QHZHC_Server/src/shared/protocol.ts)
+- [前端 Access Token Manager](../QHZHC_Web/src/services/accessToken.ts)
+- [HTTP 401 与刷新处理](../QHZHC_Web/src/services/httpAuth.ts)
+- [实时客户端](../QHZHC_Web/src/views/DataVisualization/services/realtimeClient.ts)
+- [关闭码恢复策略](../QHZHC_Web/src/views/DataVisualization/services/realtimeConnectionPolicy.ts)
+
+### QHZHC 当前测试
+
+- [认证与 Token 测试](../QHZHC_Server/tests/auth-tokens.test.ts)
+- [WebSocket 服务端测试](../QHZHC_Server/tests/websocket.test.ts)
+- [实时客户端测试](../QHZHC_Web/tests/unit/realtimeClient.spec.js)
