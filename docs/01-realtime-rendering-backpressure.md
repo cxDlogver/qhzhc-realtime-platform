@@ -898,3 +898,603 @@ batchSize 缓慢减 1
 ~~~
 
 因此代码还设置了 point-limit 调整冷却时间。
+
+
+## 十二、FPS、submitRate、renderP95、frameTime 和 LoAF 必须严格区分
+
+实时性能优化最容易出现的问题，不是没有指标，而是把不同含义的指标混成一个数字。
+
+### 【FPS 表示浏览器帧调度能力】
+
+当前页面通过独立的 rAF 采样获得 FPS。
+
+它回答的是：
+
+> 浏览器当前还能以多高频率获得下一次动画帧机会。
+
+它不等于：
+
+~~~text
+WebSocket 每秒收到多少包
+也不等于
+handleRealtimePacket 每秒执行多少次
+~~~
+
+因此不能用业务回调次数冒充 FPS。
+
+### 【submitRate 表示页面业务提交频率】
+
+当前 submitRate 统计：
+
+~~~text
+每秒调用 handleRealtimePacket 多少次
+~~~
+
+假设服务端每秒下发 20 个点。
+
+如果：
+
+~~~text
+maxPerFrame = 1
+~~~
+
+可能产生接近 20 次页面提交。
+
+如果：
+
+~~~text
+maxPerFrame = 5
+~~~
+
+可能只产生约 4 次页面提交。
+
+此时 submitRate 下降，但页面反而可能更流畅，因为固定提交成本减少了。
+
+所以：
+
+~~~text
+submitRate ↓
+不代表
+FPS ↓
+~~~
+
+### 【renderP95Ms 表示业务提交成本分布】
+
+页面在 handleRealtimePacket 开始时记录时间，更新 Vue 状态后等待 nextTick，再记录一次提交耗时。
+
+因此它更接近：
+
+> 实时数据进入页面状态更新后，一次 Vue 提交路径的业务侧成本。
+
+P95 的意义是观察较差但又具有代表性的提交，而不是让少量高耗时样本被平均值稀释。
+
+但必须明确：
+
+~~~text
+renderP95Ms
+≠
+浏览器完整一帧的全部时间
+~~~
+
+因为它不完整覆盖浏览器之后的样式、布局、绘制、合成等所有阶段。
+
+### 【frameTime 表示从业务提交到下一次 rAF 的等待】
+
+页面还会在状态提交后等待下一次 requestAnimationFrame，然后计算：
+
+~~~text
+frameTime
+=
+下一次 rAF 时间
+-
+本次 handleRealtimePacket 开始时间
+~~~
+
+它可以帮助观察一次业务提交以后多久重新获得帧调度机会。
+
+但仍然不能把它直接写成：
+
+~~~text
+完整 Frame Time
+~~~
+
+### 【LoAF 用于观察长动画帧】
+
+Long Animation Frame（LoAF，长动画帧）用于记录超过 50 ms 的长渲染更新。
+
+它可以继续分析：
+
+~~~text
+renderStart
+styleAndLayoutStart
+scripts
+整帧 duration
+~~~
+
+因此 LoAF 更适合回答：
+
+> 页面已经出现长帧时，时间主要消耗在哪一阶段、哪些脚本参与了这次长帧。
+
+官方资料：
+
+- https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Long_animation_frame_timing
+- https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming
+
+### 【这些指标应该怎样组合】
+
+~~~text
+arrivalRate / consumeRate
+→ 数据吞吐是否平衡
+
+pending / oldestPendingMs / queueSlope
+→ 是否产生实时积压
+
+submitRate
+→ 页面业务提交频率
+
+renderP95Ms
+→ 单次页面提交成本是否变重
+
+FPS
+→ 整体帧调度能力是否下降
+
+LoAF
+→ 是否已经出现明显长帧，以及长帧内部发生了什么
+~~~
+
+答辩时应该先说明指标定义，再引用数字。否则“FPS 提升 30%”本身没有意义。
+
+## 十三、pending 为 0 不代表性能问题已经解决
+
+这是实时渲染知识点里最容易被忽略的第二层问题。
+
+假设：
+
+~~~text
+pending = 0
+consumeRate >= arrivalRate
+~~~
+
+只能证明：
+
+> 数据没有积压在 FrameTelemetryQueue 中。
+
+它不能证明：
+
+> 页面每次地图更新的成本没有随着历史数据增长。
+
+当前页面会持续维护实时地图点。当历史轨迹越来越长时，如果后续地图逻辑存在：
+
+~~~text
+扫描历史数组
+重新构造大量地图对象
+重新计算轨迹
+重新更新大量 Entity / Feature
+~~~
+
+那么单次更新成本可能随着历史规模增加。
+
+这时会出现：
+
+~~~text
+arrivalRate = 20
+consumeRate = 20
+pending = 0
+但 renderP95 越来越高
+FPS 越来越低
+~~~
+
+所以实时渲染性能至少有两个维度：
+
+~~~text
+维度一：吞吐压力
+arrivalRate vs consumeRate
+
+维度二：单次更新复杂度
+costPerUpdate(historySize)
+~~~
+
+自适应 batch 主要解决第一类问题。
+
+如果第二类成本随着 historySize 增长，它不能从根本上解决：
+
+~~~text
+历史轨迹越来越大
+地图对象越来越多
+每次更新越来越贵
+~~~
+
+后续“地图历史轨迹渲染复杂度”应该单独作为一个知识点继续梳理。
+
+### 【答辩注意点】
+
+如果面试官问：
+
+> 队列都没有积压了，为什么页面还会掉帧？
+
+正确回答应该是：
+
+> 队列指标只说明数据吞吐已经平衡，不代表下游渲染算法复杂度稳定。地图历史对象数量增加后，单次提交成本可能继续上升，因此需要同时观察 renderP95、FPS、LoAF 和地图对象规模，再判断问题是吞吐积压还是历史渲染复杂度。
+
+## 十四、Web Worker 能减轻计算，但不能替代主线程渲染
+
+另一个常见追问是：
+
+> 既然主线程卡，为什么不把这些工作全部放进 Worker？
+
+需要先区分工作类型。
+
+适合搬到 Worker 的通常是：
+
+~~~text
+数据解析
+数据清洗
+聚合计算
+批量坐标转换
+纯数学计算
+无 DOM 依赖的预处理
+~~~
+
+但页面最终仍然需要：
+
+~~~text
+Vue 状态更新
+DOM 生命周期
+ECharts 与页面节点协调
+OpenLayers / Cesium 的主线程交互
+用户事件处理
+~~~
+
+因此：
+
+> Worker 能降低一部分 JavaScript 计算压力，但它不会自动解决主线程地图绘制和 UI 提交成本。
+
+如果瓶颈是：
+
+~~~text
+JSON 解析 / 坐标转换 30 ms
+~~~
+
+Worker 很有价值。
+
+如果瓶颈是：
+
+~~~text
+Cesium Entity 更新 / Vue 更新 / 图表重绘 80 ms
+~~~
+
+单纯把 WebSocket 数据接收搬到 Worker 不会让这 80 ms 消失。
+
+这也是为什么性能优化前必须先有 LoAF、Performance Timeline 或可重复 A/B 数据，而不能看到掉帧就默认上 Worker。
+
+## 十五、当前控制器的设计思想是可解释反馈控制，而不是复杂算法
+
+当前自适应方案不是预测未来负载，而是：
+
+~~~text
+观察当前状态
+        ↓
+判断是否过载
+        ↓
+调整 batch 或输入
+        ↓
+下一窗口继续观察
+~~~
+
+可以概括为：
+
+~~~text
+阈值
++
+趋势
++
+安全上限
++
+连续窗口
++
+冷却时间
+~~~
+
+这种方案对当前项目有明显优点：
+
+| 优点 | 说明 |
+| --- | --- |
+| 可解释 | 页面可以直接显示当前 reason |
+| 可测试 | 可以给定固定样本验证输出决策 |
+| 易回退 | 用户可切换手动 batch |
+| 易调参 | 每个阈值都有明确业务意义 |
+| 不依赖模型 | 不需要训练数据或复杂运行时 |
+
+但也有边界：
+
+| 边界 | 说明 |
+| --- | --- |
+| 参数依赖场景 | queueAge、健康窗口、预算比例都需要实验验证 |
+| 有反馈延迟 | 必须先发生压力，下一观察窗口才能响应 |
+| 指标存在耦合 | batch 改变会同时影响 submitRate、renderP95 和 FPS |
+| 不是全局最优 | 目标是工程稳定，不是求数学最优控制 |
+
+因此答辩中更准确的描述是：
+
+> 当前实现的是基于运行指标的规则型反馈控制器。它用队列趋势判断是否持续过载，用提交 P95 判断是否还有扩批空间，通过连续窗口和 cooldown 防止频繁震荡。它追求的是可解释、可测试和稳定，而不是包装成复杂智能调度算法。
+
+## 十六、这一设计真正体现的是三层控制思想
+
+把具体代码名拿掉后，这个知识点可以抽象成三层。
+
+### 【第一层：缓冲】
+
+~~~text
+网络到包
+        ↓
+先进入客户端缓冲队列
+~~~
+
+目的：
+
+> 把输入时间与渲染时间解耦。
+
+### 【第二层：调度】
+
+~~~text
+requestAnimationFrame
++
+maxPerFrame
++
+budgetMs
+~~~
+
+目的：
+
+> 把待处理工作拆到不同帧，而不是一次全部提交。
+
+### 【第三层：反馈控制】
+
+~~~text
+队列增长
++
+渲染成本
++
+FPS
+        ↓
+动态调整 batch
+        ↓
+必要时反向限制输入
+~~~
+
+目的：
+
+> 让系统在输入压力变化时自动寻找一个相对稳定的工作点。
+
+因此可以把这个方案总结成：
+
+~~~text
+缓冲解决“先别一次全做”
+调度解决“这一帧做多少”
+反馈控制解决“下一阶段应该做多少”
+~~~
+
+这三层关系比“项目用了 rAF”更接近设计思想。
+
+## 十七、面试官可能连续追问的重点
+
+| 追问 | 回答结论 | 答辩证明 |
+| --- | --- | --- |
+| WebSocket 为什么还需要背压 | 连接协议不等于消费能力，网络发送和页面渲染都有独立慢消费者 | bufferedAmount + FrameTelemetryQueue |
+| 为什么不用 onmessage 直接更新地图 | 网络到包节奏不等于浏览器适合渲染的节奏 | enqueue → rAF → publishFrame |
+| rAF 是否保证 60 FPS | 不保证，它只提供下一次重绘前的调度机会 | MDN + 独立 FPS 监控 |
+| 为什么 batch 变大有时更流畅 | 减少页面提交次数和固定调度成本，同时提高消费能力 | submitRate、pending、renderP95 对比 |
+| batch 是否越大越好 | 否，过大会增加单帧提交成本并制造长帧 | safeBatchSize + frameBudget |
+| 为什么不一积压就限流 | 瞬时波动不等于持续过载，需要趋势和连续窗口防止震荡 | queueSlope + overloadWindows |
+| pending 为 0 为什么还能掉帧 | 队列稳定不等于地图单次更新复杂度稳定 | renderP95 / LoAF / historySize |
+| 为什么不用 Worker 全解决 | Worker 适合纯计算，不能替代主线程 UI 与地图提交 | 性能归因后决定是否拆 Worker |
+| 为什么用 P95 不用平均值 | 平均值容易掩盖较差提交，P95 更能表示尾部成本 | renderSamples + percentile |
+| 自动模式是什么算法 | 规则型反馈控制，不是预测模型或 PID | AdaptiveRenderController |
+
+### 【一个完整回答示例】
+
+如果面试官问：
+
+> 你们实时页面卡顿是怎么优化的？
+
+不要从“我们用了 rAF”开始。
+
+更好的答法是：
+
+> 我们先把问题定义成生产消费失衡：服务端持续输入，而浏览器地图和图表是消费者。首先用 FrameTelemetryQueue 把 WebSocket 接收与页面渲染解耦，再用 rAF 按帧消费；其次把 maxPointsPerSecond 和 maxPerFrame 分成输入控制和本地消费控制两条线。运行时持续观察 arrivalRate、consumeRate、pending、oldestPendingMs、真实 FPS 和提交 P95。队列增长但渲染还有余量时优先增大 batch，只有持续过载且单帧预算已经吃满时才降低服务端输入。这样优化目标不是单纯把 FPS 做高，而是在数据实时性、页面流畅度和数据密度之间找稳定平衡。
+
+随后再根据追问进入具体实现，而不是一次把全部项目链路讲完。
+
+## 十八、答辩证明必须从“代码存在”升级到“策略有效”
+
+仅展示 AdaptiveRenderController 的源码不能证明策略有效。
+
+证据应该分四层。
+
+### 【代码结构】
+
+证明职责拆分：
+
+~~~text
+RealtimeClient
+        ↓
+FrameTelemetryQueue
+        ↓
+AdaptiveRenderController
+~~~
+
+分别负责：
+
+~~~text
+实时输入
+分帧调度
+决策控制
+~~~
+
+### 【运行指标】
+
+页面可以同时观察：
+
+~~~text
+FPS
+arrivalRate
+consumeRate
+pending
+oldestPendingMs
+batchSize
+queueSlope
+renderP95Ms
+controlReason
+~~~
+
+这样能看到一次控制动作前后的状态变化，而不是只展示最终一个 FPS。
+
+### 【单元测试】
+
+重点测试：
+
+- [frameTelemetryQueue.spec.js](../QHZHC_Web/tests/unit/frameTelemetryQueue.spec.js)
+- [frameTelemetryQueueMetrics.spec.js](../QHZHC_Web/tests/unit/frameTelemetryQueueMetrics.spec.js)
+- [adaptiveRenderController.spec.js](../QHZHC_Web/tests/unit/adaptiveRenderController.spec.js)
+- [realtimeClient.spec.js](../QHZHC_Web/tests/unit/realtimeClient.spec.js)
+
+真正应该证明的是：
+
+~~~text
+大批数据是否按帧拆开
+数据顺序是否保持
+时间预算耗尽时队列是否仍能前进
+received / consumed / pending 是否守恒
+队列增长时 batch 是否增加
+超过渲染预算时是否停止扩 batch
+持续过载时是否降低输入档位
+手动模式是否停止自动调节
+~~~
+
+### 【固定场景 A/B】
+
+答辩时最有价值的是可重复实验：
+
+~~~text
+相同输入速率
+相同历史点数量
+相同地图模式
+相同浏览器和机器
+相同测试时长
+~~~
+
+对比：
+
+~~~text
+固定 batch
+vs
+自适应 batch
+~~~
+
+至少记录：
+
+~~~text
+FPS P5 / P50
+LoAF count / P95
+pending peak
+oldestPendingMs peak
+renderP95Ms
+最终 pending
+最终输入档位
+~~~
+
+不能只看平均 FPS，因为平均值可能把短时间严重卡顿稀释掉。
+
+## 十九、这一知识点的完整框架
+
+最终可以把本章记成下面这棵树：
+
+~~~text
+实时渲染背压与自适应调度
+│
+├─ 1. 生产消费模型
+│   ├─ arrivalRate
+│   ├─ consumeRate
+│   ├─ pending
+│   └─ λ / μ 稳定条件
+│
+├─ 2. 两级背压
+│   ├─ WebSocket bufferedAmount
+│   └─ FrameTelemetryQueue
+│
+├─ 3. 分帧调度
+│   ├─ requestAnimationFrame
+│   ├─ maxPerFrame
+│   ├─ budgetMs
+│   ├─ cursor
+│   └─ pause / resume / stop
+│
+├─ 4. 自适应控制
+│   ├─ requiredBatchSize
+│   ├─ safeBatchSize
+│   ├─ frameBudget
+│   ├─ queueSlope
+│   ├─ overloadWindows
+│   └─ cooldown
+│
+├─ 5. 指标口径
+│   ├─ FPS
+│   ├─ submitRate
+│   ├─ renderP95
+│   ├─ frameTime
+│   ├─ LoAF
+│   └─ oldestPendingMs
+│
+├─ 6. 能力边界
+│   ├─ rAF 不保证 60 FPS
+│   ├─ batch 不能无限增大
+│   ├─ pending=0 不代表渲染成本稳定
+│   └─ Worker 不能替代主线程渲染
+│
+└─ 7. 答辩证明
+    ├─ 代码职责
+    ├─ 运行指标
+    ├─ 单元测试
+    └─ 固定场景 A/B
+~~~
+
+后续文档应该从这棵树的边界继续展开，而不是重新复制本章。例如：
+
+~~~text
+下一篇如果梳理 WebSocket
+→ 重点研究连接状态机、心跳、关闭码和重连
+
+如果梳理地图性能
+→ 从“pending=0 但 FPS 仍下降”继续研究历史对象复杂度
+
+如果梳理性能监控
+→ 研究 FPS、LoAF、P95 如何通过 browser-monitor 在线上归因
+~~~
+
+这样逐篇积累，最终形成的是相互连接的知识树，而不是一批互相重复的项目总结。
+
+## 参考资料
+
+### 项目活动源码
+
+- [QHZHC_Server/src/server/robot-socket-hub.ts](../QHZHC_Server/src/server/robot-socket-hub.ts)
+- [QHZHC_Web/src/views/DataVisualization/services/realtimeClient.ts](../QHZHC_Web/src/views/DataVisualization/services/realtimeClient.ts)
+- [QHZHC_Web/src/views/DataVisualization/services/FrameTelemetryQueue.ts](../QHZHC_Web/src/views/DataVisualization/services/FrameTelemetryQueue.ts)
+- [QHZHC_Web/src/views/DataVisualization/services/AdaptiveRenderController.ts](../QHZHC_Web/src/views/DataVisualization/services/AdaptiveRenderController.ts)
+- [QHZHC_Web/src/views/DataVisualization/services/RenderPerformanceMonitor.ts](../QHZHC_Web/src/views/DataVisualization/services/RenderPerformanceMonitor.ts)
+- [QHZHC_Web/src/views/DataVisualization/dataVisualization.vue](../QHZHC_Web/src/views/DataVisualization/dataVisualization.vue)
+
+### 项目测试
+
+- [QHZHC_Web/tests/unit/frameTelemetryQueue.spec.js](../QHZHC_Web/tests/unit/frameTelemetryQueue.spec.js)
+- [QHZHC_Web/tests/unit/frameTelemetryQueueMetrics.spec.js](../QHZHC_Web/tests/unit/frameTelemetryQueueMetrics.spec.js)
+- [QHZHC_Web/tests/unit/adaptiveRenderController.spec.js](../QHZHC_Web/tests/unit/adaptiveRenderController.spec.js)
+- [QHZHC_Web/tests/unit/realtimeClient.spec.js](../QHZHC_Web/tests/unit/realtimeClient.spec.js)
+
+### 官方资料
+
+- MDN WebSocket API：https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API
+- MDN WebSocket.bufferedAmount：https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/bufferedAmount
+- MDN requestAnimationFrame：https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame
+- MDN Page Visibility API：https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API
+- MDN Long Animation Frames：https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Long_animation_frame_timing
