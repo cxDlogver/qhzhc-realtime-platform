@@ -167,8 +167,7 @@ npm run test:integration -w QHZHC_Server
 
 知识文档：
 
-- [实时前端系统中的背压与自适应调度](docs/01-realtime-rendering-backpressure.md)
-- [WebSocket 鉴权与可恢复实时连接](docs/02-websocket-auth-recovery.md)
+- [WebSocket 鉴权与可恢复实时连接](docs/WebSocket鉴权与可恢复实时连接.md)
 
 ## 性能监控
 
