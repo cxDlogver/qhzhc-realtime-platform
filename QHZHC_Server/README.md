@@ -19,5 +19,4 @@ npm run start
 
 相关知识文档见项目根目录：
 
-- `docs/01-realtime-rendering-backpressure.md`：实时渲染的背压、分帧调度和自适应控制；
-- `docs/02-websocket-auth-recovery.md`：WebSocket 鉴权、会话续期、心跳、故障重连与数据恢复。
+- `docs/WebSocket鉴权与可恢复实时连接.md`：WebSocket 鉴权、会话续期、心跳、故障重连与数据恢复。
