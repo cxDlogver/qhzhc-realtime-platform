@@ -17,5 +17,5 @@ npm run start
 - `src/server/weather.ts`：服务端天气代理与分时缓存；
 - `src/server/app.ts`：HTTP API 与前端静态托管。
 
-实时遥测的 WebSocket、补发、背压和前端分帧渲染语义见项目根目录
-`docs/01-realtime-telemetry-pipeline.md`；Access JWT 与 Refresh Token 的完整会话机制建议作为独立知识点继续梳理。
+实时渲染的背压、分帧调度和自适应控制见项目根目录
+`docs/01-realtime-rendering-backpressure.md`。WebSocket 连接状态机、补发和认证机制后续分别按独立知识点梳理。
