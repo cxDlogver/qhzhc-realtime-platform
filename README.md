@@ -165,7 +165,7 @@ npm run test:integration -w QHZHC_Server
 - `browser-visualization-3d-map.png`
 - `browser-simulator-admin.png`
 
-设计细节见 [实时遥测数据链路：从数据库提交到浏览器分帧渲染](docs/01-realtime-telemetry-pipeline.md)。
+设计细节见 [实时遥测数据链路：从数据库提交到浏览器分帧渲染](docs/01-realtime-rendering-backpressure.md)。
 
 ## 性能监控
 
