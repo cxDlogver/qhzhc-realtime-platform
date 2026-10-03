@@ -1,0 +1,5 @@
+{"type":"prepared","at":"2026-09-23T17:30:08.588Z","fixtureSha256":null}
+{"type":"scene_ready","at":"2026-09-23T17:30:19.343Z","points":0,"pending":0}
+{"type":"measurement_started","at":"2026-09-23T17:30:19.361Z","browserStartMs":9811.199999988079,"initialHistoryCount":0}
+{"type":"measurement_completed","at":"2026-09-23T17:31:19.684Z","elapsedBrowserMs":60033.69999998808,"fpsSamples":59,"fpsAverage":131.67472326555915,"fpsP5":108.70639391244178,"fpsMin":100.80047435517402,"loafCount":57,"loafP95Ms":74.20000004768372,"loafMaxMs":82.30000001192093,"serverGenerated":1200,"clientReceived":59,"clientConsumed":59,"finalPending":0,"finalMapPoints":59,"topScriptEntrypoints":[]}
+{"type":"simulator_restored","at":"2026-09-23T17:31:19.713Z","before":{"running":true,"config":{"robotId":"QH-ZHC-01","pointsPerSecond":20,"pattern":"route"}},"restored":{"running":true,"config":{"robotId":"QH-ZHC-01","pointsPerSecond":20,"pattern":"route"}}}

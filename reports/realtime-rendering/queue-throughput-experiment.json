@@ -1,0 +1,23 @@
+{
+  "experiment": "noop-renderer-controlled-throughput",
+  "arrivalRatePointsPerSecond": 20,
+  "availableFramesPerSecond": 10,
+  "durationSeconds": 5,
+  "renderCallback": "no-op",
+  "scenarios": [
+    {
+      "maxPointsPerFrame": 1,
+      "serviceRatePointsPerSecond": 10,
+      "finalPendingPoints": 50,
+      "expectedQueueSlopePointsPerSecond": 10
+    },
+    {
+      "maxPointsPerFrame": 2,
+      "serviceRatePointsPerSecond": 20,
+      "finalPendingPoints": 0,
+      "expectedQueueSlopePointsPerSecond": 0
+    }
+  ],
+  "result": "passed",
+  "conclusion": "Backlog grows when arrivalRate exceeds framesPerSecond multiplied by pointsPerFrame; extraction timeout is not the limiting factor in the no-op renderer scenario."
+}

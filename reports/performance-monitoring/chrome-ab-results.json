@@ -1,0 +1,1186 @@
+{
+  "startedAt": "2026-09-07T07:08:43.478Z",
+  "hardware": {
+    "cpu": "Intel(R) Core(TM) i7-14650HX",
+    "logicalCpus": 24,
+    "totalMemory": 34053414912,
+    "platform": "win32",
+    "node": "v24.19.0"
+  },
+  "durationMs": 300000,
+  "runs": [
+    {
+      "run": 1,
+      "enabled": false,
+      "frames": [
+        {
+          "fps": 130.29055593301624,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 47.15694298296894,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 2.8722976466307935,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.8650453206012947,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.9800910841898771,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.598689074958532,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.3560898118909719,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.1776020097740953,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.0491344640671447,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 0.916993727762906,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "visibility": [
+        {
+          "at": 30049.199999999255,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 60361.59999999963,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 91018.80000000075,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 120691.80000000075,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 151108.69999999925,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 181074.30000000075,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 211206.59999999963,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 241461.19999999925,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 271856.5,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "pointsStart": 30,
+      "pointsEnd": 5810,
+      "updates": {
+        "CH4": {
+          "count": 598,
+          "p95": 39.80000000074506,
+          "max": 187.7999999988824
+        },
+        "CO2": {
+          "count": 598,
+          "p95": 37.29999999888241,
+          "max": 178
+        },
+        "windspeed": {
+          "count": 598,
+          "p95": 333.59999999962747,
+          "max": 443.30000000074506
+        },
+        "realTime": {
+          "count": 598,
+          "p95": 12.899999998509884,
+          "max": 161.2000000011176
+        },
+        "iCH4": {
+          "count": 598,
+          "p95": 259.69999999925494,
+          "max": 429.59999999962747
+        }
+      },
+      "actualMs": 300846.0999999996,
+      "uploads": []
+    },
+    {
+      "run": 2,
+      "enabled": true,
+      "frames": [
+        {
+          "fps": 49.93559892995145,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 9.33180395435193,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 2.644003777148253,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.8799466095162887,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.7294056609211947,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.3987970345502818,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.2174971736672753,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.063754343663571,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 0.9541256392641794,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 0.8508176357479521,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "visibility": [
+        {
+          "at": 30121.900000000373,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 60442.09999999963,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 90852.29999999888,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 121014.79999999888,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 150853.19999999925,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 181379.5,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 211393,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 241429.59999999963,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 271129.5,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "pointsStart": 296,
+      "pointsEnd": 5807,
+      "updates": {
+        "CH4": {
+          "count": 540,
+          "p95": 39.90000000037253,
+          "max": 219.09999999962747
+        },
+        "CO2": {
+          "count": 540,
+          "p95": 39.19999999925494,
+          "max": 173.5
+        },
+        "windspeed": {
+          "count": 540,
+          "p95": 422.69999999925494,
+          "max": 717.2999999988824
+        },
+        "realTime": {
+          "count": 540,
+          "p95": 14.5,
+          "max": 144.09999999962747
+        },
+        "iCH4": {
+          "count": 540,
+          "p95": 268.19999999925494,
+          "max": 448.40000000037253
+        }
+      },
+      "actualMs": 300981.7999999989,
+      "uploads": [
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204
+      ]
+    },
+    {
+      "run": 3,
+      "enabled": false,
+      "frames": [
+        {
+          "fps": 44.146598524469546,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 7.142857142857142,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 2.503852080123263,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 2.019645643991554,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.751824817518248,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 0.9836323575700323,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.229169959086201,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.0694996524126117,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 0.577789761565427,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 0.9979641531276174,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "visibility": [
+        {
+          "at": 30159,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 60703,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 90787,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 120668.79999999888,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 152137.79999999888,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 181024.5,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 211122.8999999985,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 241469.19999999925,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 271242.5999999996,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "pointsStart": 301,
+      "pointsEnd": 5812,
+      "updates": {
+        "CH4": {
+          "count": 535,
+          "p95": 41.19999999925494,
+          "max": 167.59999999962747
+        },
+        "CO2": {
+          "count": 535,
+          "p95": 39.399999998509884,
+          "max": 185.30000000074506
+        },
+        "windspeed": {
+          "count": 535,
+          "p95": 400.5,
+          "max": 849.9000000003725
+        },
+        "realTime": {
+          "count": 535,
+          "p95": 15.400000000372529,
+          "max": 31.399999998509884
+        },
+        "iCH4": {
+          "count": 535,
+          "p95": 286.5,
+          "max": 521.2000000011176
+        }
+      },
+      "actualMs": 300661.8999999985,
+      "uploads": []
+    },
+    {
+      "run": 4,
+      "enabled": true,
+      "frames": [
+        {
+          "fps": 44.69162776839805,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 3.3524620875978615,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 2.292526364053186,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.8950879320800473,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.5177961599757144,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.1918240867647893,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.0513404590853337,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 0.93569877984879,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 0.8597269507204529,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 0.8490838385382156,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "visibility": [
+        {
+          "at": 30275.599999999627,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 60738.90000000037,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 90826.40000000037,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 121027.59999999963,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 151100.40000000037,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 181265.59999999963,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 211591.70000000112,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 241387.59999999963,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 272316.0999999996,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "pointsStart": 302,
+      "pointsEnd": 5807,
+      "updates": {
+        "CH4": {
+          "count": 493,
+          "p95": 38.5,
+          "max": 174.09999999962747
+        },
+        "CO2": {
+          "count": 493,
+          "p95": 39.19999999925494,
+          "max": 205.80000000074506
+        },
+        "windspeed": {
+          "count": 493,
+          "p95": 484.7999999988824,
+          "max": 661.1000000014901
+        },
+        "realTime": {
+          "count": 493,
+          "p95": 14.699999999254942,
+          "max": 238.90000000037253
+        },
+        "iCH4": {
+          "count": 493,
+          "p95": 292.30000000074506,
+          "max": 479
+        }
+      },
+      "actualMs": 301080.7000000011,
+      "uploads": [
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204
+      ]
+    },
+    {
+      "run": 5,
+      "enabled": false,
+      "frames": [
+        {
+          "fps": 46.95867636479898,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 6.7449834185824304,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 2.452182442373712,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.912667597498235,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.5909316893705876,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.2938762684608474,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.163760498089497,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.0034115994380934,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 0.8798479622721211,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 0.9789908562254052,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "visibility": [
+        {
+          "at": 30245.099999999627,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 60492.90000000037,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 91215.59999999963,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 120973.19999999925,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 150861.5,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 181705.40000000037,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 211098.40000000037,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 241133.80000000075,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 272086.80000000075,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "pointsStart": 301,
+      "pointsEnd": 5806,
+      "updates": {
+        "CH4": {
+          "count": 517,
+          "p95": 37.20000000111759,
+          "max": 141.90000000037253
+        },
+        "CO2": {
+          "count": 517,
+          "p95": 36.600000001490116,
+          "max": 140.5
+        },
+        "windspeed": {
+          "count": 517,
+          "p95": 470.5,
+          "max": 691.9000000003725
+        },
+        "realTime": {
+          "count": 517,
+          "p95": 13.799999998882413,
+          "max": 108.79999999888241
+        },
+        "iCH4": {
+          "count": 517,
+          "p95": 255.90000000037253,
+          "max": 434.09999999962747
+        }
+      },
+      "actualMs": 301081.5,
+      "uploads": []
+    },
+    {
+      "run": 6,
+      "enabled": true,
+      "frames": [
+        {
+          "fps": 53.95359990408249,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 9.631546146437275,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 2.6776322080902784,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 2.289726759273392,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.8422313105633503,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.4787157353838176,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.305629126720627,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.1115021952168342,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.0085389632219488,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 0.9410524730858972,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "visibility": [
+        {
+          "at": 30243.800000000745,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 60377.70000000112,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 90542.70000000112,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 120677.60000000149,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 150759.40000000037,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 180789.5,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 211140.30000000075,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 241605.90000000037,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 271405.7000000011,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "pointsStart": 296,
+      "pointsEnd": 5802,
+      "updates": {
+        "CH4": {
+          "count": 568,
+          "p95": 38.40000000037253,
+          "max": 164.90000000037253
+        },
+        "CO2": {
+          "count": 568,
+          "p95": 36.600000001490116,
+          "max": 173.59999999962747
+        },
+        "windspeed": {
+          "count": 568,
+          "p95": 383.5,
+          "max": 504.09999999962747
+        },
+        "realTime": {
+          "count": 568,
+          "p95": 13.800000000745058,
+          "max": 20.40000000037253
+        },
+        "iCH4": {
+          "count": 568,
+          "p95": 260.5,
+          "max": 424.59999999962747
+        }
+      },
+      "actualMs": 300120,
+      "uploads": [
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204,
+        204
+      ]
+    }
+  ],
+  "errors": [],
+  "stress": [
+    {
+      "mapType": "3d",
+      "pointsPerSecond": 20,
+      "frames": [
+        {
+          "fps": 6.055751987654082,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 2.5946032252913933,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 2.3139220979560355,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.5516505682920196,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.5814964910546605,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.3466458898443647,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.3545940088242108,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.0683950925052097,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 1.0316191262185939,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "fps": 0.9357513147305991,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "visibility": [
+        {
+          "at": 30454.89999999851,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 60488.59999999963,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 91229.39999999851,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 121162.69999999925,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 150861.3999999985,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 180944.29999999888,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 211374.09999999963,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 241062.69999999925,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 271869.8999999985,
+          "visible": true,
+          "focused": true
+        },
+        {
+          "at": 301088.0999999996,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "pointsStart": 852,
+      "pointsEnd": 5828,
+      "updates": {
+        "CH4": {
+          "count": 472,
+          "p95": 40.09999999962747,
+          "max": 89.30000000074506
+        },
+        "CO2": {
+          "count": 472,
+          "p95": 38.90000000037253,
+          "max": 78.69999999925494
+        },
+        "windspeed": {
+          "count": 472,
+          "p95": 336.5,
+          "max": 365.7999999988824
+        },
+        "realTime": {
+          "count": 472,
+          "p95": 13.5,
+          "max": 20.399999998509884
+        },
+        "iCH4": {
+          "count": 472,
+          "p95": 287,
+          "max": 317.09999999962747
+        }
+      },
+      "actualMs": 301097.0999999996
+    },
+    {
+      "mapType": "3d",
+      "pointsPerSecond": 100,
+      "frames": [
+        {
+          "fps": 0.8922198429693076,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "visibility": [],
+      "pointsStart": 5828,
+      "pointsEnd": 8062,
+      "updates": {
+        "CH4": {
+          "count": 25,
+          "p95": 51.399999998509884,
+          "max": 53
+        },
+        "CO2": {
+          "count": 25,
+          "p95": 50.09999999962747,
+          "max": 50.70000000111759
+        },
+        "windspeed": {
+          "count": 25,
+          "p95": 367.59999999962747,
+          "max": 368.59999999962747
+        },
+        "realTime": {
+          "count": 25,
+          "p95": 16.700000001117587,
+          "max": 17.199999999254942
+        },
+        "iCH4": {
+          "count": 25,
+          "p95": 377.40000000037253,
+          "max": 378.6000000014901
+        }
+      },
+      "actualMs": 30502.900000000373
+    },
+    {
+      "mapType": "3d",
+      "pointsPerSecond": 500,
+      "frames": [
+        {
+          "fps": 0.6949632538179529,
+          "visible": true,
+          "focused": true
+        }
+      ],
+      "visibility": [],
+      "pointsStart": 8162,
+      "pointsEnd": 12265,
+      "updates": {
+        "CH4": {
+          "count": 18,
+          "p95": 80.70000000111759,
+          "max": 80.70000000111759
+        },
+        "CO2": {
+          "count": 18,
+          "p95": 94.20000000111759,
+          "max": 94.20000000111759
+        },
+        "windspeed": {
+          "count": 18,
+          "p95": 405.30000000074506,
+          "max": 405.30000000074506
+        },
+        "realTime": {
+          "count": 18,
+          "p95": 21.600000001490116,
+          "max": 21.600000001490116
+        },
+        "iCH4": {
+          "count": 18,
+          "p95": 592.4000000003725,
+          "max": 592.4000000003725
+        }
+      },
+      "actualMs": 31046
+    }
+  ],
+  "browser": "152.0.7977.82",
+  "diagnosticResumeAt": "2026-09-07T07:42:22.847Z",
+  "comparison": {
+    "fpsOff": 6.497932869710991,
+    "fpsOn": 7.100575075878238,
+    "fpsRelativeDrop": -0.09274367991340159,
+    "components": {
+      "CH4": {
+        "baselineP95": 39.80000000074506,
+        "instrumentedP95": 38.5,
+        "increase": -1.300000000745058,
+        "budget": 1.990000000037253,
+        "withinBudget": true
+      },
+      "CO2": {
+        "baselineP95": 37.29999999888241,
+        "instrumentedP95": 39.19999999925494,
+        "increase": 1.900000000372529,
+        "budget": 1.8649999999441207,
+        "withinBudget": false
+      },
+      "windspeed": {
+        "baselineP95": 400.5,
+        "instrumentedP95": 422.69999999925494,
+        "increase": 22.199999999254942,
+        "budget": 20.025000000000002,
+        "withinBudget": false
+      },
+      "realTime": {
+        "baselineP95": 13.799999998882413,
+        "instrumentedP95": 14.5,
+        "increase": 0.7000000011175871,
+        "budget": 1,
+        "withinBudget": true
+      },
+      "iCH4": {
+        "baselineP95": 259.69999999925494,
+        "instrumentedP95": 268.19999999925494,
+        "increase": 8.5,
+        "budget": 12.984999999962747,
+        "withinBudget": true
+      }
+    }
+  },
+  "endedAt": "2026-09-07T07:49:03.069Z"
+}

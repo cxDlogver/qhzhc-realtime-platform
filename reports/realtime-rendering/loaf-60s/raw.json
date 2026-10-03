@@ -1,0 +1,4793 @@
+{
+  "metadata": {
+    "recordedAt": "2026-09-23T13:21:47.796Z",
+    "seconds": 60,
+    "browser": "Chrome headless",
+    "viewport": "1440x900",
+    "map": "2D",
+    "frameMode": 1,
+    "pointsPerSecond": 20,
+    "pointLimit": 0,
+    "preexistingMapPoints": 0
+  },
+  "summary": {
+    "fpsSamples": 55,
+    "fpsAverage": 10.489273784398174,
+    "fpsP5": 4.190061174893144,
+    "fpsMin": 3.751641343087611,
+    "loafCount": 413,
+    "loafP95Ms": 239.39999997615814,
+    "loafMaxMs": 411,
+    "serverGenerated": 1200,
+    "clientReceived": 1180,
+    "clientConsumed": 414,
+    "finalPending": 766,
+    "topScriptEntrypoints": [
+      {
+        "name": "http://127.0.0.1:9527/static/js/src_views_DataVisualization_dataVisualization_vue.js",
+        "count": 1,
+        "totalMs": 236.80000001192093
+      }
+    ]
+  },
+  "samples": {
+    "loafs": [
+      {
+        "startTime": 2171.699999988079,
+        "duration": 364.30000001192093,
+        "blockingDuration": 313.5,
+        "renderStart": 2409.399999976158,
+        "styleAndLayoutStart": 2534.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 2171.699999988079,
+            "duration": 236.80000001192093,
+            "executionStart": 2171.800000011921,
+            "forcedStyleAndLayoutDuration": 100.1,
+            "pauseDuration": 0,
+            "invoker": "http://127.0.0.1:9527/static/js/src_views_DataVisualization_dataVisualization_vue.js",
+            "invokerType": "classic-script",
+            "sourceFunctionName": "",
+            "sourceURL": "http://127.0.0.1:9527/static/js/src_views_DataVisualization_dataVisualization_vue.js",
+            "sourceCharPosition": 0
+          }
+        ]
+      },
+      {
+        "startTime": 2547.399999976158,
+        "duration": 88.80000001192093,
+        "blockingDuration": 20.3,
+        "renderStart": 2584.599999964237,
+        "styleAndLayoutStart": 2634.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 2639,
+        "duration": 220,
+        "blockingDuration": 0,
+        "renderStart": 2851,
+        "styleAndLayoutStart": 2858.300000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 4191.699999988079,
+        "duration": 112.39999997615814,
+        "blockingDuration": 62.2,
+        "renderStart": 4192.099999964237,
+        "styleAndLayoutStart": 4303.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 4306.800000011921,
+        "duration": 143.79999995231628,
+        "blockingDuration": 92,
+        "renderStart": 4312.099999964237,
+        "styleAndLayoutStart": 4449.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 4452.199999988079,
+        "duration": 82.89999997615814,
+        "blockingDuration": 32.5,
+        "renderStart": 4452.800000011921,
+        "styleAndLayoutStart": 4534.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 4538,
+        "duration": 77.30000001192093,
+        "blockingDuration": 27.2,
+        "renderStart": 4538.199999988079,
+        "styleAndLayoutStart": 4614.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 4616.099999964237,
+        "duration": 79.5,
+        "blockingDuration": 27.3,
+        "renderStart": 4621.300000011921,
+        "styleAndLayoutStart": 4695.300000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 4696.399999976158,
+        "duration": 57.69999998807907,
+        "blockingDuration": 7.2,
+        "renderStart": 4698.5,
+        "styleAndLayoutStart": 4753.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 4757.5,
+        "duration": 84.30000001192093,
+        "blockingDuration": 26.5,
+        "renderStart": 4765.699999988079,
+        "styleAndLayoutStart": 4841.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 4844.199999988079,
+        "duration": 67.5,
+        "blockingDuration": 17.3,
+        "renderStart": 4845.300000011921,
+        "styleAndLayoutStart": 4911.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 4912.599999964237,
+        "duration": 61.60000002384186,
+        "blockingDuration": 11.5,
+        "renderStart": 4913.099999964237,
+        "styleAndLayoutStart": 4973.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 4975.300000011921,
+        "duration": 61.09999996423721,
+        "blockingDuration": 10.8,
+        "renderStart": 4975.800000011921,
+        "styleAndLayoutStart": 5035.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5037.5,
+        "duration": 55.89999997615814,
+        "blockingDuration": 5.4,
+        "renderStart": 5038.199999988079,
+        "styleAndLayoutStart": 5092.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5095,
+        "duration": 61.30000001192093,
+        "blockingDuration": 10.9,
+        "renderStart": 5096.199999988079,
+        "styleAndLayoutStart": 5155.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5157.099999964237,
+        "duration": 57.200000047683716,
+        "blockingDuration": 6.8,
+        "renderStart": 5158,
+        "styleAndLayoutStart": 5214,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5215.5,
+        "duration": 60.30000001192093,
+        "blockingDuration": 10.1,
+        "renderStart": 5216.099999964237,
+        "styleAndLayoutStart": 5275.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5276.899999976158,
+        "duration": 103.19999998807907,
+        "blockingDuration": 52.7,
+        "renderStart": 5277.699999988079,
+        "styleAndLayoutStart": 5379.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5381.800000011921,
+        "duration": 57.89999997615814,
+        "blockingDuration": 7.4,
+        "renderStart": 5383.099999964237,
+        "styleAndLayoutStart": 5439,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5441,
+        "duration": 62.89999997615814,
+        "blockingDuration": 9.4,
+        "renderStart": 5445.399999976158,
+        "styleAndLayoutStart": 5503.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5504.699999988079,
+        "duration": 56.39999997615814,
+        "blockingDuration": 5.9,
+        "renderStart": 5505.599999964237,
+        "styleAndLayoutStart": 5560.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5562,
+        "duration": 70.39999997615814,
+        "blockingDuration": 20.1,
+        "renderStart": 5562.399999976158,
+        "styleAndLayoutStart": 5631.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5634.300000011921,
+        "duration": 65.69999998807907,
+        "blockingDuration": 15,
+        "renderStart": 5635.699999988079,
+        "styleAndLayoutStart": 5699.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5700.899999976158,
+        "duration": 62.80000001192093,
+        "blockingDuration": 12.3,
+        "renderStart": 5702.300000011921,
+        "styleAndLayoutStart": 5763.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5764.800000011921,
+        "duration": 50.299999952316284,
+        "blockingDuration": 0.1,
+        "renderStart": 5765.099999964237,
+        "styleAndLayoutStart": 5814.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5815.899999976158,
+        "duration": 59.60000002384186,
+        "blockingDuration": 9.2,
+        "renderStart": 5816.399999976158,
+        "styleAndLayoutStart": 5875.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5877.300000011921,
+        "duration": 56.39999997615814,
+        "blockingDuration": 6.3,
+        "renderStart": 5877.599999964237,
+        "styleAndLayoutStart": 5933,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5936,
+        "duration": 56.30000001192093,
+        "blockingDuration": 6.1,
+        "renderStart": 5936.599999964237,
+        "styleAndLayoutStart": 5991.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 5993.899999976158,
+        "duration": 59.60000002384186,
+        "blockingDuration": 9.4,
+        "renderStart": 5994.300000011921,
+        "styleAndLayoutStart": 6052.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6105.5,
+        "duration": 64.69999998807907,
+        "blockingDuration": 14.6,
+        "renderStart": 6105.899999976158,
+        "styleAndLayoutStart": 6169.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6171.699999988079,
+        "duration": 54.19999998807907,
+        "blockingDuration": 4.1,
+        "renderStart": 6172.5,
+        "styleAndLayoutStart": 6225.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6227,
+        "duration": 55.69999998807907,
+        "blockingDuration": 5.2,
+        "renderStart": 6227.899999976158,
+        "styleAndLayoutStart": 6282.300000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6284,
+        "duration": 57.59999996423721,
+        "blockingDuration": 7.6,
+        "renderStart": 6284.099999964237,
+        "styleAndLayoutStart": 6341.300000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6343.399999976158,
+        "duration": 61.19999998807907,
+        "blockingDuration": 11,
+        "renderStart": 6343.699999988079,
+        "styleAndLayoutStart": 6404.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6405.800000011921,
+        "duration": 59.69999998807907,
+        "blockingDuration": 9.5,
+        "renderStart": 6406.099999964237,
+        "styleAndLayoutStart": 6465.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6466.300000011921,
+        "duration": 57.09999996423721,
+        "blockingDuration": 7,
+        "renderStart": 6466.800000011921,
+        "styleAndLayoutStart": 6523.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6524.5,
+        "duration": 60,
+        "blockingDuration": 9.8,
+        "renderStart": 6524.699999988079,
+        "styleAndLayoutStart": 6584.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6586.300000011921,
+        "duration": 64.39999997615814,
+        "blockingDuration": 14.4,
+        "renderStart": 6586.5,
+        "styleAndLayoutStart": 6650.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6651.800000011921,
+        "duration": 67.19999998807907,
+        "blockingDuration": 17,
+        "renderStart": 6652.5,
+        "styleAndLayoutStart": 6718.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6720.199999988079,
+        "duration": 59.19999998807907,
+        "blockingDuration": 9.1,
+        "renderStart": 6720.399999976158,
+        "styleAndLayoutStart": 6779,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6781.5,
+        "duration": 69.19999998807907,
+        "blockingDuration": 18.9,
+        "renderStart": 6781.899999976158,
+        "styleAndLayoutStart": 6850.199999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6852.399999976158,
+        "duration": 62.40000003576279,
+        "blockingDuration": 12.3,
+        "renderStart": 6852.5,
+        "styleAndLayoutStart": 6914.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6916.099999964237,
+        "duration": 69.5,
+        "blockingDuration": 19.3,
+        "renderStart": 6916.300000011921,
+        "styleAndLayoutStart": 6985.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 6986.800000011921,
+        "duration": 62.299999952316284,
+        "blockingDuration": 12.2,
+        "renderStart": 6987,
+        "styleAndLayoutStart": 7048.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7050.300000011921,
+        "duration": 68.5,
+        "blockingDuration": 18.3,
+        "renderStart": 7050.5,
+        "styleAndLayoutStart": 7118.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7120.599999964237,
+        "duration": 65.90000003576279,
+        "blockingDuration": 15.8,
+        "renderStart": 7120.699999988079,
+        "styleAndLayoutStart": 7186.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7190.699999988079,
+        "duration": 58.19999998807907,
+        "blockingDuration": 7.8,
+        "renderStart": 7191.599999964237,
+        "styleAndLayoutStart": 7248.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7250,
+        "duration": 75.5,
+        "blockingDuration": 25,
+        "renderStart": 7250.699999988079,
+        "styleAndLayoutStart": 7325.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7327.300000011921,
+        "duration": 60.39999997615814,
+        "blockingDuration": 10.2,
+        "renderStart": 7327.5,
+        "styleAndLayoutStart": 7387.300000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7389.5,
+        "duration": 77,
+        "blockingDuration": 26.9,
+        "renderStart": 7390,
+        "styleAndLayoutStart": 7466.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7468.199999988079,
+        "duration": 62.19999998807907,
+        "blockingDuration": 12,
+        "renderStart": 7468.399999976158,
+        "styleAndLayoutStart": 7529.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7531.899999976158,
+        "duration": 79,
+        "blockingDuration": 28.9,
+        "renderStart": 7532.300000011921,
+        "styleAndLayoutStart": 7610.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7612.599999964237,
+        "duration": 61.30000001192093,
+        "blockingDuration": 11.1,
+        "renderStart": 7613.099999964237,
+        "styleAndLayoutStart": 7673.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7676.399999976158,
+        "duration": 67.19999998807907,
+        "blockingDuration": 16.7,
+        "renderStart": 7677.599999964237,
+        "styleAndLayoutStart": 7743.199999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7745.399999976158,
+        "duration": 74.69999998807907,
+        "blockingDuration": 24.5,
+        "renderStart": 7745.699999988079,
+        "styleAndLayoutStart": 7819.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7821.599999964237,
+        "duration": 77.60000002384186,
+        "blockingDuration": 27.2,
+        "renderStart": 7822.300000011921,
+        "styleAndLayoutStart": 7898.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7902.599999964237,
+        "duration": 70.80000001192093,
+        "blockingDuration": 20.5,
+        "renderStart": 7903.099999964237,
+        "styleAndLayoutStart": 7972.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7975.300000011921,
+        "duration": 68.69999998807907,
+        "blockingDuration": 18.5,
+        "renderStart": 7975.5,
+        "styleAndLayoutStart": 8043.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8046.199999988079,
+        "duration": 80,
+        "blockingDuration": 29.7,
+        "renderStart": 8046.599999964237,
+        "styleAndLayoutStart": 8125.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8128.899999976158,
+        "duration": 74.40000003576279,
+        "blockingDuration": 24.4,
+        "renderStart": 8129.300000011921,
+        "styleAndLayoutStart": 8202.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8206.599999964237,
+        "duration": 67.30000001192093,
+        "blockingDuration": 17.1,
+        "renderStart": 8207.399999976158,
+        "styleAndLayoutStart": 8273.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8275.399999976158,
+        "duration": 77.69999998807907,
+        "blockingDuration": 27.4,
+        "renderStart": 8275.899999976158,
+        "styleAndLayoutStart": 8352.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8355.699999988079,
+        "duration": 68,
+        "blockingDuration": 17.8,
+        "renderStart": 8356.599999964237,
+        "styleAndLayoutStart": 8423.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8426.099999964237,
+        "duration": 69.80000001192093,
+        "blockingDuration": 19.7,
+        "renderStart": 8426.399999976158,
+        "styleAndLayoutStart": 8495.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8498.5,
+        "duration": 70.39999997615814,
+        "blockingDuration": 20.2,
+        "renderStart": 8498.899999976158,
+        "styleAndLayoutStart": 8568.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8570.599999964237,
+        "duration": 77.80000001192093,
+        "blockingDuration": 27.6,
+        "renderStart": 8571,
+        "styleAndLayoutStart": 8648.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8651.300000011921,
+        "duration": 66.5,
+        "blockingDuration": 16.1,
+        "renderStart": 8652.099999964237,
+        "styleAndLayoutStart": 8717.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8719.899999976158,
+        "duration": 68.80000001192093,
+        "blockingDuration": 18.7,
+        "renderStart": 8720.099999964237,
+        "styleAndLayoutStart": 8788.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8791.099999964237,
+        "duration": 124.30000001192093,
+        "blockingDuration": 74.1,
+        "renderStart": 8791.399999976158,
+        "styleAndLayoutStart": 8915.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8916.800000011921,
+        "duration": 80.29999995231628,
+        "blockingDuration": 29.9,
+        "renderStart": 8917.199999988079,
+        "styleAndLayoutStart": 8996.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8998.5,
+        "duration": 82.39999997615814,
+        "blockingDuration": 32.1,
+        "renderStart": 8998.899999976158,
+        "styleAndLayoutStart": 9080.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 9081.699999988079,
+        "duration": 76.10000002384186,
+        "blockingDuration": 21.4,
+        "renderStart": 9086.899999976158,
+        "styleAndLayoutStart": 9157.300000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 9159.599999964237,
+        "duration": 81.80000001192093,
+        "blockingDuration": 31.7,
+        "renderStart": 9159.800000011921,
+        "styleAndLayoutStart": 9240.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 9242.699999988079,
+        "duration": 74.5,
+        "blockingDuration": 24.2,
+        "renderStart": 9243,
+        "styleAndLayoutStart": 9316.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 9318.300000011921,
+        "duration": 79.59999996423721,
+        "blockingDuration": 29.2,
+        "renderStart": 9319,
+        "styleAndLayoutStart": 9397.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 9399.599999964237,
+        "duration": 89.30000001192093,
+        "blockingDuration": 39.3,
+        "renderStart": 9399.800000011921,
+        "styleAndLayoutStart": 9488.300000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 9490.800000011921,
+        "duration": 63.09999996423721,
+        "blockingDuration": 13.1,
+        "renderStart": 9491,
+        "styleAndLayoutStart": 9553.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 9555.199999988079,
+        "duration": 100.30000001192093,
+        "blockingDuration": 50.2,
+        "renderStart": 9555.5,
+        "styleAndLayoutStart": 9655,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 9658.899999976158,
+        "duration": 72.80000001192093,
+        "blockingDuration": 22.6,
+        "renderStart": 9659.199999988079,
+        "styleAndLayoutStart": 9731.300000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 9732.800000011921,
+        "duration": 80.79999995231628,
+        "blockingDuration": 30.6,
+        "renderStart": 9733.699999988079,
+        "styleAndLayoutStart": 9813.199999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 9815.199999988079,
+        "duration": 62.89999997615814,
+        "blockingDuration": 12.7,
+        "renderStart": 9815.5,
+        "styleAndLayoutStart": 9877.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 9879.300000011921,
+        "duration": 84.89999997615814,
+        "blockingDuration": 34.7,
+        "renderStart": 9879.5,
+        "styleAndLayoutStart": 9963.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 9966.5,
+        "duration": 65.30000001192093,
+        "blockingDuration": 15.1,
+        "renderStart": 9966.899999976158,
+        "styleAndLayoutStart": 10031.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 10033.399999976158,
+        "duration": 73.30000001192093,
+        "blockingDuration": 23.1,
+        "renderStart": 10033.599999964237,
+        "styleAndLayoutStart": 10106.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 10108.899999976158,
+        "duration": 78.30000001192093,
+        "blockingDuration": 28.1,
+        "renderStart": 10109.199999988079,
+        "styleAndLayoutStart": 10186.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 10189.300000011921,
+        "duration": 82.89999997615814,
+        "blockingDuration": 32.7,
+        "renderStart": 10190.099999964237,
+        "styleAndLayoutStart": 10271.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 10274.199999988079,
+        "duration": 84.19999998807907,
+        "blockingDuration": 33.8,
+        "renderStart": 10274.899999976158,
+        "styleAndLayoutStart": 10357.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 10360,
+        "duration": 96.09999996423721,
+        "blockingDuration": 46,
+        "renderStart": 10360.199999988079,
+        "styleAndLayoutStart": 10455.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 10460.300000011921,
+        "duration": 87.09999996423721,
+        "blockingDuration": 36.8,
+        "renderStart": 10460.699999988079,
+        "styleAndLayoutStart": 10546.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 10550.099999964237,
+        "duration": 93.40000003576279,
+        "blockingDuration": 42.7,
+        "renderStart": 10551,
+        "styleAndLayoutStart": 10643.199999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 10646.699999988079,
+        "duration": 80.30000001192093,
+        "blockingDuration": 30.1,
+        "renderStart": 10646.899999976158,
+        "styleAndLayoutStart": 10726.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 10729.300000011921,
+        "duration": 72.29999995231628,
+        "blockingDuration": 21.7,
+        "renderStart": 10730.5,
+        "styleAndLayoutStart": 10801.199999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 10804.099999964237,
+        "duration": 71.10000002384186,
+        "blockingDuration": 20.8,
+        "renderStart": 10804.5,
+        "styleAndLayoutStart": 10874.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 10877.300000011921,
+        "duration": 78.59999996423721,
+        "blockingDuration": 28.6,
+        "renderStart": 10877.5,
+        "styleAndLayoutStart": 10955.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 10959.399999976158,
+        "duration": 70.40000003576279,
+        "blockingDuration": 20.2,
+        "renderStart": 10959.599999964237,
+        "styleAndLayoutStart": 11029.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 11031.800000011921,
+        "duration": 78.79999995231628,
+        "blockingDuration": 28.7,
+        "renderStart": 11032.099999964237,
+        "styleAndLayoutStart": 11110.300000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 11114.199999988079,
+        "duration": 63.69999998807907,
+        "blockingDuration": 13.4,
+        "renderStart": 11114.899999976158,
+        "styleAndLayoutStart": 11177.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 11180.099999964237,
+        "duration": 85.90000003576279,
+        "blockingDuration": 35.8,
+        "renderStart": 11180.300000011921,
+        "styleAndLayoutStart": 11265.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 11270.199999988079,
+        "duration": 77.19999998807907,
+        "blockingDuration": 26.7,
+        "renderStart": 11271.099999964237,
+        "styleAndLayoutStart": 11346.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 11349.599999964237,
+        "duration": 85.10000002384186,
+        "blockingDuration": 35,
+        "renderStart": 11349.800000011921,
+        "styleAndLayoutStart": 11434.199999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 11437.800000011921,
+        "duration": 82.09999996423721,
+        "blockingDuration": 32,
+        "renderStart": 11438.099999964237,
+        "styleAndLayoutStart": 11519.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 11522.899999976158,
+        "duration": 104.80000001192093,
+        "blockingDuration": 54.7,
+        "renderStart": 11523.099999964237,
+        "styleAndLayoutStart": 11627.199999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 11631,
+        "duration": 77.19999998807907,
+        "blockingDuration": 27.1,
+        "renderStart": 11631.199999988079,
+        "styleAndLayoutStart": 11707.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 11710.699999988079,
+        "duration": 113.10000002384186,
+        "blockingDuration": 62.8,
+        "renderStart": 11711.399999976158,
+        "styleAndLayoutStart": 11823.300000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 11828.699999988079,
+        "duration": 70.69999998807907,
+        "blockingDuration": 20.5,
+        "renderStart": 11829,
+        "styleAndLayoutStart": 11899,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 11902.099999964237,
+        "duration": 91.90000003576279,
+        "blockingDuration": 41.7,
+        "renderStart": 11902.399999976158,
+        "styleAndLayoutStart": 11993.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 11998.199999988079,
+        "duration": 76.39999997615814,
+        "blockingDuration": 26.2,
+        "renderStart": 11998.5,
+        "styleAndLayoutStart": 12074.300000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 12078.800000011921,
+        "duration": 86.09999996423721,
+        "blockingDuration": 36,
+        "renderStart": 12079.099999964237,
+        "styleAndLayoutStart": 12164.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 12169,
+        "duration": 89.59999996423721,
+        "blockingDuration": 39.4,
+        "renderStart": 12169.699999988079,
+        "styleAndLayoutStart": 12258.199999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 12261.699999988079,
+        "duration": 91.10000002384186,
+        "blockingDuration": 41,
+        "renderStart": 12262.099999964237,
+        "styleAndLayoutStart": 12352.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 12357.399999976158,
+        "duration": 151.80000001192093,
+        "blockingDuration": 101.7,
+        "renderStart": 12357.599999964237,
+        "styleAndLayoutStart": 12508.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 12510,
+        "duration": 95.19999998807907,
+        "blockingDuration": 44.4,
+        "renderStart": 12511,
+        "styleAndLayoutStart": 12604.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 12606.399999976158,
+        "duration": 86.69999998807907,
+        "blockingDuration": 31.3,
+        "renderStart": 12612.300000011921,
+        "styleAndLayoutStart": 12692.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 12694.899999976158,
+        "duration": 96.5,
+        "blockingDuration": 46.4,
+        "renderStart": 12695.099999964237,
+        "styleAndLayoutStart": 12790.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 12793.199999988079,
+        "duration": 78.39999997615814,
+        "blockingDuration": 27.5,
+        "renderStart": 12794.199999988079,
+        "styleAndLayoutStart": 12871.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 12872.699999988079,
+        "duration": 97,
+        "blockingDuration": 46.8,
+        "renderStart": 12873.099999964237,
+        "styleAndLayoutStart": 12969.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 12972.300000011921,
+        "duration": 98,
+        "blockingDuration": 47.8,
+        "renderStart": 12972.599999964237,
+        "styleAndLayoutStart": 13069.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 13071.399999976158,
+        "duration": 102.19999998807907,
+        "blockingDuration": 52.1,
+        "renderStart": 13071.5,
+        "styleAndLayoutStart": 13173.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 13175.099999964237,
+        "duration": 82.5,
+        "blockingDuration": 32.2,
+        "renderStart": 13176.099999964237,
+        "styleAndLayoutStart": 13257.300000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 13259.899999976158,
+        "duration": 97.30000001192093,
+        "blockingDuration": 47.1,
+        "renderStart": 13260.599999964237,
+        "styleAndLayoutStart": 13356.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 13359.099999964237,
+        "duration": 76.20000004768372,
+        "blockingDuration": 26,
+        "renderStart": 13359.300000011921,
+        "styleAndLayoutStart": 13434.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 13436.599999964237,
+        "duration": 89.10000002384186,
+        "blockingDuration": 39,
+        "renderStart": 13436.699999988079,
+        "styleAndLayoutStart": 13525.300000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 13528.399999976158,
+        "duration": 87.60000002384186,
+        "blockingDuration": 37.4,
+        "renderStart": 13528.699999988079,
+        "styleAndLayoutStart": 13615.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 13617.5,
+        "duration": 100.59999996423721,
+        "blockingDuration": 50.4,
+        "renderStart": 13617.800000011921,
+        "styleAndLayoutStart": 13717.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 13720.399999976158,
+        "duration": 72.69999998807907,
+        "blockingDuration": 22.5,
+        "renderStart": 13721,
+        "styleAndLayoutStart": 13792.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 13795.5,
+        "duration": 95.69999998807907,
+        "blockingDuration": 45.5,
+        "renderStart": 13795.800000011921,
+        "styleAndLayoutStart": 13890.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 13893.699999988079,
+        "duration": 91.80000001192093,
+        "blockingDuration": 41.6,
+        "renderStart": 13894.099999964237,
+        "styleAndLayoutStart": 13985,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 13987.399999976158,
+        "duration": 102.10000002384186,
+        "blockingDuration": 51.9,
+        "renderStart": 13987.699999988079,
+        "styleAndLayoutStart": 14089.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 14093.199999988079,
+        "duration": 88.10000002384186,
+        "blockingDuration": 37.9,
+        "renderStart": 14093.5,
+        "styleAndLayoutStart": 14180.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 14183.899999976158,
+        "duration": 102.30000001192093,
+        "blockingDuration": 52.1,
+        "renderStart": 14184.599999964237,
+        "styleAndLayoutStart": 14285.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 14289.199999988079,
+        "duration": 89.89999997615814,
+        "blockingDuration": 39.5,
+        "renderStart": 14289.899999976158,
+        "styleAndLayoutStart": 14378.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 14381.899999976158,
+        "duration": 93.80000001192093,
+        "blockingDuration": 43.6,
+        "renderStart": 14382.199999988079,
+        "styleAndLayoutStart": 14475.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 14479.199999988079,
+        "duration": 102.30000001192093,
+        "blockingDuration": 52.1,
+        "renderStart": 14479.399999976158,
+        "styleAndLayoutStart": 14580.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 14584.899999976158,
+        "duration": 121.30000001192093,
+        "blockingDuration": 70.9,
+        "renderStart": 14586,
+        "styleAndLayoutStart": 14705.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 14710.399999976158,
+        "duration": 83.5,
+        "blockingDuration": 33.5,
+        "renderStart": 14710.5,
+        "styleAndLayoutStart": 14793.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 14796.699999988079,
+        "duration": 88.39999997615814,
+        "blockingDuration": 38.3,
+        "renderStart": 14796.800000011921,
+        "styleAndLayoutStart": 14884.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 14889.099999964237,
+        "duration": 91.20000004768372,
+        "blockingDuration": 41.2,
+        "renderStart": 14889.300000011921,
+        "styleAndLayoutStart": 14980,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 14985.699999988079,
+        "duration": 99.30000001192093,
+        "blockingDuration": 49,
+        "renderStart": 14986.199999988079,
+        "styleAndLayoutStart": 15084.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 15089.399999976158,
+        "duration": 98.40000003576279,
+        "blockingDuration": 48.2,
+        "renderStart": 15089.699999988079,
+        "styleAndLayoutStart": 15187.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 15192.099999964237,
+        "duration": 99,
+        "blockingDuration": 48.7,
+        "renderStart": 15193.099999964237,
+        "styleAndLayoutStart": 15290.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 15295.899999976158,
+        "duration": 105.30000001192093,
+        "blockingDuration": 54.8,
+        "renderStart": 15296.599999964237,
+        "styleAndLayoutStart": 15400.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 15404.399999976158,
+        "duration": 115.69999998807907,
+        "blockingDuration": 65.6,
+        "renderStart": 15404.599999964237,
+        "styleAndLayoutStart": 15519.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 15524.899999976158,
+        "duration": 87.30000001192093,
+        "blockingDuration": 37.2,
+        "renderStart": 15525.099999964237,
+        "styleAndLayoutStart": 15611.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 15616.199999988079,
+        "duration": 98.19999998807907,
+        "blockingDuration": 48.1,
+        "renderStart": 15616.399999976158,
+        "styleAndLayoutStart": 15714.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 15719.599999964237,
+        "duration": 83.5,
+        "blockingDuration": 33.3,
+        "renderStart": 15720.5,
+        "styleAndLayoutStart": 15802.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 15806.699999988079,
+        "duration": 112.10000002384186,
+        "blockingDuration": 61.9,
+        "renderStart": 15807.099999964237,
+        "styleAndLayoutStart": 15918.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 15924.199999988079,
+        "duration": 83.89999997615814,
+        "blockingDuration": 33.9,
+        "renderStart": 15924.300000011921,
+        "styleAndLayoutStart": 16007.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 16011.899999976158,
+        "duration": 199.5,
+        "blockingDuration": 149.3,
+        "renderStart": 16012.199999988079,
+        "styleAndLayoutStart": 16210.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 16213.899999976158,
+        "duration": 99.5,
+        "blockingDuration": 47.2,
+        "renderStart": 16216.599999964237,
+        "styleAndLayoutStart": 16313,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 16314.300000011921,
+        "duration": 128.0999999642372,
+        "blockingDuration": 77.3,
+        "renderStart": 16315.699999988079,
+        "styleAndLayoutStart": 16442,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 16444.69999998808,
+        "duration": 102.69999998807907,
+        "blockingDuration": 47.4,
+        "renderStart": 16450.30000001192,
+        "styleAndLayoutStart": 16547,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 16549.099999964237,
+        "duration": 106.30000001192093,
+        "blockingDuration": 56.2,
+        "renderStart": 16549.30000001192,
+        "styleAndLayoutStart": 16654.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 16656.899999976158,
+        "duration": 91.40000003576279,
+        "blockingDuration": 39.4,
+        "renderStart": 16659.099999964237,
+        "styleAndLayoutStart": 16748,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 16749.5,
+        "duration": 103.39999997615814,
+        "blockingDuration": 53.4,
+        "renderStart": 16750.19999998808,
+        "styleAndLayoutStart": 16852.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 16855.599999964237,
+        "duration": 78.80000001192093,
+        "blockingDuration": 28.7,
+        "renderStart": 16855.899999976158,
+        "styleAndLayoutStart": 16934,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 16935.69999998808,
+        "duration": 100.60000002384186,
+        "blockingDuration": 50.5,
+        "renderStart": 16936,
+        "styleAndLayoutStart": 17036,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 17038.5,
+        "duration": 87.39999997615814,
+        "blockingDuration": 37.4,
+        "renderStart": 17038.69999998808,
+        "styleAndLayoutStart": 17125.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 17128.899999976158,
+        "duration": 117.30000001192093,
+        "blockingDuration": 67.1,
+        "renderStart": 17129.19999998808,
+        "styleAndLayoutStart": 17245.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 17248.599999964237,
+        "duration": 103,
+        "blockingDuration": 52.6,
+        "renderStart": 17249.80000001192,
+        "styleAndLayoutStart": 17351.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 17353.399999976158,
+        "duration": 95.80000001192093,
+        "blockingDuration": 45.4,
+        "renderStart": 17354,
+        "styleAndLayoutStart": 17448.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 17452.30000001192,
+        "duration": 93.89999997615814,
+        "blockingDuration": 43.9,
+        "renderStart": 17452.399999976158,
+        "styleAndLayoutStart": 17545.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 17548.099999964237,
+        "duration": 125.70000004768372,
+        "blockingDuration": 75.5,
+        "renderStart": 17548.30000001192,
+        "styleAndLayoutStart": 17673.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 17677.30000001192,
+        "duration": 91.19999998807907,
+        "blockingDuration": 41.1,
+        "renderStart": 17677.599999964237,
+        "styleAndLayoutStart": 17768.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 17772.30000001192,
+        "duration": 107.39999997615814,
+        "blockingDuration": 57.1,
+        "renderStart": 17773.19999998808,
+        "styleAndLayoutStart": 17879.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 17882.599999964237,
+        "duration": 84.60000002384186,
+        "blockingDuration": 34.4,
+        "renderStart": 17882.899999976158,
+        "styleAndLayoutStart": 17966.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 17969.80000001192,
+        "duration": 106,
+        "blockingDuration": 55.9,
+        "renderStart": 17970.099999964237,
+        "styleAndLayoutStart": 18075.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 18080.5,
+        "duration": 97.89999997615814,
+        "blockingDuration": 47.5,
+        "renderStart": 18081,
+        "styleAndLayoutStart": 18178,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 18180.899999976158,
+        "duration": 127.69999998807907,
+        "blockingDuration": 77.3,
+        "renderStart": 18181.899999976158,
+        "styleAndLayoutStart": 18308.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 18312.599999964237,
+        "duration": 121.10000002384186,
+        "blockingDuration": 70.9,
+        "renderStart": 18313.19999998808,
+        "styleAndLayoutStart": 18433.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 18439.19999998808,
+        "duration": 137.5,
+        "blockingDuration": 87.5,
+        "renderStart": 18439.399999976158,
+        "styleAndLayoutStart": 18576.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 18580.69999998808,
+        "duration": 107.80000001192093,
+        "blockingDuration": 57.7,
+        "renderStart": 18581,
+        "styleAndLayoutStart": 18688.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 18692.099999964237,
+        "duration": 127.30000001192093,
+        "blockingDuration": 76.9,
+        "renderStart": 18693.599999964237,
+        "styleAndLayoutStart": 18819,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 18824.399999976158,
+        "duration": 112.19999998807907,
+        "blockingDuration": 61.9,
+        "renderStart": 18824.899999976158,
+        "styleAndLayoutStart": 18936.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 18940.19999998808,
+        "duration": 112.69999998807907,
+        "blockingDuration": 62.2,
+        "renderStart": 18940.69999998808,
+        "styleAndLayoutStart": 19052.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 19058.599999964237,
+        "duration": 107.20000004768372,
+        "blockingDuration": 57,
+        "renderStart": 19058.899999976158,
+        "styleAndLayoutStart": 19165.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 19169.899999976158,
+        "duration": 126.69999998807907,
+        "blockingDuration": 76.7,
+        "renderStart": 19170.099999964237,
+        "styleAndLayoutStart": 19296.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 19301.399999976158,
+        "duration": 95.69999998807907,
+        "blockingDuration": 45,
+        "renderStart": 19302.80000001192,
+        "styleAndLayoutStart": 19396.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 19402.30000001192,
+        "duration": 124,
+        "blockingDuration": 73.9,
+        "renderStart": 19402.5,
+        "styleAndLayoutStart": 19525.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 19534.399999976158,
+        "duration": 97,
+        "blockingDuration": 46.9,
+        "renderStart": 19534.69999998808,
+        "styleAndLayoutStart": 19631.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 19635.599999964237,
+        "duration": 128.60000002384186,
+        "blockingDuration": 78.4,
+        "renderStart": 19635.899999976158,
+        "styleAndLayoutStart": 19763.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 19772.19999998808,
+        "duration": 220.10000002384186,
+        "blockingDuration": 170,
+        "renderStart": 19773.19999998808,
+        "styleAndLayoutStart": 19991.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 19994.80000001192,
+        "duration": 122,
+        "blockingDuration": 70.8,
+        "renderStart": 19996.30000001192,
+        "styleAndLayoutStart": 20116.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 20118.399999976158,
+        "duration": 118.90000003576279,
+        "blockingDuration": 68.6,
+        "renderStart": 20118.80000001192,
+        "styleAndLayoutStart": 20236.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 20238.30000001192,
+        "duration": 166,
+        "blockingDuration": 110.4,
+        "renderStart": 20244.599999964237,
+        "styleAndLayoutStart": 20404,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 20407.399999976158,
+        "duration": 119.19999998807907,
+        "blockingDuration": 68.6,
+        "renderStart": 20408.19999998808,
+        "styleAndLayoutStart": 20526,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 20528.599999964237,
+        "duration": 137.30000001192093,
+        "blockingDuration": 84.6,
+        "renderStart": 20531.5,
+        "styleAndLayoutStart": 20665.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 20667.899999976158,
+        "duration": 98.5,
+        "blockingDuration": 48.3,
+        "renderStart": 20668.30000001192,
+        "styleAndLayoutStart": 20766,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 20768.80000001192,
+        "duration": 117.69999998807907,
+        "blockingDuration": 67.4,
+        "renderStart": 20769.80000001192,
+        "styleAndLayoutStart": 20886,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 20890.399999976158,
+        "duration": 91.10000002384186,
+        "blockingDuration": 40.8,
+        "renderStart": 20890.69999998808,
+        "styleAndLayoutStart": 20981,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 20983.30000001192,
+        "duration": 121.59999996423721,
+        "blockingDuration": 71.5,
+        "renderStart": 20983.5,
+        "styleAndLayoutStart": 21104.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 21108.099999964237,
+        "duration": 114.90000003576279,
+        "blockingDuration": 64.7,
+        "renderStart": 21108.5,
+        "styleAndLayoutStart": 21222.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 21224.899999976158,
+        "duration": 117.40000003576279,
+        "blockingDuration": 67.1,
+        "renderStart": 21225.80000001192,
+        "styleAndLayoutStart": 21342,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 21345.5,
+        "duration": 97.39999997615814,
+        "blockingDuration": 47.1,
+        "renderStart": 21346,
+        "styleAndLayoutStart": 21442.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 21446.19999998808,
+        "duration": 120.5,
+        "blockingDuration": 70.4,
+        "renderStart": 21446.399999976158,
+        "styleAndLayoutStart": 21566.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 21570.30000001192,
+        "duration": 108.29999995231628,
+        "blockingDuration": 58.2,
+        "renderStart": 21570.599999964237,
+        "styleAndLayoutStart": 21678.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 21681.399999976158,
+        "duration": 123.80000001192093,
+        "blockingDuration": 73.5,
+        "renderStart": 21682.399999976158,
+        "styleAndLayoutStart": 21804.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 21809.399999976158,
+        "duration": 106.10000002384186,
+        "blockingDuration": 55.9,
+        "renderStart": 21809.69999998808,
+        "styleAndLayoutStart": 21915,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 21918.5,
+        "duration": 125.80000001192093,
+        "blockingDuration": 75.7,
+        "renderStart": 21918.69999998808,
+        "styleAndLayoutStart": 22043.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 22049.599999964237,
+        "duration": 94.70000004768372,
+        "blockingDuration": 44.5,
+        "renderStart": 22049.899999976158,
+        "styleAndLayoutStart": 22143.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 22148,
+        "duration": 132.5999999642372,
+        "blockingDuration": 82.5,
+        "renderStart": 22148.19999998808,
+        "styleAndLayoutStart": 22280.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 22286.399999976158,
+        "duration": 113.40000003576279,
+        "blockingDuration": 63.1,
+        "renderStart": 22287.5,
+        "styleAndLayoutStart": 22399.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 22403.19999998808,
+        "duration": 129.19999998807907,
+        "blockingDuration": 79,
+        "renderStart": 22403.69999998808,
+        "styleAndLayoutStart": 22531.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 22538.5,
+        "duration": 113,
+        "blockingDuration": 62.7,
+        "renderStart": 22539,
+        "styleAndLayoutStart": 22651.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 22656.399999976158,
+        "duration": 133.69999998807907,
+        "blockingDuration": 83.5,
+        "renderStart": 22657.19999998808,
+        "styleAndLayoutStart": 22789.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 22795.80000001192,
+        "duration": 108.5,
+        "blockingDuration": 58.4,
+        "renderStart": 22796.099999964237,
+        "styleAndLayoutStart": 22904,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 22908.899999976158,
+        "duration": 124.90000003576279,
+        "blockingDuration": 74.7,
+        "renderStart": 22909.099999964237,
+        "styleAndLayoutStart": 23033.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 23039.5,
+        "duration": 106.39999997615814,
+        "blockingDuration": 56.1,
+        "renderStart": 23039.899999976158,
+        "styleAndLayoutStart": 23145.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 23150.5,
+        "duration": 149.30000001192093,
+        "blockingDuration": 99.2,
+        "renderStart": 23150.80000001192,
+        "styleAndLayoutStart": 23299.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 23308.5,
+        "duration": 116,
+        "blockingDuration": 65.6,
+        "renderStart": 23309.80000001192,
+        "styleAndLayoutStart": 23424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 23430.599999964237,
+        "duration": 134.9000000357628,
+        "blockingDuration": 84.4,
+        "renderStart": 23431.30000001192,
+        "styleAndLayoutStart": 23565.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 23573.599999964237,
+        "duration": 102.70000004768372,
+        "blockingDuration": 52.5,
+        "renderStart": 23573.899999976158,
+        "styleAndLayoutStart": 23676,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 23683.099999964237,
+        "duration": 250.20000004768372,
+        "blockingDuration": 199.9,
+        "renderStart": 23684.19999998808,
+        "styleAndLayoutStart": 23932.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 23934.69999998808,
+        "duration": 110,
+        "blockingDuration": 58.6,
+        "renderStart": 23936.19999998808,
+        "styleAndLayoutStart": 24044.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 24045.599999964237,
+        "duration": 138.20000004768372,
+        "blockingDuration": 82.7,
+        "renderStart": 24051.099999964237,
+        "styleAndLayoutStart": 24183.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 24186,
+        "duration": 115.69999998807907,
+        "blockingDuration": 65.4,
+        "renderStart": 24186.5,
+        "styleAndLayoutStart": 24301.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 24303,
+        "duration": 146.5,
+        "blockingDuration": 92.8,
+        "renderStart": 24314.099999964237,
+        "styleAndLayoutStart": 24449.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 24451.5,
+        "duration": 119.5,
+        "blockingDuration": 69.4,
+        "renderStart": 24451.80000001192,
+        "styleAndLayoutStart": 24570.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 24573.099999964237,
+        "duration": 128.20000004768372,
+        "blockingDuration": 78,
+        "renderStart": 24573.399999976158,
+        "styleAndLayoutStart": 24700.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 24703.5,
+        "duration": 124.19999998807907,
+        "blockingDuration": 74,
+        "renderStart": 24704.399999976158,
+        "styleAndLayoutStart": 24827.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 24829.399999976158,
+        "duration": 136.9000000357628,
+        "blockingDuration": 86.8,
+        "renderStart": 24829.69999998808,
+        "styleAndLayoutStart": 24966,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 24969.69999998808,
+        "duration": 117,
+        "blockingDuration": 66.9,
+        "renderStart": 24969.899999976158,
+        "styleAndLayoutStart": 25086.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 25088.80000001192,
+        "duration": 157.5,
+        "blockingDuration": 107.3,
+        "renderStart": 25089.099999964237,
+        "styleAndLayoutStart": 25245.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 25250,
+        "duration": 133,
+        "blockingDuration": 82.6,
+        "renderStart": 25250.899999976158,
+        "styleAndLayoutStart": 25382.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 25385.19999998808,
+        "duration": 155.19999998807907,
+        "blockingDuration": 104.9,
+        "renderStart": 25385.80000001192,
+        "styleAndLayoutStart": 25540.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 25544.5,
+        "duration": 132.89999997615814,
+        "blockingDuration": 82.8,
+        "renderStart": 25544.80000001192,
+        "styleAndLayoutStart": 25677,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 25680.099999964237,
+        "duration": 144.20000004768372,
+        "blockingDuration": 94.1,
+        "renderStart": 25680.30000001192,
+        "styleAndLayoutStart": 25823.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 25828.399999976158,
+        "duration": 126.80000001192093,
+        "blockingDuration": 76.5,
+        "renderStart": 25829.5,
+        "styleAndLayoutStart": 25954.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 25958.80000001192,
+        "duration": 149.0999999642372,
+        "blockingDuration": 99,
+        "renderStart": 25958.899999976158,
+        "styleAndLayoutStart": 26107.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 26115.30000001192,
+        "duration": 127.39999997615814,
+        "blockingDuration": 77.2,
+        "renderStart": 26115.69999998808,
+        "styleAndLayoutStart": 26242.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 26246.099999964237,
+        "duration": 155.4000000357628,
+        "blockingDuration": 105.2,
+        "renderStart": 26247.30000001192,
+        "styleAndLayoutStart": 26401.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 26407.80000001192,
+        "duration": 126.89999997615814,
+        "blockingDuration": 76.4,
+        "renderStart": 26408.599999964237,
+        "styleAndLayoutStart": 26534.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 26538.30000001192,
+        "duration": 145.5,
+        "blockingDuration": 95.5,
+        "renderStart": 26538.599999964237,
+        "styleAndLayoutStart": 26683.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 26693.69999998808,
+        "duration": 119.60000002384186,
+        "blockingDuration": 69.4,
+        "renderStart": 26694.099999964237,
+        "styleAndLayoutStart": 26812.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 26817.599999964237,
+        "duration": 160.30000001192093,
+        "blockingDuration": 110,
+        "renderStart": 26818.5,
+        "styleAndLayoutStart": 26977.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 26985,
+        "duration": 122.39999997615814,
+        "blockingDuration": 71.9,
+        "renderStart": 26985.599999964237,
+        "styleAndLayoutStart": 27107,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 27111.5,
+        "duration": 152.5999999642372,
+        "blockingDuration": 102.4,
+        "renderStart": 27111.80000001192,
+        "styleAndLayoutStart": 27263.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 27270.899999976158,
+        "duration": 142.30000001192093,
+        "blockingDuration": 92.1,
+        "renderStart": 27272,
+        "styleAndLayoutStart": 27412.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 27418.099999964237,
+        "duration": 150.10000002384186,
+        "blockingDuration": 99.9,
+        "renderStart": 27418.599999964237,
+        "styleAndLayoutStart": 27567.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 27575.399999976158,
+        "duration": 236.9000000357628,
+        "blockingDuration": 186.7,
+        "renderStart": 27575.69999998808,
+        "styleAndLayoutStart": 27811.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 27814,
+        "duration": 158.80000001192093,
+        "blockingDuration": 106.8,
+        "renderStart": 27817.19999998808,
+        "styleAndLayoutStart": 27972.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 27975.30000001192,
+        "duration": 144,
+        "blockingDuration": 93.8,
+        "renderStart": 27975.599999964237,
+        "styleAndLayoutStart": 28118.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 28120.80000001192,
+        "duration": 181.0999999642372,
+        "blockingDuration": 125.6,
+        "renderStart": 28126.5,
+        "styleAndLayoutStart": 28301.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 28304.80000001192,
+        "duration": 142.69999998807907,
+        "blockingDuration": 88.4,
+        "renderStart": 28314.399999976158,
+        "styleAndLayoutStart": 28447.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 28449.099999964237,
+        "duration": 158,
+        "blockingDuration": 102.4,
+        "renderStart": 28454.899999976158,
+        "styleAndLayoutStart": 28606.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 28611.099999964237,
+        "duration": 132,
+        "blockingDuration": 81.8,
+        "renderStart": 28611.399999976158,
+        "styleAndLayoutStart": 28742.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 28744.80000001192,
+        "duration": 175.19999998807907,
+        "blockingDuration": 124.9,
+        "renderStart": 28745.899999976158,
+        "styleAndLayoutStart": 28919.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 28923.80000001192,
+        "duration": 132.0999999642372,
+        "blockingDuration": 81.8,
+        "renderStart": 28924.099999964237,
+        "styleAndLayoutStart": 29055.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 29058.19999998808,
+        "duration": 160.10000002384186,
+        "blockingDuration": 110,
+        "renderStart": 29058.399999976158,
+        "styleAndLayoutStart": 29217.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 29223.399999976158,
+        "duration": 137.30000001192093,
+        "blockingDuration": 87.1,
+        "renderStart": 29223.69999998808,
+        "styleAndLayoutStart": 29360.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 29364.099999964237,
+        "duration": 164.30000001192093,
+        "blockingDuration": 113.8,
+        "renderStart": 29365.19999998808,
+        "styleAndLayoutStart": 29528.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 29533.399999976158,
+        "duration": 164.30000001192093,
+        "blockingDuration": 114.1,
+        "renderStart": 29533.80000001192,
+        "styleAndLayoutStart": 29697.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 29701.80000001192,
+        "duration": 194.0999999642372,
+        "blockingDuration": 143.7,
+        "renderStart": 29702.69999998808,
+        "styleAndLayoutStart": 29895.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 29904.19999998808,
+        "duration": 136.10000002384186,
+        "blockingDuration": 85.9,
+        "renderStart": 29904.599999964237,
+        "styleAndLayoutStart": 30039.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 30043.5,
+        "duration": 154.0999999642372,
+        "blockingDuration": 104,
+        "renderStart": 30043.599999964237,
+        "styleAndLayoutStart": 30197.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 30203.30000001192,
+        "duration": 130.89999997615814,
+        "blockingDuration": 80.6,
+        "renderStart": 30203.69999998808,
+        "styleAndLayoutStart": 30333.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 30339.69999998808,
+        "duration": 172.80000001192093,
+        "blockingDuration": 121.9,
+        "renderStart": 30341.599999964237,
+        "styleAndLayoutStart": 30512,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 30518.399999976158,
+        "duration": 169.5,
+        "blockingDuration": 119.4,
+        "renderStart": 30518.599999964237,
+        "styleAndLayoutStart": 30687.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 30693.099999964237,
+        "duration": 191.5,
+        "blockingDuration": 141.4,
+        "renderStart": 30693.30000001192,
+        "styleAndLayoutStart": 30884.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 30893.69999998808,
+        "duration": 173.5,
+        "blockingDuration": 123,
+        "renderStart": 30895.19999998808,
+        "styleAndLayoutStart": 31066.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 31075.399999976158,
+        "duration": 182.5,
+        "blockingDuration": 132.3,
+        "renderStart": 31075.599999964237,
+        "styleAndLayoutStart": 31257.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 31265.80000001192,
+        "duration": 152.89999997615814,
+        "blockingDuration": 102.7,
+        "renderStart": 31266.899999976158,
+        "styleAndLayoutStart": 31418.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 31425.30000001192,
+        "duration": 177.5,
+        "blockingDuration": 127,
+        "renderStart": 31426.099999964237,
+        "styleAndLayoutStart": 31602.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 31611.399999976158,
+        "duration": 264.9000000357628,
+        "blockingDuration": 214.7,
+        "renderStart": 31611.899999976158,
+        "styleAndLayoutStart": 31875.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 31877.30000001192,
+        "duration": 178.69999998807907,
+        "blockingDuration": 127.3,
+        "renderStart": 31879.30000001192,
+        "styleAndLayoutStart": 32055.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 32058.599999964237,
+        "duration": 131.20000004768372,
+        "blockingDuration": 81,
+        "renderStart": 32058.899999976158,
+        "styleAndLayoutStart": 32189.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 32191.30000001192,
+        "duration": 179.69999998807907,
+        "blockingDuration": 124.3,
+        "renderStart": 32197.399999976158,
+        "styleAndLayoutStart": 32370.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 32374.19999998808,
+        "duration": 155.19999998807907,
+        "blockingDuration": 103.6,
+        "renderStart": 32376.099999964237,
+        "styleAndLayoutStart": 32528.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 32531.099999964237,
+        "duration": 159.9000000357628,
+        "blockingDuration": 109.7,
+        "renderStart": 32531.399999976158,
+        "styleAndLayoutStart": 32690.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 32694.69999998808,
+        "duration": 151.10000002384186,
+        "blockingDuration": 100.9,
+        "renderStart": 32695.099999964237,
+        "styleAndLayoutStart": 32845.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 32847.80000001192,
+        "duration": 170.39999997615814,
+        "blockingDuration": 120,
+        "renderStart": 32848.80000001192,
+        "styleAndLayoutStart": 33017.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 33022.80000001192,
+        "duration": 143.89999997615814,
+        "blockingDuration": 93.5,
+        "renderStart": 33023.19999998808,
+        "styleAndLayoutStart": 33166.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 33169,
+        "duration": 194.80000001192093,
+        "blockingDuration": 144.5,
+        "renderStart": 33169.89999997616,
+        "styleAndLayoutStart": 33363.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 33368.39999997616,
+        "duration": 141.4000000357628,
+        "blockingDuration": 91.3,
+        "renderStart": 33368.69999998808,
+        "styleAndLayoutStart": 33509.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 33512.39999997616,
+        "duration": 171.5,
+        "blockingDuration": 121.1,
+        "renderStart": 33513.09999996424,
+        "styleAndLayoutStart": 33683.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 33689.19999998808,
+        "duration": 136.89999997615814,
+        "blockingDuration": 86.8,
+        "renderStart": 33689.5,
+        "styleAndLayoutStart": 33825.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 33829.09999996424,
+        "duration": 164.4000000357628,
+        "blockingDuration": 114.2,
+        "renderStart": 33830,
+        "styleAndLayoutStart": 33993.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 33998.59999996424,
+        "duration": 147.80000001192093,
+        "blockingDuration": 97.5,
+        "renderStart": 33999,
+        "styleAndLayoutStart": 34145.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 34150.19999998808,
+        "duration": 183.19999998807907,
+        "blockingDuration": 133.1,
+        "renderStart": 34150.5,
+        "styleAndLayoutStart": 34332.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 34340.80000001192,
+        "duration": 145,
+        "blockingDuration": 94.7,
+        "renderStart": 34341.89999997616,
+        "styleAndLayoutStart": 34485.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 34489.69999998808,
+        "duration": 184.69999998807907,
+        "blockingDuration": 134.4,
+        "renderStart": 34490.30000001192,
+        "styleAndLayoutStart": 34674,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 34681.39999997616,
+        "duration": 144.19999998807907,
+        "blockingDuration": 94.1,
+        "renderStart": 34681.69999998808,
+        "styleAndLayoutStart": 34825.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 34829.69999998808,
+        "duration": 181.60000002384186,
+        "blockingDuration": 131.3,
+        "renderStart": 34830.80000001192,
+        "styleAndLayoutStart": 35010.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 35018.30000001192,
+        "duration": 142.5999999642372,
+        "blockingDuration": 92.3,
+        "renderStart": 35018.89999997616,
+        "styleAndLayoutStart": 35160.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 35166.39999997616,
+        "duration": 183.60000002384186,
+        "blockingDuration": 133.5,
+        "renderStart": 35166.59999996424,
+        "styleAndLayoutStart": 35349.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 35359.30000001192,
+        "duration": 153.69999998807907,
+        "blockingDuration": 103.2,
+        "renderStart": 35360.80000001192,
+        "styleAndLayoutStart": 35512.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 35519.09999996424,
+        "duration": 295.9000000357628,
+        "blockingDuration": 245.9,
+        "renderStart": 35519.39999997616,
+        "styleAndLayoutStart": 35814.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 35817.39999997616,
+        "duration": 142.30000001192093,
+        "blockingDuration": 90.6,
+        "renderStart": 35819.30000001192,
+        "styleAndLayoutStart": 35959.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 35960.69999998808,
+        "duration": 174.10000002384186,
+        "blockingDuration": 124,
+        "renderStart": 35961.59999996424,
+        "styleAndLayoutStart": 36134.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 36137.30000001192,
+        "duration": 151,
+        "blockingDuration": 95.7,
+        "renderStart": 36142.69999998808,
+        "styleAndLayoutStart": 36287.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 36289.59999996424,
+        "duration": 182,
+        "blockingDuration": 131.8,
+        "renderStart": 36290.59999996424,
+        "styleAndLayoutStart": 36471.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 36475,
+        "duration": 162.19999998807907,
+        "blockingDuration": 108.7,
+        "renderStart": 36479.09999996424,
+        "styleAndLayoutStart": 36636.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 36639,
+        "duration": 179.5999999642372,
+        "blockingDuration": 129.5,
+        "renderStart": 36639.19999998808,
+        "styleAndLayoutStart": 36818,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 36822.39999997616,
+        "duration": 159.5,
+        "blockingDuration": 109,
+        "renderStart": 36824.19999998808,
+        "styleAndLayoutStart": 36981.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 36984.19999998808,
+        "duration": 181.80000001192093,
+        "blockingDuration": 131.6,
+        "renderStart": 36984.5,
+        "styleAndLayoutStart": 37165.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 37170.80000001192,
+        "duration": 168.0999999642372,
+        "blockingDuration": 117.8,
+        "renderStart": 37171.30000001192,
+        "styleAndLayoutStart": 37338.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 37342.89999997616,
+        "duration": 171.5,
+        "blockingDuration": 120.6,
+        "renderStart": 37344.80000001192,
+        "styleAndLayoutStart": 37514,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 37518.59999996424,
+        "duration": 143.80000001192093,
+        "blockingDuration": 93.5,
+        "renderStart": 37519,
+        "styleAndLayoutStart": 37662,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 37665.19999998808,
+        "duration": 192.5,
+        "blockingDuration": 142.4,
+        "renderStart": 37665.39999997616,
+        "styleAndLayoutStart": 37857.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 37862.89999997616,
+        "duration": 164.4000000357628,
+        "blockingDuration": 114.1,
+        "renderStart": 37864,
+        "styleAndLayoutStart": 38026.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 38030.5,
+        "duration": 190.39999997615814,
+        "blockingDuration": 140.1,
+        "renderStart": 38030.80000001192,
+        "styleAndLayoutStart": 38220.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 38229,
+        "duration": 153.5,
+        "blockingDuration": 103.3,
+        "renderStart": 38229.39999997616,
+        "styleAndLayoutStart": 38382.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 38386.30000001192,
+        "duration": 184.39999997615814,
+        "blockingDuration": 133.7,
+        "renderStart": 38388.19999998808,
+        "styleAndLayoutStart": 38570.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 38577.19999998808,
+        "duration": 162.39999997615814,
+        "blockingDuration": 112,
+        "renderStart": 38577.59999996424,
+        "styleAndLayoutStart": 38739.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 38743.39999997616,
+        "duration": 184.19999998807907,
+        "blockingDuration": 133.8,
+        "renderStart": 38744.80000001192,
+        "styleAndLayoutStart": 38927.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 38936.39999997616,
+        "duration": 156.80000001192093,
+        "blockingDuration": 106.5,
+        "renderStart": 38936.80000001192,
+        "styleAndLayoutStart": 39092.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 39100,
+        "duration": 182.89999997615814,
+        "blockingDuration": 132.6,
+        "renderStart": 39100.39999997616,
+        "styleAndLayoutStart": 39282.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 39291.30000001192,
+        "duration": 180.0999999642372,
+        "blockingDuration": 129.9,
+        "renderStart": 39292.5,
+        "styleAndLayoutStart": 39470.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 39476.69999998808,
+        "duration": 309.60000002384186,
+        "blockingDuration": 259.3,
+        "renderStart": 39477.59999996424,
+        "styleAndLayoutStart": 39785.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 39788.80000001192,
+        "duration": 172.69999998807907,
+        "blockingDuration": 121.5,
+        "renderStart": 39790.19999998808,
+        "styleAndLayoutStart": 39960.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 39962.89999997616,
+        "duration": 190.80000001192093,
+        "blockingDuration": 140.1,
+        "renderStart": 39964.30000001192,
+        "styleAndLayoutStart": 40153.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 40157.80000001192,
+        "duration": 173.69999998807907,
+        "blockingDuration": 118.4,
+        "renderStart": 40163.39999997616,
+        "styleAndLayoutStart": 40330.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 40333.19999998808,
+        "duration": 218.60000002384186,
+        "blockingDuration": 168.2,
+        "renderStart": 40334.30000001192,
+        "styleAndLayoutStart": 40551.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 40559.30000001192,
+        "duration": 181.5,
+        "blockingDuration": 128.1,
+        "renderStart": 40563.09999996424,
+        "styleAndLayoutStart": 40740.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 40742.80000001192,
+        "duration": 227.69999998807907,
+        "blockingDuration": 177.4,
+        "renderStart": 40744.09999996424,
+        "styleAndLayoutStart": 40970.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 40975.69999998808,
+        "duration": 176.5,
+        "blockingDuration": 126.3,
+        "renderStart": 40976,
+        "styleAndLayoutStart": 41151.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 41154.69999998808,
+        "duration": 206.10000002384186,
+        "blockingDuration": 155.5,
+        "renderStart": 41155.30000001192,
+        "styleAndLayoutStart": 41360.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 41367.30000001192,
+        "duration": 170.29999995231628,
+        "blockingDuration": 119.8,
+        "renderStart": 41368.89999997616,
+        "styleAndLayoutStart": 41537,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 41541.89999997616,
+        "duration": 231.4000000357628,
+        "blockingDuration": 180.9,
+        "renderStart": 41542.89999997616,
+        "styleAndLayoutStart": 41772.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 41778.39999997616,
+        "duration": 181.19999998807907,
+        "blockingDuration": 130.8,
+        "renderStart": 41778.80000001192,
+        "styleAndLayoutStart": 41959.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 41963.59999996424,
+        "duration": 213.9000000357628,
+        "blockingDuration": 163.6,
+        "renderStart": 41964.69999998808,
+        "styleAndLayoutStart": 42177,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 42183.89999997616,
+        "duration": 181.69999998807907,
+        "blockingDuration": 131.3,
+        "renderStart": 42184.5,
+        "styleAndLayoutStart": 42365.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 42369.39999997616,
+        "duration": 206.4000000357628,
+        "blockingDuration": 155.8,
+        "renderStart": 42370.80000001192,
+        "styleAndLayoutStart": 42575.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 42583.30000001192,
+        "duration": 162.19999998807907,
+        "blockingDuration": 112,
+        "renderStart": 42583.59999996424,
+        "styleAndLayoutStart": 42745.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 42750.09999996424,
+        "duration": 208.20000004768372,
+        "blockingDuration": 157.9,
+        "renderStart": 42751.19999998808,
+        "styleAndLayoutStart": 42957.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 42965.69999998808,
+        "duration": 163.89999997615814,
+        "blockingDuration": 113.6,
+        "renderStart": 42966.19999998808,
+        "styleAndLayoutStart": 43129.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 43137.39999997616,
+        "duration": 199.19999998807907,
+        "blockingDuration": 148.8,
+        "renderStart": 43138.5,
+        "styleAndLayoutStart": 43336,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 43347,
+        "duration": 164.39999997615814,
+        "blockingDuration": 114.1,
+        "renderStart": 43347.39999997616,
+        "styleAndLayoutStart": 43511,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 43516.80000001192,
+        "duration": 212.39999997615814,
+        "blockingDuration": 162.2,
+        "renderStart": 43517.30000001192,
+        "styleAndLayoutStart": 43728.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 43741.59999996424,
+        "duration": 169.30000001192093,
+        "blockingDuration": 119,
+        "renderStart": 43742.09999996424,
+        "styleAndLayoutStart": 43910.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 43917.80000001192,
+        "duration": 348.5999999642372,
+        "blockingDuration": 298.4,
+        "renderStart": 43918.89999997616,
+        "styleAndLayoutStart": 44265.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 44269,
+        "duration": 199.80000001192093,
+        "blockingDuration": 148.2,
+        "renderStart": 44270.80000001192,
+        "styleAndLayoutStart": 44468.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 44470.80000001192,
+        "duration": 231.89999997615814,
+        "blockingDuration": 175.4,
+        "renderStart": 44478.5,
+        "styleAndLayoutStart": 44702.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 44706.69999998808,
+        "duration": 167.80000001192093,
+        "blockingDuration": 113.1,
+        "renderStart": 44711.69999998808,
+        "styleAndLayoutStart": 44874,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 44876.39999997616,
+        "duration": 221.80000001192093,
+        "blockingDuration": 171.6,
+        "renderStart": 44877.30000001192,
+        "styleAndLayoutStart": 45097.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 45101.89999997616,
+        "duration": 166.30000001192093,
+        "blockingDuration": 115.9,
+        "renderStart": 45102.39999997616,
+        "styleAndLayoutStart": 45267.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 45271.19999998808,
+        "duration": 216.80000001192093,
+        "blockingDuration": 166.3,
+        "renderStart": 45272.69999998808,
+        "styleAndLayoutStart": 45487.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 45493.09999996424,
+        "duration": 160.9000000357628,
+        "blockingDuration": 110.1,
+        "renderStart": 45494.30000001192,
+        "styleAndLayoutStart": 45653.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 45657.30000001192,
+        "duration": 228.29999995231628,
+        "blockingDuration": 178.1,
+        "renderStart": 45657.59999996424,
+        "styleAndLayoutStart": 45885.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 45891.5,
+        "duration": 179.5,
+        "blockingDuration": 129.3,
+        "renderStart": 45892.80000001192,
+        "styleAndLayoutStart": 46070.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 46073.89999997616,
+        "duration": 208.4000000357628,
+        "blockingDuration": 158.3,
+        "renderStart": 46074.19999998808,
+        "styleAndLayoutStart": 46281.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 46287.89999997616,
+        "duration": 185.19999998807907,
+        "blockingDuration": 134.5,
+        "renderStart": 46290,
+        "styleAndLayoutStart": 46472.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 46478.59999996424,
+        "duration": 240.80000001192093,
+        "blockingDuration": 190.5,
+        "renderStart": 46479.39999997616,
+        "styleAndLayoutStart": 46719.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 46725.39999997616,
+        "duration": 171.5,
+        "blockingDuration": 121.2,
+        "renderStart": 46725.69999998808,
+        "styleAndLayoutStart": 46896.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 46901.09999996424,
+        "duration": 202.5,
+        "blockingDuration": 152.3,
+        "renderStart": 46902.09999996424,
+        "styleAndLayoutStart": 47103.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 47111,
+        "duration": 166.39999997615814,
+        "blockingDuration": 116.3,
+        "renderStart": 47111.30000001192,
+        "styleAndLayoutStart": 47277.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 47282.19999998808,
+        "duration": 203.89999997615814,
+        "blockingDuration": 153.6,
+        "renderStart": 47283.30000001192,
+        "styleAndLayoutStart": 47485.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 47493.80000001192,
+        "duration": 167.19999998807907,
+        "blockingDuration": 116.4,
+        "renderStart": 47495,
+        "styleAndLayoutStart": 47660.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 47665.89999997616,
+        "duration": 211.69999998807907,
+        "blockingDuration": 161.5,
+        "renderStart": 47666.19999998808,
+        "styleAndLayoutStart": 47877.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 47888.89999997616,
+        "duration": 168.9000000357628,
+        "blockingDuration": 118.7,
+        "renderStart": 47890.09999996424,
+        "styleAndLayoutStart": 48057.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 48063.30000001192,
+        "duration": 333.5999999642372,
+        "blockingDuration": 283.5,
+        "renderStart": 48063.39999997616,
+        "styleAndLayoutStart": 48396.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 48400.19999998808,
+        "duration": 186.5,
+        "blockingDuration": 135,
+        "renderStart": 48402.89999997616,
+        "styleAndLayoutStart": 48586.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 48587.89999997616,
+        "duration": 221.80000001192093,
+        "blockingDuration": 165.9,
+        "renderStart": 48594.59999996424,
+        "styleAndLayoutStart": 48809.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 48813.09999996424,
+        "duration": 167.60000002384186,
+        "blockingDuration": 117.4,
+        "renderStart": 48813.5,
+        "styleAndLayoutStart": 48980.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 48984.09999996424,
+        "duration": 209,
+        "blockingDuration": 153.9,
+        "renderStart": 48989.19999998808,
+        "styleAndLayoutStart": 49192.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 49197.19999998808,
+        "duration": 179.80000001192093,
+        "blockingDuration": 129.6,
+        "renderStart": 49197.59999996424,
+        "styleAndLayoutStart": 49376.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 49379.09999996424,
+        "duration": 205.4000000357628,
+        "blockingDuration": 154.7,
+        "renderStart": 49380.5,
+        "styleAndLayoutStart": 49584,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 49589.69999998808,
+        "duration": 173.10000002384186,
+        "blockingDuration": 123,
+        "renderStart": 49590,
+        "styleAndLayoutStart": 49762.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 49765.39999997616,
+        "duration": 188.5,
+        "blockingDuration": 138.2,
+        "renderStart": 49766.39999997616,
+        "styleAndLayoutStart": 49953.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 49958.69999998808,
+        "duration": 191.39999997615814,
+        "blockingDuration": 141.2,
+        "renderStart": 49959.19999998808,
+        "styleAndLayoutStart": 50149.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 50153.39999997616,
+        "duration": 214.19999998807907,
+        "blockingDuration": 164,
+        "renderStart": 50153.80000001192,
+        "styleAndLayoutStart": 50367.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 50372.89999997616,
+        "duration": 167.9000000357628,
+        "blockingDuration": 117.6,
+        "renderStart": 50374,
+        "styleAndLayoutStart": 50540.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 50544.59999996424,
+        "duration": 202.20000004768372,
+        "blockingDuration": 152,
+        "renderStart": 50545.09999996424,
+        "styleAndLayoutStart": 50746.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 50753.19999998808,
+        "duration": 182.60000002384186,
+        "blockingDuration": 132.3,
+        "renderStart": 50753.59999996424,
+        "styleAndLayoutStart": 50935.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 50940.09999996424,
+        "duration": 214.5,
+        "blockingDuration": 164.1,
+        "renderStart": 50941.5,
+        "styleAndLayoutStart": 51154.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 51164.89999997616,
+        "duration": 195.5,
+        "blockingDuration": 145.2,
+        "renderStart": 51165.5,
+        "styleAndLayoutStart": 51360.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 51365.80000001192,
+        "duration": 239.79999995231628,
+        "blockingDuration": 189,
+        "renderStart": 51367.30000001192,
+        "styleAndLayoutStart": 51605.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 51613.30000001192,
+        "duration": 172.5999999642372,
+        "blockingDuration": 122.3,
+        "renderStart": 51613.80000001192,
+        "styleAndLayoutStart": 51785.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 51791.89999997616,
+        "duration": 206.9000000357628,
+        "blockingDuration": 156.6,
+        "renderStart": 51792.89999997616,
+        "styleAndLayoutStart": 51998.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 52008,
+        "duration": 167.0999999642372,
+        "blockingDuration": 116.8,
+        "renderStart": 52008.30000001192,
+        "styleAndLayoutStart": 52174.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 52185.5,
+        "duration": 374.19999998807907,
+        "blockingDuration": 323.8,
+        "renderStart": 52186.69999998808,
+        "styleAndLayoutStart": 52559.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 52562.19999998808,
+        "duration": 182.69999998807907,
+        "blockingDuration": 130.1,
+        "renderStart": 52565.39999997616,
+        "styleAndLayoutStart": 52744.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 52746.30000001192,
+        "duration": 215.5,
+        "blockingDuration": 165.4,
+        "renderStart": 52747.30000001192,
+        "styleAndLayoutStart": 52961.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 52965.09999996424,
+        "duration": 179.80000001192093,
+        "blockingDuration": 124.5,
+        "renderStart": 52970.5,
+        "styleAndLayoutStart": 53144.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 53146.80000001192,
+        "duration": 222.5,
+        "blockingDuration": 169.2,
+        "renderStart": 53151,
+        "styleAndLayoutStart": 53368.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 53374,
+        "duration": 193.39999997615814,
+        "blockingDuration": 143,
+        "renderStart": 53374.59999996424,
+        "styleAndLayoutStart": 53567.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 53569.69999998808,
+        "duration": 215.69999998807907,
+        "blockingDuration": 165.2,
+        "renderStart": 53570.39999997616,
+        "styleAndLayoutStart": 53785,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 53790.39999997616,
+        "duration": 193.10000002384186,
+        "blockingDuration": 142.9,
+        "renderStart": 53791.5,
+        "styleAndLayoutStart": 53983.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 53985.80000001192,
+        "duration": 231.79999995231628,
+        "blockingDuration": 181.6,
+        "renderStart": 53986.09999996424,
+        "styleAndLayoutStart": 54217.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 54222.19999998808,
+        "duration": 182,
+        "blockingDuration": 131.5,
+        "renderStart": 54222.69999998808,
+        "styleAndLayoutStart": 54403.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 54407.69999998808,
+        "duration": 234.19999998807907,
+        "blockingDuration": 183.6,
+        "renderStart": 54409,
+        "styleAndLayoutStart": 54641.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 54647.30000001192,
+        "duration": 193.19999998807907,
+        "blockingDuration": 143.1,
+        "renderStart": 54647.59999996424,
+        "styleAndLayoutStart": 54840.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 54845,
+        "duration": 253.39999997615814,
+        "blockingDuration": 203.1,
+        "renderStart": 54846.09999996424,
+        "styleAndLayoutStart": 55098,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 55108.09999996424,
+        "duration": 186.70000004768372,
+        "blockingDuration": 136.4,
+        "renderStart": 55108.89999997616,
+        "styleAndLayoutStart": 55294.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 55298.89999997616,
+        "duration": 222,
+        "blockingDuration": 171.7,
+        "renderStart": 55300.09999996424,
+        "styleAndLayoutStart": 55520.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 55528.39999997616,
+        "duration": 200.80000001192093,
+        "blockingDuration": 150.4,
+        "renderStart": 55529.09999996424,
+        "styleAndLayoutStart": 55728.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 55735.19999998808,
+        "duration": 248.10000002384186,
+        "blockingDuration": 198,
+        "renderStart": 55735.5,
+        "styleAndLayoutStart": 55983,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 55995.80000001192,
+        "duration": 181.39999997615814,
+        "blockingDuration": 131.2,
+        "renderStart": 55997.09999996424,
+        "styleAndLayoutStart": 56176.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 56183.39999997616,
+        "duration": 236.80000001192093,
+        "blockingDuration": 186.5,
+        "renderStart": 56184.69999998808,
+        "styleAndLayoutStart": 56419.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 56431.59999996424,
+        "duration": 175.4000000357628,
+        "blockingDuration": 124.9,
+        "renderStart": 56432.30000001192,
+        "styleAndLayoutStart": 56606.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 56613.59999996424,
+        "duration": 356.30000001192093,
+        "blockingDuration": 305.9,
+        "renderStart": 56614.69999998808,
+        "styleAndLayoutStart": 56969.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 56972.69999998808,
+        "duration": 214.60000002384186,
+        "blockingDuration": 162.8,
+        "renderStart": 56974.59999996424,
+        "styleAndLayoutStart": 57186.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 57188.69999998808,
+        "duration": 220.60000002384186,
+        "blockingDuration": 170.4,
+        "renderStart": 57189.09999996424,
+        "styleAndLayoutStart": 57408.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 57412.59999996424,
+        "duration": 195.20000004768372,
+        "blockingDuration": 139.3,
+        "renderStart": 57419.39999997616,
+        "styleAndLayoutStart": 57607.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 57609.69999998808,
+        "duration": 227.39999997615814,
+        "blockingDuration": 173.6,
+        "renderStart": 57613.59999996424,
+        "styleAndLayoutStart": 57836.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 57841.39999997616,
+        "duration": 172.69999998807907,
+        "blockingDuration": 122.3,
+        "renderStart": 57842.69999998808,
+        "styleAndLayoutStart": 58013.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 58017.30000001192,
+        "duration": 243.39999997615814,
+        "blockingDuration": 193.1,
+        "renderStart": 58017.69999998808,
+        "styleAndLayoutStart": 58260.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 58265.89999997616,
+        "duration": 198.19999998807907,
+        "blockingDuration": 147.7,
+        "renderStart": 58266.39999997616,
+        "styleAndLayoutStart": 58463.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 58466.80000001192,
+        "duration": 241.79999995231628,
+        "blockingDuration": 190.9,
+        "renderStart": 58468.5,
+        "styleAndLayoutStart": 58708.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 58714.80000001192,
+        "duration": 195.19999998807907,
+        "blockingDuration": 144.8,
+        "renderStart": 58715.19999998808,
+        "styleAndLayoutStart": 58909.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 58913.09999996424,
+        "duration": 277.10000002384186,
+        "blockingDuration": 226.7,
+        "renderStart": 58914.69999998808,
+        "styleAndLayoutStart": 59189.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 59196.80000001192,
+        "duration": 201.5999999642372,
+        "blockingDuration": 151.1,
+        "renderStart": 59197.5,
+        "styleAndLayoutStart": 59398,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 59412.5,
+        "duration": 241,
+        "blockingDuration": 190.5,
+        "renderStart": 59413.80000001192,
+        "styleAndLayoutStart": 59653,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 59662.30000001192,
+        "duration": 223.69999998807907,
+        "blockingDuration": 173.6,
+        "renderStart": 59662.69999998808,
+        "styleAndLayoutStart": 59885.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 59890.69999998808,
+        "duration": 239.39999997615814,
+        "blockingDuration": 189,
+        "renderStart": 59891.89999997616,
+        "styleAndLayoutStart": 60129.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 60141.5,
+        "duration": 192.19999998807907,
+        "blockingDuration": 142,
+        "renderStart": 60142.09999996424,
+        "styleAndLayoutStart": 60333.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 60338.89999997616,
+        "duration": 229.10000002384186,
+        "blockingDuration": 178,
+        "renderStart": 60340.69999998808,
+        "styleAndLayoutStart": 60567.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 60577.80000001192,
+        "duration": 192.19999998807907,
+        "blockingDuration": 141.3,
+        "renderStart": 60579.09999996424,
+        "styleAndLayoutStart": 60769.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 60776.39999997616,
+        "duration": 242.10000002384186,
+        "blockingDuration": 191.9,
+        "renderStart": 60777.39999997616,
+        "styleAndLayoutStart": 61018.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 61027.59999996424,
+        "duration": 189.60000002384186,
+        "blockingDuration": 139.4,
+        "renderStart": 61028,
+        "styleAndLayoutStart": 61216.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 61226.19999998808,
+        "duration": 411,
+        "blockingDuration": 360.5,
+        "renderStart": 61228.09999996424,
+        "styleAndLayoutStart": 61636.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 61640.89999997616,
+        "duration": 227,
+        "blockingDuration": 175.3,
+        "renderStart": 61642.89999997616,
+        "styleAndLayoutStart": 61867.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 61870.19999998808,
+        "duration": 246,
+        "blockingDuration": 190.2,
+        "renderStart": 61877.30000001192,
+        "styleAndLayoutStart": 62115.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 62119.80000001192,
+        "duration": 205.69999998807907,
+        "blockingDuration": 154.4,
+        "renderStart": 62121.19999998808,
+        "styleAndLayoutStart": 62325.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      }
+    ],
+    "fps": [
+      {
+        "atMs": 3811,
+        "fps": 139.47001394534507
+      },
+      {
+        "atMs": 4841,
+        "fps": 61.16504854368932
+      },
+      {
+        "atMs": 5870.8,
+        "fps": 15.536997475237907
+      },
+      {
+        "atMs": 6912.8,
+        "fps": 16.314779270633398
+      },
+      {
+        "atMs": 7973.1,
+        "fps": 14.146939545411673
+      },
+      {
+        "atMs": 8997.1,
+        "fps": 12.6953125
+      },
+      {
+        "atMs": 10032.9,
+        "fps": 12.550685460513622
+      },
+      {
+        "atMs": 11111.3,
+        "fps": 12.054896142433238
+      },
+      {
+        "atMs": 12165.4,
+        "fps": 11.384119153780473
+      },
+      {
+        "atMs": 13171.2,
+        "fps": 9.942334460131228
+      },
+      {
+        "atMs": 14182.9,
+        "fps": 10.872788376000802
+      },
+      {
+        "atMs": 15188.6,
+        "fps": 9.943323058566166
+      },
+      {
+        "atMs": 16212.5,
+        "fps": 8.789920890711986
+      },
+      {
+        "atMs": 17242.5,
+        "fps": 9.70873786407767
+      },
+      {
+        "atMs": 18308.6,
+        "fps": 9.379983116030404
+      },
+      {
+        "atMs": 19399.1,
+        "fps": 8.253094910591471
+      },
+      {
+        "atMs": 20404.8,
+        "fps": 6.960326140996316
+      },
+      {
+        "atMs": 21440.9,
+        "fps": 8.686420229707538
+      },
+      {
+        "atMs": 22531.3,
+        "fps": 8.253851797505519
+      },
+      {
+        "atMs": 23573.4,
+        "fps": 7.676806448517401
+      },
+      {
+        "atMs": 24700.2,
+        "fps": 7.0997515086972
+      },
+      {
+        "atMs": 25827.1,
+        "fps": 7.099121483716404
+      },
+      {
+        "atMs": 26978.1,
+        "fps": 6.950477845351868
+      },
+      {
+        "atMs": 28117.2,
+        "fps": 6.145202352734604
+      },
+      {
+        "atMs": 29219.7,
+        "fps": 6.349206349206349
+      },
+      {
+        "atMs": 30334.5,
+        "fps": 6.279153211338361
+      },
+      {
+        "atMs": 31419,
+        "fps": 5.532503457814661
+      },
+      {
+        "atMs": 32527.6,
+        "fps": 5.41223164351435
+      },
+      {
+        "atMs": 33684.7,
+        "fps": 6.049606775559596
+      },
+      {
+        "atMs": 34823.7,
+        "fps": 6.145741878841089
+      },
+      {
+        "atMs": 35956.6,
+        "fps": 5.296142642775172
+      },
+      {
+        "atMs": 36980.4,
+        "fps": 5.860519632740753
+      },
+      {
+        "atMs": 38028.6,
+        "fps": 5.724098454493433
+      },
+      {
+        "atMs": 39094.9,
+        "fps": 5.626934258651396
+      },
+      {
+        "atMs": 40155,
+        "fps": 4.716536175832475
+      },
+      {
+        "atMs": 41360.7,
+        "fps": 4.9763622791739355
+      },
+      {
+        "atMs": 42366.3,
+        "fps": 4.972155926809836
+      },
+      {
+        "atMs": 43511.6,
+        "fps": 5.238802060595497
+      },
+      {
+        "atMs": 44704.9,
+        "fps": 4.190061174893144
+      },
+      {
+        "atMs": 45886.3,
+        "fps": 5.078720162519039
+      },
+      {
+        "atMs": 46898.2,
+        "fps": 4.9411997232928435
+      },
+      {
+        "atMs": 48061.2,
+        "fps": 5.159071367153913
+      },
+      {
+        "atMs": 49194.1,
+        "fps": 4.4134522023126435
+      },
+      {
+        "atMs": 50369.5,
+        "fps": 5.104645227156706
+      },
+      {
+        "atMs": 51611.4,
+        "fps": 4.831306868507926
+      },
+      {
+        "atMs": 52744.4,
+        "fps": 4.41306266548985
+      },
+      {
+        "atMs": 53786.4,
+        "fps": 4.798464491362764
+      },
+      {
+        "atMs": 54840.6,
+        "fps": 4.7429330297856325
+      },
+      {
+        "atMs": 55991.6,
+        "fps": 4.344048653344918
+      },
+      {
+        "atMs": 57185,
+        "fps": 4.189710072063008
+      },
+      {
+        "atMs": 58263.5,
+        "fps": 4.6360686138154845
+      },
+      {
+        "atMs": 59408.5,
+        "fps": 4.366812227074236
+      },
+      {
+        "atMs": 60571.8,
+        "fps": 4.298117424568028
+      },
+      {
+        "atMs": 61638,
+        "fps": 3.751641343087611
+      },
+      {
+        "atMs": 62777,
+        "fps": 4.389815627743634
+      }
+    ],
+    "runtime": [
+      {
+        "atMs": 3807.5,
+        "fps": 49.94655718381333,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0,
+        "consumeRate": 0,
+        "totalReceived": 0,
+        "totalConsumed": 0,
+        "oldestPendingMs": 0,
+        "mapPoints": 0,
+        "renderP95Ms": 0
+      },
+      {
+        "atMs": 4845.300000011921,
+        "fps": 141.33940428761142,
+        "pending": 12,
+        "batchSize": 1,
+        "arrivalRate": 18.934014957658135,
+        "consumeRate": 4.733503739414534,
+        "totalReceived": 20,
+        "totalConsumed": 8,
+        "oldestPendingMs": 687.2000000476837,
+        "mapPoints": 8,
+        "renderP95Ms": 23.19999998807907
+      },
+      {
+        "atMs": 5877.399999976158,
+        "fps": 12.982195845697333,
+        "pending": 16,
+        "batchSize": 1,
+        "arrivalRate": 19.72581122445044,
+        "consumeRate": 14.79435841833783,
+        "totalReceived": 40,
+        "totalConsumed": 24,
+        "oldestPendingMs": 600,
+        "mapPoints": 24,
+        "renderP95Ms": 23.19999998807907
+      },
+      {
+        "atMs": 6916.199999988079,
+        "fps": 16.604805626098845,
+        "pending": 19,
+        "batchSize": 1,
+        "arrivalRate": 19.659884006453982,
+        "consumeRate": 16.710901405485885,
+        "totalReceived": 60,
+        "totalConsumed": 41,
+        "oldestPendingMs": 689,
+        "mapPoints": 41,
+        "renderP95Ms": 16.19999998807907
+      },
+      {
+        "atMs": 7822.300000011921,
+        "fps": 15.092915762663894,
+        "pending": 26,
+        "batchSize": 1,
+        "arrivalRate": 19.517907680523734,
+        "consumeRate": 14.6384307603928,
+        "totalReceived": 80,
+        "totalConsumed": 54,
+        "oldestPendingMs": 1595,
+        "mapPoints": 54,
+        "renderP95Ms": 18.30000001192093
+      },
+      {
+        "atMs": 8998.599999964237,
+        "fps": 13.59091350354334,
+        "pending": 31,
+        "batchSize": 1,
+        "arrivalRate": 15.128593040847202,
+        "consumeRate": 12.85930408472012,
+        "totalReceived": 100,
+        "totalConsumed": 69,
+        "oldestPendingMs": 1748.0999999642372,
+        "mapPoints": 69,
+        "renderP95Ms": 18.30000001192093
+      },
+      {
+        "atMs": 9879.399999976158,
+        "fps": 12.262994057164436,
+        "pending": 40,
+        "batchSize": 1,
+        "arrivalRate": 15.128593040847202,
+        "consumeRate": 12.85930408472012,
+        "totalReceived": 120,
+        "totalConsumed": 80,
+        "oldestPendingMs": 1603.5999999642372,
+        "mapPoints": 80,
+        "renderP95Ms": 17
+      },
+      {
+        "atMs": 10877.5,
+        "fps": 11.920044012470196,
+        "pending": 48,
+        "batchSize": 1,
+        "arrivalRate": 16.79543164242508,
+        "consumeRate": 12.59657373181881,
+        "totalReceived": 140,
+        "totalConsumed": 92,
+        "oldestPendingMs": 2601.699999988079,
+        "mapPoints": 92,
+        "renderP95Ms": 20.399999976158142
+      },
+      {
+        "atMs": 11902.199999988079,
+        "fps": 12.262994057164414,
+        "pending": 56,
+        "batchSize": 1,
+        "arrivalRate": 26.293301781165162,
+        "consumeRate": 11.831985801524322,
+        "totalReceived": 160,
+        "totalConsumed": 104,
+        "oldestPendingMs": 2583.399999976158,
+        "mapPoints": 104,
+        "renderP95Ms": 18.30000001192093
+      },
+      {
+        "atMs": 12972.300000011921,
+        "fps": 10.142923005993545,
+        "pending": 65,
+        "batchSize": 1,
+        "arrivalRate": 18.458698661744346,
+        "consumeRate": 10.152284263959391,
+        "totalReceived": 180,
+        "totalConsumed": 115,
+        "oldestPendingMs": 3653.5,
+        "mapPoints": 115,
+        "renderP95Ms": 20.399999976158142
+      },
+      {
+        "atMs": 13987.5,
+        "fps": 10.884353741496598,
+        "pending": 74,
+        "batchSize": 1,
+        "arrivalRate": 18.181818181818183,
+        "consumeRate": 10.909090909090908,
+        "totalReceived": 200,
+        "totalConsumed": 126,
+        "oldestPendingMs": 3712.800000011921,
+        "mapPoints": 126,
+        "renderP95Ms": 19.899999976158142
+      },
+      {
+        "atMs": 14986,
+        "fps": 10.884353741496598,
+        "pending": 84,
+        "batchSize": 1,
+        "arrivalRate": 18.320051296343678,
+        "consumeRate": 10.076028212989023,
+        "totalReceived": 220,
+        "totalConsumed": 136,
+        "oldestPendingMs": 4711.300000011921,
+        "mapPoints": 136,
+        "renderP95Ms": 19.400000035762787
+      },
+      {
+        "atMs": 16012,
+        "fps": 10.08526634271568,
+        "pending": 94,
+        "batchSize": 1,
+        "arrivalRate": 19.491277652797283,
+        "consumeRate": 9.745638826398642,
+        "totalReceived": 240,
+        "totalConsumed": 146,
+        "oldestPendingMs": 4741.199999988079,
+        "mapPoints": 146,
+        "renderP95Ms": 19.400000035762787
+      },
+      {
+        "atMs": 16935.80000001192,
+        "fps": 9.768486861385181,
+        "pending": 106,
+        "batchSize": 1,
+        "arrivalRate": 19.491277652797283,
+        "consumeRate": 9.745638826398642,
+        "totalReceived": 260,
+        "totalConsumed": 154,
+        "oldestPendingMs": 5665,
+        "mapPoints": 154,
+        "renderP95Ms": 20.399999976158142
+      },
+      {
+        "atMs": 17969.899999976158,
+        "fps": 8.737864077669887,
+        "pending": 116,
+        "batchSize": 1,
+        "arrivalRate": 19.479887016881484,
+        "consumeRate": 8.765949157596667,
+        "totalReceived": 280,
+        "totalConsumed": 164,
+        "oldestPendingMs": 5708,
+        "mapPoints": 164,
+        "renderP95Ms": 20.399999976158142
+      },
+      {
+        "atMs": 18940.399999976158,
+        "fps": 9.596928982725528,
+        "pending": 128,
+        "batchSize": 1,
+        "arrivalRate": 19.186492709571606,
+        "consumeRate": 9.593246354785803,
+        "totalReceived": 300,
+        "totalConsumed": 172,
+        "oldestPendingMs": 6678.5,
+        "mapPoints": 172,
+        "renderP95Ms": 20.399999976158142
+      },
+      {
+        "atMs": 20118.599999964237,
+        "fps": 8.252338162479381,
+        "pending": 139,
+        "batchSize": 1,
+        "arrivalRate": 18.36378661239755,
+        "consumeRate": 8.263703975578897,
+        "totalReceived": 320,
+        "totalConsumed": 181,
+        "oldestPendingMs": 6858.299999952316,
+        "mapPoints": 181,
+        "renderP95Ms": 20.399999976158142
+      },
+      {
+        "atMs": 20983.399999976158,
+        "fps": 7.503282686175196,
+        "pending": 152,
+        "batchSize": 1,
+        "arrivalRate": 18.719580681810474,
+        "consumeRate": 7.487832272724189,
+        "totalReceived": 340,
+        "totalConsumed": 188,
+        "oldestPendingMs": 7723.099999964237,
+        "mapPoints": 188,
+        "renderP95Ms": 20.399999976158142
+      },
+      {
+        "atMs": 21918.599999964237,
+        "fps": 8.117615225038328,
+        "pending": 164,
+        "batchSize": 1,
+        "arrivalRate": 36.11738148984199,
+        "consumeRate": 8.126410835214447,
+        "totalReceived": 360,
+        "totalConsumed": 196,
+        "oldestPendingMs": 8658.199999988079,
+        "mapPoints": 196,
+        "renderP95Ms": 20.399999976158142
+      },
+      {
+        "atMs": 23039.599999964237,
+        "fps": 8.538089365335368,
+        "pending": 175,
+        "batchSize": 1,
+        "arrivalRate": 18.91074130063269,
+        "consumeRate": 8.50983358528471,
+        "totalReceived": 380,
+        "totalConsumed": 205,
+        "oldestPendingMs": 8750,
+        "mapPoints": 205,
+        "renderP95Ms": 20.399999976158142
+      },
+      {
+        "atMs": 24045.69999998808,
+        "fps": 7.766990291262136,
+        "pending": 188,
+        "batchSize": 1,
+        "arrivalRate": 19.462826001883972,
+        "consumeRate": 7.785130400753589,
+        "totalReceived": 400,
+        "totalConsumed": 212,
+        "oldestPendingMs": 9756.100000023842,
+        "mapPoints": 212,
+        "renderP95Ms": 20.399999976158142
+      },
+      {
+        "atMs": 24969.69999998808,
+        "fps": 6.878254888474005,
+        "pending": 201,
+        "batchSize": 1,
+        "arrivalRate": 19.59631589329886,
+        "consumeRate": 6.858710562654601,
+        "totalReceived": 420,
+        "totalConsumed": 219,
+        "oldestPendingMs": 10680.100000023842,
+        "mapPoints": 219,
+        "renderP95Ms": 20.80000001192093
+      },
+      {
+        "atMs": 25958.80000001192,
+        "fps": 7.295276308590197,
+        "pending": 214,
+        "batchSize": 1,
+        "arrivalRate": 18.298261665141812,
+        "consumeRate": 7.319304666056724,
+        "totalReceived": 440,
+        "totalConsumed": 226,
+        "oldestPendingMs": 10662.400000035763,
+        "mapPoints": 226,
+        "renderP95Ms": 20.80000001192093
+      },
+      {
+        "atMs": 26985.19999998808,
+        "fps": 6.986899563318778,
+        "pending": 227,
+        "batchSize": 1,
+        "arrivalRate": 17.401896806571436,
+        "consumeRate": 6.960758722628575,
+        "totalReceived": 460,
+        "totalConsumed": 233,
+        "oldestPendingMs": 11688.800000011921,
+        "mapPoints": 233,
+        "renderP95Ms": 21.80000001192093
+      },
+      {
+        "atMs": 27975.399999976158,
+        "fps": 6.24498171112498,
+        "pending": 241,
+        "batchSize": 1,
+        "arrivalRate": 17.857142857142858,
+        "consumeRate": 6.25,
+        "totalReceived": 480,
+        "totalConsumed": 239,
+        "oldestPendingMs": 12679,
+        "mapPoints": 239,
+        "renderP95Ms": 21.80000001192093
+      },
+      {
+        "atMs": 29058.19999998808,
+        "fps": 6.313700730585366,
+        "pending": 254,
+        "batchSize": 1,
+        "arrivalRate": 18.01639491898969,
+        "consumeRate": 6.305738221646392,
+        "totalReceived": 500,
+        "totalConsumed": 246,
+        "oldestPendingMs": 12742.800000011921,
+        "mapPoints": 246,
+        "renderP95Ms": 22.30000001192093
+      },
+      {
+        "atMs": 30043.5,
+        "fps": 6.313700730585366,
+        "pending": 268,
+        "batchSize": 1,
+        "arrivalRate": 17.869907076673538,
+        "consumeRate": 6.254467476835739,
+        "totalReceived": 520,
+        "totalConsumed": 252,
+        "oldestPendingMs": 13728.100000023842,
+        "mapPoints": 252,
+        "renderP95Ms": 22.399999976158142
+      },
+      {
+        "atMs": 31075.399999976158,
+        "fps": 6.2460961898813405,
+        "pending": 282,
+        "batchSize": 1,
+        "arrivalRate": 19.381723035625637,
+        "consumeRate": 5.814516910687692,
+        "totalReceived": 540,
+        "totalConsumed": 258,
+        "oldestPendingMs": 14760,
+        "mapPoints": 258,
+        "renderP95Ms": 22.399999976158142
+      },
+      {
+        "atMs": 32058.80000001192,
+        "fps": 5.7915057915057915,
+        "pending": 297,
+        "batchSize": 1,
+        "arrivalRate": 19.381723035625637,
+        "consumeRate": 5.814516910687692,
+        "totalReceived": 560,
+        "totalConsumed": 263,
+        "oldestPendingMs": 14705,
+        "mapPoints": 263,
+        "renderP95Ms": 23.69999998807907
+      },
+      {
+        "atMs": 33023,
+        "fps": 5.382131324004292,
+        "pending": 311,
+        "batchSize": 1,
+        "arrivalRate": 17.83643984641699,
+        "consumeRate": 5.350931953925097,
+        "totalReceived": 580,
+        "totalConsumed": 269,
+        "oldestPendingMs": 15669.199999988079,
+        "mapPoints": 269,
+        "renderP95Ms": 23.599999964237213
+      },
+      {
+        "atMs": 33830,
+        "fps": 5.9559261465158055,
+        "pending": 326,
+        "batchSize": 1,
+        "arrivalRate": 17.06193482358249,
+        "consumeRate": 5.971677188253872,
+        "totalReceived": 600,
+        "totalConsumed": 274,
+        "oldestPendingMs": 16476.19999998808,
+        "mapPoints": 274,
+        "renderP95Ms": 23.599999964237213
+      },
+      {
+        "atMs": 35018.5,
+        "fps": 6.245538900785137,
+        "pending": 339,
+        "batchSize": 1,
+        "arrivalRate": 35.66969858990936,
+        "consumeRate": 6.242197253234138,
+        "totalReceived": 620,
+        "totalConsumed": 281,
+        "oldestPendingMs": 16705.600000023842,
+        "mapPoints": 281,
+        "renderP95Ms": 23.69999998807907
+      },
+      {
+        "atMs": 35961.5,
+        "fps": 5.825808330905905,
+        "pending": 354,
+        "batchSize": 1,
+        "arrivalRate": 19.43256898584498,
+        "consumeRate": 5.829770695753494,
+        "totalReceived": 640,
+        "totalConsumed": 286,
+        "oldestPendingMs": 17648.600000023842,
+        "mapPoints": 286,
+        "renderP95Ms": 23.69999998807907
+      },
+      {
+        "atMs": 36984.30000001192,
+        "fps": 5.353319057815867,
+        "pending": 368,
+        "batchSize": 1,
+        "arrivalRate": 17.85873738764692,
+        "consumeRate": 5.357621216294076,
+        "totalReceived": 660,
+        "totalConsumed": 292,
+        "oldestPendingMs": 18671.400000035763,
+        "mapPoints": 292,
+        "renderP95Ms": 25.69999998807907
+      },
+      {
+        "atMs": 38030.69999998808,
+        "fps": 5.860519632740753,
+        "pending": 382,
+        "batchSize": 1,
+        "arrivalRate": 19.489378289058987,
+        "consumeRate": 5.8468134867176955,
+        "totalReceived": 680,
+        "totalConsumed": 298,
+        "oldestPendingMs": 19717.80000001192,
+        "mapPoints": 298,
+        "renderP95Ms": 26.799999952316284
+      },
+      {
+        "atMs": 39100.19999998808,
+        "fps": 5.563798219584562,
+        "pending": 396,
+        "batchSize": 1,
+        "arrivalRate": 18.554596900766708,
+        "consumeRate": 5.566379070230012,
+        "totalReceived": 700,
+        "totalConsumed": 304,
+        "oldestPendingMs": 19797.69999998808,
+        "mapPoints": 304,
+        "renderP95Ms": 26.799999952316284
+      },
+      {
+        "atMs": 40158,
+        "fps": 4.770537162484502,
+        "pending": 411,
+        "batchSize": 1,
+        "arrivalRate": 19.105846388777454,
+        "consumeRate": 4.776461597194364,
+        "totalReceived": 720,
+        "totalConsumed": 309,
+        "oldestPendingMs": 20855.5,
+        "mapPoints": 309,
+        "renderP95Ms": 26.799999952316284
+      },
+      {
+        "atMs": 41155.19999998808,
+        "fps": 5.051780752715344,
+        "pending": 426,
+        "batchSize": 1,
+        "arrivalRate": 16.864828400710085,
+        "consumeRate": 5.059448520213025,
+        "totalReceived": 740,
+        "totalConsumed": 314,
+        "oldestPendingMs": 21852.69999998808,
+        "mapPoints": 314,
+        "renderP95Ms": 26.799999952316284
+      },
+      {
+        "atMs": 42184.09999996424,
+        "fps": 5.051780752715344,
+        "pending": 441,
+        "batchSize": 1,
+        "arrivalRate": 16.557662058444212,
+        "consumeRate": 4.967298617533264,
+        "totalReceived": 760,
+        "totalConsumed": 319,
+        "oldestPendingMs": 22881.599999964237,
+        "mapPoints": 319,
+        "renderP95Ms": 27.299999952316284
+      },
+      {
+        "atMs": 43137.5,
+        "fps": 4.977600796416121,
+        "pending": 456,
+        "batchSize": 1,
+        "arrivalRate": 16.557662058444212,
+        "consumeRate": 4.967298617533264,
+        "totalReceived": 780,
+        "totalConsumed": 324,
+        "oldestPendingMs": 22729.5,
+        "mapPoints": 324,
+        "renderP95Ms": 27.5
+      },
+      {
+        "atMs": 44269.09999996424,
+        "fps": 5.15818431911965,
+        "pending": 471,
+        "batchSize": 1,
+        "arrivalRate": 17.190991919705347,
+        "consumeRate": 5.157297575911604,
+        "totalReceived": 800,
+        "totalConsumed": 329,
+        "oldestPendingMs": 23861.099999964237,
+        "mapPoints": 329,
+        "renderP95Ms": 27.5
+      },
+      {
+        "atMs": 45102.09999996424,
+        "fps": 4.437344692935764,
+        "pending": 487,
+        "batchSize": 1,
+        "arrivalRate": 17.80309773938442,
+        "consumeRate": 4.450774434846105,
+        "totalReceived": 820,
+        "totalConsumed": 333,
+        "oldestPendingMs": 24694.099999964237,
+        "mapPoints": 333,
+        "renderP95Ms": 27.599999964237213
+      },
+      {
+        "atMs": 46074.09999996424,
+        "fps": 4.912556494399672,
+        "pending": 502,
+        "batchSize": 1,
+        "arrivalRate": 39.08158280410357,
+        "consumeRate": 4.885197850512946,
+        "totalReceived": 840,
+        "totalConsumed": 338,
+        "oldestPendingMs": 25666.099999964237,
+        "mapPoints": 338,
+        "renderP95Ms": 27.599999964237213
+      },
+      {
+        "atMs": 47111.19999998808,
+        "fps": 4.854761712112625,
+        "pending": 517,
+        "batchSize": 1,
+        "arrivalRate": 16.24167614050605,
+        "consumeRate": 4.872502842151816,
+        "totalReceived": 860,
+        "totalConsumed": 343,
+        "oldestPendingMs": 25765.399999976158,
+        "mapPoints": 343,
+        "renderP95Ms": 28
+      },
+      {
+        "atMs": 48063.30000001192,
+        "fps": 5.158184319119683,
+        "pending": 532,
+        "batchSize": 1,
+        "arrivalRate": 17.192469698976875,
+        "consumeRate": 5.157740909693063,
+        "totalReceived": 880,
+        "totalConsumed": 348,
+        "oldestPendingMs": 26717.5,
+        "mapPoints": 348,
+        "renderP95Ms": 28.19999998807907
+      },
+      {
+        "atMs": 48989.09999996424,
+        "fps": 5.158184319119683,
+        "pending": 548,
+        "batchSize": 1,
+        "arrivalRate": 18.181818181818183,
+        "consumeRate": 4.545454545454546,
+        "totalReceived": 900,
+        "totalConsumed": 352,
+        "oldestPendingMs": 27643.299999952316,
+        "mapPoints": 352,
+        "renderP95Ms": 28.19999998807907
+      },
+      {
+        "atMs": 50153.59999996424,
+        "fps": 4.559547692868874,
+        "pending": 562,
+        "batchSize": 1,
+        "arrivalRate": 17.176228099781632,
+        "consumeRate": 5.152868429934489,
+        "totalReceived": 920,
+        "totalConsumed": 358,
+        "oldestPendingMs": 28807.799999952316,
+        "mapPoints": 358,
+        "renderP95Ms": 28.299999952316284
+      },
+      {
+        "atMs": 51165.19999998808,
+        "fps": 5.1312751218677715,
+        "pending": 577,
+        "batchSize": 1,
+        "arrivalRate": 19.770660340754304,
+        "consumeRate": 4.942665085188576,
+        "totalReceived": 940,
+        "totalConsumed": 363,
+        "oldestPendingMs": 28761.80000001192,
+        "mapPoints": 363,
+        "renderP95Ms": 28.299999952316284
+      },
+      {
+        "atMs": 52185.69999998808,
+        "fps": 4.942176534545828,
+        "pending": 592,
+        "batchSize": 1,
+        "arrivalRate": 19.596315892154408,
+        "consumeRate": 4.899078973038602,
+        "totalReceived": 960,
+        "totalConsumed": 368,
+        "oldestPendingMs": 29782.30000001192,
+        "mapPoints": 368,
+        "renderP95Ms": 28.299999952316284
+      },
+      {
+        "atMs": 53147,
+        "fps": 4.912073877591112,
+        "pending": 608,
+        "batchSize": 1,
+        "arrivalRate": 19.596315892154408,
+        "consumeRate": 4.899078973038602,
+        "totalReceived": 980,
+        "totalConsumed": 372,
+        "oldestPendingMs": 30743.600000023842,
+        "mapPoints": 372,
+        "renderP95Ms": 28.599999964237213
+      },
+      {
+        "atMs": 54222.39999997616,
+        "fps": 4.21123557651814,
+        "pending": 623,
+        "batchSize": 1,
+        "arrivalRate": 16.819443276090315,
+        "consumeRate": 4.204860819022579,
+        "totalReceived": 1000,
+        "totalConsumed": 377,
+        "oldestPendingMs": 31819,
+        "mapPoints": 377,
+        "renderP95Ms": 30.899999976158142
+      },
+      {
+        "atMs": 55108.5,
+        "fps": 4.826254826254826,
+        "pending": 639,
+        "batchSize": 1,
+        "arrivalRate": 19.36108422071636,
+        "consumeRate": 4.84027105517909,
+        "totalReceived": 1020,
+        "totalConsumed": 381,
+        "oldestPendingMs": 31677.400000035763,
+        "mapPoints": 381,
+        "renderP95Ms": 30.899999976158142
+      },
+      {
+        "atMs": 56183.59999996424,
+        "fps": 4.461099214846556,
+        "pending": 654,
+        "batchSize": 1,
+        "arrivalRate": 35.66969859180527,
+        "consumeRate": 4.458712323975659,
+        "totalReceived": 1040,
+        "totalConsumed": 386,
+        "oldestPendingMs": 32752.5,
+        "mapPoints": 386,
+        "renderP95Ms": 31.30000001192093
+      },
+      {
+        "atMs": 57188.80000001192,
+        "fps": 4.61084470675027,
+        "pending": 670,
+        "batchSize": 1,
+        "arrivalRate": 18.436578170888843,
+        "consumeRate": 4.609144542722211,
+        "totalReceived": 1060,
+        "totalConsumed": 390,
+        "oldestPendingMs": 33757.700000047684,
+        "mapPoints": 390,
+        "renderP95Ms": 31.30000001192093
+      },
+      {
+        "atMs": 58017.5,
+        "fps": 4.065371168387669,
+        "pending": 686,
+        "batchSize": 1,
+        "arrivalRate": 16.29062474561717,
+        "consumeRate": 4.072656186404292,
+        "totalReceived": 1080,
+        "totalConsumed": 394,
+        "oldestPendingMs": 34586.40000003576,
+        "mapPoints": 394,
+        "renderP95Ms": 31.30000001192093
+      },
+      {
+        "atMs": 59197.09999996424,
+        "fps": 4.662439388287946,
+        "pending": 701,
+        "batchSize": 1,
+        "arrivalRate": 18.665422305179654,
+        "consumeRate": 4.666355576294913,
+        "totalReceived": 1100,
+        "totalConsumed": 399,
+        "oldestPendingMs": 35766,
+        "mapPoints": 399,
+        "renderP95Ms": 31.600000023841858
+      },
+      {
+        "atMs": 60141.80000001192,
+        "fps": 4.662439388287946,
+        "pending": 717,
+        "batchSize": 1,
+        "arrivalRate": 16.28001628001628,
+        "consumeRate": 4.07000407000407,
+        "totalReceived": 1120,
+        "totalConsumed": 403,
+        "oldestPendingMs": 35835,
+        "mapPoints": 403,
+        "renderP95Ms": 31.80000001192093
+      },
+      {
+        "atMs": 61226.30000001192,
+        "fps": 4.085968783198506,
+        "pending": 732,
+        "batchSize": 1,
+        "arrivalRate": 18.441678192715536,
+        "consumeRate": 4.610419548178884,
+        "totalReceived": 1140,
+        "totalConsumed": 408,
+        "oldestPendingMs": 36919.5,
+        "mapPoints": 408,
+        "renderP95Ms": 31.80000001192093
+      },
+      {
+        "atMs": 62121,
+        "fps": 4.5850527281063735,
+        "pending": 749,
+        "batchSize": 1,
+        "arrivalRate": 18.441678192715536,
+        "consumeRate": 4.610419548178884,
+        "totalReceived": 1160,
+        "totalConsumed": 411,
+        "oldestPendingMs": 37814.19999998808,
+        "mapPoints": 411,
+        "renderP95Ms": 31.80000001192093
+      }
+    ],
+    "finalReceived": 1180,
+    "finalConsumed": 414,
+    "finalPending": 766,
+    "finalMapPoints": 415,
+    "frameMode": 1,
+    "pointLimit": 0,
+    "mapType": 1
+  },
+  "simulator": {
+    "before": {
+      "running": false,
+      "config": {
+        "robotId": "QH-ZHC-01",
+        "pointsPerSecond": 20,
+        "pattern": "route"
+      },
+      "committedSequence": 4222720,
+      "generatedPoints": 337266,
+      "lastGeneratedAt": "2026-09-23T12:52:18.950Z",
+      "updatedAt": "2026-09-23T13:20:46.665Z",
+      "connectedClients": 2
+    },
+    "after": {
+      "running": true,
+      "config": {
+        "robotId": "QH-ZHC-01",
+        "pointsPerSecond": 20,
+        "pattern": "route"
+      },
+      "committedSequence": 4223920,
+      "generatedPoints": 338466,
+      "lastGeneratedAt": "2026-09-23T13:21:46.950Z",
+      "updatedAt": "2026-09-23T13:21:46.682Z",
+      "connectedClients": 2
+    }
+  }
+}

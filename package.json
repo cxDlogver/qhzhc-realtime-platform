@@ -1,0 +1,25 @@
+{
+  "name": "qhzhc-platform-original-ui-refactor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "QHZHC_Web",
+    "QHZHC_Server"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:server": "npm run dev -w QHZHC_Server",
+    "dev:web": "npm run serve -w QHZHC_Web",
+    "build": "npm run build -w QHZHC_Web && npm run build -w QHZHC_Server",
+    "test": "npm run test -w QHZHC_Web && npm run test -w QHZHC_Server",
+    "test:integration": "npm run test:integration -w QHZHC_Server",
+    "typecheck": "npm exec -w QHZHC_Server -- tsc -p ../QHZHC_Web/tsconfig.json --noEmit && npm run typecheck -w QHZHC_Server",
+    "verify:original-ui": "node scripts/verify-original-ui.ts",
+    "verify": "npm run verify:original-ui && npm run typecheck && npm run test && npm run build",
+    "start": "npm run start -w QHZHC_Server"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

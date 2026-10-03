@@ -1,0 +1,13 @@
+{"type":"started","at":"2026-09-23T18:29:39.335Z","pointCount":260,"scenario":"temporary browser scene"}
+{"type":"two_d_loaded","at":"2026-09-23T18:29:43.254Z","logical":260,"physical":260,"routes":2}
+{"type":"failed","at":"2026-09-23T18:29:43.503Z","message":"Realtime Cesium clock must be idle"}
+{"type":"simulator_restored","at":"2026-09-23T18:29:43.525Z","match":true,"before":{"running":true,"config":{"robotId":"QH-ZHC-01","pointsPerSecond":20,"pattern":"route"},"committedSequence":4421420,"generatedPoints":13600,"lastGeneratedAt":"2026-09-23T18:29:39.950Z","updatedAt":"2026-09-23T18:29:39.508Z","connectedClients":0},"after":{"running":true,"config":{"robotId":"QH-ZHC-01","pointsPerSecond":20,"pattern":"route"},"committedSequence":4421420,"generatedPoints":13600,"lastGeneratedAt":"2026-09-23T18:29:39.950Z","updatedAt":"2026-09-23T18:29:43.522Z","connectedClients":1}}
+{"type":"started","at":"2026-09-23T18:31:01.922Z","pointCount":260,"scenario":"temporary browser scene"}
+{"type":"two_d_loaded","at":"2026-09-23T18:31:05.732Z","logical":260,"physical":260,"routes":2}
+{"type":"three_d_loaded","at":"2026-09-23T18:31:06.226Z","physical":260,"routes":2,"clockAnimating":false,"idleRenderTimeChange":true}
+{"type":"gas_switched","at":"2026-09-23T18:31:07.987Z","gas":"pri_co2","framePending":false,"physical":260,"routes":2}
+{"type":"map_switched_back","at":"2026-09-23T18:31:08.051Z","points":260,"routes":2}
+{"type":"history_playback_started","at":"2026-09-23T18:31:08.183Z","active":true,"clockAnimating":true,"timeDrivenRendering":true}
+{"type":"history_playback_stopped","at":"2026-09-23T18:31:09.434Z","active":false,"clockAnimating":false,"idleRenderTimeChange":true}
+{"type":"completed","at":"2026-09-23T18:31:09.435Z"}
+{"type":"simulator_restored","at":"2026-09-23T18:31:09.458Z","match":true,"before":{"running":true,"config":{"robotId":"QH-ZHC-01","pointsPerSecond":20,"pattern":"route"},"committedSequence":4423000,"generatedPoints":15180,"lastGeneratedAt":"2026-09-23T18:31:02.950Z","updatedAt":"2026-09-23T18:31:02.043Z","connectedClients":0},"after":{"running":true,"config":{"robotId":"QH-ZHC-01","pointsPerSecond":20,"pattern":"route"},"committedSequence":4423000,"generatedPoints":15180,"lastGeneratedAt":"2026-09-23T18:31:02.950Z","updatedAt":"2026-09-23T18:31:09.457Z","connectedClients":1}}

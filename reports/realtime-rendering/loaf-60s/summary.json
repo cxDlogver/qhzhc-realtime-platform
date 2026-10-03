@@ -1,0 +1,20 @@
+{
+  "fpsSamples": 55,
+  "fpsAverage": 10.489273784398174,
+  "fpsP5": 4.190061174893144,
+  "fpsMin": 3.751641343087611,
+  "loafCount": 413,
+  "loafP95Ms": 239.39999997615814,
+  "loafMaxMs": 411,
+  "serverGenerated": 1200,
+  "clientReceived": 1180,
+  "clientConsumed": 414,
+  "finalPending": 766,
+  "topScriptEntrypoints": [
+    {
+      "name": "http://127.0.0.1:9527/static/js/src_views_DataVisualization_dataVisualization_vue.js",
+      "count": 1,
+      "totalMs": 236.80000001192093
+    }
+  ]
+}

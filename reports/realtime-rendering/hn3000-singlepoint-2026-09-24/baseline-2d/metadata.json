@@ -1,0 +1,14 @@
+{
+  "createdAt": "2026-09-23T19:36:05.960Z",
+  "phase": "baseline",
+  "map": "2D",
+  "historyCount": 3000,
+  "rate": 1,
+  "batch": 1,
+  "simulatorPointsPerSecond": 20,
+  "seconds": 60,
+  "fixtureSha256": "491b3232f979397d99405cd9601041e69173b4d0084f36daa368bfde786f0b0e",
+  "fixtureSource": "F:\\CX_notes\\cx-learn-notes\\qhzhc-realtime-platform\\reports\\realtime-rendering\\fixtures\\history-3000.json",
+  "browser": "Chrome headless",
+  "viewport": "1440x900"
+}

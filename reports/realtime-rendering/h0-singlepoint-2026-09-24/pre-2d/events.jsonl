@@ -1,0 +1,5 @@
+{"type":"prepared","at":"2026-09-23T17:27:35.068Z","fixtureSha256":null}
+{"type":"measurement_started","at":"2026-09-23T17:27:41.243Z","browserStartMs":4909.400000035763,"initialHistoryCount":0}
+{"type":"measurement_completed","at":"2026-09-23T17:28:41.521Z","elapsedBrowserMs":60023.59999996424,"fpsSamples":59,"fpsAverage":138.66556729879056,"fpsP5":114.35958631662706,"fpsMin":107.39856801909323,"loafCount":49,"loafP95Ms":72.5,"loafMaxMs":85.10000002384186,"serverGenerated":1200,"clientReceived":59,"clientConsumed":59,"finalPending":0,"finalMapPoints":358,"topScriptEntrypoints":[]}
+{"type":"simulator_restored","at":"2026-09-23T17:28:41.545Z","before":{"running":true,"config":{"robotId":"QH-ZHC-01","pointsPerSecond":20,"pattern":"route"}},"restored":{"running":true,"config":{"robotId":"QH-ZHC-01","pointsPerSecond":20,"pattern":"route"}}}
+{"type":"run_invalidated","reason":"empty-scene validation branch was misplaced; no scene_ready event and 358 points remained at finish","useForComparison":false}

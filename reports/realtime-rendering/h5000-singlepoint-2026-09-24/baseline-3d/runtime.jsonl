@@ -1,0 +1,13 @@
+{"atMs":27339.900000035763,"fps":0.27881559136786943,"pending":1,"batchSize":1,"arrivalRate":0,"consumeRate":0.23293191400024377,"totalReceived":2,"totalConsumed":1,"oldestPendingMs":4303.900000035763,"mapPoints":5001,"renderP95Ms":193.5}
+{"atMs":35764.90000003576,"fps":0.23118180136859634,"pending":1,"batchSize":1,"arrivalRate":0,"consumeRate":0,"totalReceived":2,"totalConsumed":1,"oldestPendingMs":12728.900000035763,"mapPoints":5001,"renderP95Ms":193.5}
+{"atMs":41696.30000001192,"fps":0.29112081513828236,"pending":1,"batchSize":1,"arrivalRate":0,"consumeRate":0,"totalReceived":2,"totalConsumed":1,"oldestPendingMs":18660.30000001192,"mapPoints":5001,"renderP95Ms":193.5}
+{"atMs":47964.30000001192,"fps":0.30794814153296557,"pending":1,"batchSize":1,"arrivalRate":0,"consumeRate":0,"totalReceived":2,"totalConsumed":1,"oldestPendingMs":24928.30000001192,"mapPoints":5001,"renderP95Ms":193.5}
+{"atMs":53704.19999998808,"fps":0.30340726356988973,"pending":0,"batchSize":1,"arrivalRate":0,"consumeRate":0,"totalReceived":2,"totalConsumed":1,"oldestPendingMs":0,"mapPoints":5001,"renderP95Ms":193.5}
+{"atMs":56952.69999998808,"fps":0.5812263876780006,"pending":0,"batchSize":1,"arrivalRate":0,"consumeRate":0,"totalReceived":2,"totalConsumed":1,"oldestPendingMs":0,"mapPoints":5001,"renderP95Ms":193.5}
+{"atMs":60397.80000001192,"fps":0.6159152500615921,"pending":0,"batchSize":1,"arrivalRate":0,"consumeRate":0,"totalReceived":2,"totalConsumed":1,"oldestPendingMs":0,"mapPoints":5001,"renderP95Ms":193.5}
+{"atMs":63925.19999998808,"fps":0.5579734404642348,"pending":0,"batchSize":1,"arrivalRate":0,"consumeRate":0,"totalReceived":2,"totalConsumed":1,"oldestPendingMs":0,"mapPoints":5001,"renderP95Ms":193.5}
+{"atMs":67476.5,"fps":0.5980503558399597,"pending":0,"batchSize":1,"arrivalRate":0,"consumeRate":0,"totalReceived":2,"totalConsumed":1,"oldestPendingMs":0,"mapPoints":5001,"renderP95Ms":193.5}
+{"atMs":70887.10000002384,"fps":0.5208333333333334,"pending":0,"batchSize":1,"arrivalRate":0,"consumeRate":0,"totalReceived":2,"totalConsumed":1,"oldestPendingMs":0,"mapPoints":5001,"renderP95Ms":193.5}
+{"atMs":74100.10000002384,"fps":0.6002400960384153,"pending":0,"batchSize":1,"arrivalRate":0,"consumeRate":0,"totalReceived":2,"totalConsumed":1,"oldestPendingMs":0,"mapPoints":5001,"renderP95Ms":193.5}
+{"atMs":77376.80000001192,"fps":0.6397952655150352,"pending":0,"batchSize":1,"arrivalRate":0,"consumeRate":0,"totalReceived":2,"totalConsumed":1,"oldestPendingMs":0,"mapPoints":5001,"renderP95Ms":193.5}
+{"atMs":80532.90000003576,"fps":0.6422195106287305,"pending":0,"batchSize":1,"arrivalRate":0,"consumeRate":0,"totalReceived":2,"totalConsumed":1,"oldestPendingMs":0,"mapPoints":5001,"renderP95Ms":193.5}

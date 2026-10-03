@@ -1,0 +1,56 @@
+{
+  "at": "2026-09-07T07:54:26.335Z",
+  "assertions": {
+    "uploadsSuccessful": true,
+    "noPageErrors": true,
+    "spaIneligible": true,
+    "refreshEligible": true,
+    "oneLogicalRetry": true,
+    "apiDelayVisible": true,
+    "blockingVisible": true,
+    "disconnectVisible": true,
+    "loafBounded": true
+  },
+  "uploads": [
+    204,
+    204,
+    204,
+    204,
+    204,
+    204,
+    204,
+    204,
+    204,
+    204,
+    204,
+    204,
+    204,
+    204,
+    204
+  ],
+  "errors": [],
+  "checks": [
+    {
+      "scene": "2d",
+      "connected": "连接成功"
+    },
+    {
+      "scene": "auth-retry-and-delay",
+      "attempts": 2
+    },
+    {
+      "scene": "reconnect",
+      "connected": "连接成功"
+    },
+    {
+      "scene": "dashboard"
+    },
+    {
+      "scene": "definitions",
+      "visible": 1
+    },
+    {
+      "scene": "detail"
+    }
+  ]
+}

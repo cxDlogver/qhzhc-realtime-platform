@@ -1,0 +1,14 @@
+{
+  "fpsSamples": 59,
+  "fpsAverage": 143.34712803041802,
+  "fpsP5": 130.25753206721723,
+  "fpsMin": 125.28587053793414,
+  "loafCount": 10,
+  "loafP95Ms": 61.200000047683716,
+  "loafMaxMs": 61.200000047683716,
+  "serverGenerated": 1200,
+  "clientReceived": 58,
+  "clientConsumed": 58,
+  "finalPending": 0,
+  "topScriptEntrypoints": []
+}

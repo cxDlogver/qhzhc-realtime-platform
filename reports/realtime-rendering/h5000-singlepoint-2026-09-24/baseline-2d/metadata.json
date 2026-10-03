@@ -1,0 +1,14 @@
+{
+  "createdAt": "2026-09-23T17:16:41.411Z",
+  "phase": "baseline",
+  "map": "2D",
+  "historyCount": 5000,
+  "rate": 1,
+  "batch": 1,
+  "simulatorPointsPerSecond": 20,
+  "seconds": 60,
+  "fixtureSha256": "8598aa60e6d6b2a9905b8fe70222d6c3e8a497a02e85c82607fd722f4bca9606",
+  "fixtureSource": "local telemetry latest 5000",
+  "browser": "Chrome headless",
+  "viewport": "1440x900"
+}

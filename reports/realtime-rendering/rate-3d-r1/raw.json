@@ -1,0 +1,2872 @@
+{
+  "metadata": {
+    "recordedAt": "2026-09-23T15:48:07.232Z",
+    "seconds": 60,
+    "browser": "Chrome headless",
+    "viewport": "1440x900",
+    "map": "3D",
+    "frameMode": 1,
+    "pointsPerSecond": 20,
+    "pointLimit": 1,
+    "preexistingMapPoints": 0
+  },
+  "summary": {
+    "fpsSamples": 59,
+    "fpsAverage": 44.08320748918694,
+    "fpsP5": 28.495627395106492,
+    "fpsMin": 27.187105544227748,
+    "loafCount": 82,
+    "loafP95Ms": 93.19999998807907,
+    "loafMaxMs": 146.4000000357628,
+    "serverGenerated": 1180,
+    "clientReceived": 58,
+    "clientConsumed": 58,
+    "finalPending": 0,
+    "topScriptEntrypoints": [
+      {
+        "name": "n",
+        "count": 80,
+        "totalMs": 1122.5000000596046
+      }
+    ]
+  },
+  "samples": {
+    "loafs": [
+      {
+        "startTime": 7327.599999964237,
+        "duration": 64.20000004768372,
+        "blockingDuration": 0,
+        "renderStart": 7372.800000011921,
+        "styleAndLayoutStart": 7391.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7393,
+        "duration": 62,
+        "blockingDuration": 0,
+        "renderStart": 7431.5,
+        "styleAndLayoutStart": 7454.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7515.399999976158,
+        "duration": 72.30000001192093,
+        "blockingDuration": 21.6,
+        "renderStart": 7516.300000011921,
+        "styleAndLayoutStart": 7587.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 7517.599999964237,
+            "duration": 69.90000003576279,
+            "executionStart": 7517.599999964237,
+            "forcedStyleAndLayoutDuration": 0.1,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 7626.300000011921,
+        "duration": 71.69999998807907,
+        "blockingDuration": 21.6,
+        "renderStart": 7626.5,
+        "styleAndLayoutStart": 7697.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 7627.399999976158,
+            "duration": 70.30000001192093,
+            "executionStart": 7627.399999976158,
+            "forcedStyleAndLayoutDuration": 0.1,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 9514.199999988079,
+        "duration": 108.60000002384186,
+        "blockingDuration": 58.6,
+        "renderStart": 9514.5,
+        "styleAndLayoutStart": 9622.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 9514.5,
+            "duration": 56.69999998807907,
+            "executionStart": 9514.5,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 10515.399999976158,
+        "duration": 146.4000000357628,
+        "blockingDuration": 96.3,
+        "renderStart": 10515.399999976158,
+        "styleAndLayoutStart": 10661.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 10515.5,
+            "duration": 103.09999996423721,
+            "executionStart": 10515.5,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 11525.300000011921,
+        "duration": 62.19999998807907,
+        "blockingDuration": 10.1,
+        "renderStart": 11527.399999976158,
+        "styleAndLayoutStart": 11586.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 11527.399999976158,
+            "duration": 6.100000023841858,
+            "executionStart": 11527.399999976158,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 13506.099999964237,
+        "duration": 55.5,
+        "blockingDuration": 5.4,
+        "renderStart": 13506.199999988079,
+        "styleAndLayoutStart": 13561.099999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 13506.199999988079,
+            "duration": 6.699999988079071,
+            "executionStart": 13506.199999988079,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 17513.899999976158,
+        "duration": 64.60000002384186,
+        "blockingDuration": 14.6,
+        "renderStart": 17514.099999964237,
+        "styleAndLayoutStart": 17577.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 17514.099999964237,
+            "duration": 6.5,
+            "executionStart": 17514.099999964237,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 17606.5,
+        "duration": 106,
+        "blockingDuration": 54.3,
+        "renderStart": 17608.80000001192,
+        "styleAndLayoutStart": 17712.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 17608.899999976158,
+            "duration": 99.30000001192093,
+            "executionStart": 17608.899999976158,
+            "forcedStyleAndLayoutDuration": 0.2,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 18146.5,
+        "duration": 53.09999996423721,
+        "blockingDuration": 0,
+        "renderStart": 18191.80000001192,
+        "styleAndLayoutStart": 18199.599999964237,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 18191.899999976158,
+            "duration": 5.5,
+            "executionStart": 18191.899999976158,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 18513.599999964237,
+        "duration": 52.80000001192093,
+        "blockingDuration": 2.7,
+        "renderStart": 18513.80000001192,
+        "styleAndLayoutStart": 18565.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 18513.80000001192,
+            "duration": 5.5,
+            "executionStart": 18513.80000001192,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 20496.5,
+        "duration": 56.39999997615814,
+        "blockingDuration": 6.4,
+        "renderStart": 20496.599999964237,
+        "styleAndLayoutStart": 20552.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 20496.599999964237,
+            "duration": 8.600000023841858,
+            "executionStart": 20496.599999964237,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 22500.69999998808,
+        "duration": 51.60000002384186,
+        "blockingDuration": 1.5,
+        "renderStart": 22500.80000001192,
+        "styleAndLayoutStart": 22551.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 22500.899999976158,
+            "duration": 9.300000011920929,
+            "executionStart": 22500.899999976158,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 23508.5,
+        "duration": 56.30000001192093,
+        "blockingDuration": 6.1,
+        "renderStart": 23508.599999964237,
+        "styleAndLayoutStart": 23563.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 23508.69999998808,
+            "duration": 7.199999988079071,
+            "executionStart": 23508.69999998808,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 27506.899999976158,
+        "duration": 54.5,
+        "blockingDuration": 4.5,
+        "renderStart": 27507,
+        "styleAndLayoutStart": 27561,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 27507.099999964237,
+            "duration": 9.100000023841858,
+            "executionStart": 27507.099999964237,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 28506.599999964237,
+        "duration": 50.200000047683716,
+        "blockingDuration": 0.2,
+        "renderStart": 28506.599999964237,
+        "styleAndLayoutStart": 28556.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 28506.69999998808,
+            "duration": 8.800000011920929,
+            "executionStart": 28506.69999998808,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 31069.599999964237,
+        "duration": 53.90000003576279,
+        "blockingDuration": 0,
+        "renderStart": 31115.30000001192,
+        "styleAndLayoutStart": 31123.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 31115.399999976158,
+            "duration": 6.199999988079071,
+            "executionStart": 31115.399999976158,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 31923.80000001192,
+        "duration": 50.59999996423721,
+        "blockingDuration": 0,
+        "renderStart": 31961.899999976158,
+        "styleAndLayoutStart": 31974.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 31962,
+            "duration": 7.099999964237213,
+            "executionStart": 31962,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 32511,
+        "duration": 57.59999996423721,
+        "blockingDuration": 7.6,
+        "renderStart": 32511.099999964237,
+        "styleAndLayoutStart": 32568,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 32511.19999998808,
+            "duration": 8.699999988079071,
+            "executionStart": 32511.19999998808,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 32842.80000001192,
+        "duration": 68.39999997615814,
+        "blockingDuration": 0,
+        "renderStart": 32898.80000001192,
+        "styleAndLayoutStart": 32911.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 32898.89999997616,
+            "duration": 7.699999988079071,
+            "executionStart": 32898.89999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 33078.5,
+        "duration": 64.09999996423721,
+        "blockingDuration": 0,
+        "renderStart": 33134.80000001192,
+        "styleAndLayoutStart": 33142.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 33134.89999997616,
+            "duration": 6.100000023841858,
+            "executionStart": 33134.89999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 34513.89999997616,
+        "duration": 59.69999998807907,
+        "blockingDuration": 7.7,
+        "renderStart": 34515.89999997616,
+        "styleAndLayoutStart": 34573,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 34516,
+            "duration": 9.300000011920929,
+            "executionStart": 34516,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 35520.5,
+        "duration": 55.89999997615814,
+        "blockingDuration": 4.2,
+        "renderStart": 35522.09999996424,
+        "styleAndLayoutStart": 35575.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 35522.30000001192,
+            "duration": 7.699999988079071,
+            "executionStart": 35522.30000001192,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 35795.5,
+        "duration": 60.19999998807907,
+        "blockingDuration": 0,
+        "renderStart": 35841,
+        "styleAndLayoutStart": 35855.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 35841.30000001192,
+            "duration": 9.099999964237213,
+            "executionStart": 35841.30000001192,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 36048.19999998808,
+        "duration": 81.69999998807907,
+        "blockingDuration": 0,
+        "renderStart": 36115.09999996424,
+        "styleAndLayoutStart": 36129.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 36115.09999996424,
+            "duration": 8.900000035762787,
+            "executionStart": 36115.09999996424,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 36278.59999996424,
+        "duration": 53.5,
+        "blockingDuration": 0,
+        "renderStart": 36319.59999996424,
+        "styleAndLayoutStart": 36332,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 36320.39999997616,
+            "duration": 9.5,
+            "executionStart": 36320.39999997616,
+            "forcedStyleAndLayoutDuration": 0.2,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 36521.30000001192,
+        "duration": 59.89999997615814,
+        "blockingDuration": 9.9,
+        "renderStart": 36521.30000001192,
+        "styleAndLayoutStart": 36580.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 36521.39999997616,
+            "duration": 9.199999988079071,
+            "executionStart": 36521.39999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 36758.5,
+        "duration": 60.69999998807907,
+        "blockingDuration": 0,
+        "renderStart": 36804.5,
+        "styleAndLayoutStart": 36819.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 36804.5,
+            "duration": 9.399999976158142,
+            "executionStart": 36804.5,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 37507.19999998808,
+        "duration": 82.19999998807907,
+        "blockingDuration": 4,
+        "renderStart": 37535.39999997616,
+        "styleAndLayoutStart": 37588.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 37535.39999997616,
+            "duration": 7.199999988079071,
+            "executionStart": 37535.39999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 37736.69999998808,
+        "duration": 93.19999998807907,
+        "blockingDuration": 0,
+        "renderStart": 37816.30000001192,
+        "styleAndLayoutStart": 37829.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 37816.30000001192,
+            "duration": 8.899999976158142,
+            "executionStart": 37816.30000001192,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 38269.69999998808,
+        "duration": 56.39999997615814,
+        "blockingDuration": 0,
+        "renderStart": 38314.30000001192,
+        "styleAndLayoutStart": 38325.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 38314.39999997616,
+            "duration": 7.699999988079071,
+            "executionStart": 38314.39999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 38514.5,
+        "duration": 52.80000001192093,
+        "blockingDuration": 2.6,
+        "renderStart": 38514.69999998808,
+        "styleAndLayoutStart": 38566.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 38514.69999998808,
+            "duration": 12,
+            "executionStart": 38514.69999998808,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 39277.5,
+        "duration": 52.5,
+        "blockingDuration": 0,
+        "renderStart": 39319.30000001192,
+        "styleAndLayoutStart": 39329.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 39319.39999997616,
+            "duration": 6.800000011920929,
+            "executionStart": 39319.39999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 39511.69999998808,
+        "duration": 55.80000001192093,
+        "blockingDuration": 1.1,
+        "renderStart": 39516.39999997616,
+        "styleAndLayoutStart": 39567,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 39516.59999996424,
+            "duration": 7.600000023841858,
+            "executionStart": 39516.59999996424,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 40368.5,
+        "duration": 58,
+        "blockingDuration": 0,
+        "renderStart": 40408.89999997616,
+        "styleAndLayoutStart": 40426.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 40409.89999997616,
+            "duration": 12,
+            "executionStart": 40409.89999997616,
+            "forcedStyleAndLayoutDuration": 0.4,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 40545.80000001192,
+        "duration": 57.799999952316284,
+        "blockingDuration": 4.2,
+        "renderStart": 40549.39999997616,
+        "styleAndLayoutStart": 40603.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 40549.39999997616,
+            "duration": 8.100000023841858,
+            "executionStart": 40549.39999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 41456.19999998808,
+        "duration": 77.60000002384186,
+        "blockingDuration": 0,
+        "renderStart": 41513.19999998808,
+        "styleAndLayoutStart": 41533.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 41513.30000001192,
+            "duration": 7,
+            "executionStart": 41513.30000001192,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 41534.80000001192,
+        "duration": 61.69999998807907,
+        "blockingDuration": 11,
+        "renderStart": 41535.5,
+        "styleAndLayoutStart": 41596,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 41535.5,
+            "duration": 10.099999964237213,
+            "executionStart": 41535.5,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 42512.39999997616,
+        "duration": 60.60000002384186,
+        "blockingDuration": 10.2,
+        "renderStart": 42512.80000001192,
+        "styleAndLayoutStart": 42572.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 42512.89999997616,
+            "duration": 7.600000023841858,
+            "executionStart": 42512.89999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 42786,
+        "duration": 54.39999997615814,
+        "blockingDuration": 0,
+        "renderStart": 42826.89999997616,
+        "styleAndLayoutStart": 42840.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 42826.89999997616,
+            "duration": 7,
+            "executionStart": 42826.89999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 43027.39999997616,
+        "duration": 60.30000001192093,
+        "blockingDuration": 0,
+        "renderStart": 43073.59999996424,
+        "styleAndLayoutStart": 43087.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 43073.69999998808,
+            "duration": 8.800000011920929,
+            "executionStart": 43073.69999998808,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 43502,
+        "duration": 52.69999998807907,
+        "blockingDuration": 0,
+        "renderStart": 43505.89999997616,
+        "styleAndLayoutStart": 43554.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 43506,
+            "duration": 8.399999976158142,
+            "executionStart": 43506,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 43838.89999997616,
+        "duration": 69.5,
+        "blockingDuration": 0,
+        "renderStart": 43895.80000001192,
+        "styleAndLayoutStart": 43908.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 43895.80000001192,
+            "duration": 8.799999952316284,
+            "executionStart": 43895.80000001192,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 44310.69999998808,
+        "duration": 56.80000001192093,
+        "blockingDuration": 0,
+        "renderStart": 44358.69999998808,
+        "styleAndLayoutStart": 44367.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 44358.69999998808,
+            "duration": 7.100000023841858,
+            "executionStart": 44358.69999998808,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 44518.39999997616,
+        "duration": 51.60000002384186,
+        "blockingDuration": 0,
+        "renderStart": 44523.39999997616,
+        "styleAndLayoutStart": 44569.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 44523.39999997616,
+            "duration": 9.199999988079071,
+            "executionStart": 44523.39999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 45058.59999996424,
+        "duration": 53.30000001192093,
+        "blockingDuration": 0,
+        "renderStart": 45098,
+        "styleAndLayoutStart": 45111.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 45098.09999996424,
+            "duration": 7.5,
+            "executionStart": 45098.09999996424,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 45112.5,
+        "duration": 62.69999998807907,
+        "blockingDuration": 0,
+        "renderStart": 45156.39999997616,
+        "styleAndLayoutStart": 45175.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 45156.5,
+            "duration": 15.399999976158142,
+            "executionStart": 45156.5,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 45175.89999997616,
+        "duration": 61.30000001192093,
+        "blockingDuration": 0,
+        "renderStart": 45222.09999996424,
+        "styleAndLayoutStart": 45237,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 45222.09999996424,
+            "duration": 12.100000023841858,
+            "executionStart": 45222.09999996424,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 45514.5,
+        "duration": 73.5,
+        "blockingDuration": 19,
+        "renderStart": 45519.09999996424,
+        "styleAndLayoutStart": 45587.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 45519.09999996424,
+            "duration": 11.700000047683716,
+            "executionStart": 45519.09999996424,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 46104.59999996424,
+        "duration": 71.80000001192093,
+        "blockingDuration": 0,
+        "renderStart": 46164.19999998808,
+        "styleAndLayoutStart": 46176.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 46164.30000001192,
+            "duration": 9.299999952316284,
+            "executionStart": 46164.30000001192,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 46176.80000001192,
+        "duration": 52,
+        "blockingDuration": 0,
+        "renderStart": 46216.59999996424,
+        "styleAndLayoutStart": 46228.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 46216.59999996424,
+            "duration": 9.700000047683716,
+            "executionStart": 46216.59999996424,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 46536.19999998808,
+        "duration": 68.80000001192093,
+        "blockingDuration": 18.7,
+        "renderStart": 46536.19999998808,
+        "styleAndLayoutStart": 46604.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 46536.39999997616,
+            "duration": 11.100000023841858,
+            "executionStart": 46536.39999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 47522.09999996424,
+        "duration": 81.10000002384186,
+        "blockingDuration": 18.4,
+        "renderStart": 47534.89999997616,
+        "styleAndLayoutStart": 47602.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 47535.09999996424,
+            "duration": 10.200000047683716,
+            "executionStart": 47535.09999996424,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 48085.69999998808,
+        "duration": 92.60000002384186,
+        "blockingDuration": 0,
+        "renderStart": 48164.39999997616,
+        "styleAndLayoutStart": 48178.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 48164.5,
+            "duration": 10.099999964237213,
+            "executionStart": 48164.5,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 48535.09999996424,
+        "duration": 66.5,
+        "blockingDuration": 16,
+        "renderStart": 48535.59999996424,
+        "styleAndLayoutStart": 48601.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 48535.89999997616,
+            "duration": 12.5,
+            "executionStart": 48535.89999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 49168.89999997616,
+        "duration": 77.80000001192093,
+        "blockingDuration": 0,
+        "renderStart": 49232.39999997616,
+        "styleAndLayoutStart": 49246.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 49232.5,
+            "duration": 11.199999988079071,
+            "executionStart": 49232.5,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 49521.39999997616,
+        "duration": 59.30000001192093,
+        "blockingDuration": 3.1,
+        "renderStart": 49527.59999996424,
+        "styleAndLayoutStart": 49580.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 49528.30000001192,
+            "duration": 11.599999964237213,
+            "executionStart": 49528.30000001192,
+            "forcedStyleAndLayoutDuration": 0.5,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 49927.89999997616,
+        "duration": 55.30000001192093,
+        "blockingDuration": 0,
+        "renderStart": 49969,
+        "styleAndLayoutStart": 49983,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 49969,
+            "duration": 8.699999988079071,
+            "executionStart": 49969,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 50458.30000001192,
+        "duration": 68.29999995231628,
+        "blockingDuration": 0,
+        "renderStart": 50506.39999997616,
+        "styleAndLayoutStart": 50526.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 50506.39999997616,
+            "duration": 8.800000011920929,
+            "executionStart": 50506.39999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 50527.89999997616,
+        "duration": 61.19999998807907,
+        "blockingDuration": 7.8,
+        "renderStart": 50531.30000001192,
+        "styleAndLayoutStart": 50588.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 50532,
+            "duration": 12.099999964237213,
+            "executionStart": 50532,
+            "forcedStyleAndLayoutDuration": 0.4,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 50771.39999997616,
+        "duration": 69.40000003576279,
+        "blockingDuration": 0,
+        "renderStart": 50819.80000001192,
+        "styleAndLayoutStart": 50840.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 50819.80000001192,
+            "duration": 14.599999964237213,
+            "executionStart": 50819.80000001192,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 51516.09999996424,
+        "duration": 64.40000003576279,
+        "blockingDuration": 9.7,
+        "renderStart": 51520.80000001192,
+        "styleAndLayoutStart": 51580.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 51520.89999997616,
+            "duration": 11.100000023841858,
+            "executionStart": 51520.89999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 52532.39999997616,
+        "duration": 63.30000001192093,
+        "blockingDuration": 9.3,
+        "renderStart": 52536.39999997616,
+        "styleAndLayoutStart": 52595.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 52536.5,
+            "duration": 9.699999988079071,
+            "executionStart": 52536.5,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 52707.39999997616,
+        "duration": 55.60000002384186,
+        "blockingDuration": 0,
+        "renderStart": 52740.09999996424,
+        "styleAndLayoutStart": 52762.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 52740.09999996424,
+            "duration": 15.600000023841858,
+            "executionStart": 52740.09999996424,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 53015,
+        "duration": 67.39999997615814,
+        "blockingDuration": 0,
+        "renderStart": 53064.89999997616,
+        "styleAndLayoutStart": 53082.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 53064.89999997616,
+            "duration": 11.400000035762787,
+            "executionStart": 53064.89999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 53549,
+        "duration": 64.19999998807907,
+        "blockingDuration": 6.1,
+        "renderStart": 53557.09999996424,
+        "styleAndLayoutStart": 53612.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 53557.19999998808,
+            "duration": 10.5,
+            "executionStart": 53557.19999998808,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 53905.59999996424,
+        "duration": 68.10000002384186,
+        "blockingDuration": 0,
+        "renderStart": 53958.19999998808,
+        "styleAndLayoutStart": 53973.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 53958.39999997616,
+            "duration": 9.900000035762787,
+            "executionStart": 53958.39999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 54243.30000001192,
+        "duration": 55.5,
+        "blockingDuration": 0,
+        "renderStart": 54286.80000001192,
+        "styleAndLayoutStart": 54298.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 54286.89999997616,
+            "duration": 8.900000035762787,
+            "executionStart": 54286.89999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 54517.30000001192,
+        "duration": 65,
+        "blockingDuration": 12.9,
+        "renderStart": 54519.39999997616,
+        "styleAndLayoutStart": 54581.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 54519.5,
+            "duration": 12.599999964237213,
+            "executionStart": 54519.5,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 55509,
+        "duration": 57.19999998807907,
+        "blockingDuration": 2.4,
+        "renderStart": 55513.80000001192,
+        "styleAndLayoutStart": 55565.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 55513.89999997616,
+            "duration": 9,
+            "executionStart": 55513.89999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 57523.39999997616,
+        "duration": 63.80000001192093,
+        "blockingDuration": 8.4,
+        "renderStart": 57528.89999997616,
+        "styleAndLayoutStart": 57586.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 57528.89999997616,
+            "duration": 12.600000023841858,
+            "executionStart": 57528.89999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 58060.30000001192,
+        "duration": 119,
+        "blockingDuration": 0,
+        "renderStart": 58164.80000001192,
+        "styleAndLayoutStart": 58179.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 58165,
+            "duration": 9.599999964237213,
+            "executionStart": 58165,
+            "forcedStyleAndLayoutDuration": 0.2,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 58519,
+        "duration": 75.69999998807907,
+        "blockingDuration": 19.5,
+        "renderStart": 58525.09999996424,
+        "styleAndLayoutStart": 58592,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 58525.19999998808,
+            "duration": 15.100000023841858,
+            "executionStart": 58525.19999998808,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 59528.39999997616,
+        "duration": 54.80000001192093,
+        "blockingDuration": 0,
+        "renderStart": 59534.89999997616,
+        "styleAndLayoutStart": 59582.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 59534.89999997616,
+            "duration": 10.300000011920929,
+            "executionStart": 59534.89999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 60507.80000001192,
+        "duration": 66.29999995231628,
+        "blockingDuration": 9.5,
+        "renderStart": 60514.59999996424,
+        "styleAndLayoutStart": 60573.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 60514.69999998808,
+            "duration": 13,
+            "executionStart": 60514.69999998808,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 61518.59999996424,
+        "duration": 59.5,
+        "blockingDuration": 7.5,
+        "renderStart": 61520.69999998808,
+        "styleAndLayoutStart": 61577.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 61520.89999997616,
+            "duration": 12.199999988079071,
+            "executionStart": 61520.89999997616,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 62528.5,
+        "duration": 68.80000001192093,
+        "blockingDuration": 11.7,
+        "renderStart": 62535.59999996424,
+        "styleAndLayoutStart": 62596.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 62535.59999996424,
+            "duration": 12.600000023841858,
+            "executionStart": 62535.59999996424,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 63522,
+        "duration": 69.5,
+        "blockingDuration": 11.5,
+        "renderStart": 63530.09999996424,
+        "styleAndLayoutStart": 63591.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 63530.19999998808,
+            "duration": 10,
+            "executionStart": 63530.19999998808,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 64516.69999998808,
+        "duration": 57.69999998807907,
+        "blockingDuration": 3.8,
+        "renderStart": 64520.59999996424,
+        "styleAndLayoutStart": 64574.09999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 64520.69999998808,
+            "duration": 9.300000011920929,
+            "executionStart": 64520.69999998808,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 65529.19999998808,
+        "duration": 72.80000001192093,
+        "blockingDuration": 11.2,
+        "renderStart": 65540.80000001192,
+        "styleAndLayoutStart": 65601.59999996424,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 65541,
+            "duration": 12.800000011920929,
+            "executionStart": 65541,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      },
+      {
+        "startTime": 66515.30000001192,
+        "duration": 66.79999995231628,
+        "blockingDuration": 11.9,
+        "renderStart": 66520.09999996424,
+        "styleAndLayoutStart": 66581.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": [
+          {
+            "startTime": 66520.19999998808,
+            "duration": 13.899999976158142,
+            "executionStart": 66520.19999998808,
+            "forcedStyleAndLayoutDuration": 0,
+            "pauseDuration": 0,
+            "invoker": "FrameRequestCallback",
+            "invokerType": "user-callback",
+            "sourceFunctionName": "n",
+            "sourceURL": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+            "sourceCharPosition": 4500403
+          }
+        ]
+      }
+    ],
+    "fps": [
+      {
+        "atMs": 8309.8,
+        "fps": 84.88964346349752
+      },
+      {
+        "atMs": 9321.5,
+        "fps": 72.15577740436883
+      },
+      {
+        "atMs": 10328.1,
+        "fps": 63.58036956089805
+      },
+      {
+        "atMs": 11344.9,
+        "fps": 56.058221872541345
+      },
+      {
+        "atMs": 12350.7,
+        "fps": 71.58480811294484
+      },
+      {
+        "atMs": 13368.6,
+        "fps": 74.66352293938503
+      },
+      {
+        "atMs": 14380.2,
+        "fps": 69.19731119019373
+      },
+      {
+        "atMs": 15380.9,
+        "fps": 75.94683721395032
+      },
+      {
+        "atMs": 16386.5,
+        "fps": 73.58790771678598
+      },
+      {
+        "atMs": 17397.3,
+        "fps": 73.20933913731703
+      },
+      {
+        "atMs": 18402.9,
+        "fps": 53.699284009546425
+      },
+      {
+        "atMs": 19408.6,
+        "fps": 64.63159988068031
+      },
+      {
+        "atMs": 20420.4,
+        "fps": 55.34690650326135
+      },
+      {
+        "atMs": 21426.1,
+        "fps": 53.69394451625749
+      },
+      {
+        "atMs": 22437.8,
+        "fps": 54.363941880003914
+      },
+      {
+        "atMs": 23455.6,
+        "fps": 53.055610139516645
+      },
+      {
+        "atMs": 24467.3,
+        "fps": 53.37550657309475
+      },
+      {
+        "atMs": 25479.7,
+        "fps": 55.31410509679961
+      },
+      {
+        "atMs": 26496.9,
+        "fps": 54.06999606763661
+      },
+      {
+        "atMs": 27502.6,
+        "fps": 50.710947598687625
+      },
+      {
+        "atMs": 28556.8,
+        "fps": 48.377916903813286
+      },
+      {
+        "atMs": 29574.6,
+        "fps": 50.10807624287683
+      },
+      {
+        "atMs": 30580.2,
+        "fps": 45.74383452665066
+      },
+      {
+        "atMs": 31591.9,
+        "fps": 43.49115350400313
+      },
+      {
+        "atMs": 32603.7,
+        "fps": 36.568491796797815
+      },
+      {
+        "atMs": 33609.5,
+        "fps": 41.757804732551236
+      },
+      {
+        "atMs": 34633.3,
+        "fps": 37.11662434069144
+      },
+      {
+        "atMs": 35651.1,
+        "fps": 39.30045195519765
+      },
+      {
+        "atMs": 36668.9,
+        "fps": 33.405384161917766
+      },
+      {
+        "atMs": 37680.6,
+        "fps": 37.560541662548296
+      },
+      {
+        "atMs": 38686.3,
+        "fps": 30.824301481555
+      },
+      {
+        "atMs": 39692.1,
+        "fps": 34.798170610459486
+      },
+      {
+        "atMs": 40709.9,
+        "fps": 31.440361564157897
+      },
+      {
+        "atMs": 41727.6,
+        "fps": 35.37388228358073
+      },
+      {
+        "atMs": 42739.3,
+        "fps": 35.583671048729705
+      },
+      {
+        "atMs": 43757.7,
+        "fps": 35.34956794972526
+      },
+      {
+        "atMs": 44762.9,
+        "fps": 36.80859530441687
+      },
+      {
+        "atMs": 45805.2,
+        "fps": 29.7419169145161
+      },
+      {
+        "atMs": 46835.4,
+        "fps": 31.061929722383873
+      },
+      {
+        "atMs": 47870.8,
+        "fps": 34.76917133474981
+      },
+      {
+        "atMs": 48900.7,
+        "fps": 31.070977764831714
+      },
+      {
+        "atMs": 49906.4,
+        "fps": 33.80729839912484
+      },
+      {
+        "atMs": 50912.1,
+        "fps": 32.812966093268464
+      },
+      {
+        "atMs": 51929.8,
+        "fps": 34.391274442369905
+      },
+      {
+        "atMs": 52959.8,
+        "fps": 31.067961165048544
+      },
+      {
+        "atMs": 53989.7,
+        "fps": 28.15807359937874
+      },
+      {
+        "atMs": 54995.3,
+        "fps": 30.82736674622098
+      },
+      {
+        "atMs": 56007.1,
+        "fps": 28.66179086776055
+      },
+      {
+        "atMs": 57012.8,
+        "fps": 34.801630704981456
+      },
+      {
+        "atMs": 58042.8,
+        "fps": 35.922330097087375
+      },
+      {
+        "atMs": 59072.7,
+        "fps": 27.187105544227748
+      },
+      {
+        "atMs": 60090.5,
+        "fps": 30.457850265277962
+      },
+      {
+        "atMs": 61120.4,
+        "fps": 31.070977764831493
+      },
+      {
+        "atMs": 62138.2,
+        "fps": 29.47533896639824
+      },
+      {
+        "atMs": 63149.9,
+        "fps": 29.653059207274755
+      },
+      {
+        "atMs": 64161.7,
+        "fps": 29.650128483890224
+      },
+      {
+        "atMs": 65185.6,
+        "fps": 31.253052055864785
+      },
+      {
+        "atMs": 66203.3,
+        "fps": 28.495627395106492
+      },
+      {
+        "atMs": 67209.1,
+        "fps": 29.82700338039363
+      }
+    ],
+    "runtime": [
+      {
+        "atMs": 8024,
+        "fps": 47.407407407407405,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0,
+        "consumeRate": 0,
+        "totalReceived": 0,
+        "totalConsumed": 0,
+        "oldestPendingMs": 0,
+        "mapPoints": 0,
+        "renderP95Ms": 0
+      },
+      {
+        "atMs": 9025,
+        "fps": 86.56716417910455,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9959167413367748,
+        "consumeRate": 0.9959167413367748,
+        "totalReceived": 1,
+        "totalConsumed": 1,
+        "oldestPendingMs": 0,
+        "mapPoints": 1,
+        "renderP95Ms": 9.699999988079071
+      },
+      {
+        "atMs": 10027.599999964237,
+        "fps": 63.25985964218637,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9891196834817013,
+        "consumeRate": 0.9891196834817013,
+        "totalReceived": 2,
+        "totalConsumed": 2,
+        "oldestPendingMs": 0,
+        "mapPoints": 2,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 11033.899999976158,
+        "fps": 54.98900219956005,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9963136395455584,
+        "consumeRate": 0.9963136395455584,
+        "totalReceived": 3,
+        "totalConsumed": 3,
+        "oldestPendingMs": 0,
+        "mapPoints": 3,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 12024.199999988079,
+        "fps": 66.26446444466433,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9931472837069046,
+        "consumeRate": 0.9931472837069046,
+        "totalReceived": 4,
+        "totalConsumed": 4,
+        "oldestPendingMs": 0,
+        "mapPoints": 4,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 13036.599999964237,
+        "fps": 76.55597534301046,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9930486593843099,
+        "consumeRate": 0.9930486593843099,
+        "totalReceived": 5,
+        "totalConsumed": 5,
+        "oldestPendingMs": 0,
+        "mapPoints": 5,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 14028.899999976158,
+        "fps": 72.15577740436896,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9890218574180301,
+        "consumeRate": 0.9890218574180301,
+        "totalReceived": 6,
+        "totalConsumed": 6,
+        "oldestPendingMs": 0,
+        "mapPoints": 6,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 15027.5,
+        "fps": 73.13698359359549,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9890218573597269,
+        "consumeRate": 0.9890218573597269,
+        "totalReceived": 7,
+        "totalConsumed": 7,
+        "oldestPendingMs": 0,
+        "mapPoints": 7,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 16025.399999976158,
+        "fps": 73.58790771678598,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9940357852882704,
+        "consumeRate": 0.9940357852882704,
+        "totalReceived": 8,
+        "totalConsumed": 8,
+        "oldestPendingMs": 0,
+        "mapPoints": 8,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 17036.69999998808,
+        "fps": 73.68110816386694,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9828009828009828,
+        "consumeRate": 0.9828009828009828,
+        "totalReceived": 9,
+        "totalConsumed": 9,
+        "oldestPendingMs": 0,
+        "mapPoints": 9,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 18026.30000001192,
+        "fps": 73.68110816386694,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9840582562603138,
+        "consumeRate": 0.9840582562603138,
+        "totalReceived": 10,
+        "totalConsumed": 10,
+        "oldestPendingMs": 0,
+        "mapPoints": 10,
+        "renderP95Ms": 16.5
+      },
+      {
+        "atMs": 19026.5,
+        "fps": 58.95647047263433,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9997000899610943,
+        "consumeRate": 0.9997000899610943,
+        "totalReceived": 11,
+        "totalConsumed": 11,
+        "oldestPendingMs": 0,
+        "mapPoints": 11,
+        "renderP95Ms": 16.5
+      },
+      {
+        "atMs": 20034.19999998808,
+        "fps": 63.63726757482346,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9923588369671825,
+        "consumeRate": 0.9923588369671825,
+        "totalReceived": 12,
+        "totalConsumed": 12,
+        "oldestPendingMs": 0,
+        "mapPoints": 12,
+        "renderP95Ms": 16.5
+      },
+      {
+        "atMs": 21034.599999964237,
+        "fps": 58.66560604554038,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9996001599598484,
+        "consumeRate": 0.9996001599598484,
+        "totalReceived": 13,
+        "totalConsumed": 13,
+        "oldestPendingMs": 0,
+        "mapPoints": 13,
+        "renderP95Ms": 16.5
+      },
+      {
+        "atMs": 22037.099999964237,
+        "fps": 51.705279904544064,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9975062344139651,
+        "consumeRate": 0.9975062344139651,
+        "totalReceived": 14,
+        "totalConsumed": 14,
+        "oldestPendingMs": 0,
+        "mapPoints": 14,
+        "renderP95Ms": 16.5
+      },
+      {
+        "atMs": 23037.80000001192,
+        "fps": 54.68827682211411,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9993004896096229,
+        "consumeRate": 0.9993004896096229,
+        "totalReceived": 15,
+        "totalConsumed": 15,
+        "oldestPendingMs": 0,
+        "mapPoints": 15,
+        "renderP95Ms": 16.5
+      },
+      {
+        "atMs": 24024.399999976158,
+        "fps": 52.07309884063652,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9993004896096229,
+        "consumeRate": 0.9993004896096229,
+        "totalReceived": 16,
+        "totalConsumed": 16,
+        "oldestPendingMs": 0,
+        "mapPoints": 16,
+        "renderP95Ms": 16.5
+      },
+      {
+        "atMs": 25038.19999998808,
+        "fps": 52.73952534427201,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9458948165070714,
+        "consumeRate": 0.9458948165070714,
+        "totalReceived": 17,
+        "totalConsumed": 17,
+        "oldestPendingMs": 0,
+        "mapPoints": 17,
+        "renderP95Ms": 16.5
+      },
+      {
+        "atMs": 26035.099999964237,
+        "fps": 55.352377186913074,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9881422924901185,
+        "consumeRate": 0.9881422924901185,
+        "totalReceived": 18,
+        "totalConsumed": 18,
+        "oldestPendingMs": 0,
+        "mapPoints": 18,
+        "renderP95Ms": 16.5
+      },
+      {
+        "atMs": 27026.099999964237,
+        "fps": 54.03812143839658,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9940357852882704,
+        "consumeRate": 0.9940357852882704,
+        "totalReceived": 19,
+        "totalConsumed": 19,
+        "oldestPendingMs": 0,
+        "mapPoints": 19,
+        "renderP95Ms": 16.5
+      },
+      {
+        "atMs": 28029.099999964237,
+        "fps": 53.055610139516645,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.974184120798831,
+        "consumeRate": 0.974184120798831,
+        "totalReceived": 20,
+        "totalConsumed": 20,
+        "oldestPendingMs": 0,
+        "mapPoints": 20,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 29035.30000001192,
+        "fps": 51.705279904544064,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9908838684223269,
+        "consumeRate": 0.9908838684223269,
+        "totalReceived": 21,
+        "totalConsumed": 21,
+        "oldestPendingMs": 0,
+        "mapPoints": 21,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 30033.399999976158,
+        "fps": 48.12886749828101,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9857072449482503,
+        "consumeRate": 0.9857072449482503,
+        "totalReceived": 22,
+        "totalConsumed": 22,
+        "oldestPendingMs": 0,
+        "mapPoints": 22,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 31026.19999998808,
+        "fps": 46.8933177022275,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9769441187736497,
+        "consumeRate": 0.9769441187736497,
+        "totalReceived": 23,
+        "totalConsumed": 23,
+        "oldestPendingMs": 0,
+        "mapPoints": 23,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 32023.099999964237,
+        "fps": 44.213008449597204,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9817396426812387,
+        "consumeRate": 0.9817396426812387,
+        "totalReceived": 24,
+        "totalConsumed": 24,
+        "oldestPendingMs": 0,
+        "mapPoints": 24,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 33036.5,
+        "fps": 40.28296325407745,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9791442279333474,
+        "consumeRate": 0.9791442279333474,
+        "totalReceived": 25,
+        "totalConsumed": 25,
+        "oldestPendingMs": 0,
+        "mapPoints": 25,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 34025.5,
+        "fps": 36.35291805855757,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9864851534100423,
+        "consumeRate": 0.9864851534100423,
+        "totalReceived": 26,
+        "totalConsumed": 26,
+        "oldestPendingMs": 0,
+        "mapPoints": 26,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 35029.19999998808,
+        "fps": 42.00039070130903,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9739943508440742,
+        "consumeRate": 0.9739943508440742,
+        "totalReceived": 27,
+        "totalConsumed": 27,
+        "oldestPendingMs": 0,
+        "mapPoints": 27,
+        "renderP95Ms": 14.5
+      },
+      {
+        "atMs": 36033.39999997616,
+        "fps": 38.31794065631744,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9819324430134362,
+        "consumeRate": 0.9819324430134362,
+        "totalReceived": 28,
+        "totalConsumed": 28,
+        "oldestPendingMs": 0,
+        "mapPoints": 28,
+        "renderP95Ms": 14.5
+      },
+      {
+        "atMs": 37034,
+        "fps": 35.714285714285715,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9669309611405209,
+        "consumeRate": 0.9669309611405209,
+        "totalReceived": 29,
+        "totalConsumed": 29,
+        "oldestPendingMs": 0,
+        "mapPoints": 29,
+        "renderP95Ms": 14.5
+      },
+      {
+        "atMs": 38043.59999996424,
+        "fps": 35.58367104872996,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9892175289579432,
+        "consumeRate": 0.9892175289579432,
+        "totalReceived": 30,
+        "totalConsumed": 30,
+        "oldestPendingMs": 0,
+        "mapPoints": 30,
+        "renderP95Ms": 14.5
+      },
+      {
+        "atMs": 39041.39999997616,
+        "fps": 33.60347894840868,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9880446595953396,
+        "consumeRate": 0.9880446595953396,
+        "totalReceived": 31,
+        "totalConsumed": 31,
+        "oldestPendingMs": 0,
+        "mapPoints": 31,
+        "renderP95Ms": 14.5
+      },
+      {
+        "atMs": 40027.39999997616,
+        "fps": 34.74903474903475,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9656237929480279,
+        "consumeRate": 0.9656237929480279,
+        "totalReceived": 32,
+        "totalConsumed": 32,
+        "oldestPendingMs": 0,
+        "mapPoints": 32,
+        "renderP95Ms": 14.5
+      },
+      {
+        "atMs": 41038.69999998808,
+        "fps": 33.012913875133464,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9700261907295831,
+        "consumeRate": 0.9700261907295831,
+        "totalReceived": 33,
+        "totalConsumed": 33,
+        "oldestPendingMs": 0,
+        "mapPoints": 33,
+        "renderP95Ms": 14.5
+      },
+      {
+        "atMs": 42025.80000001192,
+        "fps": 34.801630704981704,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9920634920634921,
+        "consumeRate": 0.9920634920634921,
+        "totalReceived": 34,
+        "totalConsumed": 34,
+        "oldestPendingMs": 0,
+        "mapPoints": 34,
+        "renderP95Ms": 14.5
+      },
+      {
+        "atMs": 43027.5,
+        "fps": 33.60680043491139,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9906875371741826,
+        "consumeRate": 0.9906875371741826,
+        "totalReceived": 35,
+        "totalConsumed": 35,
+        "oldestPendingMs": 0,
+        "mapPoints": 35,
+        "renderP95Ms": 14.5
+      },
+      {
+        "atMs": 44037.89999997616,
+        "fps": 35.79596301083833,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9956192751537175,
+        "consumeRate": 0.9956192751537175,
+        "totalReceived": 36,
+        "totalConsumed": 36,
+        "oldestPendingMs": 0,
+        "mapPoints": 36,
+        "renderP95Ms": 14.5
+      },
+      {
+        "atMs": 45036.80000001192,
+        "fps": 35.370406759677635,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9793360102193945,
+        "consumeRate": 0.9793360102193945,
+        "totalReceived": 37,
+        "totalConsumed": 37,
+        "oldestPendingMs": 0,
+        "mapPoints": 37,
+        "renderP95Ms": 14.5
+      },
+      {
+        "atMs": 46025.39999997616,
+        "fps": 32.61514133227925,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9879470459917912,
+        "consumeRate": 0.9879470459917912,
+        "totalReceived": 38,
+        "totalConsumed": 38,
+        "oldestPendingMs": 0,
+        "mapPoints": 38,
+        "renderP95Ms": 14.5
+      },
+      {
+        "atMs": 47025.80000001192,
+        "fps": 30.641494514183915,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9920634920634921,
+        "consumeRate": 0.9920634920634921,
+        "totalReceived": 39,
+        "totalConsumed": 39,
+        "oldestPendingMs": 0,
+        "mapPoints": 39,
+        "renderP95Ms": 14.5
+      },
+      {
+        "atMs": 48026.09999996424,
+        "fps": 34.798170610459486,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9931472837656952,
+        "consumeRate": 0.9931472837656952,
+        "totalReceived": 40,
+        "totalConsumed": 40,
+        "oldestPendingMs": 0,
+        "mapPoints": 40,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 49052.89999997616,
+        "fps": 31.04384943733014,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 1.9434457292329848,
+        "consumeRate": 0.9717228646164924,
+        "totalReceived": 41,
+        "totalConsumed": 41,
+        "oldestPendingMs": 0,
+        "mapPoints": 41,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 50028.39999997616,
+        "fps": 32.45476003147142,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.980872976949485,
+        "consumeRate": 1.96174595389897,
+        "totalReceived": 42,
+        "totalConsumed": 42,
+        "oldestPendingMs": 0,
+        "mapPoints": 42,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 51025.89999997616,
+        "fps": 34.801630704981456,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9964129135468658,
+        "consumeRate": 0.9964129135468658,
+        "totalReceived": 43,
+        "totalConsumed": 43,
+        "oldestPendingMs": 0,
+        "mapPoints": 43,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 52041.59999996424,
+        "fps": 32.44274809160305,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9522902580490388,
+        "consumeRate": 0.9522902580490388,
+        "totalReceived": 44,
+        "totalConsumed": 44,
+        "oldestPendingMs": 0,
+        "mapPoints": 44,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 53029.30000001192,
+        "fps": 33.40210236761956,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9850275807838282,
+        "consumeRate": 0.9850275807838282,
+        "totalReceived": 45,
+        "totalConsumed": 45,
+        "oldestPendingMs": 0,
+        "mapPoints": 45,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 54039,
+        "fps": 27.676188593456637,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9828975820949815,
+        "consumeRate": 0.9828975820949815,
+        "totalReceived": 46,
+        "totalConsumed": 46,
+        "oldestPendingMs": 0,
+        "mapPoints": 46,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 55047.39999997616,
+        "fps": 30.097087378640776,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9717228646164924,
+        "consumeRate": 0.9717228646164924,
+        "totalReceived": 47,
+        "totalConsumed": 47,
+        "oldestPendingMs": 0,
+        "mapPoints": 47,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 56023.30000001192,
+        "fps": 29.829969175698604,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9941346058491918,
+        "consumeRate": 0.9941346058491918,
+        "totalReceived": 48,
+        "totalConsumed": 48,
+        "oldestPendingMs": 0,
+        "mapPoints": 48,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 57023.39999997616,
+        "fps": 29.12055911473488,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0,
+        "consumeRate": 0,
+        "totalReceived": 48,
+        "totalConsumed": 48,
+        "oldestPendingMs": 0,
+        "mapPoints": 48,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 58030,
+        "fps": 40.79254079254085,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9681479330265103,
+        "consumeRate": 0.9681479330265103,
+        "totalReceived": 49,
+        "totalConsumed": 49,
+        "oldestPendingMs": 0,
+        "mapPoints": 49,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 59025.09999996424,
+        "fps": 27.841304563985364,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9933445911916496,
+        "consumeRate": 0.9933445911916496,
+        "totalReceived": 50,
+        "totalConsumed": 50,
+        "oldestPendingMs": 0,
+        "mapPoints": 50,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 60035,
+        "fps": 30.457850265277962,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9855129595069954,
+        "consumeRate": 0.9855129595069954,
+        "totalReceived": 51,
+        "totalConsumed": 51,
+        "oldestPendingMs": 0,
+        "mapPoints": 51,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 61023,
+        "fps": 30.279351435827223,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9750390015940621,
+        "consumeRate": 0.9750390015940621,
+        "totalReceived": 52,
+        "totalConsumed": 52,
+        "oldestPendingMs": 0,
+        "mapPoints": 52,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 62026.69999998808,
+        "fps": 30.638466100019897,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9887284951202693,
+        "consumeRate": 0.9887284951202693,
+        "totalReceived": 53,
+        "totalConsumed": 53,
+        "oldestPendingMs": 0,
+        "mapPoints": 53,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 63029.5,
+        "fps": 29.47533896639803,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9816432708468658,
+        "consumeRate": 0.9816432708468658,
+        "totalReceived": 54,
+        "totalConsumed": 54,
+        "oldestPendingMs": 0,
+        "mapPoints": 54,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 64032.19999998808,
+        "fps": 28.66179086776055,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9884353069208096,
+        "consumeRate": 0.9884353069208096,
+        "totalReceived": 55,
+        "totalConsumed": 55,
+        "oldestPendingMs": 0,
+        "mapPoints": 55,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 65049.59999996424,
+        "fps": 30.641494514183915,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.989217528899617,
+        "consumeRate": 0.989217528899617,
+        "totalReceived": 56,
+        "totalConsumed": 56,
+        "oldestPendingMs": 0,
+        "mapPoints": 56,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 66023.89999997616,
+        "fps": 29.47533896639824,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.979623824497171,
+        "consumeRate": 0.979623824497171,
+        "totalReceived": 57,
+        "totalConsumed": 57,
+        "oldestPendingMs": 0,
+        "mapPoints": 57,
+        "renderP95Ms": 12.699999988079071
+      },
+      {
+        "atMs": 67029.30000001192,
+        "fps": 29.832935560859017,
+        "pending": 0,
+        "batchSize": 1,
+        "arrivalRate": 0.9938382030934308,
+        "consumeRate": 0.9938382030934308,
+        "totalReceived": 58,
+        "totalConsumed": 58,
+        "oldestPendingMs": 0,
+        "mapPoints": 58,
+        "renderP95Ms": 12.699999988079071
+      }
+    ],
+    "startTime": 7308.5,
+    "endTime": 67335.39999997616,
+    "finalReceived": 58,
+    "finalConsumed": 58,
+    "finalPending": 0,
+    "finalMapPoints": 58,
+    "frameMode": 1,
+    "pointLimit": 1,
+    "mapType": 2
+  },
+  "simulator": {
+    "before": {
+      "running": false,
+      "config": {
+        "robotId": "QH-ZHC-01",
+        "pointsPerSecond": 20,
+        "pattern": "route"
+      },
+      "committedSequence": 4271620,
+      "generatedPoints": 386166,
+      "lastGeneratedAt": "2026-09-23T15:46:56.950Z",
+      "updatedAt": "2026-09-23T15:47:06.729Z",
+      "connectedClients": 3
+    },
+    "after": {
+      "running": true,
+      "config": {
+        "robotId": "QH-ZHC-01",
+        "pointsPerSecond": 20,
+        "pattern": "route"
+      },
+      "committedSequence": 4272800,
+      "generatedPoints": 387346,
+      "lastGeneratedAt": "2026-09-23T15:48:06.950Z",
+      "updatedAt": "2026-09-23T15:48:06.852Z",
+      "connectedClients": 2
+    }
+  }
+}

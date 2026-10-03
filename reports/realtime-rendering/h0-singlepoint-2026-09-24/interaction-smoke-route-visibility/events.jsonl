@@ -1,0 +1,11 @@
+{"type":"started","at":"2026-09-23T18:56:58.522Z","pointCount":260,"scenario":"temporary browser scene"}
+{"type":"two_d_loaded","at":"2026-09-23T18:57:02.754Z","logical":260,"physical":260,"routes":2,"pointCache":true,"routeCache":true,"pointStyleReused":true,"routeStyleReused":true}
+{"type":"three_d_loaded","at":"2026-09-23T18:57:02.956Z","physical":260,"routes":2,"routePositionCounts":[256,5],"firstPoint":[112,28],"lastPoint":[112.00259,28.00259],"camera":{"longitude":112.00259,"latitude":27.99790137656988,"height":300.0212605559711},"clockAnimating":false,"idleRenderTimeChange":true}
+{"type":"three_d_screenshot","at":"2026-09-23T18:57:04.558Z","file":"three-d-after-switch.png"}
+{"type":"gas_switched","at":"2026-09-23T18:57:04.896Z","gas":"pri_co2","framePending":false,"physical":260,"routes":2}
+{"type":"map_switched_back","at":"2026-09-23T18:57:04.952Z","points":260,"routes":2}
+{"type":"history_playback_started","at":"2026-09-23T18:57:05.076Z","active":true,"clockAnimating":true,"timeDrivenRendering":true}
+{"type":"history_playback_stopped","at":"2026-09-23T18:57:06.292Z","active":false,"clockAnimating":false,"idleRenderTimeChange":true}
+{"type":"completed","at":"2026-09-23T18:57:06.295Z"}
+{"type":"http_error_responses","at":"2026-09-23T18:57:06.298Z","responses":[{"resource":"503 127.0.0.1:9527/api/chart/weather","count":3}]}
+{"type":"simulator_restored","at":"2026-09-23T18:57:06.318Z","match":true,"before":{"running":true,"config":{"robotId":"QH-ZHC-01","pointsPerSecond":20,"pattern":"route"},"committedSequence":4453840,"generatedPoints":46020,"lastGeneratedAt":"2026-09-23T18:56:58.950Z","updatedAt":"2026-09-23T18:56:58.640Z","connectedClients":1},"after":{"running":true,"config":{"robotId":"QH-ZHC-01","pointsPerSecond":20,"pattern":"route"},"committedSequence":4453840,"generatedPoints":46020,"lastGeneratedAt":"2026-09-23T18:56:58.950Z","updatedAt":"2026-09-23T18:57:06.317Z","connectedClients":2}}

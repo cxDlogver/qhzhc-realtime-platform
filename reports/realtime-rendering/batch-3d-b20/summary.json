@@ -1,0 +1,25 @@
+{
+  "fpsSamples": 49,
+  "fpsAverage": 7.465790540226591,
+  "fpsP5": 1.3643495463537745,
+  "fpsMin": 1.1461974898274963,
+  "loafCount": 180,
+  "loafP95Ms": 725.6999999880791,
+  "loafMaxMs": 979,
+  "serverGenerated": 1200,
+  "clientReceived": 1140,
+  "clientConsumed": 1140,
+  "finalPending": 0,
+  "topScriptEntrypoints": [
+    {
+      "name": "n",
+      "count": 180,
+      "totalMs": 24234.49999988079
+    },
+    {
+      "name": "http://127.0.0.1:9527/static/Cesium/Cesium.js",
+      "count": 1,
+      "totalMs": 38.10000002384186
+    }
+  ]
+}

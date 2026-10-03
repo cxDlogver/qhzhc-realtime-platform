@@ -1,0 +1,22 @@
+[
+  {
+    "file": "QHZHC_Web/src/views/DataVisualization/dataVisualization.vue",
+    "templateUnchanged": true,
+    "stylesUnchanged": true
+  },
+  {
+    "file": "QHZHC_Web/src/views/DataVisualization/components/Charts.vue",
+    "templateUnchanged": true,
+    "stylesUnchanged": true
+  },
+  {
+    "file": "QHZHC_Web/src/views/DataVisualization/components/PlanimetricMap.vue",
+    "templateUnchanged": true,
+    "stylesUnchanged": true
+  },
+  {
+    "file": "QHZHC_Web/src/views/DataVisualization/components/StereoscopicMap.vue",
+    "templateUnchanged": true,
+    "stylesUnchanged": true
+  }
+]

@@ -1,0 +1,5 @@
+{"type":"prepared","at":"2026-09-23T19:37:31.236Z","fixtureSha256":"c779576fa6c9057d6fab2bc85ec32c92160d1c990d48df7663b8500a2873fa55"}
+{"type":"history_ready","at":"2026-09-23T19:37:42.286Z","points":200}
+{"type":"measurement_started","at":"2026-09-23T19:37:42.304Z","browserStartMs":10186.899999976158,"initialHistoryCount":200}
+{"type":"measurement_completed","at":"2026-09-23T19:38:42.596Z","elapsedBrowserMs":60035.80000001192,"fpsSamples":59,"fpsAverage":149.12959101733892,"fpsP5":131.46189581891903,"fpsMin":114.38233538889895,"loafCount":15,"loafP95Ms":95.69999998807907,"loafMaxMs":95.69999998807907,"serverGenerated":1200,"clientReceived":59,"clientConsumed":59,"finalPending":0,"finalMapPoints":259,"finalRenderedMapPoints":259,"finalRouteGroups":2,"pointRetentionPass":true,"topScriptEntrypoints":[]}
+{"type":"simulator_restored","at":"2026-09-23T19:38:42.631Z","before":{"running":false,"config":{"robotId":"QH-ZHC-01","pointsPerSecond":20,"pattern":"route"}},"restored":{"running":false,"config":{"robotId":"QH-ZHC-01","pointsPerSecond":20,"pattern":"route"}}}

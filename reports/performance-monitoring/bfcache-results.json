@@ -1,0 +1,235 @@
+{
+  "uploads": [
+    {
+      "status": 204,
+      "documentId": "e2574eaf-49fd-451f-bf36-e21f13536c6f",
+      "viewId": "6ef6e4fa-f59d-43f0-828c-879ab4bc2575",
+      "events": [
+        "view-enter",
+        "slow-call",
+        "slow-call",
+        "slow-call",
+        "slow-call",
+        "ready",
+        "connected"
+      ],
+      "vitals": []
+    },
+    {
+      "status": 204,
+      "documentId": "a3f90bca-01f9-4d8e-8b05-178fe49105f2",
+      "viewId": "894ac9d3-1c31-4164-877b-956e5cc36167",
+      "events": [
+        "view-enter",
+        "slow-call",
+        "slow-call",
+        "ready",
+        "slow-call",
+        "loaf",
+        "connected",
+        "loaf"
+      ],
+      "vitals": [
+        {
+          "name": "TTFB",
+          "id": "v6-1788768101255-4755310457611"
+        },
+        {
+          "name": "FCP",
+          "id": "v6-1788768101255-2994150585439"
+        },
+        {
+          "name": "LCP",
+          "id": "v6-1788768101255-5819358302973"
+        },
+        {
+          "name": "CLS",
+          "id": "v6-1788768101491-5013032944403"
+        }
+      ]
+    },
+    {
+      "status": 204,
+      "documentId": "a3f90bca-01f9-4d8e-8b05-178fe49105f2",
+      "viewId": "894ac9d3-1c31-4164-877b-956e5cc36167",
+      "events": [
+        "slow-call",
+        "loaf",
+        "loaf",
+        "loaf",
+        "loaf",
+        "loaf",
+        "loaf",
+        "loaf",
+        "loaf",
+        "loaf",
+        "slow-call",
+        "loaf",
+        "slow-call",
+        "slow-call",
+        "slow-call",
+        "slow-call",
+        "slow-call",
+        "slow-call",
+        "slow-call",
+        "slow-call"
+      ],
+      "vitals": [
+        {
+          "name": "CLS",
+          "id": "v6-1788768101491-5013032944403"
+        }
+      ]
+    },
+    {
+      "status": 204,
+      "documentId": "a3f90bca-01f9-4d8e-8b05-178fe49105f2",
+      "viewId": "894ac9d3-1c31-4164-877b-956e5cc36167",
+      "events": [],
+      "vitals": []
+    },
+    {
+      "status": 204,
+      "documentId": "82d7e2f7-ae71-4e98-b916-57faa4e43337",
+      "viewId": "7d495acf-d441-4768-9ab7-3836017a67c3",
+      "events": [
+        "disconnect",
+        "bfcache-restore",
+        "loaf",
+        "connected"
+      ],
+      "vitals": [
+        {
+          "name": "TTFB",
+          "id": "v6-1788768114421-4350083582752"
+        },
+        {
+          "name": "CLS",
+          "id": "v6-1788768114421-8981316250199"
+        },
+        {
+          "name": "LCP",
+          "id": "v6-1788768114421-4476409348461"
+        },
+        {
+          "name": "FCP",
+          "id": "v6-1788768114421-7550007527983"
+        }
+      ]
+    },
+    {
+      "status": 204,
+      "documentId": "82d7e2f7-ae71-4e98-b916-57faa4e43337",
+      "viewId": "7d495acf-d441-4768-9ab7-3836017a67c3",
+      "events": [
+        "slow-call",
+        "slow-call"
+      ],
+      "vitals": [
+        {
+          "name": "CLS",
+          "id": "v6-1788768114421-8981316250199"
+        }
+      ]
+    },
+    {
+      "status": 204,
+      "documentId": "82d7e2f7-ae71-4e98-b916-57faa4e43337",
+      "viewId": "7d495acf-d441-4768-9ab7-3836017a67c3",
+      "events": [
+        "slow-call",
+        "slow-call",
+        "loaf",
+        "loaf",
+        "slow-call",
+        "slow-call",
+        "slow-call",
+        "loaf",
+        "slow-call",
+        "slow-call",
+        "loaf",
+        "slow-call",
+        "slow-call",
+        "loaf",
+        "slow-call",
+        "loaf",
+        "loaf",
+        "loaf",
+        "loaf",
+        "loaf"
+      ],
+      "vitals": [
+        {
+          "name": "CLS",
+          "id": "v6-1788768114421-8981316250199"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "before": {
+    "status": 204,
+    "documentId": "a3f90bca-01f9-4d8e-8b05-178fe49105f2",
+    "viewId": "894ac9d3-1c31-4164-877b-956e5cc36167",
+    "events": [
+      "slow-call",
+      "loaf",
+      "loaf",
+      "loaf",
+      "loaf",
+      "loaf",
+      "loaf",
+      "loaf",
+      "loaf",
+      "loaf",
+      "slow-call",
+      "loaf",
+      "slow-call",
+      "slow-call",
+      "slow-call",
+      "slow-call",
+      "slow-call",
+      "slow-call",
+      "slow-call",
+      "slow-call"
+    ],
+    "vitals": [
+      {
+        "name": "CLS",
+        "id": "v6-1788768101491-5013032944403"
+      }
+    ]
+  },
+  "persisted": true,
+  "reasons": null,
+  "restoredBatch": {
+    "status": 204,
+    "documentId": "82d7e2f7-ae71-4e98-b916-57faa4e43337",
+    "viewId": "7d495acf-d441-4768-9ab7-3836017a67c3",
+    "events": [
+      "disconnect",
+      "bfcache-restore",
+      "loaf",
+      "connected"
+    ],
+    "vitals": [
+      {
+        "name": "TTFB",
+        "id": "v6-1788768114421-4350083582752"
+      },
+      {
+        "name": "CLS",
+        "id": "v6-1788768114421-8981316250199"
+      },
+      {
+        "name": "LCP",
+        "id": "v6-1788768114421-4476409348461"
+      },
+      {
+        "name": "FCP",
+        "id": "v6-1788768114421-7550007527983"
+      }
+    ]
+  },
+  "identitiesRenewed": true
+}

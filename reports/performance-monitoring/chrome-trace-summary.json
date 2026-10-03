@@ -1,0 +1,105 @@
+{
+  "note": "Durations may overlap across nested events and threads; totals are not CPU utilization.",
+  "events": {
+    "FireAnimationFrame": {
+      "count": 3830,
+      "totalMs": 10353.988999999983,
+      "maxMs": 311.28
+    },
+    "MajorGC": {
+      "count": 6,
+      "totalMs": 721.969,
+      "maxMs": 213.308
+    },
+    "V8.GC_MARK_COMPACTOR": {
+      "count": 6,
+      "totalMs": 721.778,
+      "maxMs": 213.278
+    },
+    "V8.GC_HEAP_EMBEDDER_TRACING_EPILOGUE": {
+      "count": 6,
+      "totalMs": 682.7829999999999,
+      "maxMs": 205.922
+    },
+    "FunctionCall": {
+      "count": 4298,
+      "totalMs": 3856.8839999999977,
+      "maxMs": 37.904
+    },
+    "V8.GC_MC_BACKGROUND_MARKING": {
+      "count": 106,
+      "totalMs": 423.07599999999985,
+      "maxMs": 10.708
+    },
+    "MinorGC": {
+      "count": 100,
+      "totalMs": 365.8240000000002,
+      "maxMs": 5.889
+    },
+    "V8.GC_SCAVENGER": {
+      "count": 100,
+      "totalMs": 362.15699999999987,
+      "maxMs": 5.854
+    },
+    "V8.GC_SCAVENGER_SCAVENGE": {
+      "count": 100,
+      "totalMs": 360.844,
+      "maxMs": 5.846
+    },
+    "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE": {
+      "count": 100,
+      "totalMs": 302.975,
+      "maxMs": 5.027
+    },
+    "V8.GC_SCAVENGER_BACKGROUND_SCAVENGE_PARALLEL": {
+      "count": 760,
+      "totalMs": 1956.483,
+      "maxMs": 4.928
+    },
+    "V8.GC_SCAVENGER_SCAVENGE_PARALLEL": {
+      "count": 128,
+      "totalMs": 261.1029999999999,
+      "maxMs": 4.886
+    },
+    "V8.GC_MC_BACKGROUND_SWEEPING": {
+      "count": 144,
+      "totalMs": 120.35600000000004,
+      "maxMs": 4.677
+    },
+    "V8.GC_BACKGROUND_SAFEPOINT": {
+      "count": 2,
+      "totalMs": 7.758,
+      "maxMs": 3.964
+    },
+    "V8.GC_BACKGROUND_UNPARK": {
+      "count": 4,
+      "totalMs": 11.99,
+      "maxMs": 3.578
+    },
+    "V8.GC_MC_EVACUATE": {
+      "count": 12,
+      "totalMs": 16.544,
+      "maxMs": 3.437
+    },
+    "V8.GC_MC_FINISH": {
+      "count": 6,
+      "totalMs": 8.811,
+      "maxMs": 2.356
+    },
+    "V8.GC_MC_EVACUATE_UPDATE_POINTERS": {
+      "count": 6,
+      "totalMs": 9.24,
+      "maxMs": 1.97
+    },
+    "V8.GC_MC_INCREMENTAL_START": {
+      "count": 6,
+      "totalMs": 5.941,
+      "maxMs": 1.43
+    },
+    "UpdateLayoutTree": {
+      "count": 1250,
+      "totalMs": 69.49199999999982,
+      "maxMs": 1.411
+    }
+  }
+}

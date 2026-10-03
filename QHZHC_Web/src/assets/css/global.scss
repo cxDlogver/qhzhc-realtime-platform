@@ -1,0 +1,118 @@
+/*选择框样式修改*/
+$drownBgc: #122336;
+$drownBorder: rgba(255, 255, 255, 0.3);
+// $drownBorder: rgba(25,25,112, 1);
+$drownColor: #fff;
+$drownHoverBgc: rgba(21, 90, 155, .5);
+$drownHoverBoxShadow: inset 0 0 10px #fff !important;
+$fontColor: #0095FF;
+//.dark_form
+.el-picker-panel {
+    background: $drownBgc;
+    border-color: $drownBorder;
+    color: $drownColor;
+}
+.el-date-picker__header-label {
+    color: $drownColor;
+}
+.el-picker-panel__icon-btn {
+    color: $drownColor;
+}
+.el-date-table th {
+    color: $drownColor;
+    border-bottom-color: $drownBorder;
+}
+.el-popper {
+    .popper__arrow {
+        border-bottom-color: $drownBgc;
+    }
+
+    .popper__arrow::after {
+        border-bottom-color: $drownBgc;
+    }
+}
+.el-popper[x-placement^=bottom] {
+    .popper__arrow::after {
+        border-bottom-color: $drownBgc;
+    }
+}
+.el-time-range-picker__body {
+    border-color: $drownBorder;
+}
+.el-time-spinner__item {
+    color: $drownColor;
+}
+.el-time-spinner__item.active:not(.disabled) {
+    color: $fontColor;
+}
+// .el-time-spinner__item:hover {
+//     background-color: rgba(0, 0, 0, 0.384);
+// }
+.el-time-range-picker.el-picker-panel.el-popper {
+    color: $drownColor;
+    .el-time-spinner__item:hover:not(.disabled):not(.active) {
+        background-color: rgba(0, 0, 0, 0.384);
+    }
+    .el-time-panel__footer {
+        border-top-color: $drownBorder;
+    }
+    .el-time-panel__content::after, .el-time-panel__content::before {
+        border-top-color: $drownBorder;
+        border-bottom-color: $drownBorder;
+    }
+    .el-time-panel__btn {
+        color: $drownColor;
+    }
+}
+// 样式修改
+.el-input__inner {
+    background: #5E7499;
+    color: #fff;
+}
+// .el-time-range-picker__content {
+//     background: #5E7499;
+// }
+.el-date-editor .el-range-input {
+    background: #5E7499 !important;
+}
+.el-date-editor .el-range-separator {
+    color: #fff;
+}
+.el-date-editor .el-range-input {
+    color: #fff;
+}
+// .el-picker-panel.el-date-picker.el-popper {
+//     background-color: #5E7499;
+// }
+
+/** 全局下拉框样式 **/
+.el-select-dropdown {
+    background: rgb(50, 59, 80);
+    .el-scrollbar {
+        background: transparent;
+        .el-scrollbar__wrap {
+            background: transparent;
+            .el-select-dropdown__list {
+                background: transparent;
+                .el-select-dropdown__item {
+                    background: transparent;
+                    color: rgb(192, 196, 204);
+                }
+                .el-select-dropdown__item.selected {
+                    color: rgb(64, 158, 255);
+                }
+                .el-select-dropdown__item.hover {
+                    color: rgb(64, 158, 255);
+                }
+            }
+        }
+    }
+}
+.el-select-dropdown, .el-select-dropdown__wrap, .el-select-dropdown__item {
+  background: #fff !important;
+  color: #222 !important;
+}
+.el-select-dropdown__item.selected {
+  background: #f0f6ff !important;
+  color: #0095ff !important;
+}

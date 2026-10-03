@@ -1,0 +1,1718 @@
+{
+  "metadata": {
+    "recordedAt": "2026-09-23T15:42:50.996Z",
+    "seconds": 60,
+    "browser": "Chrome headless",
+    "viewport": "1440x900",
+    "map": "2D",
+    "frameMode": 10,
+    "pointsPerSecond": 20,
+    "pointLimit": 10,
+    "preexistingMapPoints": 0
+  },
+  "summary": {
+    "fpsSamples": 59,
+    "fpsAverage": 71.76070421000476,
+    "fpsP5": 23.866348448687212,
+    "fpsMin": 21.571937722753763,
+    "loafCount": 70,
+    "loafP95Ms": 187.30000001192093,
+    "loafMaxMs": 209,
+    "serverGenerated": 1200,
+    "clientReceived": 590,
+    "clientConsumed": 590,
+    "finalPending": 0,
+    "topScriptEntrypoints": []
+  },
+  "samples": {
+    "loafs": [
+      {
+        "startTime": 6662.600000023842,
+        "duration": 56.69999998807907,
+        "blockingDuration": 6.6,
+        "renderStart": 6662.800000011921,
+        "styleAndLayoutStart": 6718.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 7662.100000023842,
+        "duration": 52.5,
+        "blockingDuration": 2.3,
+        "renderStart": 7662.199999988079,
+        "styleAndLayoutStart": 7713.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 8650.100000023842,
+        "duration": 50.5,
+        "blockingDuration": 0.5,
+        "renderStart": 8650.100000023842,
+        "styleAndLayoutStart": 8699.899999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 9659.600000023842,
+        "duration": 51.799999952316284,
+        "blockingDuration": 1.7,
+        "renderStart": 9659.699999988079,
+        "styleAndLayoutStart": 9710.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 10654.100000023842,
+        "duration": 52.5,
+        "blockingDuration": 2.5,
+        "renderStart": 10654.100000023842,
+        "styleAndLayoutStart": 10706.199999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 11660.5,
+        "duration": 61.60000002384186,
+        "blockingDuration": 11.5,
+        "renderStart": 11660.5,
+        "styleAndLayoutStart": 11721.600000023842,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 12657.600000023842,
+        "duration": 64.79999995231628,
+        "blockingDuration": 14.6,
+        "renderStart": 12657.699999988079,
+        "styleAndLayoutStart": 12721.800000011921,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 13656,
+        "duration": 68.5,
+        "blockingDuration": 18.5,
+        "renderStart": 13656.100000023842,
+        "styleAndLayoutStart": 13724,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 14653.699999988079,
+        "duration": 63.5,
+        "blockingDuration": 13.6,
+        "renderStart": 14653.699999988079,
+        "styleAndLayoutStart": 14716.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 15652.899999976158,
+        "duration": 63.10000002384186,
+        "blockingDuration": 13.2,
+        "renderStart": 15653,
+        "styleAndLayoutStart": 15715.699999988079,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 16654.899999976158,
+        "duration": 67.20000004768372,
+        "blockingDuration": 17.2,
+        "renderStart": 16654.899999976158,
+        "styleAndLayoutStart": 16721.600000023842,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 17650,
+        "duration": 67.5,
+        "blockingDuration": 17.4,
+        "renderStart": 17650.100000023842,
+        "styleAndLayoutStart": 17717,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 18661.5,
+        "duration": 64,
+        "blockingDuration": 13.9,
+        "renderStart": 18661.600000023842,
+        "styleAndLayoutStart": 18725,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 19661.69999998808,
+        "duration": 67.80000001192093,
+        "blockingDuration": 17.8,
+        "renderStart": 19661.69999998808,
+        "styleAndLayoutStart": 19729.100000023842,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 20655.80000001192,
+        "duration": 69.30000001192093,
+        "blockingDuration": 19.3,
+        "renderStart": 20655.80000001192,
+        "styleAndLayoutStart": 20724.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 21680.899999976158,
+        "duration": 68.10000002384186,
+        "blockingDuration": 18.1,
+        "renderStart": 21681,
+        "styleAndLayoutStart": 21748.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 22673.69999998808,
+        "duration": 72.10000002384186,
+        "blockingDuration": 22.1,
+        "renderStart": 22673.80000001192,
+        "styleAndLayoutStart": 22745.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 23665,
+        "duration": 76,
+        "blockingDuration": 25.9,
+        "renderStart": 23665,
+        "styleAndLayoutStart": 23740.600000023842,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 24678.80000001192,
+        "duration": 91.80000001192093,
+        "blockingDuration": 41.7,
+        "renderStart": 24678.80000001192,
+        "styleAndLayoutStart": 24770.100000023842,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 25667.69999998808,
+        "duration": 94.40000003576279,
+        "blockingDuration": 44.4,
+        "renderStart": 25667.69999998808,
+        "styleAndLayoutStart": 25761.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 26667.69999998808,
+        "duration": 81.90000003576279,
+        "blockingDuration": 31.8,
+        "renderStart": 26667.80000001192,
+        "styleAndLayoutStart": 26749.100000023842,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 27680.399999976158,
+        "duration": 86.60000002384186,
+        "blockingDuration": 36.6,
+        "renderStart": 27680.5,
+        "styleAndLayoutStart": 27766.600000023842,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 28673.19999998808,
+        "duration": 96.69999998807907,
+        "blockingDuration": 46.6,
+        "renderStart": 28673.30000001192,
+        "styleAndLayoutStart": 28769.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 29112,
+        "duration": 98.69999998807907,
+        "blockingDuration": 48.7,
+        "renderStart": 29112.100000023842,
+        "styleAndLayoutStart": 29210.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 29686.100000023842,
+        "duration": 97.09999996423721,
+        "blockingDuration": 47,
+        "renderStart": 29686.19999998808,
+        "styleAndLayoutStart": 29782.600000023842,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 30682.5,
+        "duration": 95.89999997615814,
+        "blockingDuration": 45.7,
+        "renderStart": 30682.600000023842,
+        "styleAndLayoutStart": 30778,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 31684.5,
+        "duration": 104.39999997615814,
+        "blockingDuration": 50.4,
+        "renderStart": 31688.5,
+        "styleAndLayoutStart": 31788.399999976158,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 32677.80000001192,
+        "duration": 108.59999996423721,
+        "blockingDuration": 58.6,
+        "renderStart": 32677.80000001192,
+        "styleAndLayoutStart": 32786,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 33686.5,
+        "duration": 103.60000002384186,
+        "blockingDuration": 53.5,
+        "renderStart": 33686.5,
+        "styleAndLayoutStart": 33789.60000002384,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 34687,
+        "duration": 109.80000001192093,
+        "blockingDuration": 59.8,
+        "renderStart": 34687.10000002384,
+        "styleAndLayoutStart": 34796.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 35680.30000001192,
+        "duration": 111.59999996423721,
+        "blockingDuration": 61.5,
+        "renderStart": 35680.30000001192,
+        "styleAndLayoutStart": 35791.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 36694.80000001192,
+        "duration": 106.39999997615814,
+        "blockingDuration": 56.3,
+        "renderStart": 36694.89999997616,
+        "styleAndLayoutStart": 36800.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 37675.10000002384,
+        "duration": 117.39999997615814,
+        "blockingDuration": 67.2,
+        "renderStart": 37675.30000001192,
+        "styleAndLayoutStart": 37792,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 38678.5,
+        "duration": 120.39999997615814,
+        "blockingDuration": 70.5,
+        "renderStart": 38678.60000002384,
+        "styleAndLayoutStart": 38798.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 39680.5,
+        "duration": 114.10000002384186,
+        "blockingDuration": 64.2,
+        "renderStart": 39680.5,
+        "styleAndLayoutStart": 39794.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 40685.10000002384,
+        "duration": 129.79999995231628,
+        "blockingDuration": 79.6,
+        "renderStart": 40685.19999998808,
+        "styleAndLayoutStart": 40814.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 41691.89999997616,
+        "duration": 139.20000004768372,
+        "blockingDuration": 89.1,
+        "renderStart": 41691.89999997616,
+        "styleAndLayoutStart": 41830.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 42698.19999998808,
+        "duration": 138.80000001192093,
+        "blockingDuration": 88.7,
+        "renderStart": 42698.30000001192,
+        "styleAndLayoutStart": 42836.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 43711.10000002384,
+        "duration": 141,
+        "blockingDuration": 90.8,
+        "renderStart": 43711.30000001192,
+        "styleAndLayoutStart": 43851.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 44704.80000001192,
+        "duration": 134.5,
+        "blockingDuration": 84.4,
+        "renderStart": 44704.89999997616,
+        "styleAndLayoutStart": 44838.89999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 45101.80000001192,
+        "duration": 209,
+        "blockingDuration": 158.9,
+        "renderStart": 45101.89999997616,
+        "styleAndLayoutStart": 45310.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 45688.69999998808,
+        "duration": 131.30000001192093,
+        "blockingDuration": 81.3,
+        "renderStart": 45688.80000001192,
+        "styleAndLayoutStart": 45819.60000002384,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 45841.19999998808,
+        "duration": 54.10000002384186,
+        "blockingDuration": 0,
+        "renderStart": 45876.60000002384,
+        "styleAndLayoutStart": 45894.60000002384,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 46691.80000001192,
+        "duration": 141.80000001192093,
+        "blockingDuration": 91.8,
+        "renderStart": 46691.89999997616,
+        "styleAndLayoutStart": 46833.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 46863.69999998808,
+        "duration": 56,
+        "blockingDuration": 0,
+        "renderStart": 46899.5,
+        "styleAndLayoutStart": 46919.10000002384,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 47696.5,
+        "duration": 132.39999997615814,
+        "blockingDuration": 82.3,
+        "renderStart": 47696.5,
+        "styleAndLayoutStart": 47828.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 47858.19999998808,
+        "duration": 55,
+        "blockingDuration": 0,
+        "renderStart": 47893.19999998808,
+        "styleAndLayoutStart": 47912.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 48694.60000002384,
+        "duration": 151.29999995231628,
+        "blockingDuration": 101.3,
+        "renderStart": 48694.60000002384,
+        "styleAndLayoutStart": 48845.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 49648,
+        "duration": 52.69999998807907,
+        "blockingDuration": 2.6,
+        "renderStart": 49648.39999997616,
+        "styleAndLayoutStart": 49700.10000002384,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 49704.60000002384,
+        "duration": 189.39999997615814,
+        "blockingDuration": 139.4,
+        "renderStart": 49704.60000002384,
+        "styleAndLayoutStart": 49893.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 49944.89999997616,
+        "duration": 52.60000002384186,
+        "blockingDuration": 0,
+        "renderStart": 49970.60000002384,
+        "styleAndLayoutStart": 49997,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 50689.10000002384,
+        "duration": 132.89999997615814,
+        "blockingDuration": 82.9,
+        "renderStart": 50689.10000002384,
+        "styleAndLayoutStart": 50821.60000002384,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 51686.10000002384,
+        "duration": 133.5,
+        "blockingDuration": 83.5,
+        "renderStart": 51686.10000002384,
+        "styleAndLayoutStart": 51819.19999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 51854.69999998808,
+        "duration": 52.5,
+        "blockingDuration": 0,
+        "renderStart": 51887.30000001192,
+        "styleAndLayoutStart": 51906.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 52691.5,
+        "duration": 135.19999998807907,
+        "blockingDuration": 85.2,
+        "renderStart": 52691.60000002384,
+        "styleAndLayoutStart": 52826.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 53698,
+        "duration": 138,
+        "blockingDuration": 88.1,
+        "renderStart": 53698,
+        "styleAndLayoutStart": 53835.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 54699.89999997616,
+        "duration": 138.60000002384186,
+        "blockingDuration": 88.6,
+        "renderStart": 54699.89999997616,
+        "styleAndLayoutStart": 54838,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 54881.39999997616,
+        "duration": 56.80000001192093,
+        "blockingDuration": 0,
+        "renderStart": 54916,
+        "styleAndLayoutStart": 54937.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 55704.10000002384,
+        "duration": 145.29999995231628,
+        "blockingDuration": 95.3,
+        "renderStart": 55704.10000002384,
+        "styleAndLayoutStart": 55849.10000002384,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 56720.39999997616,
+        "duration": 160.5,
+        "blockingDuration": 110.5,
+        "renderStart": 56720.5,
+        "styleAndLayoutStart": 56880.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 57678.10000002384,
+        "duration": 159.89999997615814,
+        "blockingDuration": 109.9,
+        "renderStart": 57678.10000002384,
+        "styleAndLayoutStart": 57837.69999998808,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 58704.89999997616,
+        "duration": 186.5,
+        "blockingDuration": 136.5,
+        "renderStart": 58705,
+        "styleAndLayoutStart": 58891,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 59721,
+        "duration": 165.10000002384186,
+        "blockingDuration": 115,
+        "renderStart": 59721.10000002384,
+        "styleAndLayoutStart": 59885.80000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 59958,
+        "duration": 65.10000002384186,
+        "blockingDuration": 11.8,
+        "renderStart": 59962.10000002384,
+        "styleAndLayoutStart": 60022.60000002384,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 60707.60000002384,
+        "duration": 181.79999995231628,
+        "blockingDuration": 131.8,
+        "renderStart": 60707.69999998808,
+        "styleAndLayoutStart": 60889,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 61689.5,
+        "duration": 170.39999997615814,
+        "blockingDuration": 120.4,
+        "renderStart": 61689.5,
+        "styleAndLayoutStart": 61859.5,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 62700.39999997616,
+        "duration": 187.30000001192093,
+        "blockingDuration": 137.2,
+        "renderStart": 62700.5,
+        "styleAndLayoutStart": 62887.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 63744.5,
+        "duration": 192.19999998807907,
+        "blockingDuration": 142.1,
+        "renderStart": 63744.60000002384,
+        "styleAndLayoutStart": 63936.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 64737.39999997616,
+        "duration": 187.30000001192093,
+        "blockingDuration": 137.2,
+        "renderStart": 64737.39999997616,
+        "styleAndLayoutStart": 64924.30000001192,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      },
+      {
+        "startTime": 65004.30000001192,
+        "duration": 53.09999996423721,
+        "blockingDuration": 0,
+        "renderStart": 65031.89999997616,
+        "styleAndLayoutStart": 65057.39999997616,
+        "firstUIEventTimestamp": 0,
+        "scripts": []
+      }
+    ],
+    "fps": [
+      {
+        "atMs": 6227.7,
+        "fps": 144.12086274071777
+      },
+      {
+        "atMs": 7233.5,
+        "fps": 150.12925034798167
+      },
+      {
+        "atMs": 8239.1,
+        "fps": 150.15910898965785
+      },
+      {
+        "atMs": 9244.8,
+        "fps": 133.24052898478686
+      },
+      {
+        "atMs": 10250.5,
+        "fps": 134.23486129064324
+      },
+      {
+        "atMs": 11256.1,
+        "fps": 142.20365950676208
+      },
+      {
+        "atMs": 12261.8,
+        "fps": 137.21785820821333
+      },
+      {
+        "atMs": 13267.5,
+        "fps": 132.24619667893
+      },
+      {
+        "atMs": 14273.2,
+        "fps": 123.29720592622046
+      },
+      {
+        "atMs": 15278.8,
+        "fps": 126.29276054097075
+      },
+      {
+        "atMs": 16284.5,
+        "fps": 125.28587053793369
+      },
+      {
+        "atMs": 17290.3,
+        "fps": 124.27918075164058
+      },
+      {
+        "atMs": 18296,
+        "fps": 118.32554439693737
+      },
+      {
+        "atMs": 19301.6,
+        "fps": 120.3261734287989
+      },
+      {
+        "atMs": 20307.3,
+        "fps": 112.35955056179768
+      },
+      {
+        "atMs": 21313.2,
+        "fps": 109.354806640819
+      },
+      {
+        "atMs": 22318.6,
+        "fps": 97.4736423314106
+      },
+      {
+        "atMs": 23330.5,
+        "fps": 93.88279474256336
+      },
+      {
+        "atMs": 24336.2,
+        "fps": 91.47857213880873
+      },
+      {
+        "atMs": 25336.2,
+        "fps": 83
+      },
+      {
+        "atMs": 26347.4,
+        "fps": 74.1693037974683
+      },
+      {
+        "atMs": 27353.1,
+        "fps": 77.55791985681637
+      },
+      {
+        "atMs": 28358.9,
+        "fps": 69.59634122091848
+      },
+      {
+        "atMs": 29370.6,
+        "fps": 61.28298902836827
+      },
+      {
+        "atMs": 30370.8,
+        "fps": 74.98500299940007
+      },
+      {
+        "atMs": 31376,
+        "fps": 74.61201750895339
+      },
+      {
+        "atMs": 32387.7,
+        "fps": 68.20203617673218
+      },
+      {
+        "atMs": 33393.3,
+        "fps": 66.62688941925204
+      },
+      {
+        "atMs": 34405.1,
+        "fps": 61.276932200039795
+      },
+      {
+        "atMs": 35416.8,
+        "fps": 58.317683107640356
+      },
+      {
+        "atMs": 36428.6,
+        "fps": 56.335244119391426
+      },
+      {
+        "atMs": 37434.3,
+        "fps": 53.6939445162571
+      },
+      {
+        "atMs": 38446,
+        "fps": 52.38707126618578
+      },
+      {
+        "atMs": 39451.7,
+        "fps": 50.710947598687625
+      },
+      {
+        "atMs": 40463.5,
+        "fps": 49.416880806483356
+      },
+      {
+        "atMs": 41469.1,
+        "fps": 45.74383452665082
+      },
+      {
+        "atMs": 42480.9,
+        "fps": 40.52184226131635
+      },
+      {
+        "atMs": 43492.6,
+        "fps": 36.57210635563913
+      },
+      {
+        "atMs": 44504.4,
+        "fps": 32.615141332279016
+      },
+      {
+        "atMs": 45522.2,
+        "fps": 32.422872863038066
+      },
+      {
+        "atMs": 46533.9,
+        "fps": 49.42176534545793
+      },
+      {
+        "atMs": 47539.6,
+        "fps": 46.733618375261145
+      },
+      {
+        "atMs": 48551.3,
+        "fps": 42.50271819709382
+      },
+      {
+        "atMs": 49563.2,
+        "fps": 39.52959778634275
+      },
+      {
+        "atMs": 50574.9,
+        "fps": 36.572106355638866
+      },
+      {
+        "atMs": 51586.8,
+        "fps": 44.470797509635275
+      },
+      {
+        "atMs": 52604.3,
+        "fps": 38.32923832923833
+      },
+      {
+        "atMs": 53616.2,
+        "fps": 37.553117897025615
+      },
+      {
+        "atMs": 54621.9,
+        "fps": 36.79029531669468
+      },
+      {
+        "atMs": 55639.8,
+        "fps": 35.36693191865601
+      },
+      {
+        "atMs": 56651.4,
+        "fps": 33.610122578094156
+      },
+      {
+        "atMs": 57675.4,
+        "fps": 31.25
+      },
+      {
+        "atMs": 58699.1,
+        "fps": 30.282309270294117
+      },
+      {
+        "atMs": 59717,
+        "fps": 26.525198938992006
+      },
+      {
+        "atMs": 60910.5,
+        "fps": 21.78466694595727
+      },
+      {
+        "atMs": 61934.3,
+        "fps": 25.39558507520993
+      },
+      {
+        "atMs": 62958.2,
+        "fps": 26.3697626721361
+      },
+      {
+        "atMs": 63963.8,
+        "fps": 23.866348448687212
+      },
+      {
+        "atMs": 65030,
+        "fps": 21.571937722753763
+      }
+    ],
+    "runtime": [
+      {
+        "atMs": 6108.300000011921,
+        "fps": 128.26886745550354,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 0,
+        "consumeRate": 0,
+        "totalReceived": 0,
+        "totalConsumed": 0,
+        "oldestPendingMs": 0,
+        "mapPoints": 0,
+        "renderP95Ms": 0
+      },
+      {
+        "atMs": 7105.699999988079,
+        "fps": 165.0427520381787,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 7.286505392140574,
+        "consumeRate": 7.286505392140574,
+        "totalReceived": 10,
+        "totalConsumed": 10,
+        "oldestPendingMs": 0,
+        "mapPoints": 10,
+        "renderP95Ms": 13.800000011920929
+      },
+      {
+        "atMs": 8106.300000011921,
+        "fps": 150.15910898965785,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.994003597603163,
+        "consumeRate": 9.994003597603163,
+        "totalReceived": 20,
+        "totalConsumed": 20,
+        "oldestPendingMs": 0,
+        "mapPoints": 20,
+        "renderP95Ms": 13.800000011920929
+      },
+      {
+        "atMs": 9106.800000011921,
+        "fps": 139.35560387428356,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.995002498750624,
+        "consumeRate": 9.995002498750624,
+        "totalReceived": 30,
+        "totalConsumed": 30,
+        "oldestPendingMs": 0,
+        "mapPoints": 30,
+        "renderP95Ms": 13.800000011920929
+      },
+      {
+        "atMs": 10109.699999988079,
+        "fps": 140.21479713603813,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.971083857052278,
+        "consumeRate": 9.971083857052278,
+        "totalReceived": 40,
+        "totalConsumed": 40,
+        "oldestPendingMs": 0,
+        "mapPoints": 40,
+        "renderP95Ms": 13.800000011920929
+      },
+      {
+        "atMs": 11113.899999976158,
+        "fps": 138.2121905140697,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.959167413367748,
+        "consumeRate": 9.959167413367748,
+        "totalReceived": 50,
+        "totalConsumed": 50,
+        "oldestPendingMs": 0,
+        "mapPoints": 50,
+        "renderP95Ms": 13.800000011920929
+      },
+      {
+        "atMs": 12114.199999988079,
+        "fps": 142.18951973749643,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.996001599598484,
+        "consumeRate": 9.996001599598484,
+        "totalReceived": 60,
+        "totalConsumed": 60,
+        "oldestPendingMs": 0,
+        "mapPoints": 60,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 13118.699999988079,
+        "fps": 137.21785820821307,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.955201592832255,
+        "consumeRate": 9.955201592832255,
+        "totalReceived": 70,
+        "totalConsumed": 70,
+        "oldestPendingMs": 0,
+        "mapPoints": 70,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 14109.5,
+        "fps": 132.25934765314236,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.955201592832255,
+        "consumeRate": 9.955201592832255,
+        "totalReceived": 80,
+        "totalConsumed": 80,
+        "oldestPendingMs": 0,
+        "mapPoints": 80,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 15109.300000011921,
+        "fps": 123.28494730562745,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.005763688470758,
+        "consumeRate": 9.005763688470758,
+        "totalReceived": 90,
+        "totalConsumed": 90,
+        "oldestPendingMs": 0,
+        "mapPoints": 90,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 16106.199999988079,
+        "fps": 125.28587053793369,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.935419771485344,
+        "consumeRate": 9.935419771485344,
+        "totalReceived": 100,
+        "totalConsumed": 100,
+        "oldestPendingMs": 0,
+        "mapPoints": 100,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 17112.600000023842,
+        "fps": 125.92444533280027,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 7.883326763894363,
+        "consumeRate": 7.883326763894363,
+        "totalReceived": 110,
+        "totalConsumed": 110,
+        "oldestPendingMs": 0,
+        "mapPoints": 110,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 18115.100000023842,
+        "fps": 124.42763288871211,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.955201592832255,
+        "consumeRate": 9.955201592832255,
+        "totalReceived": 120,
+        "totalConsumed": 120,
+        "oldestPendingMs": 0,
+        "mapPoints": 120,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 19114.600000023842,
+        "fps": 118.31378007556182,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.943323058684035,
+        "consumeRate": 9.943323058684035,
+        "totalReceived": 130,
+        "totalConsumed": 130,
+        "oldestPendingMs": 0,
+        "mapPoints": 130,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 20105.80000001192,
+        "fps": 120.32617342879847,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.943323058684035,
+        "consumeRate": 9.943323058684035,
+        "totalReceived": 140,
+        "totalConsumed": 140,
+        "oldestPendingMs": 0,
+        "mapPoints": 140,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 21111.399999976158,
+        "fps": 112.35955056179768,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.94431185338396,
+        "consumeRate": 9.94431185338396,
+        "totalReceived": 150,
+        "totalConsumed": 150,
+        "oldestPendingMs": 0,
+        "mapPoints": 150,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 22129.600000023842,
+        "fps": 106.40413683373126,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.912767645194961,
+        "consumeRate": 9.912767645194961,
+        "totalReceived": 160,
+        "totalConsumed": 160,
+        "oldestPendingMs": 0,
+        "mapPoints": 160,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 23116.600000023842,
+        "fps": 95.44641081725996,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.965122072745391,
+        "consumeRate": 9.965122072745391,
+        "totalReceived": 170,
+        "totalConsumed": 170,
+        "oldestPendingMs": 0,
+        "mapPoints": 170,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 24117.399999976158,
+        "fps": 91.92448354255207,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.882399446236365,
+        "consumeRate": 9.882399446236365,
+        "totalReceived": 180,
+        "totalConsumed": 180,
+        "oldestPendingMs": 0,
+        "mapPoints": 180,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 25114.600000023842,
+        "fps": 93.46723675052196,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.9423344600134,
+        "consumeRate": 9.9423344600134,
+        "totalReceived": 190,
+        "totalConsumed": 190,
+        "oldestPendingMs": 0,
+        "mapPoints": 190,
+        "renderP95Ms": 16.399999976158142
+      },
+      {
+        "atMs": 26115.19999998808,
+        "fps": 76.10951863200548,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.867771857346819,
+        "consumeRate": 9.867771857346819,
+        "totalReceived": 200,
+        "totalConsumed": 200,
+        "oldestPendingMs": 0,
+        "mapPoints": 200,
+        "renderP95Ms": 15.099999964237213
+      },
+      {
+        "atMs": 27130.80000001192,
+        "fps": 74.5749229392465,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.96412913487688,
+        "consumeRate": 9.96412913487688,
+        "totalReceived": 210,
+        "totalConsumed": 210,
+        "oldestPendingMs": 0,
+        "mapPoints": 210,
+        "renderP95Ms": 16.399999976158142
+      },
+      {
+        "atMs": 28114.19999998808,
+        "fps": 76.10199644198437,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.879470460499677,
+        "consumeRate": 9.879470460499677,
+        "totalReceived": 220,
+        "totalConsumed": 220,
+        "oldestPendingMs": 0,
+        "mapPoints": 220,
+        "renderP95Ms": 16.399999976158142
+      },
+      {
+        "atMs": 29112.100000023842,
+        "fps": 68.60892910410679,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.920634920634921,
+        "consumeRate": 9.920634920634921,
+        "totalReceived": 230,
+        "totalConsumed": 230,
+        "oldestPendingMs": 0,
+        "mapPoints": 230,
+        "renderP95Ms": 16.80000001192093
+      },
+      {
+        "atMs": 30109.5,
+        "fps": 62.64916467780416,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.876543209876543,
+        "consumeRate": 9.876543209876543,
+        "totalReceived": 240,
+        "totalConsumed": 240,
+        "oldestPendingMs": 0,
+        "mapPoints": 240,
+        "renderP95Ms": 18.399999976158142
+      },
+      {
+        "atMs": 31124.80000001192,
+        "fps": 75.56925524510285,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 16.784155757469158,
+        "consumeRate": 16.784155757469158,
+        "totalReceived": 250,
+        "totalConsumed": 250,
+        "oldestPendingMs": 0,
+        "mapPoints": 250,
+        "renderP95Ms": 18.399999976158142
+      },
+      {
+        "atMs": 32121.600000023842,
+        "fps": 71.58480811294497,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.85998816755062,
+        "consumeRate": 9.85998816755062,
+        "totalReceived": 260,
+        "totalConsumed": 260,
+        "oldestPendingMs": 0,
+        "mapPoints": 260,
+        "renderP95Ms": 20.69999998807907
+      },
+      {
+        "atMs": 33126.60000002384,
+        "fps": 68.61575178997623,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 7.601672367920942,
+        "consumeRate": 7.601672367920942,
+        "totalReceived": 270,
+        "totalConsumed": 270,
+        "oldestPendingMs": 0,
+        "mapPoints": 270,
+        "renderP95Ms": 20.69999998807907
+      },
+      {
+        "atMs": 34105.60000002384,
+        "fps": 65.61940743686623,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 7.601672367920942,
+        "consumeRate": 7.601672367920942,
+        "totalReceived": 280,
+        "totalConsumed": 280,
+        "oldestPendingMs": 0,
+        "mapPoints": 280,
+        "renderP95Ms": 22.5
+      },
+      {
+        "atMs": 35136.5,
+        "fps": 61.65473349244241,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.044044496796431,
+        "consumeRate": 9.044044496796431,
+        "totalReceived": 290,
+        "totalConsumed": 290,
+        "oldestPendingMs": 0,
+        "mapPoints": 290,
+        "renderP95Ms": 22.5
+      },
+      {
+        "atMs": 36124.69999998808,
+        "fps": 56.31854559826072,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.972078180974396,
+        "consumeRate": 9.972078180974396,
+        "totalReceived": 300,
+        "totalConsumed": 300,
+        "oldestPendingMs": 0,
+        "mapPoints": 300,
+        "renderP95Ms": 22.5
+      },
+      {
+        "atMs": 37106.39999997616,
+        "fps": 54.70352642375712,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.737098344693282,
+        "consumeRate": 9.737098344693282,
+        "totalReceived": 310,
+        "totalConsumed": 310,
+        "oldestPendingMs": 0,
+        "mapPoints": 310,
+        "renderP95Ms": 22.5
+      },
+      {
+        "atMs": 38161.69999998808,
+        "fps": 54.369315935152315,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.95222929983535,
+        "consumeRate": 9.95222929983535,
+        "totalReceived": 320,
+        "totalConsumed": 320,
+        "oldestPendingMs": 0,
+        "mapPoints": 320,
+        "renderP95Ms": 22.5
+      },
+      {
+        "atMs": 39112.30000001192,
+        "fps": 49.716615292830646,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 14.165309157513569,
+        "consumeRate": 14.165309157513569,
+        "totalReceived": 330,
+        "totalConsumed": 330,
+        "oldestPendingMs": 0,
+        "mapPoints": 330,
+        "renderP95Ms": 22.5
+      },
+      {
+        "atMs": 40117.5,
+        "fps": 50.979608156737605,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.982032341666006,
+        "consumeRate": 9.982032341666006,
+        "totalReceived": 340,
+        "totalConsumed": 340,
+        "oldestPendingMs": 0,
+        "mapPoints": 340,
+        "renderP95Ms": 22.5
+      },
+      {
+        "atMs": 41105.60000002384,
+        "fps": 49.75619464623338,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.95222929983535,
+        "consumeRate": 9.95222929983535,
+        "totalReceived": 350,
+        "totalConsumed": 350,
+        "oldestPendingMs": 0,
+        "mapPoints": 350,
+        "renderP95Ms": 22.5
+      },
+      {
+        "atMs": 42106.39999997616,
+        "fps": 42.75628915183436,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.933445911916495,
+        "consumeRate": 9.933445911916495,
+        "totalReceived": 360,
+        "totalConsumed": 360,
+        "oldestPendingMs": 0,
+        "mapPoints": 360,
+        "renderP95Ms": 22.5
+      },
+      {
+        "atMs": 43156.69999998808,
+        "fps": 39.77329223426481,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.937394415655223,
+        "consumeRate": 9.937394415655223,
+        "totalReceived": 370,
+        "totalConsumed": 370,
+        "oldestPendingMs": 0,
+        "mapPoints": 370,
+        "renderP95Ms": 22.80000001192093
+      },
+      {
+        "atMs": 44133.80000001192,
+        "fps": 32.618365128002466,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.871668311944719,
+        "consumeRate": 9.871668311944719,
+        "totalReceived": 380,
+        "totalConsumed": 380,
+        "oldestPendingMs": 0,
+        "mapPoints": 380,
+        "renderP95Ms": 23
+      },
+      {
+        "atMs": 45327.69999998808,
+        "fps": 32.14596003475239,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 8.717635776996039,
+        "consumeRate": 8.717635776996039,
+        "totalReceived": 390,
+        "totalConsumed": 390,
+        "oldestPendingMs": 0,
+        "mapPoints": 390,
+        "renderP95Ms": 23
+      },
+      {
+        "atMs": 46109.60000002384,
+        "fps": 34.384517143137785,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.820288716373302,
+        "consumeRate": 9.820288716373302,
+        "totalReceived": 400,
+        "totalConsumed": 400,
+        "oldestPendingMs": 0,
+        "mapPoints": 400,
+        "renderP95Ms": 23
+      },
+      {
+        "atMs": 47147.89999997616,
+        "fps": 46.87957808379718,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.777082518462503,
+        "consumeRate": 9.777082518462503,
+        "totalReceived": 410,
+        "totalConsumed": 410,
+        "oldestPendingMs": 0,
+        "mapPoints": 410,
+        "renderP95Ms": 24.600000023841858
+      },
+      {
+        "atMs": 48105.69999998808,
+        "fps": 45.19996069568648,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.830908376049148,
+        "consumeRate": 9.830908376049148,
+        "totalReceived": 420,
+        "totalConsumed": 420,
+        "oldestPendingMs": 0,
+        "mapPoints": 420,
+        "renderP95Ms": 24.80000001192093
+      },
+      {
+        "atMs": 49131,
+        "fps": 41.76195684597774,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.920634920634921,
+        "consumeRate": 9.920634920634921,
+        "totalReceived": 430,
+        "totalConsumed": 430,
+        "oldestPendingMs": 0,
+        "mapPoints": 430,
+        "renderP95Ms": 27.899999976158142
+      },
+      {
+        "atMs": 50154.39999997616,
+        "fps": 36.25608243488222,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.802960494412883,
+        "consumeRate": 9.802960494412883,
+        "totalReceived": 440,
+        "totalConsumed": 440,
+        "oldestPendingMs": 0,
+        "mapPoints": 440,
+        "renderP95Ms": 28.69999998807907
+      },
+      {
+        "atMs": 51105.5,
+        "fps": 40.76357128653796,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.673050880136088,
+        "consumeRate": 9.673050880136088,
+        "totalReceived": 450,
+        "totalConsumed": 450,
+        "oldestPendingMs": 0,
+        "mapPoints": 450,
+        "renderP95Ms": 28.69999998807907
+      },
+      {
+        "atMs": 52150.39999997616,
+        "fps": 42.97294657681439,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.793360101622278,
+        "consumeRate": 9.793360101622278,
+        "totalReceived": 460,
+        "totalConsumed": 460,
+        "oldestPendingMs": 0,
+        "mapPoints": 460,
+        "renderP95Ms": 28.69999998807907
+      },
+      {
+        "atMs": 53118.80000001192,
+        "fps": 37.8714313458923,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.69180073646488,
+        "consumeRate": 9.69180073646488,
+        "totalReceived": 470,
+        "totalConsumed": 470,
+        "oldestPendingMs": 0,
+        "mapPoints": 470,
+        "renderP95Ms": 28.69999998807907
+      },
+      {
+        "atMs": 54140.89999997616,
+        "fps": 36.3564901247913,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.812579727554631,
+        "consumeRate": 9.812579727554631,
+        "totalReceived": 480,
+        "totalConsumed": 480,
+        "oldestPendingMs": 0,
+        "mapPoints": 480,
+        "renderP95Ms": 28.69999998807907
+      },
+      {
+        "atMs": 55133.39999997616,
+        "fps": 36.125756688146694,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.791442279333474,
+        "consumeRate": 9.791442279333474,
+        "totalReceived": 490,
+        "totalConsumed": 490,
+        "oldestPendingMs": 0,
+        "mapPoints": 490,
+        "renderP95Ms": 28.69999998807907
+      },
+      {
+        "atMs": 56111.10000002384,
+        "fps": 34.8050914876691,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.925558312655086,
+        "consumeRate": 9.925558312655086,
+        "totalReceived": 500,
+        "totalConsumed": 500,
+        "oldestPendingMs": 0,
+        "mapPoints": 500,
+        "renderP95Ms": 28.69999998807907
+      },
+      {
+        "atMs": 57154.10000002384,
+        "fps": 32.812966093268464,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.947279418960926,
+        "consumeRate": 9.947279418960926,
+        "totalReceived": 510,
+        "totalConsumed": 510,
+        "oldestPendingMs": 0,
+        "mapPoints": 510,
+        "renderP95Ms": 28.69999998807907
+      },
+      {
+        "atMs": 58144.5,
+        "fps": 31.443450918738197,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.813542688910697,
+        "consumeRate": 9.813542688910697,
+        "totalReceived": 520,
+        "totalConsumed": 520,
+        "oldestPendingMs": 0,
+        "mapPoints": 520,
+        "renderP95Ms": 28.69999998807907
+      },
+      {
+        "atMs": 59110.89999997616,
+        "fps": 31.443450918738197,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.929500546475133,
+        "consumeRate": 9.929500546475133,
+        "totalReceived": 530,
+        "totalConsumed": 530,
+        "oldestPendingMs": 0,
+        "mapPoints": 530,
+        "renderP95Ms": 28.69999998807907
+      },
+      {
+        "atMs": 60121.80000001192,
+        "fps": 28.83850437549726,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.89217528899617,
+        "consumeRate": 9.89217528899617,
+        "totalReceived": 540,
+        "totalConsumed": 540,
+        "oldestPendingMs": 0,
+        "mapPoints": 540,
+        "renderP95Ms": 28.69999998807907
+      },
+      {
+        "atMs": 61123.89999997616,
+        "fps": 25.699317979638305,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.979044007940203,
+        "consumeRate": 9.979044007940203,
+        "totalReceived": 550,
+        "totalConsumed": 550,
+        "oldestPendingMs": 0,
+        "mapPoints": 550,
+        "renderP95Ms": 28.900000035762787
+      },
+      {
+        "atMs": 62148.5,
+        "fps": 25.84493041749503,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.760858955588091,
+        "consumeRate": 9.760858955588091,
+        "totalReceived": 560,
+        "totalConsumed": 560,
+        "oldestPendingMs": 0,
+        "mapPoints": 560,
+        "renderP95Ms": 29.30000001192093
+      },
+      {
+        "atMs": 63186.39999997616,
+        "fps": 25.398065839601337,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.633911368015415,
+        "consumeRate": 9.633911368015415,
+        "totalReceived": 570,
+        "totalConsumed": 570,
+        "oldestPendingMs": 0,
+        "mapPoints": 570,
+        "renderP95Ms": 29.30000001192093
+      },
+      {
+        "atMs": 64162.89999997616,
+        "fps": 26.06429192006947,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.633911368015415,
+        "consumeRate": 9.633911368015415,
+        "totalReceived": 580,
+        "totalConsumed": 580,
+        "oldestPendingMs": 0,
+        "mapPoints": 580,
+        "renderP95Ms": 29.400000035762787
+      },
+      {
+        "atMs": 65175.30000001192,
+        "fps": 23.439789041898756,
+        "pending": 0,
+        "batchSize": 10,
+        "arrivalRate": 9.775171065493646,
+        "consumeRate": 9.775171065493646,
+        "totalReceived": 590,
+        "totalConsumed": 590,
+        "oldestPendingMs": 0,
+        "mapPoints": 590,
+        "renderP95Ms": 29.5
+      }
+    ],
+    "startTime": 5221.600000023842,
+    "endTime": 65270.5,
+    "finalReceived": 590,
+    "finalConsumed": 590,
+    "finalPending": 0,
+    "finalMapPoints": 590,
+    "frameMode": 10,
+    "pointLimit": 10,
+    "mapType": 1
+  },
+  "simulator": {
+    "before": {
+      "running": false,
+      "config": {
+        "robotId": "QH-ZHC-01",
+        "pointsPerSecond": 20,
+        "pattern": "route"
+      },
+      "committedSequence": 4266100,
+      "generatedPoints": 380646,
+      "lastGeneratedAt": "2026-09-23T15:41:44.950Z",
+      "updatedAt": "2026-09-23T15:41:50.519Z",
+      "connectedClients": 2
+    },
+    "after": {
+      "running": true,
+      "config": {
+        "robotId": "QH-ZHC-01",
+        "pointsPerSecond": 20,
+        "pattern": "route"
+      },
+      "committedSequence": 4267300,
+      "generatedPoints": 381846,
+      "lastGeneratedAt": "2026-09-23T15:42:50.950Z",
+      "updatedAt": "2026-09-23T15:42:50.617Z",
+      "connectedClients": 2
+    }
+  }
+}

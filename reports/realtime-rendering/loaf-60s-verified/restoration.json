@@ -1,0 +1,19 @@
+{
+  "before": {
+    "running": false,
+    "config": {
+      "robotId": "QH-ZHC-01",
+      "pointsPerSecond": 20,
+      "pattern": "route"
+    }
+  },
+  "restored": {
+    "running": false,
+    "config": {
+      "robotId": "QH-ZHC-01",
+      "pointsPerSecond": 20,
+      "pattern": "route"
+    }
+  },
+  "verification": "Read-only simulator status request after the 60-second run"
+}
