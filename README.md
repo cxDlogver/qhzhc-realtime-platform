@@ -165,7 +165,10 @@ npm run test:integration -w QHZHC_Server
 - `browser-visualization-3d-map.png`
 - `browser-simulator-admin.png`
 
-设计细节见 [实时遥测数据链路：从数据库提交到浏览器分帧渲染](docs/01-realtime-rendering-backpressure.md)。
+知识文档：
+
+- [实时前端系统中的背压与自适应调度](docs/01-realtime-rendering-backpressure.md)
+- [WebSocket 鉴权与可恢复实时连接](docs/02-websocket-auth-recovery.md)
 
 ## 性能监控
 
