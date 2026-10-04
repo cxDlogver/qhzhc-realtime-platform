@@ -514,6 +514,49 @@ Token Family
 
 ---
 
+### 【设计判断：当前 JWT 已经属于 Stateful Hybrid，而 Opaque Access Token 是可选演进】
+
+当前 Access Token 虽然采用 JWT，但 `verifyAccessToken()` 并不是只做本地验签：
+
+~~~text
+JWT signature / iss / aud / exp
+        ↓
+sid = familyId
+        ↓
+isTokenFamilyActive(familyId)
+        ↓
+findUserById(userId)
+        ↓
+Principal
+~~~
+
+所以当前系统更准确地说是：
+
+~~~text
+Self-contained JWT
+负责表达短期 Claims
+        +
+Server-side Session State
+负责 Family revoke 和用户状态
+~~~
+
+这意味着 JWT “完全不查中心状态即可验证”的优势已经被部分放弃，但换来了立即撤销会话的控制力。
+
+另一种可行方案是 Opaque Access Token（不透明访问令牌）：
+
+~~~text
+高熵随机 Access Token
+        ↓
+SHA-256 / Token Lookup
+        ↓
+Server-side Access Session
+userId / familyId / role / expiresAt / revokedAt
+~~~
+
+对于当前这种中心化后台、强 Session Control 的单服务架构，Opaque Token 可以让“Access Token 只是 Session 索引”这一模型更统一；但它不是天然更安全或更高级。若未来出现多个 Resource Server 希望独立验证 Token、减少中心 Store 依赖，JWT 又会重新体现优势。
+
+因此这属于后续架构选择，而不是当前必须修改的缺陷。更高优先级的问题是：不要为了判断 Access Token 自然到期而对每条长连接高频重复执行完整校验。
+
 ### 【Authorization 继续回答“能不能访问这个资源”】
 
 一个合法 Principal 并不代表可以访问所有资源。
@@ -771,6 +814,208 @@ Rotation
 
 ---
 
+### 【源码证据：Token Family 由 refresh_tokens 中相同 family_id 的记录共同组成】
+
+当前实现没有单独的 `token_families` 表，而是通过 `refresh_tokens.family_id` 把一次登录以后不断 Rotation 的 Refresh Token 组织成一个逻辑 Family。
+
+当前表结构：
+
+~~~sql
+CREATE TABLE refresh_tokens (
+  token_hash TEXT PRIMARY KEY,
+  family_id TEXT NOT NULL,
+  user_id INTEGER NOT NULL,
+  parent_token_hash TEXT,
+  replaced_by_hash TEXT,
+  created_at INTEGER NOT NULL,
+  expires_at INTEGER NOT NULL,
+  consumed_at INTEGER,
+  revoked_at INTEGER
+);
+~~~
+
+源码：
+[database.ts L80-L95](../QHZHC_Server/src/server/database.ts#L80-L95)
+
+这些字段实际表达两类不同状态。
+
+| 字段 | 当前项目中的语义 |
+| --- | --- |
+| `parent_token_hash` | 当前 Token 由哪一代 Token 轮换而来 |
+| `replaced_by_hash` | 当前 Token 被哪一代 Token 替代 |
+| `consumed_at` | 这枚 Token 是否已经正常完成过一次 Rotation |
+| `revoked_at` | 系统是否已经主动终止对这枚 Token / Family 的信任 |
+| `expires_at` | 当前 Family 的绝对过期边界 |
+
+`consumed_at` 和 `revoked_at` 不能合并。
+
+正常 Rotation：
+
+~~~text
+A
+consumed_at = T1
+revoked_at  = null
+        ↓
+B
+consumed_at = null
+revoked_at  = null
+~~~
+
+这里 A 并没有发生安全问题，只是已经正常消费过，不能再次用于 Refresh。
+
+如果 A 之后再次出现：
+
+~~~text
+A.consumed_at != null
+        +
+A 再次被提交
+        ↓
+Reuse Detected
+        ↓
+整个 Family revoke
+~~~
+
+当前代码会执行：
+
+~~~sql
+UPDATE refresh_tokens
+SET revoked_at = ?
+WHERE family_id = ?
+  AND revoked_at IS NULL
+~~~
+
+源码：
+[database.ts L205-L225](../QHZHC_Server/src/server/database.ts#L205-L225)
+
+Logout 也不是把当前 Token 标记 consumed，而是主动撤销整个 Family：
+
+~~~text
+POST /api/auth/logout
+    ↓
+JWT sid → familyId
+    ↓
+revokeTokenFamily(familyId)
+    ↓
+同 family_id 所有记录 revoked_at = now
+~~~
+
+源码：
+[app.ts L220-L226](../QHZHC_Server/src/server/app.ts#L220-L226)
+
+以及：
+[database.ts L278-L286](../QHZHC_Server/src/server/database.ts#L278-L286)
+
+因此两个字段分别记录：
+
+~~~text
+consumed_at
+= Token 世代是否已经正常推进
+
+revoked_at
+= Session 信任是否被主动终止
+~~~
+
+这也是 Reuse Detection 能成立的关键：旧 Token 必须保留“正常消费过”的历史状态，不能在 Rotation 后直接删除。
+
+当前 `isTokenFamilyActive()` 判断的是 Family 中是否还存在至少一条：
+
+~~~text
+consumed_at = null
+AND
+revoked_at = null
+AND
+expires_at > now
+~~~
+
+的 Refresh Token。
+
+源码：
+[database.ts L264-L276](../QHZHC_Server/src/server/database.ts#L264-L276)
+
+### 【当前 Refresh Token 是 7 天 Absolute Expiration，而不是无限 Sliding Expiration】
+
+配置默认值：
+
+~~~text
+ACCESS_TOKEN_TTL_MINUTES = 15
+REFRESH_TOKEN_TTL_DAYS   = 7
+~~~
+
+源码：
+[config.ts L34-L40](../QHZHC_Server/src/server/config.ts#L34-L40)
+
+首次登录时生成：
+
+~~~text
+refreshTokenExpiresAt
+=
+loginTime + 7 days
+~~~
+
+Rotation 创建下一代 Refresh Token 时继续继承：
+
+~~~ts
+expiresAt: row.expires_at
+~~~
+
+而不是重新计算 `now + 7 days`。
+
+因此：
+
+~~~text
+Login T0
+  ↓
+A expires = T0 + 7d
+  ↓ Rotation
+B expires = T0 + 7d
+  ↓ Rotation
+C expires = T0 + 7d
+~~~
+
+无论中间 Refresh 多少次，首次登录后的第 7 天都必须重新认证。这对普通 Human Session 是明确的安全边界，但对需要长期无人值守的数据大屏会带来可用性冲突。
+
+这里不建议直接改成“每次 Refresh 都重新 +7 天”的纯 Sliding Expiration，因为只要持续活动，会话理论上可以无限延长。
+
+更合理的演进有两种：
+
+~~~text
+普通用户会话
+→ Sliding / Idle Window
++
+更长但有限的 Absolute Maximum
+
+真正 7×24 无人值守展示
+→ 独立 Display / Kiosk Identity
++
+只读 Scope
++
+独立撤销策略
+~~~
+
+当前项目尚未实现这两种演进，因此答辩时应明确表述为设计建议，而不是当前能力。
+
+当前被 revoke 的 Token Family 也不会立即物理删除；服务端每小时清理 `expires_at <= now` 的 Refresh Token：
+
+~~~ts
+const tokenCleanup = setInterval(() => {
+  database.cleanupExpiredSessions();
+  database.cleanupExpiredRefreshTokens();
+}, 60 * 60 * 1000);
+~~~
+
+源码：
+[index.ts L38-L42](../QHZHC_Server/src/server/index.ts#L38-L42)
+
+所以当前生命周期是：
+
+~~~text
+Active
+→ Consumed / Rotated
+→ Reused or Logout → Revoked
+→ Absolute Expiration
+→ Periodic Physical Cleanup
+~~~
+
 ### 【Single Flight 是 Rotation 正确性的一部分】
 
 Rotation 会自然引入并发冲突。
@@ -900,11 +1145,9 @@ WebSocket 认证过期
 
 ---
 
-### 【长连接还需要 Session Revalidation】
+### 【当前实现：周期重验由服务端主动执行，不是客户端定期重新认证】
 
-HTTP 每次请求都会重新进入认证链，而 WebSocket 可能持续数小时。
-
-如果只在建连时验证一次：
+当前客户端只在 WebSocket `open` 后发送一次 `authenticate`：
 
 ~~~text
 10:00
@@ -930,50 +1173,42 @@ socket 仍然在传业务数据
 | 周期重验 | 成本与及时性折中 | 存在检测窗口 |
 | revoke 主动关闭 | 最及时 | 要维护 Session → Connections |
 
-当前服务端采用“到期定时关闭 + 会话撤销事件主动关闭”，不再周期重验 JWT：
+当前服务端采用周期重验：
 
 ~~~ts
-const deadline = Math.min(
-  context.principal.accessTokenExpiresAt,
-  context.principal.familyExpiresAt,
-);
-const remainingMs = deadline - Date.now();
+if (
+  context.initialized &&
+  context.accessToken
+) {
+  try {
+    context.principal =
+      await this.auth
+        .verifyAccessToken(
+          context.accessToken
+        );
+  } catch {
+    context.socket.close(
+      WS_CLOSE.AUTHENTICATION_EXPIRED,
+      "access token expired"
+    );
 
-// 剩余时间非正数时立即关闭；正常有效期只需要一次性定时器。
-context.expiryTimer = setTimeout(() => {
-  context.expiryTimer = null;
-  this.scheduleAuthenticationExpiry(context);
-}, Math.min(remainingMs, MAX_TIMEOUT_MS));
+    continue;
+  }
+}
 ~~~
 
 源码：
-[robot-socket-hub.ts：scheduleAuthenticationExpiry / authenticationCurrent](../QHZHC_Server/src/server/robot-socket-hub.ts)
+[robot-socket-hub.ts L416-L447](../QHZHC_Server/src/server/robot-socket-hub.ts#L416-L447)
 
-定时器回调重新计算同一个绝对截止时间，正常到期就以 `4001 / ACCESS_TOKEN_EXPIRED` 关闭。若 Family 比 Access Token 更早到期，则以 `4001 / TOKEN_FAMILY_REVOKED` 关闭。超过 Node 单次计时上限 `2_147_483_647ms` 时分段安排；系统时钟回拨后也继续以原截止时间为准。
-
-入站业务处理、实时广播、补发循环和统一发送入口还会比较缓存截止时间，防止事件循环延迟执行定时器时继续传输。这些比较不校验签名、不查询数据库。心跳仍每 8 秒检查 ping/pong 和应用层超时，只负责连接存活。
-
-退出登录调用 `AuthService.revokeFamily()`，数据库完成撤销后触发 `onFamilyRevoked`；刷新凭证重放同样在数据库提交撤销后触发通知。Hub 关闭该 Family 的全部连接，其他登录会话不受影响。正常 Refresh Rotation 不撤销 Family，所以不会提前关闭旧连接。
-
-鉴权异步返回后会重新确认连接仍开放、Token 未到期且 Family 仍有效，避免撤销通知早于身份绑定时漏掉连接。连接断开时清理握手与到期定时器，Hub 关停时还会取消撤销订阅。
-
-完整恢复链路是：
+这段代码真正把：
 
 ~~~text
-WebSocket authenticate 成功
-    ↓
-读取验证后的 exp × 1000，按截止时间 setTimeout
-    ↓
-Access Token 到期 → Server close(4001)
-    ↓
-Client Refresh Token → 获得新 Access Token
-    ↓
-Reconnect → 携带原 Cursor 重新 authenticate
+Session Lifecycle
+和
+WebSocket Lifecycle
 ~~~
 
-客户端已经通过关闭码选择恢复方式：`4001` 先刷新再重连，刷新失败则停止恢复并清理登录态。协议消息格式与 Cursor / Replay 行为保持不变。本方案的撤销通知仅在当前单进程中传递；多实例部署需要共享撤销通知机制。
-
-验证记录（2026-10-04）：使用 Node 24，服务端单元测试 41 项、HTTP / WebSocket 集成测试 10 项、前后端类型检查均通过。客户端实时连接与恢复策略测试 23 项通过，包含刷新期间主动停止后不再重连。当前默认 Jest 配置加载 Vue 2 转换器时仍受已安装 Vue 3 的版本冲突影响；本次仅在测试进程中设定测试环境并排除这些纯 JS / TS 测试未使用的 `.vue` 转换器，未修改项目依赖或默认测试配置。
+连接起来了。
 
 ---
 
