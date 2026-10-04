@@ -5,6 +5,7 @@ export default defineConfig({
     environment: "node",
     include: [
       "tests/auth-tokens.test.ts",
+      "tests/socket-auth-lifecycle.test.ts",
       "tests/protocol.test.ts",
       "tests/server-services.test.ts",
       "tests/frontend-realtime.test.ts",

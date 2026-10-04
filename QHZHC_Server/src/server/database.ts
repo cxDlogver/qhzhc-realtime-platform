@@ -263,9 +263,14 @@ export class AppDatabase {
   }
 
   isTokenFamilyActive(familyId: string, now = Date.now()): boolean {
+    return this.activeTokenFamilyExpiresAt(familyId, now) !== null;
+  }
+
+  /** 有效 family 的绝对截止时间；正常轮换不会延长这个时间。 */
+  activeTokenFamilyExpiresAt(familyId: string, now = Date.now()): number | null {
     const row = this.database
       .prepare(
-        `SELECT 1 AS active
+        `SELECT expires_at
          FROM refresh_tokens
          WHERE family_id = ?
            AND consumed_at IS NULL
@@ -273,8 +278,8 @@ export class AppDatabase {
            AND expires_at > ?
          LIMIT 1`,
       )
-      .get(familyId, now) as unknown as { active: number } | undefined;
-    return row?.active === 1;
+      .get(familyId, now) as unknown as { expires_at: number } | undefined;
+    return row?.expires_at ?? null;
   }
 
   revokeTokenFamily(familyId: string, now = Date.now()): void {

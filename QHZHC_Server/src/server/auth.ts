@@ -20,6 +20,7 @@ export interface AuthPrincipal extends UserSession {
   familyId: string;
   tokenId: string;
   accessTokenExpiresAt: number;
+  familyExpiresAt: number;
 }
 
 export interface TokenPair {
@@ -61,6 +62,7 @@ export function parseCookies(rawCookie: string | undefined): Record<string, stri
 export class AuthService {
   private readonly options: AuthOptions;
   private readonly jwtKey: Uint8Array;
+  private readonly familyRevokedListeners = new Set<(familyId: string) => void>();
 
   constructor(
     private readonly database: AppDatabase,
@@ -125,9 +127,12 @@ export class AuthService {
       throw new AuthError("刷新凭证已过期", 401, "REFRESH_TOKEN_EXPIRED");
     }
     if (rotation.kind === "revoked") {
+      this.notifyFamilyRevoked(rotation.familyId);
       throw new AuthError("登录会话已撤销", 401, "TOKEN_FAMILY_REVOKED");
     }
     if (rotation.kind === "reused") {
+      // 数据库已提交 family 撤销，再通知已有连接，不能只拒绝本次刷新。
+      this.notifyFamilyRevoked(rotation.familyId);
       throw new AuthError("检测到刷新凭证重放", 401, "REFRESH_TOKEN_REUSED");
     }
     return this.issueTokenPair(
@@ -160,7 +165,8 @@ export class AuthService {
       ) {
         throw new AuthError("访问凭证字段无效", 401, "ACCESS_TOKEN_INVALID");
       }
-      if (!this.database.isTokenFamilyActive(familyId)) {
+      const familyExpiresAt = this.database.activeTokenFamilyExpiresAt(familyId);
+      if (familyExpiresAt === null) {
         throw new AuthError("登录会话已撤销", 401, "TOKEN_FAMILY_REVOKED");
       }
       const user = this.database.findUserById(userId);
@@ -172,6 +178,7 @@ export class AuthService {
         familyId,
         tokenId,
         accessTokenExpiresAt: expiresAt,
+        familyExpiresAt,
       };
     } catch (error) {
       if (error instanceof AuthError) throw error;
@@ -208,6 +215,27 @@ export class AuthService {
 
   revokeFamily(familyId: string): void {
     this.database.revokeTokenFamily(familyId);
+    this.notifyFamilyRevoked(familyId);
+  }
+
+  /** 仅在异步鉴权返回、绑定连接前检查会话，防止 await 期间发生撤销；不重复验证 JWT。 */
+  assertPrincipalActive(principal: AuthPrincipal): void {
+    if (principal.accessTokenExpiresAt <= Date.now()) {
+      throw new AuthError("访问凭证已过期", 401, "ACCESS_TOKEN_EXPIRED");
+    }
+    if (!this.database.isTokenFamilyActive(principal.familyId)) {
+      throw new AuthError("登录会话已撤销", 401, "TOKEN_FAMILY_REVOKED");
+    }
+  }
+
+  /** 同进程内的撤销通知；订阅方关停时必须取消订阅。 */
+  onFamilyRevoked(listener: (familyId: string) => void): () => void {
+    this.familyRevokedListeners.add(listener);
+    return () => { this.familyRevokedListeners.delete(listener); };
+  }
+
+  private notifyFamilyRevoked(familyId: string): void {
+    for (const listener of this.familyRevokedListeners) listener(familyId);
   }
 
   /** 签发访问和刷新凭证 */

@@ -22,15 +22,17 @@ const HEARTBEAT_INTERVAL_MS = 8_000;
 const CLIENT_STALE_AFTER_MS = 30_000;
 // 单次重放/补发的点数上限：客户端可能已断线很久，不能让它一次性拖走整表数据。
 const MAX_REPLAY_BUCKETS = 5_000;
+// Node 超过此延迟会溢出为 1ms；长有效期需要按同一截止时间分段安排。
+const MAX_TIMEOUT_MS = 2_147_483_647;
 
 interface ClientContext {
   /** 连接唯一标识，随 welcome 下发给客户端，便于前后端日志对齐。 */
   id: string;
   socket: WebSocket;
-  /** 校验通过后的身份主体；未握手前为 null，握手后由心跳线程周期性重验。 */
+  /** 校验通过后的身份主体，包含 token 和会话的绝对截止时间。 */
   principal: AuthPrincipal | null;
-  /** 当前绑定的 access token，心跳会持续重验，过期即断开。 */
-  accessToken: string | null;
+  /** 到期关闭连接的一次性定时器，与握手倒计时、心跳互相独立。 */
+  expiryTimer: NodeJS.Timeout | null;
   /** 订阅的机器人，取自 URL 路径；authenticate 报文中的 robotId 必须与之一致。 */
   robotId: string;
   /** 是否已完成握手：未握手的连接收不到 publish 的实时广播。 */
@@ -63,6 +65,8 @@ export class RobotSocketHub {
   private readonly clients = new Map<WebSocket, ClientContext>();
   /** 心跳巡检定时器；未 unref，进程退出前必须显式调用 close()。 */
   private readonly heartbeatTimer: NodeJS.Timeout;
+  private readonly unsubscribeFamilyRevoked: () => void;
+  private closed = false;
 
   constructor(
     server: Server,
@@ -70,6 +74,10 @@ export class RobotSocketHub {
     private readonly stream: TelemetryStreamService,
   ) {
     server.on("upgrade", (request, socket, head) => {
+      if (this.closed) {
+        socket.destroy();
+        return;
+      }
       // request.url 只有 path + query，需要补一个 base 才能交给 URL 解析。
       const url = new URL(request.url ?? "/", "http://localhost");
       const match = /^\/ws\/robots\/([a-zA-Z0-9_-]+)$/.exec(url.pathname);
@@ -96,6 +104,13 @@ export class RobotSocketHub {
       });
     });
     this.heartbeatTimer = setInterval(() => this.checkHeartbeats(), HEARTBEAT_INTERVAL_MS);
+    this.unsubscribeFamilyRevoked = this.auth.onFamilyRevoked((familyId) => {
+      for (const context of this.clients.values()) {
+        if (context.principal?.familyId === familyId) {
+          this.closeAuthentication(context, "TOKEN_FAMILY_REVOKED");
+        }
+      }
+    });
   }
 
   /** 当前在线连接数，包含尚未完成握手的连接。 */
@@ -111,7 +126,7 @@ export class RobotSocketHub {
   publish(bucket: TelemetrySecondBucket): void {
     for (const context of this.clients.values()) {
       // 未握手的连接跳过后期的实时流：它缺的那段会由重放计划补齐，两边不会重复。
-      if (!context.initialized || context.replaying) continue;
+      if (!context.initialized || context.replaying || !this.authenticationCurrent(context)) continue;
       const matching = bucket.points.filter((point) => point.robotId === context.robotId);
       const sampled = this.samplePoints(
         matching,
@@ -141,8 +156,13 @@ export class RobotSocketHub {
 
   /** 优雅关停：停心跳 → 逐个正常关闭 → 关闭 server。不调用的话心跳定时器会一直持活事件循环。 */
   close(): void {
+    if (this.closed) return;
+    this.closed = true;
     clearInterval(this.heartbeatTimer);
+    this.unsubscribeFamilyRevoked();
     for (const context of this.clients.values()) {
+      clearTimeout(context.authTimer);
+      this.clearExpiryTimer(context);
       context.socket.close(WS_CLOSE.NORMAL, "服务关闭");
     }
     this.webSocketServer.close();
@@ -157,7 +177,7 @@ export class RobotSocketHub {
       id: randomUUID(),
       socket,
       principal: null,
-      accessToken: null,
+      expiryTimer: null,
       robotId,
       initialized: false,
       authenticating: false,
@@ -186,6 +206,7 @@ export class RobotSocketHub {
     socket.on("close", () => {
       // close 是唯一清理出口：error 之后必定跟随 close，因此清理逻辑不重复。
       clearTimeout(context.authTimer);
+      this.clearExpiryTimer(context);
       this.clients.delete(socket);
     });
     socket.on("error", () => {
@@ -195,6 +216,7 @@ export class RobotSocketHub {
 
   /** 协议前置校验：入站消息需依次通过「可解析 → 形状合法 → 握手状态一致」三道闸门后才分发。 */
   private async onMessage(context: ClientContext, raw: RawData): Promise<void> {
+    if (!this.authenticationCurrent(context)) return;
     // 即便是非法报文也算应用层存活信号：能发包说明对端进程还在。
     context.lastSeenAt = Date.now();
     let parsed: unknown;
@@ -259,19 +281,19 @@ export class RobotSocketHub {
     let principal: AuthPrincipal;
     try {
       principal = await this.auth.verifyAccessToken(message.accessToken);
+      // await 期间可能关闭、关停、过期或撤销；绑定前仅检查一次会话状态。
+      if (this.closed || context.socket.readyState !== WebSocket.OPEN) return;
+      this.auth.assertPrincipalActive(principal);
     } catch (error) {
-      // 校验失败要放开 authenticating，否则该连接再也无法重试握手，只能等超时被踢。
-      clearTimeout(context.authTimer);
-      context.authenticating = false;
+      // 校验或绑定前检查失败，统一取消计时任务并以 4001 关闭。
       const reason = error instanceof AuthError ? error.code : "ACCESS_TOKEN_INVALID";
-      context.socket.close(WS_CLOSE.AUTHENTICATION_EXPIRED, reason);
+      this.closeAuthentication(context, reason);
       return;
     }
-    // await 期间连接可能已被对端关闭，下发 welcome 前必须重查一次。
-    if (context.socket.readyState !== WebSocket.OPEN) return;
     clearTimeout(context.authTimer);
     context.principal = principal;
-    context.accessToken = message.accessToken;
+    this.scheduleAuthenticationExpiry(context);
+    if (!this.authenticationCurrent(context)) return;
     context.maxPointsPerSecond = message.maxPointsPerSecond;
     context.authenticating = false;
     const latest = this.stream.getLatestBucketStartMs(context.robotId);
@@ -288,7 +310,7 @@ export class RobotSocketHub {
     if (latest !== null && message.resumeFromBucketStartMs <= latest) {
       this.replayBuckets(context, message.resumeFromBucketStartMs, latest);
     }
-    context.initialized = true;
+    context.initialized = this.authenticationCurrent(context);
   }
 
   /** 从请求起点补到服务端最近处理完的自然秒；补发期间暂停该连接的 live 投递。 */
@@ -316,6 +338,7 @@ export class RobotSocketHub {
       bucketStartMs <= throughBucketStartMs;
       bucketStartMs += 1_000
     ) {
+      if (!this.authenticationCurrent(context)) break;
       const bucket = this.stream.readBucket(context.robotId, bucketStartMs);
       const sampled = this.samplePoints(
         bucket.points,
@@ -403,7 +426,7 @@ export class RobotSocketHub {
   }
 
   private send(context: ClientContext, message: ServerMessage): void {
-    if (context.socket.readyState !== WebSocket.OPEN) return;
+    if (!this.authenticationCurrent(context)) return;
     // 背压保护：积压超 2MB 说明客户端消费不动，断开后从最新批次时间继续补发，
     // 也不能让服务端缓冲区无限膨胀。
     if (context.socket.bufferedAmount > 2 * 1024 * 1024) {
@@ -413,24 +436,62 @@ export class RobotSocketHub {
     context.socket.send(serializeServerMessage(message));
   }
 
-  /**
-   * 每轮巡检做两件事：
-   *
-   * 1. 对已认证连接重验 access token——长连接不应活得比令牌久，令牌轮换 / 封禁后能及时踢掉；
-   * 2. 用「协议层未完成 ping-pong」+「应用层超时」双判据淘汰僵尸连接，清掉半开占位。
-   */
-  private async checkHeartbeats(): Promise<void> {
+  /** 只检查缓存截止时间；入站和发送入口也调用，防止到期回调延迟期间继续传输。 */
+  private authenticationCurrent(context: ClientContext): boolean {
+    if (context.socket.readyState !== WebSocket.OPEN) return false;
+    const principal = context.principal;
+    if (!principal) return true;
+    const deadline = Math.min(principal.accessTokenExpiresAt, principal.familyExpiresAt);
+    if (Date.now() < deadline) return true;
+    this.closeAuthentication(
+      context,
+      principal.familyExpiresAt < principal.accessTokenExpiresAt
+        ? "TOKEN_FAMILY_REVOKED"
+        : "ACCESS_TOKEN_EXPIRED",
+    );
+    return false;
+  }
+
+  private scheduleAuthenticationExpiry(context: ClientContext): void {
+    this.clearExpiryTimer(context);
+    if (!this.authenticationCurrent(context) || !context.principal) return;
+    const deadline = Math.min(
+      context.principal.accessTokenExpiresAt,
+      context.principal.familyExpiresAt,
+    );
+    const remainingMs = deadline - Date.now();
+    if (remainingMs <= 0) {
+      this.authenticationCurrent(context);
+      return;
+    }
+    context.expiryTimer = setTimeout(() => {
+      context.expiryTimer = null;
+      // 通常到期即关闭；超长延迟或系统时钟回拨时仍按原截止时间排期。
+      this.scheduleAuthenticationExpiry(context);
+    }, Math.min(remainingMs, MAX_TIMEOUT_MS));
+    context.expiryTimer.unref();
+  }
+
+  private clearExpiryTimer(context: ClientContext): void {
+    if (context.expiryTimer) clearTimeout(context.expiryTimer);
+    context.expiryTimer = null;
+  }
+
+  private closeAuthentication(context: ClientContext, reason: string): void {
+    clearTimeout(context.authTimer);
+    this.clearExpiryTimer(context);
+    context.authenticating = false;
+    context.initialized = false;
+    if (context.socket.readyState === WebSocket.OPEN) {
+      context.socket.close(WS_CLOSE.AUTHENTICATION_EXPIRED, reason);
+    }
+  }
+
+  /** 心跳仅用 ping-pong 和应用层超时清理半开连接，不重验 JWT 或查询会话。 */
+  private checkHeartbeats(): void {
     const now = Date.now();
-    // 串行 await：连接数大时单轮耗时会随客户端数量线性增长，当前规模下可接受。
     for (const context of this.clients.values()) {
-      if (context.initialized && context.accessToken) {
-        try {
-          context.principal = await this.auth.verifyAccessToken(context.accessToken);
-        } catch {
-          context.socket.close(WS_CLOSE.AUTHENTICATION_EXPIRED, "access token expired");
-          continue;
-        }
-      }
+      if (context.socket.readyState !== WebSocket.OPEN) continue;
       // 上一轮 ping 未被应答，或应用层超时 ⇒ 半开连接；terminate 直接断 TCP，不走关闭握手。
       if (!context.protocolAlive || now - context.lastSeenAt > CLIENT_STALE_AFTER_MS) {
         context.socket.terminate();

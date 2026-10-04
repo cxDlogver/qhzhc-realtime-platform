@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AuthError, AuthService } from "../src/server/auth.js";
 import { loadConfig } from "../src/server/config.js";
 import { AppDatabase } from "../src/server/database.js";
@@ -35,15 +35,20 @@ describe("access and refresh token lifecycle", () => {
       username: "admin",
       role: "admin",
       familyId: tokens.familyId,
+      accessTokenExpiresAt: Math.floor(tokens.accessTokenExpiresAt / 1_000) * 1_000,
+      familyExpiresAt: tokens.refreshTokenExpiresAt,
     });
   });
 
   it("rotates a refresh token once and revokes the family when the old token is replayed", async () => {
+    const revoked = vi.fn();
+    auth.onFamilyRevoked(revoked);
     const login = await auth.login("admin", "Admin@123456");
     const rotated = await auth.refresh(login.refreshToken);
 
     expect(rotated.refreshToken).not.toBe(login.refreshToken);
     expect(rotated.familyId).toBe(login.familyId);
+    expect(revoked).not.toHaveBeenCalled();
     await expect(auth.verifyAccessToken(rotated.accessToken)).resolves.toMatchObject({
       familyId: login.familyId,
     });
@@ -52,10 +57,24 @@ describe("access and refresh token lifecycle", () => {
       code: "REFRESH_TOKEN_REUSED",
       status: 401,
     } satisfies Partial<AuthError>);
+    expect(revoked).toHaveBeenCalledExactlyOnceWith(login.familyId);
     await expect(auth.verifyAccessToken(rotated.accessToken)).rejects.toMatchObject({
       code: "TOKEN_FAMILY_REVOKED",
       status: 401,
     } satisfies Partial<AuthError>);
+  });
+
+  it("notifies revocation after persistence and supports unsubscribing", async () => {
+    const login = await auth.login("admin", "Admin@123456");
+    const revoked = vi.fn((familyId: string) => {
+      expect(database.isTokenFamilyActive(familyId)).toBe(false);
+    });
+    const unsubscribe = auth.onFamilyRevoked(revoked);
+    auth.revokeFamily(login.familyId);
+    expect(revoked).toHaveBeenCalledExactlyOnceWith(login.familyId);
+    unsubscribe();
+    auth.revokeFamily(login.familyId);
+    expect(revoked).toHaveBeenCalledTimes(1);
   });
 
   it("loads separate access and refresh lifetimes", () => {

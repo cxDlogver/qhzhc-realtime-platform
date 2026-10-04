@@ -1,6 +1,9 @@
 import RealtimeClient from "@/views/DataVisualization/services/realtimeClient";
 import { REALTIME_CLOSE_CODE } from "@/views/DataVisualization/services/realtimeConnectionPolicy";
 
+// 这些测试通过选项注入认证行为，不加载全局 HTTP 客户端及 UI 依赖。
+jest.mock("@/utils/request", () => ({ handleUnauthenticated: jest.fn() }));
+
 class MockSocket {
   static instances = [];
 
@@ -305,6 +308,35 @@ describe("RealtimeClient", () => {
       maxPointsPerSecond: 0,
     }));
     client.stop();
+  });
+
+  test("does not reconnect if stopped while access token refresh is pending", async () => {
+    let resolveRefresh;
+    let accessToken = "expired.jwt";
+    const refreshAccessToken = jest.fn(() => new Promise((resolve) => {
+      resolveRefresh = resolve;
+    }));
+    const client = new RealtimeClient({
+      url: "ws://example.test/ws/robots/QH-ZHC-01",
+      WebSocketImpl: MockSocket,
+      getAccessToken: () => accessToken,
+      refreshAccessToken,
+      onPacket: jest.fn(),
+      onStatus: jest.fn(),
+    });
+    client.start();
+    MockSocket.instances[0].open();
+    MockSocket.instances[0].serverClose(REALTIME_CLOSE_CODE.AUTHENTICATION_EXPIRED);
+    expect(refreshAccessToken).toHaveBeenCalledTimes(1);
+    expect(MockSocket.instances).toHaveLength(1);
+    client.stop();
+    accessToken = "rotated.jwt";
+    resolveRefresh(accessToken);
+    await Promise.resolve();
+    await Promise.resolve();
+    jest.advanceTimersByTime(60_000);
+    expect(MockSocket.instances).toHaveLength(1);
+    expect(jest.getTimerCount()).toBe(0);
   });
 
   test("stops reconnecting and clears authentication when refresh fails", async () => {

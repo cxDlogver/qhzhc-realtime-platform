@@ -342,8 +342,12 @@ principal =
     message.accessToken
   );
 
+// 异步鉴权期间可能已经关闭连接或撤销会话。
+if (this.closed || context.socket.readyState !== WebSocket.OPEN) return;
+this.auth.assertPrincipalActive(principal);
 context.principal = principal;
-context.accessToken = message.accessToken;
+this.scheduleAuthenticationExpiry(context);
+if (!this.authenticationCurrent(context)) return;
 context.maxPointsPerSecond =
   message.maxPointsPerSecond;
 
@@ -355,7 +359,7 @@ this.send(context, {
 ~~~
 
 源码：
-[robot-socket-hub.ts L250-L288](../QHZHC_Server/src/server/robot-socket-hub.ts#L250-L288)
+[robot-socket-hub.ts：handleAuthenticate](../QHZHC_Server/src/server/robot-socket-hub.ts)
 
 三段代码合起来才能支撑“OPEN 不等于业务可用”这个结论。
 
@@ -479,10 +483,10 @@ const tokenId =
 const expiresAt =
   Number(verified.payload.exp) * 1000;
 
-if (
-  !this.database
-    .isTokenFamilyActive(familyId)
-) {
+const familyExpiresAt =
+  this.database.activeTokenFamilyExpiresAt(familyId);
+
+if (familyExpiresAt === null) {
   throw new AuthError(
     "登录会话已撤销",
     401,
@@ -492,7 +496,9 @@ if (
 ~~~
 
 源码：
-[auth.ts L140-L176](../QHZHC_Server/src/server/auth.ts#L140-L176)
+[auth.ts：verifyAccessToken](../QHZHC_Server/src/server/auth.ts)
+
+校验返回的 Principal 同时携带 `accessTokenExpiresAt` 和 `familyExpiresAt`，单位都是毫秒。前者取自已验证 JWT 的 `exp × 1000`，后者取自数据库中有效 Token Family 的绝对过期时间。WebSocket 不保存原始 Access Token，也不会在心跳中再次验证 JWT。
 
 因此更准确的结构是：
 
@@ -924,42 +930,50 @@ socket 仍然在传业务数据
 | 周期重验 | 成本与及时性折中 | 存在检测窗口 |
 | revoke 主动关闭 | 最及时 | 要维护 Session → Connections |
 
-当前服务端采用周期重验：
+当前服务端采用“到期定时关闭 + 会话撤销事件主动关闭”，不再周期重验 JWT：
 
 ~~~ts
-if (
-  context.initialized &&
-  context.accessToken
-) {
-  try {
-    context.principal =
-      await this.auth
-        .verifyAccessToken(
-          context.accessToken
-        );
-  } catch {
-    context.socket.close(
-      WS_CLOSE.AUTHENTICATION_EXPIRED,
-      "access token expired"
-    );
+const deadline = Math.min(
+  context.principal.accessTokenExpiresAt,
+  context.principal.familyExpiresAt,
+);
+const remainingMs = deadline - Date.now();
 
-    continue;
-  }
-}
+// 剩余时间非正数时立即关闭；正常有效期只需要一次性定时器。
+context.expiryTimer = setTimeout(() => {
+  context.expiryTimer = null;
+  this.scheduleAuthenticationExpiry(context);
+}, Math.min(remainingMs, MAX_TIMEOUT_MS));
 ~~~
 
 源码：
-[robot-socket-hub.ts L416-L447](../QHZHC_Server/src/server/robot-socket-hub.ts#L416-L447)
+[robot-socket-hub.ts：scheduleAuthenticationExpiry / authenticationCurrent](../QHZHC_Server/src/server/robot-socket-hub.ts)
 
-这段代码真正把：
+定时器回调重新计算同一个绝对截止时间，正常到期就以 `4001 / ACCESS_TOKEN_EXPIRED` 关闭。若 Family 比 Access Token 更早到期，则以 `4001 / TOKEN_FAMILY_REVOKED` 关闭。超过 Node 单次计时上限 `2_147_483_647ms` 时分段安排；系统时钟回拨后也继续以原截止时间为准。
+
+入站业务处理、实时广播、补发循环和统一发送入口还会比较缓存截止时间，防止事件循环延迟执行定时器时继续传输。这些比较不校验签名、不查询数据库。心跳仍每 8 秒检查 ping/pong 和应用层超时，只负责连接存活。
+
+退出登录调用 `AuthService.revokeFamily()`，数据库完成撤销后触发 `onFamilyRevoked`；刷新凭证重放同样在数据库提交撤销后触发通知。Hub 关闭该 Family 的全部连接，其他登录会话不受影响。正常 Refresh Rotation 不撤销 Family，所以不会提前关闭旧连接。
+
+鉴权异步返回后会重新确认连接仍开放、Token 未到期且 Family 仍有效，避免撤销通知早于身份绑定时漏掉连接。连接断开时清理握手与到期定时器，Hub 关停时还会取消撤销订阅。
+
+完整恢复链路是：
 
 ~~~text
-Session Lifecycle
-和
-WebSocket Lifecycle
+WebSocket authenticate 成功
+    ↓
+读取验证后的 exp × 1000，按截止时间 setTimeout
+    ↓
+Access Token 到期 → Server close(4001)
+    ↓
+Client Refresh Token → 获得新 Access Token
+    ↓
+Reconnect → 携带原 Cursor 重新 authenticate
 ~~~
 
-连接起来了。
+客户端已经通过关闭码选择恢复方式：`4001` 先刷新再重连，刷新失败则停止恢复并清理登录态。协议消息格式与 Cursor / Replay 行为保持不变。本方案的撤销通知仅在当前单进程中传递；多实例部署需要共享撤销通知机制。
+
+验证记录（2026-10-04）：使用 Node 24，服务端单元测试 41 项、HTTP / WebSocket 集成测试 10 项、前后端类型检查均通过。客户端实时连接与恢复策略测试 23 项通过，包含刷新期间主动停止后不再重连。当前默认 Jest 配置加载 Vue 2 转换器时仍受已安装 Vue 3 的版本冲突影响；本次仅在测试进程中设定测试环境并排除这些纯 JS / TS 测试未使用的 `.vue` 转换器，未修改项目依赖或默认测试配置。
 
 ---
 

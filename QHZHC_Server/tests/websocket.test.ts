@@ -1,8 +1,9 @@
 import { createServer, type Server } from "node:http";
+import { decodeJwt, SignJWT } from "jose";
 import { WebSocket } from "ws";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { createApp } from "../src/server/app.js";
-import { AuthService } from "../src/server/auth.js";
+import { AuthService, type TokenPair } from "../src/server/auth.js";
 import { AppDatabase } from "../src/server/database.js";
 import { createTelemetryPoint } from "../src/server/point-factory.js";
 import { RobotSocketHub } from "../src/server/robot-socket-hub.js";
@@ -20,15 +21,18 @@ describe("RobotSocket WebSocket resume", () => {
   let hub: RobotSocketHub;
   let port: number;
   let token: string;
+  let auth: AuthService;
+  let login: TokenPair;
 
   beforeEach(async () => {
     database = new AppDatabase(":memory:", 10_000);
-    const auth = new AuthService(database, {
+    auth = new AuthService(database, {
       accessTokenTtlMs: 60_000,
       refreshTokenTtlMs: 7 * 24 * 60 * 60 * 1000,
       jwtSecret: "test-secret-with-at-least-thirty-two-bytes",
     });
-    token = (await auth.login("admin", "Admin@123456")).accessToken;
+    login = await auth.login("admin", "Admin@123456");
+    token = login.accessToken;
     simulator = new TelemetrySimulator(database);
     telemetryStream = new TelemetryStreamService(database);
     const app = createApp({
@@ -58,6 +62,78 @@ describe("RobotSocket WebSocket resume", () => {
     hub.close();
     await new Promise<void>((resolve) => server.close(() => resolve()));
     database.close();
+  });
+
+  async function connectAuthenticated(accessToken = token): Promise<WebSocket> {
+    const socket = new WebSocket(`ws://127.0.0.1:${port}/ws/robots/QH-ZHC-01`);
+    await new Promise<void>((resolve, reject) => {
+      const timeout = setTimeout(() => {
+        socket.terminate();
+        reject(new Error("authentication timeout"));
+      }, 2_000);
+      socket.on("open", () => socket.send(JSON.stringify({
+        type: "authenticate", accessToken, protocolVersion: PROTOCOL_VERSION,
+        robotId: "QH-ZHC-01", resumeFromBucketStartMs: BUCKET_START_MS + 1_000,
+        maxPointsPerSecond: 0,
+      })));
+      socket.on("message", (raw) => {
+        if (JSON.parse(raw.toString()).type === "welcome") {
+          clearTimeout(timeout);
+          resolve();
+        }
+      });
+      socket.on("error", (error) => { clearTimeout(timeout); reject(error); });
+      socket.on("close", (code) => { clearTimeout(timeout); reject(new Error(`closed before welcome: ${code}`)); });
+    });
+    return socket;
+  }
+
+  function waitForClose(socket: WebSocket): Promise<{ code: number; reason: string }> {
+    return new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => reject(new Error("expected socket close")), 4_000);
+      socket.once("close", (code, reason) => {
+        clearTimeout(timeout);
+        resolve({ code, reason: reason.toString() });
+      });
+    });
+  }
+
+  it("delivers a 4001 close frame at JWT expiry and accepts a refreshed connection", async () => {
+    const expiresAt = (Math.floor(Date.now() / 1_000) + 2) * 1_000;
+    const shortToken = await new SignJWT(decodeJwt(token))
+      .setProtectedHeader({ alg: "HS256", typ: "JWT" })
+      .setExpirationTime(expiresAt / 1_000)
+      .sign(new TextEncoder().encode("test-secret-with-at-least-thirty-two-bytes"));
+    const socket = await connectAuthenticated(shortToken);
+    const closed = await waitForClose(socket);
+    expect(closed).toEqual({ code: 4001, reason: "ACCESS_TOKEN_EXPIRED" });
+    expect(Date.now()).toBeGreaterThanOrEqual(expiresAt);
+    // 四秒超时已保证不用等待八秒心跳。
+    const response = await fetch(`http://127.0.0.1:${port}/api/auth/refresh`, {
+      method: "POST", headers: { Cookie: `qhzhc_refresh=${login.refreshToken}` },
+    });
+    expect(response.status).toBe(200);
+    const refreshed = await response.json() as { accessToken: string };
+    const replacement = await connectAuthenticated(refreshed.accessToken);
+    expect(replacement.readyState).toBe(WebSocket.OPEN);
+    replacement.terminate();
+  });
+
+  it("HTTP logout immediately closes all family sockets but preserves another session", async () => {
+    const otherLogin = await auth.login("admin", "Admin@123456");
+    const first = await connectAuthenticated();
+    const second = await connectAuthenticated();
+    const unrelated = await connectAuthenticated(otherLogin.accessToken);
+    const firstClosed = waitForClose(first);
+    const secondClosed = waitForClose(second);
+    const response = await fetch(`http://127.0.0.1:${port}/api/auth/logout`, {
+      method: "POST", headers: { Authorization: `Bearer ${token}` },
+    });
+    expect(response.status).toBe(204);
+    expect(await firstClosed).toEqual({ code: 4001, reason: "TOKEN_FAMILY_REVOKED" });
+    expect(await secondClosed).toEqual({ code: 4001, reason: "TOKEN_FAMILY_REVOKED" });
+    expect(unrelated.readyState).toBe(WebSocket.OPEN);
+    unrelated.terminate();
   });
 
   it("replays one stored natural-second bucket from the requested time cursor", async () => {
