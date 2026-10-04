@@ -2,6 +2,20 @@
 
 本文把「走航车实时数据可视化」页面从 WebSocket 收包到地图/折线图出画这条链路上做过的改动逐条摊开，每一条都写清楚六件事：改之前的逻辑、它的问题、为什么值得改、判断依据是什么、具体怎么改、改完测到什么。
 
+> 通用知识入口：[页面流畅度与连续渲染性能完整知识体系](https://github.com/cxDlogver/cx-learn-notes/blob/main/Full-Stack-AI-NOTES/%E9%A1%B5%E9%9D%A2%E6%B5%81%E7%95%85%E5%BA%A6%E4%B8%8E%E8%BF%9E%E7%BB%AD%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD%E5%AE%8C%E6%95%B4%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB.md)。建议先通过通用文档建立“Frame Production + Data Progress → 指标 → N / K / C / H / B 根因 → 受控实验 → 对症优化 → 验收”的诊断框架，再阅读本文的源码、实验和当前实现边界。
+
+本文在通用根因模型中的对应关系：
+
+| 通用变量 | 当前项目中的真实含义 | 主要证据入口 |
+| --- | --- | --- |
+| **N：单位时间进入可视化的数据量** | WebSocket 每秒实际进入页面的遥测点数 / 订阅档位 | rate sweep、`realtimeClient.ts` |
+| **K：单位时间触发视图提交的次数** | `FrameTelemetryQueue` 每帧批量、`handleRealtimePacket` / Map / Chart 更新次数 | batch sweep、`FrameTelemetryQueue.ts` |
+| **C：一次更新的成本** | Vue 状态合并、四个 ECharts 更新、OpenLayers / Cesium 单次绘制和属性求值 | LoAF、Performance Trace、地图组件 |
+| **H：历史状态 / 可视对象规模** | 已存在的 Feature、Entity、轨迹段、柱体、图表窗口和响应式数组规模 | history sweep、轨迹 microbenchmark |
+| **B：当前环境提供的帧预算** | 实际 rAF `frameIntervalMs`、页面空闲 `baselineFps`、设备 / 地图模式能力 | `RenderPerformanceMonitor.ts`、Adaptive Controller |
+
+这个映射的意义是：本文不是按“用了哪些优化技巧”组织结论，而是在逐步确认 **究竟是输入总量 N、提交频率 K、单次成本 C、历史规模 H，还是环境预算 B 在主导掉帧**。
+
 ## 0. 涉及的代码与本文的数据来源
 
 ### 0.1 代码
