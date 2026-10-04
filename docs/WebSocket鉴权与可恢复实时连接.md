@@ -3,7 +3,7 @@
 > 本篇是 **QHZHC 实时平台的 WebSocket 实践分析文档**，重点记录鉴权、会话恢复、心跳、重连、Cursor、Replay 和 Gap 在真实源码中的实现证据与边界。
 >
 > WebSocket 的完整通用知识体系统一维护在 Full-Stack-AI-NOTES：
-> [WebSocket 完整知识体系](https://github.com/cxDlogver/cx-learn-notes/blob/main/Full-Stack-AI-NOTES/WebSocket完整知识体系.md)
+> [WebSocket 完整知识体系](https://github.com/cxDlogver/cx-learn-notes/blob/main/Full-Stack-AI-NOTES/W-WebSocket完整知识体系.md)
 >
 > 推荐先通过通用文档理解协议、API、状态机、可靠性、背压与服务端架构，再用本文对照 QHZHC 的源码、测试和工程取舍。
 
@@ -2388,10 +2388,10 @@ LIVE
 
 ### 【Full-Stack-AI-NOTES 相关知识入口】
 
-- [WebSocket 完整知识体系](https://github.com/cxDlogver/cx-learn-notes/blob/main/Full-Stack-AI-NOTES/WebSocket完整知识体系.md)：WebSocket 协议、API、应用协议、状态机、鉴权接入、心跳、故障恢复、可靠性、背压、扩容、安全与测试的通用主入口。
-- Web身份认证会话控制与访问控制体系.md：Authentication → Session Management → Authorization。
-- Access Token与Refresh Token核心知识点笔记.md：双 Token、Rotation、Reuse Detection 和过期策略。
-- 反向代理与Web入口体系.md：HTTP / WebSocket 生产入口、TLS、Proxy 和网络边界。
+- [WebSocket 完整知识体系](https://github.com/cxDlogver/cx-learn-notes/blob/main/Full-Stack-AI-NOTES/W-WebSocket完整知识体系.md)：WebSocket 协议、API、应用协议、状态机、鉴权接入、心跳、故障恢复、可靠性、背压、扩容、安全与测试的通用主入口。
+- W-Web身份认证会话控制与访问控制体系.md：Authentication → Session Management → Authorization。
+- A-Access Token与Refresh Token核心知识点笔记.md：双 Token、Rotation、Reuse Detection 和过期策略。
+- F-反向代理与Web入口体系.md：HTTP / WebSocket 生产入口、TLS、Proxy 和网络边界。
 
 ### 【源码验证入口】
 
