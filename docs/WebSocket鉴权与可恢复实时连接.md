@@ -1,57 +1,67 @@
 # WebSocket 鉴权与可恢复实时连接
 
-> 本文讨论的不是“WebSocket 怎么连上”，而是一个更完整的问题：**实时连接如何建立可信身份、在长时间运行中保持有效，并在网络中断、Token 过期或服务重启后恢复到正确的数据进度。**
+> 这篇文档不以某个具体项目作为理解前提，而是从一个通用工程问题出发：
 >
-> 通用知识参考 RFC、MDN、OWASP 和 Full-Stack-AI-NOTES 中已有的 WebSocket、身份认证与 Token 体系；项目实现以当前活动源码和测试为准。历史文档只作为线索，不作为当前实现依据。
+> **一条 WebSocket 连接怎样从“协议已连接”逐步变成“身份可信、长期稳定、断线后数据还能继续”的实时连接。**
+>
+> 通用定义、机制和示例可以独立阅读；QHZHC 源码只作为实现证据，用来说明这些机制怎样落到真实代码中，以及当前实现还存在哪些边界。
 
 ---
 
-## 1. 从一条完整链路理解 WebSocket、鉴权与恢复
+## 1. WebSocket 实时连接同时包含可信连接、稳定连接和数据恢复三层问题
 
-WebSocket 只解决“浏览器和服务端之间建立持久双向通道”。真正的生产级实时系统还要继续解决三个问题：
+WebSocket 主要提供 Persistent Full-duplex Connection（持久全双工连接）。它让浏览器和服务端在一次连接建立后持续双向发送消息，但协议本身并不会自动处理登录身份、资源权限、Token 过期、断线重连和历史数据补发。
 
-1. **可信连接**：这条连接是谁建立的，允许访问什么资源。
-2. **稳定连接**：Token 过期、网络波动、服务重启以后如何恢复。
-3. **连续数据**：连接重新建立以后，断线期间的数据从哪里继续。
-
-把三层放到同一条链路里，整体关系如下：
+完整实时链路可以拆成三层：
 
 ~~~text
-用户登录
-  ↓
-HTTP 返回短期 Access Token
-并写入长期 Refresh Token
-  ↓
-建立 WebSocket
-  ↓
+可信连接
+HTTP Upgrade
+    ↓
 应用层认证
-  ↓
-绑定用户、资源、协议版本
-  ↓
-进入实时传输
-  ↓
-心跳 + 会话持续校验
-  ↓
-发生网络异常 / Token 失效 / 服务重启
-  ↓
-根据失败原因选择恢复策略
-  ├─ Refresh Token → 新 Access Token
-  └─ Backoff + Reconnect
-        ↓
-提交 Recovery Cursor
-        ↓
-补发缺失数据 Replay
-        ↓
+    ↓
+身份认证
+    ↓
+资源授权
+    ↓
+连接上下文绑定
+
+稳定连接
+Access Token / Refresh Token
+    ↓
+Session Revalidation
+    ↓
+Heartbeat / Watchdog
+    ↓
+Close Classification
+    ↓
+Backoff + Reconnect
+
+可恢复数据
+Recovery Cursor
+    ↓
+Replay
+    ↓
+Gap Detection
+    ↓
 Replay Complete
-        ↓
-重新进入 Live
+    ↓
+Live
 ~~~
 
-这里最重要的是不要把几个状态混为一谈：
+三层分别对应不同故障：
+
+| 层次 | 典型问题 | 正确处理 |
+| --- | --- | --- |
+| 可信连接 | Token 无效、用户越权、协议版本不一致 | 不允许进入业务状态 |
+| 稳定连接 | 网络断开、Token 过期、服务重启 | 恢复会话或连接 |
+| 可恢复数据 | 断线期间遗漏消息、历史已过留存期 | 补发或明确声明 Gap |
+
+所以必须先建立三个判断：
 
 ~~~text
 WebSocket OPEN
-≠ 已完成业务认证
+≠ 已完成业务鉴权
 
 重新连接成功
 ≠ 登录会话已经恢复
@@ -60,647 +70,1386 @@ WebSocket OPEN
 ≠ 断线期间的数据已经补齐
 ~~~
 
-因此后面的知识不按“JWT、心跳、重连、ACK”平铺，而是沿这条链路展开。
-
-### 【QHZHC 中对应的实现位置】
-
-| 链路 | 当前实现 |
-| --- | --- |
-| HTTP 登录、刷新、登出 | `QHZHC_Server/src/server/app.ts` |
-| Access JWT 与 Token Family | `QHZHC_Server/src/server/auth.ts` |
-| Refresh Token Rotation | `QHZHC_Server/src/server/database.ts` |
-| WebSocket 握手、认证、心跳、Replay | `QHZHC_Server/src/server/robot-socket-hub.ts` |
-| WebSocket 消息协议 | `QHZHC_Server/src/shared/protocol.ts` |
-| 前端 Access Token 管理 | `QHZHC_Web/src/services/accessToken.ts` |
-| HTTP 401 恢复 | `QHZHC_Web/src/services/httpAuth.ts` |
-| WebSocket 客户端恢复 | `QHZHC_Web/src/views/DataVisualization/services/realtimeClient.ts` |
+后面的知识点都挂在这三层之下，而不是把 JWT、心跳、重连、ACK 当作互不相关的名词。
 
 ---
 
-## 2. WebSocket 建连以后还要建立可信业务连接
+## 2. HTTP Upgrade 只建立协议通道，业务系统还需要第二次握手
 
-这一层解决的是“谁在使用这条连接，以及这条连接能做什么”。
+这一层先解决最容易被简化的问题：浏览器已经触发 open，为什么服务端还不能立即发送业务数据。
 
-### 【HTTP Upgrade 只完成协议升级】
+### 【HTTP Upgrade 只证明双方切换到了 WebSocket 协议】
 
-RFC 6455 定义了 WebSocket Opening Handshake（开启握手）：浏览器先发送 HTTP Upgrade 请求，服务端接受后返回 `101 Switching Protocols`，随后双方开始交换 WebSocket Frame。[[1]](https://www.rfc-editor.org/rfc/rfc6455)
+RFC 6455 规定 WebSocket 从 HTTP Opening Handshake（开启握手）开始。浏览器发出 Upgrade 请求，服务端接受后返回 101 Switching Protocols，之后双方才开始交换 WebSocket Frame。[[1]](https://www.rfc-editor.org/rfc/rfc6455)
 
-~~~text
-HTTP Request
-  ├─ Upgrade: websocket
-  ├─ Connection: Upgrade
-  └─ Sec-WebSocket-Key
-        ↓
-101 Switching Protocols
-        ↓
-WebSocket Frame
+请求可以抽象成：
+
+~~~http
+GET /ws/resource/123 HTTP/1.1
+Host: example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: ...
+Sec-WebSocket-Version: 13
 ~~~
 
-到这里建立的只是**传输通道**。协议本身并不知道“这个用户是谁”，也不知道“这个用户能否访问某台设备”。
+服务端接受：
 
-因此生产系统通常还要增加应用层认证。
+~~~http
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: ...
+~~~
 
-常见有两种时机：
+到这里能够证明的是：
 
-| 认证时机 | 做法 | 优点 | 代价 |
+> 客户端和服务端已经完成协议升级，底层可以交换 WebSocket Frame。
+
+它不能证明：
+
+- 这条连接属于哪个用户；
+- 这个用户的登录状态是否仍有效；
+- 用户是否允许访问 resource/123；
+- 客户端和服务端是否使用相同的业务协议版本。
+
+因此 Transport Connection（传输连接）和 Authenticated Business Connection（已认证业务连接）必须分开理解。
+
+---
+
+### 【浏览器 WebSocket API 决定了鉴权方案的边界】
+
+浏览器创建连接的标准 API 是：
+
+~~~ts
+const socket = new WebSocket(url, protocols?);
+~~~
+
+WebSocket 构造器只暴露 URL 和可选 Subprotocol，没有类似 fetch 或 Axios 的 headers 配置入口。MDN 的 WebSocket() constructor 文档可以直接验证这一点。[[2]](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/WebSocket)
+
+也就是说，浏览器原生 API 不能这样使用：
+
+~~~ts
+// 浏览器原生 WebSocket 不支持这种写法
+new WebSocket(url, {
+  headers: {
+    Authorization: "Bearer token"
+  }
+});
+~~~
+
+因此常见鉴权方式其实是由浏览器能力推导出来的：
+
+| 方案 | 凭证如何进入连接 | 优点 | 主要代价 |
 | --- | --- | --- | --- |
-| Upgrade 前 | 在 HTTP 握手阶段验证 Cookie、票据等 | 未认证连接不会真正进入 WebSocket | 浏览器可携带凭证的方式有限 |
-| Upgrade 后 | 建连后第一条消息发送认证信息 | 协议灵活，Token 不需要进入 URL | 未认证连接已经占用 socket，需要超时和限额 |
+| Cookie | Upgrade 请求自动携带 | 与 Server Session 容易结合 | 自动携带凭证，需要重点防 CSWSH |
+| Query Token | URL 参数 | 实现简单 | Token 容易进入日志、代理和监控 |
+| 首条认证消息 | OPEN 后发送认证 Frame | Token 不进入 URL，协议边界清楚 | 未认证 socket 已经占用服务端资源 |
+| 一次性 Ticket | 先用 HTTP 换临时票据，再通过 URL 使用 | 长期 Token 不暴露在 URL | 多一次签发和状态管理 |
 
-QHZHC 采用第二种方式：
-
-~~~text
-HTTP Upgrade
-    ↓
-WebSocket OPEN
-    ↓
-等待 authenticate
-    ↓
-校验 Access Token
-    ↓
-发送 welcome
-    ↓
-允许业务消息
-~~~
-
-服务端设置认证时间窗口；认证前只允许 `authenticate`，不会因为底层 socket 已经 OPEN 就直接进入业务状态。
-
-这也是面试中“WebSocket OPEN 是否等于连接可用”的核心答案：**OPEN 只表示协议连接建立，业务可用还依赖应用层状态。**
+这张表只说明方案差异，还不足以指导实现。以“首条认证消息”为例，还必须继续设计连接状态。
 
 ---
 
-### 【身份认证、资源授权和连接绑定是连续的三步】
+### 【首条认证消息必须配套 AUTH_PENDING 状态】
 
-Authentication（身份认证）回答“你是谁”；Authorization（授权）回答“你能访问什么”；Connection Binding（连接绑定）则把已经验证过的身份和资源关系固定到当前 socket。
+完整状态不是：
+
+~~~text
+OPEN
+↓
+发送 auth
+↓
+完成
+~~~
+
+而应该是：
+
+~~~text
+CONNECTING
+    ↓ HTTP Upgrade 成功
+AUTH_PENDING
+    ↓ authenticate(token)
+AUTHENTICATING
+    ↓ 校验成功
+AUTHENTICATED
+    ↓
+BUSINESS / REPLAY / LIVE
+~~~
+
+失败路径：
+
+~~~text
+AUTH_PENDING / AUTHENTICATING
+    ↓
+Token Invalid / Token Expired / Timeout
+    ↓
+CLOSED
+~~~
+
+AUTH_PENDING 存在的意义是限制认证完成前允许发生的事情。
+
+假设服务端没有状态约束：
+
+~~~text
+socket 已 OPEN
+但 Token 还没验证
+    ↓
+客户端先发 subscribe / command
+    ↓
+业务逻辑提前执行
+~~~
+
+那么“认证”就只是形式存在。
+
+首包认证至少需要四个约束：
+
+1. 认证前只允许 authenticate 等少量初始化消息；
+2. 设置认证超时，防止未认证连接永久占用资源；
+3. 认证过程中禁止并发重复认证；
+4. 认证成功后再绑定可信身份并开放业务消息。
+
+一个最小服务端示例：
+
+~~~ts
+type State =
+  | "AUTH_PENDING"
+  | "AUTHENTICATING"
+  | "AUTHENTICATED";
+
+function accept(socket: WebSocket) {
+  let state: State = "AUTH_PENDING";
+
+  const timer = setTimeout(() => {
+    if (state !== "AUTHENTICATED") {
+      socket.close(4100, "authentication timeout");
+    }
+  }, 5000);
+
+  socket.on("message", async raw => {
+    const message = JSON.parse(String(raw));
+
+    if (
+      state === "AUTH_PENDING" &&
+      message.type !== "authenticate"
+    ) {
+      socket.close(4100, "authenticate first");
+      return;
+    }
+
+    if (message.type === "authenticate") {
+      if (state !== "AUTH_PENDING") {
+        socket.close(4100, "duplicate authentication");
+        return;
+      }
+
+      state = "AUTHENTICATING";
+
+      const principal =
+        await verifyAccessToken(message.accessToken);
+
+      clearTimeout(timer);
+      bindPrincipal(socket, principal);
+
+      state = "AUTHENTICATED";
+
+      socket.send(JSON.stringify({
+        type: "welcome"
+      }));
+    }
+  });
+}
+~~~
+
+这段代码的重点不在 API 写法，而在于：
+
+~~~text
+网络状态
+和
+业务认证状态
+必须分开维护
+~~~
+
+---
+
+### 【源码证据：协议升级、认证倒计时和身份绑定是三个阶段】
+
+真实实现可以进一步验证上面的模型。
+
+第一步只处理 Upgrade：
+
+~~~ts
+server.on("upgrade", (request, socket, head) => {
+  const url = new URL(
+    request.url ?? "/",
+    "http://localhost"
+  );
+
+  const match =
+    /^\/ws\/robots\/([a-zA-Z0-9_-]+)$/
+      .exec(url.pathname);
+
+  if (!match) {
+    socket.destroy();
+    return;
+  }
+
+  this.webSocketServer.handleUpgrade(
+    request,
+    socket,
+    head,
+    webSocket => {
+      this.accept(webSocket, match[1]);
+    }
+  );
+});
+~~~
+
+源码：
+[robot-socket-hub.ts L70-L97](../QHZHC_Server/src/server/robot-socket-hub.ts#L70-L97)
+
+这里没有 Access Token 校验，因此可以明确得出：
+
+~~~text
+handleUpgrade()
+只完成协议升级
+≠
+用户认证成功
+~~~
+
+第二步，accept() 创建连接上下文并启动 5 秒认证超时：
+
+~~~ts
+authTimer: setTimeout(() => {
+  if (!context.initialized) {
+    socket.close(
+      WS_CLOSE.PROTOCOL_ERROR,
+      "authentication timeout"
+    );
+  }
+}, 5_000)
+~~~
+
+源码：
+[robot-socket-hub.ts L140-L180](../QHZHC_Server/src/server/robot-socket-hub.ts#L140-L180)
+
+第三步才真正验证身份并绑定上下文：
+
+~~~ts
+principal =
+  await this.auth.verifyAccessToken(
+    message.accessToken
+  );
+
+context.principal = principal;
+context.accessToken = message.accessToken;
+context.maxPointsPerSecond =
+  message.maxPointsPerSecond;
+
+this.send(context, {
+  type: "welcome",
+  protocolVersion: PROTOCOL_VERSION,
+  connectionId: context.id
+});
+~~~
+
+源码：
+[robot-socket-hub.ts L250-L288](../QHZHC_Server/src/server/robot-socket-hub.ts#L250-L288)
+
+三段代码合起来才能支撑“OPEN 不等于业务可用”这个结论。
+
+---
+
+## 3. 身份认证、会话控制和资源授权是连续但不同的三层
+
+完整身份系统仍然遵循：
+
+~~~text
+Authentication
+证明你是谁
+    ↓
+Session Management
+让身份跨时间持续成立
+    ↓
+Authorization
+判断你能对什么资源做什么
+~~~
+
+Cookie、JWT、Refresh Token、RBAC 不是同一层概念。
+
+### 【Authentication 的输出应该是可信 Principal】
+
+Authentication（身份认证）不应该只返回 true / false，而应该形成服务端可信的 Principal（身份主体）。
+
+例如：
+
+~~~ts
+interface Principal {
+  userId: number;
+  role: string;
+  sessionId: string;
+}
+~~~
+
+以 JWT 为例，验证过程通常包含：
 
 ~~~text
 Access Token
     ↓
-Authentication
+Signature
+    ↓
+Algorithm
+    ↓
+Issuer
+    ↓
+Audience
+    ↓
+Expiration
+    ↓
+Required Claims
+    ↓
+Server-side Session State
     ↓
 Principal
-    ↓
-Authorization
-Principal + Resource + Action
-    ↓
-Connection Binding
-user / role / robot / subscription
-    ↓
-后续消息直接使用可信连接上下文
 ~~~
 
-为什么还需要连接绑定？
+只验证“签名正确”仍然不够。
 
-因为认证成功以后，后续每条消息都不应该继续相信客户端重新上传的 `userId`、`role` 或资源身份。服务端应优先使用已经验证并绑定到连接上下文中的信息。
-
-QHZHC 当前会验证：
-
-~~~text
-URL 中的 robotId
-=
-authenticate 消息中的 robotId
-~~~
-
-认证成功后再把用户和订阅信息写入连接上下文。
-
-这里需要准确区分当前能力：
-
-- **项目已经实现**：用户身份认证、robotId 一致性校验、连接上下文绑定。
-- **当前尚未形成完整模型**：没有看到“某个用户是否被授权访问某个 robotId”的细粒度资源级权限体系。
-- **后续主流演进**：如果进入多设备、多租户场景，应补充 `Principal → Resource → Action` 的资源级 Authorization。
-
-因此“JWT 验证通过”不能直接等价成“可以访问所有实时资源”。
+例如没有 Audience（受众）校验时，一个原本签给 Service A 的 Token 可能被错误地拿给 Service B 使用。
 
 ---
 
-### 【浏览器 WebSocket 的鉴权方案受 API 能力限制】
+### 【JWT 自包含不等于整个会话系统无状态】
 
-浏览器原生 `WebSocket()` 构造器只接受 URL 和可选 subprotocol，并不像 `fetch` 或 Axios 那样允许业务代码自由添加 `Authorization` Header。[[2]](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/WebSocket)
+RFC 7519 定义 JWT 的 Claim 和签名表示，但并没有规定“用了 JWT 就不能保存服务端状态”。[[3]](https://www.rfc-editor.org/rfc/rfc7519)
 
-常见方案因此主要是：
-
-| 方式 | 适合场景 | 主要问题 |
-| --- | --- | --- |
-| Cookie | Session / Cookie 体系 | 自动携带凭证，要重点处理 Origin 与 CSWSH |
-| Query Token | 简单系统或临时票据 | URL 容易进入代理、日志和监控 |
-| 首条认证消息 | 浏览器长连接、Token 鉴权 | 需要认证超时和未认证连接保护 |
-| Authorization Header | Node / 原生客户端 | 浏览器原生 WebSocket 无法自由设置 |
-
-QHZHC 没有把 Access Token 拼进 URL，而是在 WebSocket OPEN 后通过 `authenticate` 消息发送。
-
-这降低了 Query Token 泄露到 URL 日志的风险，但不能被描述成“解决了 XSS”。Access Token 仍存在 JavaScript 内存，只要同源恶意脚本能够执行，就仍然可能访问它。
-
----
-
-### 【消息协议还需要结构、版本和状态校验】
-
-WebSocket 是一个长期开放的输入通道。认证成功只说明“谁在发消息”，并不代表消息内容天然可信。
-
-一条入站消息至少要经过：
-
-~~~text
-Raw Frame
-   ↓
-JSON Parse
-   ↓
-Schema Validation
-   ↓
-Protocol Version
-   ↓
-Connection State
-   ↓
-Authorization
-   ↓
-Business Handler
-~~~
-
-每一步解决不同问题：
-
-- JSON Parse：消息格式能不能解析。
-- Schema：字段是否存在、类型和范围是否正确。
-- Protocol Version：客户端和服务端是否使用同一套语义。
-- Connection State：当前阶段是否允许这种消息。
-- Authorization：当前身份是否允许执行这个动作。
-
-QHZHC 的共享协议定义在：
-
-`QHZHC_Server/src/shared/protocol.ts`
-
-当前客户端消息包括 `authenticate`、`ping`、`resend_time_range` 等；认证时还会校验协议版本，客户端收到 `welcome` 后也再次确认版本是否兼容。
-
----
-
-## 3. 双 Token 会话让长连接能够安全跨越 Access Token 生命周期
-
-WebSocket 可以持续运行数小时，但 Access Token 通常不会设计成数小时甚至数天有效。于是实时连接必须和完整的会话生命周期结合起来理解。
-
-### 【Access Token 和 Refresh Token 承担不同职责】
-
-Access Token（访问令牌）用于高频业务访问，生命周期较短；Refresh Token（刷新令牌）只负责低频换取新的 Access Token，生命周期更长。
-
-~~~text
-Login
-  ↓
-Access Token
-  ├─ HTTP API
-  └─ WebSocket Authentication
-
-Refresh Token
-  └─ /auth/refresh
-~~~
-
-浏览器中常见的安全折中是：
-
-~~~text
-Access Token
-→ JavaScript Memory
-
-Refresh Token
-→ HttpOnly Cookie
-~~~
-
-这样做的原因不是“内存绝对安全”，而是把长期凭证和高频业务代码隔离：
-
-- Access Token 即使泄漏，影响窗口受较短 TTL 限制；
-- Refresh Token 不需要暴露给普通 JavaScript；
-- HttpOnly 降低脚本直接读取长期凭证的风险；
-- Secure、SameSite 和 Cookie Path 继续缩小暴露面。
-
-QHZHC 当前就是这种模式：
-
-- Access Token 由登录 / refresh 响应返回；
-- 前端只保存在模块内存；
-- Refresh Token 写入 HttpOnly Cookie；
-- Refresh Cookie 的 Path 限制在 `/api/auth`；
-- HTTP 与 WebSocket 使用同一个 Access Token 身份。
-
-当前默认配置是 Access Token 15 分钟、Refresh Token Family 7 天。这个数字是项目配置，不是行业统一标准。
-
----
-
-### 【JWT 自包含不代表会话系统必须完全无状态】
-
-JWT（JSON Web Token）可以让服务端通过签名和 Claim 独立验证 Token，但这并不意味着完整登录系统一定要“无状态”。RFC 7519 只规定 JWT 的表示和 Claim 语义，并没有要求应用不能保留服务端会话状态。[[3]](https://www.rfc-editor.org/rfc/rfc7519)
-
-纯无状态模型：
+纯无状态验证：
 
 ~~~text
 signature valid
-+ exp not expired
-→ accept
++
+exp not expired
+    ↓
+accept
 ~~~
 
-遇到立即退出登录时会出现问题：
+会带来一个现实问题：
 
 ~~~text
 用户已经 logout
-但 Access Token 还有几分钟有效
-→ 纯 JWT 校验仍可能接受
+    ↓
+Access Token 还有 10 分钟过期
+    ↓
+只检查 JWT 本身仍会 accept
 ~~~
 
 如果系统需要：
 
-- 立即登出；
-- Refresh Rotation；
-- Reuse Detection；
-- 会话整体撤销；
+- 立即 logout；
+- Refresh Token Rotation；
+- Token Reuse Detection；
+- 单会话撤销；
 
-就需要一部分 Server-side Session（服务端会话状态）。
-
-QHZHC 的 Access JWT 中带有 `sid`，服务端验证 Token 时除了验证签名、issuer、audience、exp 等 Claim，还会检查对应 Token Family 是否仍然有效。
-
-因此项目当前更准确的描述是：
-
-> **短期自包含 Access JWT + 服务端可撤销 Token Family。**
-
-这比简单说“我们用了无状态 JWT”更符合真实实现。
+就需要额外的 Server-side Session State（服务端会话状态）。
 
 ---
 
-### 【Refresh Token Rotation 用一次性刷新凭证检测重放】
+### 【源码证据：JWT 验证后还要检查 Token Family】
 
-Refresh Token Rotation（刷新令牌轮换）的核心是：**Refresh Token 使用一次后立即作废，每次刷新都返回一个新的 Refresh Token。**
+当前 verifyAccessToken() 不只是验证 JWT：
 
-RFC 9700 将 Rotation 作为检测 Refresh Token 重放的一种推荐安全方案。[[4]](https://www.rfc-editor.org/rfc/rfc9700)
+~~~ts
+const verified =
+  await jwtVerify(accessToken, this.jwtKey, {
+    algorithms: ["HS256"],
+    issuer: ACCESS_TOKEN_ISSUER,
+    audience: ACCESS_TOKEN_AUDIENCE
+  });
+
+const userId =
+  Number(verified.payload.sub);
+
+const familyId =
+  verified.payload.sid;
+
+const tokenId =
+  verified.payload.jti;
+
+const expiresAt =
+  Number(verified.payload.exp) * 1000;
+
+if (
+  !this.database
+    .isTokenFamilyActive(familyId)
+) {
+  throw new AuthError(
+    "登录会话已撤销",
+    401,
+    "TOKEN_FAMILY_REVOKED"
+  );
+}
+~~~
+
+源码：
+[auth.ts L140-L176](../QHZHC_Server/src/server/auth.ts#L140-L176)
+
+因此更准确的结构是：
+
+~~~text
+Access JWT
+负责表达短期身份
++
+Token Family
+负责表达服务端会话是否仍可信
+~~~
+
+而不是简单说“JWT 是无状态登录”。
+
+---
+
+### 【Authorization 继续回答“能不能访问这个资源”】
+
+一个合法 Principal 并不代表可以访问所有资源。
+
+通用权限决策应继续引入：
+
+~~~text
+Principal
++
+Resource
++
+Action
++
+Context
+    ↓
+Authorization Decision
+    ↓
+Allow / Deny
+~~~
+
+例如：
+
+~~~ts
+authorize({
+  principal,
+  resource: {
+    type: "robot",
+    id: robotId
+  },
+  action: "telemetry:subscribe"
+});
+~~~
+
+所以：
+
+~~~text
+Token valid
+只能说明：
+“这是一个合法登录用户”
+
+Authorization
+继续判断：
+“这个用户能不能订阅当前资源”
+~~~
+
+当前服务端已经检查 URL 中的 robotId 与认证消息中的 robotId 必须一致：
+
+~~~ts
+if (
+  context.initialized ||
+  message.robotId !== context.robotId
+) {
+  context.socket.close(
+    WS_CLOSE.PROTOCOL_ERROR,
+    "invalid authentication"
+  );
+  return;
+}
+~~~
+
+源码：
+[robot-socket-hub.ts L250-L260](../QHZHC_Server/src/server/robot-socket-hub.ts#L250-L260)
+
+它解决的是：
+
+> 一条连接不能在 URL 和认证消息中声明两个不同资源。
+
+但它还不是完整的：
+
+~~~text
+Principal
+是否真正有权访问该 robotId
+~~~
+
+如果进入多租户或多设备权限场景，还需要资源级 Authorization。
+
+---
+
+## 4. Access Token 和 Refresh Token 解决不同时间尺度的会话问题
+
+WebSocket 可以保持很久，而 Access Token 通常应该保持较短生命周期，因此实时连接必须接入完整的 Session Lifecycle（会话生命周期）。
+
+### 【双 Token 设计是在拆分暴露面和职责】
+
+一种常见浏览器模型：
+
+~~~text
+登录
+  ↓
+Access Token
+短期
+JavaScript Memory
+  ↓
+HTTP API / WebSocket 高频使用
+
+Refresh Token
+长期
+HttpOnly Cookie
+  ↓
+仅访问 refresh endpoint
+~~~
+
+这不是为了得到“绝对安全”，而是在做风险分层。
+
+| 凭证 | 使用频率 | 生命周期 | 核心风险 |
+| --- | --- | --- | --- |
+| Access Token | 高频 | 短 | 泄漏后短时间可调用业务 API |
+| Refresh Token | 低频 | 长 | 泄漏后可持续换新 Access Token |
+
+因此 Refresh Token 通常需要额外保护：
+
+- HttpOnly；
+- Secure；
+- SameSite；
+- Cookie Path；
+- Rotation；
+- Reuse Detection；
+- Server-side Revocation。
+
+---
+
+### 【Refresh Token Rotation 把长期凭证变成一次性凭证链】
+
+Refresh Token Rotation（刷新令牌轮换）的核心不是“每次换字符串”，而是：
+
+> 每个 Refresh Token 只能消费一次。
+
+状态变化：
 
 ~~~text
 Refresh A
-   ↓ 使用
-Access 2 + Refresh B
+    ↓ 第一次使用
+A = consumed
+    ↓
+Refresh B
 
 Refresh A
-   ↓ 再次出现
+    ↓ 再次使用
 Reuse Detected
-   ↓
-Revoke Token Family
+    ↓
+Token Family Revoked
 ~~~
 
 为什么旧 Token 再出现时要撤销整个 Family？
 
-因为服务端无法判断：
+因为服务端无法知道：
 
 ~~~text
-旧 Token 在攻击者手里
+合法客户端持有 B
+攻击者持有 A
+
 还是
-新 Token 在攻击者手里
+
+攻击者已经持有 B
+合法客户端错误地再次提交 A
 ~~~
 
-一旦同一条 Token Chain 出现重放，继续允许其中一支使用就无法保证会话可信。
+所以一旦同一 Token Chain 出现重放，整条会话链都不再可信。
 
-QHZHC 在 `database.ts` 中通过事务完成这一过程：
-
-- Refresh Token 原文不入库，只存 SHA-256 摘要；
-- 旧 Token 标记为 consumed；
-- 新 Token 记录 parent / replaced_by 关系；
-- 新旧 Token 属于同一 family；
-- consumed Token 再出现时 revoke 整个 family。
-
-新 Refresh Token 继承原来的 `expires_at`，所以刷新不会不断把 7 天重新往后延。这属于 Absolute Expiration（绝对过期），而不是无限滑动续期。
+RFC 9700 将 Refresh Token Rotation 列为检测 Refresh Token Replay 的标准方法之一。[[4]](https://www.rfc-editor.org/rfc/rfc9700)
 
 ---
 
-### 【Rotation 引出的并发问题需要 Single Flight】
+### 【Rotation 必须具备事务原子性】
 
-Rotation 越严格，越需要处理合法客户端自己的并发刷新。
-
-假设同时发生：
+假设 Rotation 被拆成：
 
 ~~~text
-HTTP A → 401
-HTTP B → 401
-WebSocket → Token expired
+SELECT old token
+    ↓
+UPDATE old token consumed
+    ↓
+INSERT new token
 ~~~
 
-如果三条路径都读取同一个 Refresh Cookie 并同时请求 refresh：
+两个并发请求可能同时在第一步读到：
 
 ~~~text
-第一次请求
-→ old token consumed
-→ refresh 成功
-
-第二次请求
-→ old token 已 consumed
-→ 被识别为 reuse
-
-结果：
-合法客户端自己触发 family revoke
+old token
+consumed = false
 ~~~
 
-Single Flight（并发合并）的作用就是让同一客户端中的多个刷新需求共享一次真正的 Refresh 请求：
+如果数据库没有事务保护，两次请求都有机会继续向下执行。
+
+因此正确实现需要把：
 
 ~~~text
-第一个请求
-→ 创建 refreshPromise
-
-其他请求
-→ await 同一个 Promise
-
-刷新成功
-→ 一起继续
+检查旧 Token
++
+标记旧 Token consumed
++
+创建新 Token
 ~~~
 
-QHZHC_Web/src/services/accessToken.ts 已经用共享 `refreshPromise` 实现了**单 Tab 内**的并发合并。
+放在同一个原子事务里。
 
-这里仍有一个真实边界：不同浏览器 Tab 有独立 JavaScript 内存，但共享 Cookie，因此多个 Tab 仍可能并发刷新。
+真实实现：
 
-如果未来需要解决这一层，可以考虑：
+~~~ts
+this.database.exec("BEGIN IMMEDIATE");
+
+const row = queryCurrentToken();
+
+if (row.consumed_at !== null) {
+  revokeWholeFamily(row.family_id);
+
+  this.database.exec("COMMIT");
+
+  return {
+    kind: "reused",
+    familyId: row.family_id
+  };
+}
+
+markCurrentConsumed(
+  currentHash,
+  nextHash
+);
+
+insertNextToken({
+  familyId: row.family_id,
+  parentTokenHash: currentHash,
+  expiresAt: row.expires_at
+});
+
+this.database.exec("COMMIT");
+~~~
+
+源码：
+[database.ts L190-L263](../QHZHC_Server/src/server/database.ts#L190-L263)
+
+这里还能观察到三个重要设计。
+
+第一，数据库保存 Hash，而不是 Refresh Token 原文。
 
 ~~~text
-Web Locks
-→ 跨 Tab 串行 refresh
-
-BroadcastChannel
-→ 广播“会话已经更新”的信号
+Refresh Token
+    ↓ SHA-256
+token_hash
+    ↓
+Database
 ~~~
 
-不应该通过 BroadcastChannel 传播 Refresh Token 本身。
+第二，新 Token 继承原 expires_at：
+
+~~~text
+Rotation
+≠
+重新获得完整 7 天寿命
+~~~
+
+因此属于 Absolute Expiration（绝对过期）。
+
+第三，Reuse 发生时撤销整个 Family，而不是只拒绝当前 Token。
 
 ---
 
-### 【WebSocket 在线期间还要持续检查会话是否有效】
+### 【Single Flight 是 Rotation 正确性的一部分】
 
-HTTP 每次请求都会重新进入认证链路；WebSocket 则可能持续数小时。
+Rotation 会自然引入并发冲突。
 
-如果只在建连时验证 Access Token，一条连接可能出现：
+假设同时出现：
 
 ~~~text
-Token 建连时有效
-    ↓
-10 分钟后 Token 过期
-    ↓
-socket 仍然继续传数据
+HTTP Request A → 401
+HTTP Request B → 401
+WebSocket → Access Token expired
 ~~~
 
-常见处理方式有几种：
-
-| 方案 | 特点 |
-| --- | --- |
-| 建连时只校验 | 最简单，但撤销和过期不能及时影响在线连接 |
-| 每条消息重新校验 | 最及时，但开销高 |
-| 按 exp 设置断开时间 | 适合自然过期，难覆盖提前 revoke |
-| 周期性重新验证 | 成本与及时性折中 |
-| revoke 时主动踢线 | 最及时，需要维护 Session → Connection 索引 |
-
-QHZHC 当前采用周期重验：服务端在心跳巡检时重新执行 Access Token / Token Family 校验。
-
-因此：
+如果三条路径都独立 refresh：
 
 ~~~text
+第一次 Refresh A
+→ 成功
+→ A consumed
+→ 返回 B
+
+第二次 Refresh A
+→ A 已 consumed
+→ Reuse Detected
+→ Family Revoked
+~~~
+
+合法客户端自己触发了“疑似 Token 被盗”。
+
+所以需要 Single Flight（并发合并）：
+
+~~~ts
+let refreshPromise:
+  Promise<string> | null = null;
+
+function refreshAccessToken() {
+  if (!refreshPromise) {
+    refreshPromise =
+      requestRefresh()
+        .then(result => {
+          accessToken =
+            result.accessToken;
+
+          return accessToken;
+        })
+        .finally(() => {
+          refreshPromise = null;
+        });
+  }
+
+  return refreshPromise;
+}
+~~~
+
+这不是简单性能优化，而是为了确保同一 Refresh Token 不会因为本地并发被重复消费。
+
+---
+
+### 【源码证据：HTTP 与 WebSocket 共用同一个 refreshPromise】
+
+当前 Token Manager：
+
+~~~ts
+let accessToken:
+  string | null = null;
+
+let refreshPromise:
+  Promise<string> | null = null;
+
+refreshAccessToken: () => {
+  if (!refreshPromise) {
+    refreshPromise =
+      refreshRequest()
+        .then(response => {
+          accessToken =
+            response.accessToken;
+
+          return response.accessToken;
+        })
+        .finally(() => {
+          refreshPromise = null;
+        });
+  }
+
+  return refreshPromise;
+}
+~~~
+
+源码：
+[accessToken.ts L15-L46](../QHZHC_Web/src/services/accessToken.ts#L15-L46)
+
+HTTP 401 处理器调用同一个 Manager：
+
+~~~ts
+const accessToken =
+  await manager.refreshAccessToken();
+
+const retryConfig =
+  applyAccessToken(
+    {
+      ...config,
+      _authRetry: true
+    },
+    accessToken
+  );
+
+return client.request(retryConfig);
+~~~
+
+源码：
+[httpAuth.ts L50-L88](../QHZHC_Web/src/services/httpAuth.ts#L50-L88)
+
+因此同一 Tab 中：
+
+~~~text
+多个 HTTP 401
++
+WebSocket 认证过期
+    ↓
+同一个 refreshPromise
+    ↓
+一次真实 Refresh 请求
+~~~
+
+当前边界也很明确：不同 Tab 有不同 JavaScript Heap，因此单 Tab Single Flight 不会自动扩展到跨 Tab。
+
+跨 Tab 需要再引入 Web Locks 等协调手段。
+
+---
+
+### 【长连接还需要 Session Revalidation】
+
+HTTP 每次请求都会重新进入认证链，而 WebSocket 可能持续数小时。
+
+如果只在建连时验证一次：
+
+~~~text
+10:00
+Access Token 有效
+→ 建连成功
+
+10:15
 Access Token 过期
-或
-Token Family revoke
-        ↓
-服务端下一轮会话检查失败
-        ↓
-关闭连接
-        ↓
-客户端进入认证恢复流程
+
+14:00
+socket 仍然在传业务数据
 ~~~
 
-如果以后需要“后台封禁后立即断线”，可以进一步维护 `familyId → active connections`，在 revoke 时主动关闭关联 socket。
+这意味着连接寿命超过了身份凭证寿命。
+
+常见策略：
+
+| 策略 | 优点 | 局限 |
+| --- | --- | --- |
+| 只在建连验证 | 简单 | 无法及时处理过期和 revoke |
+| 每条消息验证 | 最及时 | 成本高 |
+| 到 exp 定时关闭 | 处理自然过期准确 | 不覆盖提前 revoke |
+| 周期重验 | 成本与及时性折中 | 存在检测窗口 |
+| revoke 主动关闭 | 最及时 | 要维护 Session → Connections |
+
+当前服务端采用周期重验：
+
+~~~ts
+if (
+  context.initialized &&
+  context.accessToken
+) {
+  try {
+    context.principal =
+      await this.auth
+        .verifyAccessToken(
+          context.accessToken
+        );
+  } catch {
+    context.socket.close(
+      WS_CLOSE.AUTHENTICATION_EXPIRED,
+      "access token expired"
+    );
+
+    continue;
+  }
+}
+~~~
+
+源码：
+[robot-socket-hub.ts L416-L447](../QHZHC_Server/src/server/robot-socket-hub.ts#L416-L447)
+
+这段代码真正把：
+
+~~~text
+Session Lifecycle
+和
+WebSocket Lifecycle
+~~~
+
+连接起来了。
 
 ---
 
-## 4. 连接稳定性依赖心跳、故障分类和受控重连
+## 5. 心跳不是一个开关，而是三层不同的存活判断
 
-“自动重连”不是一个完整方案。真正稳定的连接需要先判断故障发生在哪一层，再决定应该继续重试、刷新凭证还是停止。
+很多实现增加一个 ping 就称为“已经做了心跳”，但不同心跳回答的是不同问题。
 
-### 【三种存活状态需要三层检测】
+### 【协议 Ping/Pong 检查 WebSocket Endpoint】
 
-实时系统里至少有三种“活着”：
+RFC 6455 定义了 Ping / Pong Control Frame。Node 的 ws 等服务端库通常可以主动发送协议 Ping：
 
-~~~text
-TCP / WebSocket 还活着
-        ↓
-应用消息循环还活着
-        ↓
-业务数据还在继续产生
+~~~ts
+socket.ping();
 ~~~
 
-它们并不是同一件事。
+客户端 WebSocket Stack 返回 Pong。
 
-#### <u>协议 Ping / Pong 检查 WebSocket 端点</u>
+它主要回答：
 
-RFC 6455 定义了 Ping / Pong 控制帧。服务端可以定期 Ping，客户端 WebSocket Stack 返回 Pong，用来确认连接端点仍然响应。[[1]](https://www.rfc-editor.org/rfc/rfc6455)
+> 底层 WebSocket Endpoint 是否还能够响应？
 
-#### <u>应用层 ping / pong 检查消息循环</u>
+当前服务端实现：
 
-浏览器 JavaScript API 并不暴露主动发送协议 Ping 控制帧的能力，因此前端通常还会设计普通业务消息：
+~~~ts
+context.protocolAlive = false;
+context.socket.ping();
 
-~~~text
-{ type: "ping", ... }
-        ↓
-{ type: "pong", ... }
+socket.on("pong", () => {
+  context.protocolAlive = true;
+  context.lastSeenAt = Date.now();
+});
 ~~~
 
-它可以携带时间戳、nonce、业务状态等额外信息。
+源码：
+[robot-socket-hub.ts L168-L188](../QHZHC_Server/src/server/robot-socket-hub.ts#L168-L188)
 
-#### <u>Data Watchdog 检查业务数据是否推进</u>
-
-还有一种更隐蔽的问题：
-
-~~~text
-WebSocket ping/pong 正常
-应用消息也正常
-但是 telemetry 一直不再更新
-~~~
-
-这说明网络连接没有死，真正停止的是数据源或业务发布链。
-
-QHZHC 同时存在这三层：
-
-- 服务端协议 Ping / Pong；
-- 浏览器应用层 ping / pong；
-- 自然秒 telemetry watchdog。
-
-这也是为什么“我已经做了心跳”还不够，必须继续问：**你在监测哪一种存活？**
+以及：
+[robot-socket-hub.ts L431-L447](../QHZHC_Server/src/server/robot-socket-hub.ts#L431-L447)
 
 ---
 
-### 【关闭原因决定下一步恢复动作】
+### 【应用层 ping/pong 检查消息处理链】
 
-WebSocket Close Code（关闭码）应该成为恢复状态机的输入，而不是只拿来打印日志。
+浏览器 JavaScript WebSocket API 没有暴露主动发送协议 Ping Control Frame 的方法，所以前端常设计普通业务消息：
 
-一个可理解的恢复决策是：
-
-~~~text
-连接关闭
-   ↓
-判断原因
-   ├─ 临时网络 / 服务故障
-   │      ↓
-   │   Backoff Reconnect
-   │
-   ├─ Access Token 失效
-   │      ↓
-   │   Refresh
-   │      ↓
-   │   Reconnect
-   │
-   └─ Forbidden / Protocol Error
-          ↓
-        Stop
+~~~ts
+socket.send(
+  JSON.stringify({
+    type: "ping",
+    nonce: crypto.randomUUID(),
+    sentAt: Date.now()
+  })
+);
 ~~~
 
-如果所有 Close 都无脑重连，Access Token 过期会变成：
+服务端：
+
+~~~ts
+case "ping":
+  send({
+    type: "pong",
+    nonce: message.nonce,
+    serverTime: Date.now()
+  });
+~~~
+
+它检查的是：
 
 ~~~text
-旧 Access Token
+JavaScript
+→ WebSocket send
+→ 网络
+→ 服务端消息路由
+→ 业务回包
+→ 浏览器 message event
+~~~
+
+比底层 Ping/Pong 多覆盖了一层应用协议。
+
+---
+
+### 【Data Watchdog 检查业务流有没有继续推进】
+
+还有一种更加隐蔽的问题：
+
+~~~text
+协议 Ping/Pong 正常
+应用 ping/pong 正常
+    ↓
+业务 telemetry 一直没有新数据
+~~~
+
+这时连接没有死，真正异常的可能是：
+
+- 数据采集停止；
+- 流处理停止；
+- Publisher 卡住；
+- 订阅状态异常。
+
+所以实时数据系统还要单独检查：
+
+> 业务数据进度是否持续推进？
+
+当前客户端保存 lastBucketSeenAt，并检测自然秒数据：
+
+~~~ts
+if (
+  Date.now() -
+    this.lastBucketSeenAt >=
+      BUCKET_TIMEOUT_MS
+) {
+  this.frameQueue.pause();
+
+  this.socket.close(
+    REALTIME_CLOSE_CODE
+      .HEARTBEAT_TIMEOUT,
+    "telemetry bucket timeout"
+  );
+}
+~~~
+
+源码：
+[realtimeClient.ts L550-L585](../QHZHC_Web/src/views/DataVisualization/services/realtimeClient.ts#L550-L585)
+
+因此可以得到三层模型：
+
+~~~text
+Protocol Ping/Pong
+→ WebSocket endpoint alive?
+
+Application ping/pong
+→ application message loop alive?
+
+Data Watchdog
+→ business stream progressing?
+~~~
+
+这三层不能互相替代。
+
+---
+
+## 6. 重连之前必须先分类故障
+
+演示代码常写：
+
+~~~ts
+socket.onclose = () => {
+  setTimeout(connect, 1000);
+};
+~~~
+
+它的问题是默认：
+
+> 所有关闭都可以通过再连一次恢复。
+
+实际上不同故障需要完全不同的动作。
+
+### 【Close Code 应该驱动 Recovery Policy】
+
+可以把关闭原因抽象成：
+
+~~~text
+Close
+  ↓
+Transport Failure
+  → reconnect
+
+Authentication Expired
+  → refresh token
+  → reconnect
+
+Forbidden / Protocol Error
+  → stop
+~~~
+
+为什么权限错误不能无限重连？
+
+~~~text
+无权限
 → reconnect
-→ authenticate failed
+→ 仍然无权限
 → reconnect
+→ 仍然无权限
+~~~
+
+这不是恢复，而是制造请求风暴。
+
+最小策略代码：
+
+~~~ts
+function resolveRecoveryAction(
+  closeCode: number
+) {
+  if (closeCode === 4001) {
+    return "refresh-token";
+  }
+
+  if (
+    closeCode === 4003 ||
+    closeCode === 4100
+  ) {
+    return "stop";
+  }
+
+  return "reconnect";
+}
+~~~
+
+当前实现把这一策略独立成纯函数：
+
+~~~ts
+export function
+resolveRealtimeRecoveryAction(
+  closeCode: number
+): RealtimeRecoveryAction {
+  if (
+    closeCode ===
+    REALTIME_CLOSE_CODE
+      .AUTHENTICATION_EXPIRED
+  ) {
+    return "refresh-token";
+  }
+
+  if (
+    closeCode ===
+      REALTIME_CLOSE_CODE.FORBIDDEN ||
+    closeCode ===
+      REALTIME_CLOSE_CODE.PROTOCOL_ERROR
+  ) {
+    return "stop";
+  }
+
+  return "reconnect";
+}
+~~~
+
+源码：
+[realtimeConnectionPolicy.ts L13-L33](../QHZHC_Web/src/views/DataVisualization/services/realtimeConnectionPolicy.ts#L13-L33)
+
+把 Policy 和 WebSocket API 分开，也使 Close Code → Action 可以独立单测。
+
+---
+
+### 【Access Token 过期时要先恢复会话，再恢复连接】
+
+错误做法：
+
+~~~text
+4001
+→ reconnect
+→ 使用旧 Access Token
 → authenticate failed
+→ 4001
+→ reconnect
 → ...
 ~~~
 
-QHZHC 当前把关闭情况分成三类：
-
-- `refresh-token`：先恢复会话；
-- `reconnect`：直接进入受控重连；
-- `stop`：权限或协议问题停止自动恢复。
-
-这比“onclose 就 setTimeout(connect)”更接近生产状态机。
-
----
-
-### 【指数退避和随机抖动控制重连压力】
-
-Exponential Backoff（指数退避）解决单个客户端重试过快；Jitter（随机抖动）解决大量客户端同时重试。
-
-如果服务重启导致大量连接一起断开，而所有客户端都固定 1 秒重连：
+正确链路：
 
 ~~~text
-Server Restart
-     ↓
-10,000 connections close
-     ↓
-1 秒后同时 reconnect
-     ↓
-TLS / Auth / Replay 瞬间放大
-     ↓
-服务再次过载
-~~~
-
-更合理的方式是：
-
-~~~text
-base × 2^attempt
-        ↓
-限制最大等待时间
-        ↓
-加入随机 jitter
-~~~
-
-QHZHC 使用指数退避并加入随机抖动，延迟有上限；只有收到 `welcome`、确认新连接真正恢复后才重置 attempt。
-
-客户端还结合：
-
-- `navigator.onLine`；
-- 页面 visibility；
-
-避免在浏览器明确离线或页面生命周期不适合时持续创建连接。
-
----
-
-### 【显式状态比大量布尔变量更容易维护】
-
-长连接逻辑一旦同时出现：
-
-- connecting；
-- authenticating；
-- refreshing；
-- reconnecting；
-- replaying；
-- stopped；
-
-如果只靠多个布尔值，很容易组合出“不应该存在”的状态。
-
-更适合的思维模型是：
-
-~~~text
-IDLE
-  ↓
-CONNECTING
-  ↓
-AUTH_PENDING
-  ↓
-RECOVERING_DATA
-  ↓
-LIVE
-  │
-  ├─ auth expired → AUTH_RECOVERING
-  │                    ↓
-  │                 CONNECTING
-  │
-  ├─ transient failure → RECONNECT_WAIT
-  │                         ↓
-  │                      CONNECTING
-  │
-  └─ fatal → STOPPED
-~~~
-
-即使代码没有引入状态机库，也应该保证状态迁移规则明确。
-
-QHZHC 当前已经体现了这种约束：
-
-- 认证前只允许 authenticate；
-- authentication 过程中拒绝重复 authenticate；
-- replay 期间暂停普通 live 投递；
-- 客户端通过 socket 引用比较忽略旧连接残余事件；
-- stop 时清理 timer、watchdog、事件监听和 reconnect 任务。
-
-面试中如果问“为什么 WebSocket 容易出现偶发竞态”，通常就可以从这里回答：**难点往往不是 API，而是异步生命周期和状态迁移。**
-
----
-
-## 5. 重新连上以后还需要恢复正确的数据进度
-
-连接恢复解决 Transport（传输通道）；数据恢复解决业务连续性。
-
-这一层是很多“自动重连方案”真正缺失的部分。
-
-### 【Recovery Cursor 把业务进度带到下一条连接】
-
-Recovery Cursor（恢复游标）表示客户端已经推进到什么位置。
-
-常见游标包括：
-
-| 类型 | 优点 | 局限 |
-| --- | --- | --- |
-| sequence / offset | 单调、容易判断缺口 | 服务端要维护稳定序列 |
-| eventId | 语义明确 | 需要全局或分区唯一 |
-| timestamp | 直观 | 同时间多事件和时钟问题 |
-| time bucket | 与时间窗口聚合自然结合 | 粒度较粗 |
-
-恢复流程应该是：
-
-~~~text
-保存最后进度
+4001
     ↓
-连接中断
+Refresh Token
     ↓
-新连接 authenticate(cursor)
+New Access Token
     ↓
-服务端判断 cursor 是否仍可恢复
+Reconnect
+    ↓
+Authenticate
     ↓
 Replay
-    ↓
-Replay Complete
     ↓
 Live
 ~~~
 
-QHZHC 使用自然秒 `bucketStartMs` 作为恢复游标。
+当前 handleClose()：
 
-客户端重新认证时提交 `resumeFromBucketStartMs`，服务端从这个时间位置恢复到最新已完成自然秒。
+~~~ts
+case "refresh-token": {
+  this.options
+    .onStatus("auth-recovering");
 
-对当前“按自然秒发布遥测数据”的业务来说，这个游标与数据模型一致；如果以后要求逐点严格连续，则 sequence / offset 会比时间窗口更适合作为主游标。
+  try {
+    await this
+      .refreshAccessToken();
+
+    if (!this.stopped) {
+      this.attempt = 0;
+      this.connect();
+    }
+  } catch {
+    this.stopped = true;
+
+    await this
+      .onAuthenticationFailure();
+  }
+
+  return;
+}
+~~~
+
+源码：
+[realtimeClient.ts L497-L545](../QHZHC_Web/src/views/DataVisualization/services/realtimeClient.ts#L497-L545)
+
+这里的重要点不是 try/catch，而是恢复顺序：
+
+~~~text
+Session Recovery
+必须发生在
+Connection Recovery 之前
+~~~
 
 ---
 
-### 【Replay 和 Live 最好形成明确阶段】
+### 【Exponential Backoff 和 Jitter 解决两个不同问题】
 
-如果服务端重连后同时发送历史补发和最新实时数据：
+如果服务重启导致大量客户端同时断开，而大家都固定 1 秒后 reconnect：
+
+~~~text
+10,000 clients close
+    ↓
+1 second
+    ↓
+10,000 reconnect
+    ↓
+TLS / Auth / Replay burst
+    ↓
+server overloaded again
+~~~
+
+Exponential Backoff（指数退避）：
+
+~~~text
+delay =
+base × 2^attempt
+~~~
+
+控制单个客户端的重试速度。
+
+但如果客户端 attempt 相同，它们仍可能同步醒来，所以还要加入 Jitter（随机抖动）：
+
+~~~text
+ceiling =
+min(
+  maxDelay,
+  base × 2^attempt
+)
+
+delay =
+random(
+  0,
+  ceiling
+)
+~~~
+
+真实代码：
+
+~~~ts
+const ceiling =
+  Math.min(
+    15_000,
+    500 * 2 **
+      Math.min(
+        this.attempt,
+        6
+      )
+  );
+
+const delay =
+  Math.max(
+    250,
+    Math.round(
+      ceiling *
+      this.random()
+    )
+  );
+~~~
+
+源码：
+[realtimeClient.ts L587-L616](../QHZHC_Web/src/views/DataVisualization/services/realtimeClient.ts#L587-L616)
+
+同时还需要生命周期条件：
+
+~~~text
+navigator offline
+→ 不重连
+
+document hidden
+→ 不重连
+
+已有 reconnectTimer
+→ 不重复创建
+~~~
+
+所以重连策略实际上由四部分构成：
+
+~~~text
+Failure Classification
++
+Backoff
++
+Jitter
++
+Lifecycle Gating
+~~~
+
+---
+
+## 7. 重新连接成功以后还要恢复数据进度
+
+Connection Recovery（连接恢复）只恢复 Transport，不能自动恢复断线期间的业务数据。
+
+### 【Recovery Cursor 把业务进度带到下一条连接】
+
+Recovery Cursor（恢复游标）表示：
+
+> 客户端已经可靠推进到什么位置。
+
+常见 Cursor：
+
+| 类型 | 优点 | 局限 |
+| --- | --- | --- |
+| sequence / offset | 单调、Gap 判断最清楚 | 服务端要维护稳定序列 |
+| eventId | 事件级唯一 | 需要索引 |
+| timestamp | 直观 | 同时刻多事件、时钟问题 |
+| time bucket | 与时间聚合自然结合 | 粒度较粗 |
+
+标准恢复链：
+
+~~~text
+旧连接最后进度 N
+    ↓
+disconnect
+    ↓
+new connection
+    ↓
+authenticate(cursor = N + 1)
+    ↓
+server replay
+N + 1 ... latest
+    ↓
+replay_complete
+    ↓
+live
+~~~
+
+当前协议把 Cursor 放进 authenticate：
+
+~~~ts
+{
+  type: "authenticate",
+  accessToken,
+  protocolVersion,
+  robotId,
+  resumeFromBucketStartMs,
+  maxPointsPerSecond
+}
+~~~
+
+协议：
+[protocol.ts L8-L24](../QHZHC_Server/src/shared/protocol.ts#L8-L24)
+
+客户端发送：
+
+~~~ts
+socket.send(
+  JSON.stringify({
+    type: "authenticate",
+    accessToken,
+    protocolVersion:
+      PROTOCOL_VERSION,
+    robotId: ROBOT_ID,
+    resumeFromBucketStartMs:
+      this.latestBatchStartMs +
+      SECOND_MS,
+    maxPointsPerSecond:
+      this.maxPointsPerSecond
+  })
+);
+~~~
+
+源码：
+[realtimeClient.ts L330-L366](../QHZHC_Web/src/views/DataVisualization/services/realtimeClient.ts#L330-L366)
+
+这说明恢复进度存放在连接之外，因此能够跨 socket 延续。
+
+---
+
+### 【Replay 和 Live 最好形成两个明确阶段】
+
+如果服务端同时发送补发和实时流：
 
 ~~~text
 10:05 replay
@@ -710,305 +1459,553 @@ QHZHC 使用自然秒 `bucketStartMs` 作为恢复游标。
 10:07 replay
 ~~~
 
-客户端就不得不额外做排序、缓存和去重。
+客户端会额外承担：
 
-更简单的协议设计是：
+- 排序；
+- 缓冲；
+- 去重；
+- Cursor 重新计算。
+
+更清晰的协议：
 
 ~~~text
-Authenticate
+AUTHENTICATED
     ↓
-Welcome
+REPLAYING
     ↓
-Replay historical data
+historical messages
     ↓
-Replay Complete
+replay_complete
     ↓
-Live
+LIVE
 ~~~
 
-QHZHC 在 replay 期间会把连接标记为 replaying，普通实时广播跳过该连接；补发完成后发送 `replay_complete`，再恢复 live。
+当前服务端在 Replay 时：
 
-这里的设计价值并不是“多一个消息类型”，而是建立了一个清楚的阶段边界。
+~~~ts
+context.replaying = true;
+~~~
+
+而普通 publish 会跳过：
+
+~~~ts
+if (
+  !context.initialized ||
+  context.replaying
+) {
+  continue;
+}
+~~~
+
+补发结束：
+
+~~~ts
+this.send(
+  context,
+  {
+    type: "replay_complete",
+    throughBucketStartMs
+  }
+);
+
+context.replaying = false;
+~~~
+
+源码：
+[robot-socket-hub.ts L98-L125](../QHZHC_Server/src/server/robot-socket-hub.ts#L98-L125)
+
+以及：
+[robot-socket-hub.ts L292-L343](../QHZHC_Server/src/server/robot-socket-hub.ts#L292-L343)
+
+这个状态边界比“收到以后客户端自己排序”更容易证明正确。
 
 ---
 
-### 【No-data 和 Retention Gap 不是同一种空数据】
+### 【No-data 和 Retention Gap 必须具有不同语义】
 
-这两个状态很容易在恢复协议里被混淆。
+某个时间窗口为空可能有两个原因。
 
-No-data 表示：
-
-~~~text
-这个时间窗口存在
-但业务本来没有数据
-~~~
-
-Retention Gap 表示：
+第一种：
 
 ~~~text
-这个时间窗口原来可能有数据
-但已经超过服务端留存范围
-无法恢复
+这个自然秒本来没有采样
+→ no-data
 ~~~
+
+第二种：
+
+~~~text
+这个时间原本可能有数据
+但已超过服务端 retention
+→ gap
+~~~
+
+如果都表示成：
+
+~~~json
+{
+  "points": []
+}
+~~~
+
+客户端就无法知道历史是否完整。
+
+所以 Gap 通常至少要携带：
+
+~~~text
+requested cursor
+earliest available
+latest
+recommended action
+~~~
+
+当前协议定义：
+
+~~~ts
+{
+  type: "gap",
+  requestedFromBucketStartMs,
+  earliestAvailableBucketStartMs,
+  latestBucketStartMs,
+  action: "skip-to-latest"
+}
+~~~
+
+协议：
+[protocol.ts L44-L65](../QHZHC_Server/src/shared/protocol.ts#L44-L65)
+
+服务端当前会读取 earliest：
+
+~~~ts
+const earliest =
+  this.stream
+    .earliestTelemetryBucketStartMs(
+      context.robotId
+    );
+
+if (
+  bucketCount >
+  MAX_REPLAY_BUCKETS
+) {
+  this.sendGap(
+    context,
+    fromBucketStartMs,
+    earliest,
+    throughBucketStartMs
+  );
+
+  return;
+}
+~~~
+
+源码：
+[robot-socket-hub.ts L303-L316](../QHZHC_Server/src/server/robot-socket-hub.ts#L303-L316)
+
+这里也暴露出当前实现边界：
+
+~~~text
+requestedFrom
+<
+earliestAvailable
+~~~
+
+目前没有被单独作为 Gap 条件处理。
+
+因此更完整的判断应该是：
+
+~~~text
+requestedFrom <
+earliestAvailable
+    ↓
+unrecoverable gap
+~~~
+
+否则 retention 删除的数据可能被误解释成真正的 no-data。
+
+---
+
+## 8. WebSocket 基于 TCP 仍然不等于应用层 Exactly-once
+
+常见误区：
+
+> WebSocket 基于 TCP，TCP 有序可靠，所以业务消息不会丢。
+
+这个结论只覆盖单条存活 TCP 连接中的字节流传输。
+
+它无法回答：
+
+~~~text
+server.send()
+客户端是否已经收到？
+
+message event
+业务是否已经处理？
+
+业务处理成功
+服务端是否已经知道？
+
+断线发生时
+客户端到底推进到了哪一步？
+~~~
+
+### 【ACK 的本质是定义“哪一步才算完成”】
+
+Application ACK（应用层确认）可以放在不同阶段：
+
+| ACK 时机 | 表达的语义 |
+| --- | --- |
+| 收到 message event | 浏览器已经接收 |
+| 进入本地可靠队列 | 已进入消费范围 |
+| 业务处理完成 | 应用逻辑已完成 |
+| 持久化完成 | 状态已经落盘 |
+
+最小例子：
+
+~~~ts
+// server
+send({
+  type: "event",
+  sequence: 1042,
+  payload
+});
+
+// client
+await process(payload);
+
+send({
+  type: "ack",
+  sequence: 1042
+});
+~~~
+
+服务端收到 ACK 后才能把“客户端已确认进度”推进到 1042。
+
+但是 ACK 本身仍然不等于 Exactly-once。
 
 例如：
 
 ~~~text
-requested = 10:00
-earliest retained = 10:30
-latest = 11:00
+客户端处理成功
+    ↓
+发送 ACK
+    ↓
+ACK 丢失
+    ↓
+服务端重发
 ~~~
 
-如果服务端直接查询 10:00～10:29，查不到就返回 no-data，客户端会误以为“这些时间本来没有数据”。
+客户端仍可能第二次处理 sequence 1042。
 
-正确逻辑应该先判断：
+因此更强投递语义通常需要：
 
 ~~~text
-requested < earliest retained
-        ↓
-返回 unrecoverable gap
-        ↓
-告诉客户端 earliest / latest / recommended action
+ACK
++
+Retry
++
+Idempotency / Dedupe
++
+Durable Progress
 ~~~
-
-QHZHC 的协议已经存在 `gap` 消息，并携带 requested、earliest available、latest 和 skip-to-latest 等信息。
-
-但当前实现仍有一个值得继续修正的边界：
-
-> 如果 requested 早于实际 retention，而总 replay bucket 数没有超过 replay 上限，当前逻辑仍可能把已经被清理的数据解释成 no-data。
-
-因此这一点应标记为**已发现的协议语义问题**，而不是写成“当前已经完全解决”。
 
 ---
 
-### 【WebSocket 有序传输不等于应用层 Exactly-once】
+### 【源码证据：当前 Cursor 代表接收进度，不代表渲染完成】
 
-WebSocket 基于 TCP，单条连接内能够保持字节流顺序；但这并不能回答几个更高层的问题：
+当前客户端收到 telemetry_second 后先推进：
 
-~~~text
-server.send()
-是否代表浏览器已经收到？
-
-message event
-是否代表业务已经处理？
-
-业务处理
-是否已经持久化？
-
-断线前最后一条
-客户端究竟处理到了哪一步？
+~~~ts
+this.latestBatchStartMs =
+  message.bucketStartMs;
 ~~~
 
-如果系统需要更强的可靠语义，就需要 Application ACK（应用层确认）。
+之后才把数据加入帧队列：
 
-ACK 可以定义在不同阶段：
+~~~ts
+this.frameQueue
+  .enqueue(message.points);
+~~~
 
-| ACK 时机 | 能表达的进度 |
-| --- | --- |
-| 收到消息 | 网络接收完成 |
-| 放入本地可靠队列 | 已进入消费范围 |
-| 业务处理完成 | 应用消费完成 |
-| 持久化完成 | 数据状态已落盘 |
+源码：
+[realtimeClient.ts L402-L470](../QHZHC_Web/src/views/DataVisualization/services/realtimeClient.ts#L402-L470)
 
-但 ACK 本身仍不能自动实现 Exactly-once（精确一次）。重试会带来重复，还需要幂等键、去重状态或事务语义共同保证。
+因此 Cursor 更接近：
 
-QHZHC 当前**没有应用层 ACK**。
+> 浏览器已经接收到这个自然秒。
 
-客户端收到 `telemetry_second` 后就推进自然秒 cursor，并把数据加入帧队列。因此当前能力更准确的描述是：
+而不是：
 
-> **基于客户端接收进度的断线续传。**
+> 这个自然秒已经完成渲染，并由服务端确认。
 
-它适合当前实时可视化场景，但不能把它包装成逐点 Exactly-once。
+当前协议也没有 Application ACK。
 
-如果未来进入交易、计费或不可丢事件场景，ACK 的阶段、幂等键和持久化语义都要重新定义。
+所以能力边界应该准确描述为：
+
+> **基于接收进度的断线续传和 Replay。**
+
+对于实时可视化这是合理取舍；对于交易、计费、审计等不可丢业务，则需要更严格的 ACK、幂等和持久化设计。
 
 ---
 
-### 【Replay 必须配合去重或幂等】
+## 9. WebSocket 安全不是 Token 校验完成以后就结束
 
-恢复系统通常宁愿：
+认证成功只是证明“谁在发送”，并不能证明“发送内容安全”。
+
+完整入站安全链可以理解为：
 
 ~~~text
-不确定是否收到
-→ 再发一次
+Upgrade
+    ↓
+Origin
+    ↓
+Connection Limit
+    ↓
+Authentication
+    ↓
+Payload Size
+    ↓
+Parse
+    ↓
+Schema
+    ↓
+Protocol State
+    ↓
+Authorization
+    ↓
+Rate Limit
+    ↓
+Business Handler
 ~~~
 
-也不愿：
+每层职责不同。
+
+### 【HTTP CORS 不能替代 WebSocket Origin Validation】
+
+普通 Express HTTP 请求通常是：
 
 ~~~text
-不确定
-→ 直接跳过
-~~~
-
-所以可恢复传输天然要考虑重复。
-
-常见手段有：
-
-- sequence 去重；
-- eventId 去重；
-- stable batchId；
-- 幂等业务键；
-- 保存最近确认窗口。
-
-QHZHC 每个自然秒消息包含稳定 `batchId`，同一 robotId、bucketStartMs 和采样档位使用稳定采样；客户端也会忽略早于 expected cursor 的旧自然秒。
-
-当前去重语义主要围绕**自然秒窗口**，并不是严格逐点 ACK / dedupe 协议。
-
----
-
-## 6. 安全、监控和测试决定方案能否进入生产环境
-
-最后一层不是再增加一种恢复算法，而是确保前面的机制能够被约束、观察和验证。
-
-### 【HTTP CORS 不能替代 WebSocket Origin 校验】
-
-很多 Node.js 项目会把普通 HTTP 请求交给 Express，但 WebSocket Upgrade 直接监听原始 HTTP Server：
-
-~~~text
-HTTP API
+Request
 → Express Middleware
 → CORS
-
-WebSocket
-→ server.on("upgrade")
-→ handleUpgrade
+→ Route
 ~~~
 
-因此 HTTP CORS 不会自动变成 WebSocket Origin 校验。
+WebSocket 常见 Node 实现却是：
 
-OWASP 建议 WebSocket 握手显式校验 Origin allowlist，特别是使用 Cookie 自动认证时，以降低 Cross-Site WebSocket Hijacking（跨站 WebSocket 劫持，CSWSH）风险。[[5]](https://cheatsheetseries.owasp.org/cheatsheets/WebSocket_Security_Cheat_Sheet.html)
+~~~text
+HTTP Server
+→ upgrade event
+→ handleUpgrade()
+~~~
 
-QHZHC 当前：
+如果 Upgrade 没有经过 Express Middleware，HTTP CORS 就不会自动成为 WebSocket Origin 校验。
 
-- HTTP CORS 在 `QHZHC_Server/src/server/cors.ts`；
-- WebSocket Upgrade 在 `robot-socket-hub.ts`；
-- WebSocket 身份主要依赖首包 Access Token，而不是 Cookie 自动认证。
+OWASP WebSocket Security Cheat Sheet 建议对握手执行显式 Origin Allowlist。[[5]](https://cheatsheetseries.owasp.org/cheatsheets/WebSocket_Security_Cheat_Sheet.html)
 
-所以当前的直接 CSWSH 风险比纯 Cookie WebSocket 更低，但 WebSocket Upgrade 仍建议增加独立 Origin allowlist，不能把 HTTP CORS 当作已经覆盖。
+当前 Upgrade 实现直接监听：
+
+~~~ts
+server.on(
+  "upgrade",
+  (request, socket, head) => {
+    ...
+  }
+);
+~~~
+
+源码：
+[robot-socket-hub.ts L70-L97](../QHZHC_Server/src/server/robot-socket-hub.ts#L70-L97)
+
+生产环境可以在 handleUpgrade 前增加：
+
+~~~ts
+const allowedOrigins =
+  new Set([
+    "https://app.example.com"
+  ]);
+
+const origin =
+  request.headers.origin;
+
+if (
+  !origin ||
+  !allowedOrigins.has(origin)
+) {
+  socket.destroy();
+  return;
+}
+~~~
+
+尤其是使用 Cookie 自动认证 WebSocket 时，这一层对防 Cross-Site WebSocket Hijacking（跨站 WebSocket 劫持，CSWSH）非常重要。
 
 ---
 
-### 【认证成功以后，消息仍然是不可信输入】
+### 【认证以后仍然需要 Schema、State、Authorization 和 Rate Limit】
 
-生产 WebSocket 的入站安全至少要覆盖：
+一个已经认证的合法用户仍然可以发送恶意输入：
+
+~~~json
+{
+  "type": "resend_time_range",
+  "fromBucketStartMs": -999999999999
+}
+~~~
+
+或者持续发送大量结构完全合法的消息。
+
+所以：
 
 ~~~text
-Authenticated Socket
-      ↓
-Payload Size
-      ↓
-Parse
-      ↓
+Authentication
+回答谁发送
+
 Schema
-      ↓
+回答消息长什么样
+
 State
-      ↓
+回答当前阶段能不能发
+
 Authorization
-      ↓
+回答能不能做这个动作
+
 Rate Limit
-      ↓
-Handler
+回答允许做多少次
 ~~~
 
-这些层次解决的问题不同：
+当前协议已经通过 isClientMessage() 检查消息结构和版本：
 
-- Payload Size：避免超大消息拖垮内存。
-- Schema：阻止非法结构进入业务。
-- State：限制某类消息在哪个阶段可以出现。
-- Authorization：限制合法用户的资源边界。
-- Rate Limit：限制合法连接的滥用和洪泛。
+~~~ts
+case "authenticate":
+  return (
+    typeof candidate.accessToken
+      === "string" &&
+    candidate.accessToken.length
+      > 0 &&
+    candidate.protocolVersion
+      === PROTOCOL_VERSION &&
+    typeof candidate.robotId
+      === "string" &&
+    isNaturalSecond(
+      candidate
+        .resumeFromBucketStartMs
+    )
+  );
+~~~
 
-QHZHC 当前已经具备：
+源码：
+[protocol.ts L58-L90](../QHZHC_Server/src/shared/protocol.ts#L58-L90)
 
-- JSON parse；
-- 消息类型 / 字段校验；
-- protocolVersion；
-- 认证前后的状态约束；
-- 服务端发送侧 `bufferedAmount` 背压保护。
+仍可以继续补齐：
 
-仍可继续补齐：
+- Upgrade Origin allowlist；
+- maxPayload；
+- 单 IP / 用户连接上限；
+- 单连接消息 Rate Limit；
+- 资源级 Authorization。
 
-- WebSocket Origin allowlist；
-- 单用户 / IP 连接限额；
-- 明确消息速率限制；
-- `maxPayload` 策略；
-- robotId 资源级 Authorization。
-
-这些属于“项目下一层工程化边界”，不能写成当前已经实现。
+这些不能因为“已经有 Token 校验”就省略。
 
 ---
 
-### 【可观测性要回答恢复是否成功，而不只是有多少连接】
+## 10. 可观测性和故障测试决定恢复能力能不能被证明
 
-实时系统稳定性最值得观察的不是“从来不掉线”，而是：
+代码里存在 reconnect 函数并不能证明系统具备可恢复性。
+
+真正需要回答：
 
 ~~~text
-为什么掉？
+为什么断？
 多久恢复？
-恢复以后数据完整吗？
+恢复到哪个状态？
+补发多少数据？
+有没有无法恢复的 Gap？
 ~~~
 
-指标可以按链路组织：
+### 【指标应该围绕状态机设计】
 
-| 链路 | 建议指标 |
+| 阶段 | 可以记录的指标 |
 | --- | --- |
-| 建连 | connect latency、upgrade failure、auth failure |
-| 在线 | active connections、heartbeat RTT、stale count |
-| 会话恢复 | refresh success、refresh latency、family revoke |
-| 重连 | reconnect attempts、backoff duration |
-| 数据恢复 | replay count、replay duration、gap count |
-| 端到端 | close → live duration |
+| Upgrade | connection attempt / failure |
+| Authentication | auth latency / failure reason |
+| Online | active connections / heartbeat RTT |
+| Session | refresh success / family revoke / reuse |
+| Reconnect | attempt / backoff / reconnect success |
+| Replay | bucket count / replay duration |
+| Integrity | gap count / unrecoverable gap |
+| End-to-end | close → live duration |
 
-QHZHC 已经接入 browser-monitor SDK，因此 WebSocket 生命周期可以进一步沉淀为自定义事件，例如：
+如果已经有浏览器监控 SDK，可以直接把状态迁移变成自定义事件：
+
+~~~ts
+monitor.track(
+  "websocket.close",
+  {
+    code,
+    attempt
+  }
+);
+
+monitor.track(
+  "websocket.reconnect",
+  {
+    delay,
+    reason
+  }
+);
+
+monitor.track(
+  "websocket.replay.complete",
+  {
+    from,
+    through,
+    duration
+  }
+);
+~~~
+
+这样才能把：
 
 ~~~text
-websocket.connect
-websocket.close
-auth.refresh
-websocket.reconnect
-replay.start
-replay.complete
-replay.gap
+“我们做了自动恢复”
 ~~~
 
-这样才能把“恢复机制已经写了”升级成“恢复能力可以被量化验证”。
+转成：
 
-同时日志必须避免记录：
-
-- Access Token；
-- Refresh Token；
-- Cookie；
-- authenticate 原始载荷。
+~~~text
+“P95 多久恢复到 Live”
+“不可恢复 Gap 占比多少”
+~~~
 
 ---
 
-### 【测试重点应该落在异常状态迁移】
+### 【测试应该覆盖状态迁移，而不是只覆盖函数调用】
 
-WebSocket + 鉴权最容易出现问题的不是 Happy Path，而是多个异步状态叠加。
-
-测试最好围绕四类故障组织：
+完整测试树可以按状态组织：
 
 ~~~text
-身份
-├─ missing / invalid / expired token
+Authentication
+├─ missing token
+├─ invalid token
+├─ expired token
 ├─ revoked family
 └─ refresh reuse
 
-协议状态
-├─ auth timeout
+Protocol
 ├─ message before auth
+├─ auth timeout
 ├─ duplicate auth
-└─ protocol mismatch
+├─ invalid schema
+└─ version mismatch
 
-连接恢复
+Connection
 ├─ network failure
 ├─ service restart
-├─ token expires online
-├─ refresh failure
-└─ offline / online
+├─ heartbeat timeout
+├─ access token expires online
+└─ refresh failure
 
-数据恢复
-├─ cursor
+Recovery
+├─ cursor reconnect
 ├─ replay
 ├─ duplicate
 ├─ no-data
@@ -1016,115 +2013,122 @@ WebSocket + 鉴权最容易出现问题的不是 Happy Path，而是多个异步
 └─ retention exceeded
 ~~~
 
-QHZHC 当前已有的测试包括：
+当前仓库已有测试作为实现证据：
 
-- `QHZHC_Server/tests/auth-tokens.test.ts`：Rotation、reuse、revoke；
-- `QHZHC_Server/tests/websocket.test.ts`：认证顺序、无效 Token、Replay；
-- `QHZHC_Web/tests/unit/realtimeClient.spec.js`：
-  - Token 过期后 refresh；
-  - 使用同一 cursor 重连；
-  - refresh 失败停止恢复；
-  - no-data 推进 cursor；
-  - Gap 后请求补发。
+- [auth-tokens.test.ts](../QHZHC_Server/tests/auth-tokens.test.ts)：Refresh Rotation、Reuse、Revoke；
+- [websocket.test.ts](../QHZHC_Server/tests/websocket.test.ts)：首包认证、无效 Token、Replay；
+- [realtimeClient.spec.js](../QHZHC_Web/tests/unit/realtimeClient.spec.js)：Refresh、相同 Cursor 重连、Gap、No-data、恢复失败；
+- [realtimeConnectionPolicy.spec.js](../QHZHC_Web/tests/unit/realtimeConnectionPolicy.spec.js)：Close Code 到 Recovery Action。
 
-后续比较值得补的是：
-
-- Origin 拒绝；
-- auth timeout；
-- retention gap 精确语义；
-- 多 Tab 并发刷新；
-- 消息限流和 maxPayload；
-- 如果实现主动 revoke，则增加在线踢线测试。
-
----
-
-## 7. 面试和答辩可以沿三层体系展开
-
-这套知识最终可以收束成一张树：
+还值得继续补：
 
 ~~~text
-WebSocket 实时系统
-│
-├─ 可信连接
-│   ├─ HTTP Upgrade
-│   ├─ Application Authentication
-│   ├─ Authentication
-│   ├─ Authorization
-│   ├─ Connection Binding
-│   ├─ Protocol Version
-│   └─ Origin / Input Security
-│
-├─ 稳定连接
-│   ├─ Access Token + Refresh Token
-│   ├─ Token Family
-│   ├─ Refresh Rotation
-│   ├─ Single Flight
-│   ├─ Session Revalidation
-│   ├─ Ping / Pong
-│   ├─ Data Watchdog
-│   ├─ Close Classification
-│   └─ Backoff + Jitter
-│
-└─ 可恢复数据
-    ├─ Recovery Cursor
-    ├─ Gap Detection
-    ├─ Replay
-    ├─ Replay / Live Boundary
-    ├─ Dedupe / Idempotency
-    ├─ Retention Boundary
-    └─ ACK / Delivery Semantics
+Origin Reject
+Authentication Timeout
+Cross-tab Refresh Race
+Retention Gap
+Rate Limit
+Max Payload
+Session Revoke → Active Socket Close
 ~~~
 
-这三层分别回答：
+---
 
-- **可信连接**：谁可以建立什么连接。
-- **稳定连接**：连接和登录会话失效以后如何安全回来。
-- **可恢复数据**：重新连上以后如何继续，而不是从“现在”重新开始。
+## 11. 整套机制最终可以收束成两个状态机和一条数据进度线
 
-如果答辩中需要用一段话概括，可以这样组织：
+前面的 Token、心跳、Close Code、Replay 并不是平铺关系。
 
-> 项目的 WebSocket 链路不是简单的断线重连。建连以后先用短期 Access Token 完成应用层认证并绑定资源；Access Token 和长期 Refresh Token 分工，Refresh Token 通过 Rotation 和 Token Family 支持续期与撤销。连接在线期间同时做协议心跳、应用心跳和业务数据 Watchdog，断开后按照关闭原因决定刷新凭证、退避重连还是停止。重新连接时再携带自然秒恢复游标，先 Replay 缺失数据，再切回 Live。当前项目没有应用层 ACK，所以能力边界是基于接收游标的断线续传，而不是 Exactly-once。
+更容易长期记忆的是下面三部分。
 
-继续追问通常会落到这些问题：
+### 【会话状态机】
 
-1. WebSocket OPEN 为什么不等于业务连接可用？
-2. 浏览器为什么不能像 Axios 一样直接加 Authorization Header？
-3. JWT 已经有 exp，为什么还需要 Token Family？
-4. Refresh Rotation 为什么会引出 Single Flight？
-5. WebSocket 在线期间 Token 过期怎么办？
-6. 协议 Ping/Pong、应用心跳和数据 Watchdog 有什么区别？
-7. 为什么不同 Close Code 不能统一无限重连？
-8. Backoff 为什么还需要 Jitter？
-9. 重连以后如何知道从哪里继续？
-10. WebSocket 基于 TCP，为什么还可能需要 ACK？
-11. no-data 和 retention gap 为什么必须分开？
-12. HTTP 已经有 CORS，为什么 WebSocket 还要单独检查 Origin？
+~~~text
+LOGIN
+  ↓
+ACCESS_VALID
+  ↓
+ACCESS_EXPIRED
+  ↓
+REFRESHING
+  ├─ success → ACCESS_VALID
+  └─ fail    → LOGGED_OUT
+~~~
+
+它负责回答：
+
+> 当前身份是否还能继续使用？
+
+### 【实时连接状态机】
+
+~~~text
+IDLE
+  ↓
+CONNECTING
+  ↓
+AUTH_PENDING
+  ↓
+REPLAYING
+  ↓
+LIVE
+  ├─ auth expired
+  │    → AUTH_RECOVERING
+  │
+  ├─ network failure
+  │    → RECONNECT_WAIT
+  │
+  └─ fatal
+       → STOPPED
+~~~
+
+它负责回答：
+
+> 当前 socket 处于什么阶段，下一步允许发生什么？
+
+### 【数据进度线】
+
+~~~text
+cursor N
+  ↓ disconnect
+resume N + 1
+  ↓
+replay
+  ↓
+latest
+  ↓
+live
+~~~
+
+它负责回答：
+
+> 新连接建立以后，从哪里继续？
+
+三者真正连接起来的过程是：
+
+~~~text
+WebSocket
+发现 Access Token 失效
+        ↓
+会话状态机
+Refresh
+        ↓
+New Access Token
+        ↓
+连接状态机
+Reconnect + Authenticate
+        ↓
+数据进度线
+Replay from Cursor
+        ↓
+LIVE
+~~~
+
+因此一个完整的面试回答可以是：
+
+> WebSocket 本身只提供长连接。我会把生产级实时链路拆成会话状态、连接状态和数据进度三部分：会话负责 Access / Refresh Token 的续期和撤销；连接负责应用层认证、心跳、故障分类和受控重连；数据进度通过 Cursor、Replay 和 Gap 跨连接延续。这样 Token 过期、网络中断和数据缺口分别有独立的处理机制，同时又能串成一条完整恢复链。
 
 ---
 
-## 8. 当前项目能力与后续边界
-
-为了避免把“主流方案”说成“已经实现”，当前状态统一如下：
-
-| 能力 | 项目现状 | 可继续演进 |
-| --- | --- | --- |
-| WebSocket 认证 | 首条 Access Token 消息 | Upgrade Origin + 未认证连接限额 |
-| HTTP / WS 身份 | 共用 Access JWT | 保持统一 |
-| Session 撤销 | Token Family + 周期重验 | revoke 时主动踢线 |
-| Refresh | Rotation + 单 Tab Single Flight | 跨 Tab 协调 |
-| 心跳 | 协议 + 应用 + 数据 Watchdog | RTT 与 timeout 指标 |
-| 重连 | Backoff + Jitter | 增加恢复 SLI |
-| 数据游标 | 自然秒 bucket | 严格场景改 sequence / offset |
-| Replay | Replay 与 Live 分阶段 | 修正 retention gap 边界 |
-| ACK | 未实现 | 强可靠场景再引入 |
-| 资源授权 | 身份 + robotId 一致性 | 细粒度 Resource Authorization |
-| WebSocket Origin | 未独立校验 | Upgrade 阶段显式 allowlist |
-
-这个表不是“待办清单”，而是用来建立答辩边界：**哪些是当前代码已经证明的能力，哪些是根据主流工程方案推导出的下一步。**
-
----
-
-## 9. 参考资料
+## 12. 参考资料
 
 1. [[1] RFC 6455 — The WebSocket Protocol, RFC Editor](https://www.rfc-editor.org/rfc/rfc6455)
 2. [[2] MDN — WebSocket() constructor](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/WebSocket)
@@ -1132,24 +2136,20 @@ WebSocket 实时系统
 4. [[4] RFC 9700 — Best Current Practice for OAuth 2.0 Security, RFC Editor](https://www.rfc-editor.org/rfc/rfc9700)
 5. [[5] OWASP — WebSocket Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/WebSocket_Security_Cheat_Sheet.html)
 
-### 【Full-Stack-AI-NOTES 相关知识】
+### 【Full-Stack-AI-NOTES 相关知识入口】
 
-- `11-Websocket从0到1.md`：WebSocket 协议、生命周期、心跳和重连基础。
-- `Web身份认证会话控制与访问控制体系.md`：Authentication → Session Management → Authorization。
-- `Access Token与Refresh Token核心知识点笔记.md`：双 Token、Rotation、Reuse Detection 与过期策略。
-- `反向代理与Web入口体系.md`：生产环境入口、TLS、Proxy 与网络边界。
+- 11-Websocket从0到1.md：WebSocket 协议、API、生命周期、心跳和重连基础。
+- Web身份认证会话控制与访问控制体系.md：Authentication → Session Management → Authorization。
+- Access Token与Refresh Token核心知识点笔记.md：双 Token、Rotation、Reuse Detection 和过期策略。
+- 反向代理与Web入口体系.md：HTTP / WebSocket 生产入口、TLS、Proxy 和网络边界。
 
-### 【项目源码证据】
+### 【源码验证入口】
 
-- `../QHZHC_Server/src/server/auth.ts`
-- `../QHZHC_Server/src/server/database.ts`
-- `../QHZHC_Server/src/server/app.ts`
-- `../QHZHC_Server/src/server/robot-socket-hub.ts`
-- `../QHZHC_Server/src/shared/protocol.ts`
-- `../QHZHC_Web/src/services/accessToken.ts`
-- `../QHZHC_Web/src/services/httpAuth.ts`
-- `../QHZHC_Web/src/views/DataVisualization/services/realtimeClient.ts`
-- `../QHZHC_Web/src/views/DataVisualization/services/realtimeConnectionPolicy.ts`
-- `../QHZHC_Server/tests/auth-tokens.test.ts`
-- `../QHZHC_Server/tests/websocket.test.ts`
-- `../QHZHC_Web/tests/unit/realtimeClient.spec.js`
+- [WebSocket Hub](../QHZHC_Server/src/server/robot-socket-hub.ts)
+- [认证服务](../QHZHC_Server/src/server/auth.ts)
+- [Refresh Token 数据库事务](../QHZHC_Server/src/server/database.ts)
+- [共享协议](../QHZHC_Server/src/shared/protocol.ts)
+- [Access Token Manager](../QHZHC_Web/src/services/accessToken.ts)
+- [HTTP 鉴权恢复](../QHZHC_Web/src/services/httpAuth.ts)
+- [实时客户端](../QHZHC_Web/src/views/DataVisualization/services/realtimeClient.ts)
+- [连接恢复策略](../QHZHC_Web/src/views/DataVisualization/services/realtimeConnectionPolicy.ts)
