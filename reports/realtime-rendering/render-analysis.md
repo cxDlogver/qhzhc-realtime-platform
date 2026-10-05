@@ -187,12 +187,12 @@ this.viewer.entities.add({
 
 每个柱体带 3 个 `CallbackProperty`。
 
-**问题**：`CallbackProperty` 是动态属性，Cesium 在**每一次** update/render cycle 里都会对每个动态属性求值一次。N 个柱体 = 每帧 3N 次回调求值，而且这些值在柱体创建后就不会再变。历史点数越多，每帧求值次数线性增长。这正好对应 `docs/优化过程.md` 5.10 节提出的怀疑方向：动态 Property 放大历史规模成本。
+**问题**：`CallbackProperty` 是动态属性，Cesium 在**每一次** update/render cycle 里都会对每个动态属性求值一次。N 个柱体 = 每帧 3N 次回调求值，而且这些值在柱体创建后就不会再变。历史点数越多，每帧求值次数线性增长，因此它天然具备“历史规模越大、每帧固定工作越重”的放大效应。
 
 **为什么改**：2.2 节三维 0.50 FPS、单帧 4.3 秒，只喂 1 个点/秒。数据量已经压到最低还是卡，说明瓶颈不在「每帧新增几个点」，而在「场景里已有什么」。Entity 数量 × 每帧求值次数是三维最可疑的一项。
 
 **依据**：
-- `docs/优化过程.md` 5.18 节把「降低动态 Property 数量」「静态后不再变化的属性避免长期使用动态 CallbackProperty」列为三维单帧成本优化的重点方向。
+- `history-scale-analysis.md` 显示三维从 200 → 8000 点时 FPS 明显下降、Cesium 回调次数与累计耗时上升；静态属性却持续使用动态 Callback，是与这组现象一致的高优先级候选。
 - 2.3 节三维在空场景（59 个点）就只有 42.63 FPS，二维同条件 131.67 FPS，差距不来自数据量。
 
 **改法**（`components/StereoscopicMap.vue:508`）：
@@ -354,9 +354,9 @@ this.viewer = new Cesium.Viewer("cesiumContainer", {
 
 **问题**：三维在完全没有新数据的空闲状态下仍然持续渲染，这部分开销与业务数据无关，却一直占用主线程和 GPU。2.3 节三维空场景只有 42.63 FPS、78 个 LoAF，二维同条件 131.67 FPS——三维多出来的这部分就是「场景自身持续开销」。
 
-**为什么改**：`docs/优化过程.md` 5.4 节已经确认「三维即使只处理一个点，仍然存在持续性的高单帧成本」，5.18 节把「验证是否存在不必要的持续 Scene update」列为待验证方向。
+**为什么改**：`rate-sweep-analysis.md` 已经显示三维在 1 点/秒的低输入下仍明显低于二维，说明除了点级输入成本以外，还存在与业务数据量无关的 Scene 基线成本，因此需要继续检查不必要的持续 Scene update。
 
-**依据**：`优化过程.md` 5.20 节结论——三维在 1 点/秒时仍只有 44.08 FPS、60 秒 82 个 LoAF，而实时点总数只有 58 个。
+**依据**：`rate-sweep-analysis.md` 中三维 rate=1 仍只有 44.08 FPS、60 秒 82 个 LoAF，而实时点总数只有 58 个。
 
 **改法**（`components/StereoscopicMap.vue:207`、`:215`）：
 
@@ -417,7 +417,7 @@ this.routeSource.addFeature(
 
 相邻两点建一个独立 `Feature`。6000 个点 = 6000 个 Feature，每个都带自己的 `LineString` geometry。
 
-**问题**：OpenLayers 的 Vector Layer 每帧要遍历 source 里所有 Feature 做样式求值和绘制准备。Feature 数量等于点数，历史越长，一次 rendering cycle 遍历的对象越多。`优化过程.md` 5.8 节把这个列为「二维地图场景本身也会随历史对象增加而复杂化」。
+**问题**：OpenLayers 的 Vector Layer 需要管理 source 中的 Feature。原实现中相邻两点就创建一个独立轨迹 Feature，Feature 数量与历史点数近似线性增长，因此历史越长，Scene 中需要维护和绘制准备的对象越多。
 
 **为什么改**：把 Feature 数量从 O(n) 降到 O(n/256)，6000 点从 6000 个 Feature 变成 24 个。
 
@@ -484,7 +484,7 @@ style: (feature) => {
 
 **为什么改**：颜色取值有限（6 档），完全可以复用。
 
-**依据**：`优化过程.md` 5.17 节把「避免每点调用 getFeatures()」「自己维护 Feature / 引用」列为二维优先验证方向；样式对象复用属于同一类。
+**依据**：实时路径是高频增量路径，若每个点都重新扫描全部 Feature 或重复创建等价 Style，会把与新增点无关的工作叠加到每次更新上；当前实现因此改为持有需要的对象引用并复用样式。
 
 **改法**（`components/PlanimetricMap.vue:350`）：
 
@@ -539,7 +539,7 @@ selectedFeature.setStyle(new Style({
 
 **为什么改**：只需要把上一个选中项恢复、给当前项设高亮，两件事各 O(1)。
 
-**依据**：与 3.5 同源，`优化过程.md` 5.17 节「避免每点调用 getFeatures()」。
+**依据**：与 3.5 同源——高频实时路径应优先使用已经持有的 Feature 引用，而不是每次从完整 Source 中重新扫描。
 
 **改法**（`components/PlanimetricMap.vue:808`）：
 
@@ -574,7 +574,7 @@ if (this.$parent.viewFlag) {
 
 **为什么改**：批量消费时一帧可能画多个点，`updateSize()` 会被调用多次，而容器尺寸在一个批次内不会变。
 
-**依据**：运行指标面板专门有一行「脚本内强制布局」（`dataVisualization.vue:397`）用来盯这个数；`优化过程.md` 5.3 节指出二维存在单帧尖峰。
+**依据**：运行指标面板专门记录「脚本内强制布局」；`history-scale-analysis.md` 同时显示二维平均 FPS 较稳定但 LoAF P95 和最大值会随部分历史规模显著增大，说明尾部单帧尖峰需要单独控制。
 
 **改法**（`components/PlanimetricMap.vue:518`）：
 
@@ -624,7 +624,7 @@ mapList: {
 
 **为什么改**：子组件真正需要的只是「这一批新增了哪几个点」，不是整个数组。
 
-**依据**：`优化过程.md` 5.7 节明确把 `mapList 数组规模` 列为二维随历史增长的负担之一。
+**依据**：实时地图只需要知道“本批新增了哪些点”，完整 `mapList` 的深度依赖收集与遍历并不参与业务语义；随着数组增长，这部分工作只会增加而不会带来额外正确性收益。
 
 **改法**——父组件只下发批次和版本号（`dataVisualization.vue:1009`）：
 
@@ -682,7 +682,7 @@ this.mapList = nextMapPoints;
 
 `mapList` 是 `data()` 里的普通数组，Vue 2 会对它以及它的每个元素递归 `defineProperty`。每加一个点，新点对象整体被转成响应式。
 
-**问题**：点位对象有十几个字段，6000 个点意味着几万个属性的 getter/setter 劫持，而这些点进地图之后不会再被修改——观测它们没有收益，只有成本。`优化过程.md` 5.7 节把 `mapList 数组规模` 列为二维负担。
+**问题**：点位对象有十几个字段，大量历史点进入 Vue 2 深层响应式后会产生大量 getter/setter 劫持；这些点进入地图以后基本不会再逐字段修改，因此深层观测没有收益，反而会让历史规模进入每次更新成本。
 
 **为什么改**：地图点只需要「追加」和「取整条数组」，不需要 Vue 追踪单个字段变化。驱动重绘由 3.8 的版本号负责。
 
@@ -752,7 +752,7 @@ this.chart.resize();
 
 **为什么改**：折线图看的是趋势，120 ms 内的多次更新合并成一次，视觉上没有差别，但重绘次数降到约 1/3～1/20（取决于每帧点数）。
 
-**依据**：`优化过程.md` 第 2 章【七】的「空渲染对照」——数据取出后不写入响应式状态、图表不重绘时 FPS 明显回升，说明成本在绘制链路而非取数链路。
+**依据**：项目保留的 Empty Render 对照会继续消费 Queue，但跳过响应式状态写入与 Map / Chart 更新；真实渲染与空渲染之间的差值用于分离“取数调度成本”和“页面绘制成本”。
 
 **改法**（`components/Charts.vue:93`）：
 
@@ -1038,7 +1038,7 @@ aggregateFps() {
 
 **为什么改**：需要一个与数据无关的、真实反映浏览器调度能力的 FPS，作为 3.14 里 `fpsHealthy` 的判断基准。
 
-**依据**：`优化过程.md` 第 2 章【二】「真正的问题首先表现为可用渲染帧大量减少」——要看的是可用帧，不是提交次数。
+**依据**：当前需要比较的是独立 rAF 调度能力与数据提交次数，两者必须分离；否则 batch 改变会直接改变提交次数，导致把“少提交几次”误读成“FPS 下降”。
 
 **改法**：`services/RenderPerformanceMonitor.ts` 起一条独立的 rAF 循环，不受有没有数据影响：
 
@@ -1077,7 +1077,7 @@ private readonly tick = (timestamp: number): void => {
 
 **问题**：Long Task 只有一个总时长，无法区分「脚本算太久」还是「样式布局太久」，也就无法判断该去改 JS 还是改绘制。三维的长帧到底是谁造成的，在这套数据下说不清。
 
-**依据**：`优化过程.md` 第 2 章【三】【四】【五】：二维和三维的长帧主要耗时都不在 DOM Style/Layout 阶段，三维能继续归因到 Cesium 自身的动画帧回调。这些结论必须依赖带阶段划分的数据才能得出。
+**依据**：当前二维、三维 LoAF 实验已经记录 `renderStart`、`styleAndLayoutStart` 与脚本归因；这些数据能够区分帧内前置工作、渲染阶段和样式布局之后的尾部，并在三维样本中继续识别 Cesium 的 FrameRequestCallback。
 
 **改法**：`services/LongFrameDiagnostics.ts` 用 `PerformanceObserver` 订阅 `long-animation-frame`，把一条长帧拆成三段（`dataVisualization.vue:396` 面板上的「rAF 等 / 样式起点后」就是其中两段）：
 
@@ -1210,7 +1210,7 @@ weatherLocationUpdate(point) {
 
 ### 5.3 三维仍有与数据量无关的固有成本
 
-即使三维在 1 点/秒下跑到 109 FPS，仍然留下 52 个 LoAF、中位数 71.8 ms。二维同条件 132 FPS / 40 个 LoAF。Cesium 场景自身（地形影像、Scene update、Camera）的基线开销还没动过，`优化过程.md` 5.18 节列的「降低同时存在的 Bar Entity 数量」「必要时比较 Entity vs Primitive」还没验证。
+即使三维在 1 点/秒下跑到 109 FPS，仍然留下 52 个 LoAF、中位数 71.8 ms。二维同条件 132 FPS / 40 个 LoAF。Cesium 场景自身（地形影像、Scene update、Camera）仍有可观察的基线开销；进一步减少同时存在的 Bar Entity、比较 Entity 与更底层 Primitive 等方向目前还没有形成正式实验结论。
 
 ### 5.4 长时间运行未验证
 
