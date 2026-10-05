@@ -168,6 +168,7 @@ npm run test:integration -w QHZHC_Server
 知识文档：
 
 - [WebSocket 鉴权与可恢复实时连接](docs/WebSocket鉴权与可恢复实时连接.md)
+- [页面连续渲染流畅度与掉帧优化](docs/页面连续渲染流畅度与掉帧优化.md)
 
 ## 性能监控
 
