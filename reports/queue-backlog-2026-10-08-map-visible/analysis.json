@@ -1,0 +1,1766 @@
+{
+  "groups": [
+    {
+      "id": "charts-frozen6000",
+      "repetitions": 3,
+      "config": {
+        "id": "charts-frozen6000",
+        "history": 6000,
+        "pending": 10000,
+        "batch": 1,
+        "mode": "charts-frozen",
+        "repeat": 1,
+        "probeEnqueue": false,
+        "centeredMap": true
+      },
+      "fps": {
+        "n": 3,
+        "mean": 16.54128215127518,
+        "p50": 16.882525758265402,
+        "p95": 17.303616373063697,
+        "max": 17.303616373063697
+      },
+      "consumeRate": {
+        "n": 3,
+        "mean": 16.54128215127518,
+        "p50": 16.882525758265402,
+        "p95": 17.303616373063697,
+        "max": 17.303616373063697
+      },
+      "enqueueMs": {
+        "n": 3,
+        "mean": 65.06666664282481,
+        "p50": 66.09999990463257,
+        "p95": 66.79999995231628,
+        "max": 66.79999995231628
+      },
+      "pending": {
+        "n": 3,
+        "mean": 9800,
+        "p50": 9796,
+        "p95": 9813,
+        "max": 9813
+      },
+      "oldestSeconds": {
+        "n": 3,
+        "mean": 12.620200000007948,
+        "p50": 12.609400000095368,
+        "p95": 12.650099999904633,
+        "max": 12.650099999904633
+      },
+      "heapMiB": {
+        "n": 3,
+        "mean": 337.5833460489909,
+        "p50": 337.59560775756836,
+        "p95": 337.60193252563477,
+        "max": 337.60193252563477
+      },
+      "frameP95Ms": {
+        "n": 3,
+        "mean": 131.2333333333339,
+        "p50": 127.30000000000109,
+        "p95": 139.30000000000018,
+        "max": 139.30000000000018
+      },
+      "loafCount": {
+        "n": 3,
+        "mean": 100.33333333333333,
+        "p50": 102,
+        "p95": 105,
+        "max": 105
+      },
+      "loafP95Ms": {
+        "n": 3,
+        "mean": 134.23333330949148,
+        "p50": 137.09999990463257,
+        "p95": 137.79999995231628,
+        "max": 137.79999995231628
+      },
+      "timerP95Ms": {
+        "n": 3,
+        "mean": 79.03333334128062,
+        "p50": 88.89999997615814,
+        "p95": 90.20000004768372,
+        "max": 90.20000004768372
+      },
+      "submitP95Ms": {
+        "n": 3,
+        "mean": 9.333333333333334,
+        "p50": 10.5,
+        "p95": 10.5,
+        "max": 10.5
+      },
+      "flushP95Ms": {
+        "n": 3,
+        "mean": 9.433333237965902,
+        "p50": 10.599999904632568,
+        "p95": 10.599999904632568,
+        "max": 10.599999904632568
+      },
+      "chartP95Ms": {
+        "n": 0,
+        "mean": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "mapP95Ms": {
+        "n": 3,
+        "mean": 0.7000000476837158,
+        "p50": 0.7000000476837158,
+        "p95": 0.7000000476837158,
+        "max": 0.7000000476837158
+      },
+      "trials": [
+        "charts-frozen6000-r1.json",
+        "charts-frozen6000-r2.json",
+        "charts-frozen6000-r3.json"
+      ],
+      "observed": {
+        "client": true,
+        "queue": true,
+        "queueArray": true,
+        "firstPoint": true,
+        "mapStore": true
+      }
+    },
+    {
+      "id": "history6000",
+      "repetitions": 3,
+      "config": {
+        "id": "history6000",
+        "history": 6000,
+        "pending": 10000,
+        "batch": 1,
+        "mode": "full",
+        "repeat": 1,
+        "probeEnqueue": false,
+        "centeredMap": true
+      },
+      "fps": {
+        "n": 3,
+        "mean": 2.3095212247575696,
+        "p50": 2.2357252932435823,
+        "p95": 2.512424725413938,
+        "max": 2.512424725413938
+      },
+      "consumeRate": {
+        "n": 3,
+        "mean": 2.3095212247575696,
+        "p50": 2.2357252932435823,
+        "p95": 2.512424725413938,
+        "max": 2.512424725413938
+      },
+      "enqueueMs": {
+        "n": 3,
+        "mean": 76.86666663487752,
+        "p50": 63.39999997615814,
+        "p95": 108.29999995231628,
+        "max": 108.29999995231628
+      },
+      "pending": {
+        "n": 3,
+        "mean": 9970.666666666666,
+        "p50": 9972,
+        "p95": 9972,
+        "max": 9972
+      },
+      "oldestSeconds": {
+        "n": 3,
+        "mean": 13.88003333334128,
+        "p50": 13.9095,
+        "p95": 14.156800000071526,
+        "max": 14.156800000071526
+      },
+      "heapMiB": {
+        "n": 3,
+        "mean": 337.68458048502606,
+        "p50": 337.5478744506836,
+        "p95": 338.03103256225586,
+        "max": 338.03103256225586
+      },
+      "frameP95Ms": {
+        "n": 3,
+        "mean": 785.5666666666657,
+        "p50": 842.0999999999985,
+        "p95": 848.0999999999985,
+        "max": 848.0999999999985
+      },
+      "loafCount": {
+        "n": 3,
+        "mean": 26.333333333333332,
+        "p50": 25,
+        "p95": 29,
+        "max": 29
+      },
+      "loafP95Ms": {
+        "n": 3,
+        "mean": 791.3999999761581,
+        "p50": 837.3999999761581,
+        "p95": 873.3999999761581,
+        "max": 873.3999999761581
+      },
+      "timerP95Ms": {
+        "n": 3,
+        "mean": 985,
+        "p50": 945.1000000238419,
+        "p95": 1087.5,
+        "max": 1087.5
+      },
+      "submitP95Ms": {
+        "n": 3,
+        "mean": 8.333333333333334,
+        "p50": 9.200000047683716,
+        "p95": 9.299999952316284,
+        "max": 9.299999952316284
+      },
+      "flushP95Ms": {
+        "n": 3,
+        "mean": 8.43333331743876,
+        "p50": 9.299999952316284,
+        "p95": 9.399999976158142,
+        "max": 9.399999976158142
+      },
+      "chartP95Ms": {
+        "n": 3,
+        "mean": 33.46666665871938,
+        "p50": 33.10000002384186,
+        "p95": 34.299999952316284,
+        "max": 34.299999952316284
+      },
+      "mapP95Ms": {
+        "n": 3,
+        "mean": 0.8666666746139526,
+        "p50": 0.8999999761581421,
+        "p95": 0.9000000953674316,
+        "max": 0.9000000953674316
+      },
+      "trials": [
+        "history6000-r1.json",
+        "history6000-r2.json",
+        "history6000-r3.json"
+      ],
+      "observed": {
+        "client": true,
+        "queue": true,
+        "queueArray": true,
+        "firstPoint": true,
+        "mapStore": true
+      }
+    },
+    {
+      "id": "map-frozen6000",
+      "repetitions": 3,
+      "config": {
+        "id": "map-frozen6000",
+        "history": 6000,
+        "pending": 10000,
+        "batch": 1,
+        "mode": "map-frozen",
+        "repeat": 1,
+        "probeEnqueue": false,
+        "centeredMap": true
+      },
+      "fps": {
+        "n": 3,
+        "mean": 4.031803158652575,
+        "p50": 4.1548147911327415,
+        "p95": 4.216488858151076,
+        "max": 4.216488858151076
+      },
+      "consumeRate": {
+        "n": 3,
+        "mean": 4.031803158652575,
+        "p50": 4.1548147911327415,
+        "p95": 4.216488858151076,
+        "max": 4.216488858151076
+      },
+      "enqueueMs": {
+        "n": 3,
+        "mean": 65.29999999205272,
+        "p50": 65,
+        "p95": 67.5,
+        "max": 67.5
+      },
+      "pending": {
+        "n": 3,
+        "mean": 9949,
+        "p50": 9948,
+        "p95": 9952,
+        "max": 9952
+      },
+      "oldestSeconds": {
+        "n": 3,
+        "mean": 13.507033333301544,
+        "p50": 13.504699999928475,
+        "p95": 13.523700000047684,
+        "max": 13.523700000047684
+      },
+      "heapMiB": {
+        "n": 3,
+        "mean": 337.5399971008301,
+        "p50": 337.5409927368164,
+        "p95": 337.5441207885742,
+        "max": 337.5441207885742
+      },
+      "frameP95Ms": {
+        "n": 3,
+        "mean": 630.0666666666675,
+        "p50": 630.1000000000004,
+        "p95": 642.1000000000022,
+        "max": 642.1000000000022
+      },
+      "loafCount": {
+        "n": 3,
+        "mean": 31.333333333333332,
+        "p50": 31,
+        "p95": 32,
+        "max": 32
+      },
+      "loafP95Ms": {
+        "n": 3,
+        "mean": 661.8999999761581,
+        "p50": 656.5,
+        "p95": 677.5999999046326,
+        "max": 677.5999999046326
+      },
+      "timerP95Ms": {
+        "n": 3,
+        "mean": 656.3333333333334,
+        "p50": 661.5,
+        "p95": 668.5,
+        "max": 668.5
+      },
+      "submitP95Ms": {
+        "n": 3,
+        "mean": 6.633333285649617,
+        "p50": 6.299999952316284,
+        "p95": 7.699999928474426,
+        "max": 7.699999928474426
+      },
+      "flushP95Ms": {
+        "n": 3,
+        "mean": 6.733333269755046,
+        "p50": 6.399999976158142,
+        "p95": 7.699999928474426,
+        "max": 7.699999928474426
+      },
+      "chartP95Ms": {
+        "n": 3,
+        "mean": 32.10000002384186,
+        "p50": 31.899999976158142,
+        "p95": 32.60000002384186,
+        "max": 32.60000002384186
+      },
+      "mapP95Ms": {
+        "n": 3,
+        "mean": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "trials": [
+        "map-frozen6000-r1.json",
+        "map-frozen6000-r2.json",
+        "map-frozen6000-r3.json"
+      ],
+      "observed": {
+        "client": true,
+        "queue": true,
+        "queueArray": true,
+        "firstPoint": true,
+        "mapStore": true
+      }
+    }
+  ],
+  "trials": [
+    {
+      "case": "charts-frozen6000",
+      "repeat": 1,
+      "config": {
+        "id": "charts-frozen6000",
+        "history": 6000,
+        "pending": 10000,
+        "batch": 1,
+        "mode": "charts-frozen",
+        "repeat": 1,
+        "probeEnqueue": false,
+        "centeredMap": true
+      },
+      "file": "charts-frozen6000-r1.json",
+      "duration": 12.113200000047684,
+      "fps": 15.43770432249644,
+      "consumeRate": 15.43770432249644,
+      "frameInterval": {
+        "n": 186,
+        "mean": 65.04623655913979,
+        "p50": 18.400000000001455,
+        "p95": 139.30000000000018,
+        "max": 151.39999999999964
+      },
+      "loaf": {
+        "n": 94,
+        "mean": 116.51170213171777,
+        "p50": 116.10000002384186,
+        "p95": 137.79999995231628,
+        "max": 160.20000004768372
+      },
+      "loafBlocking": 6106.3,
+      "task": {
+        "n": 93,
+        "mean": 118.17204301075269,
+        "p50": 118,
+        "p95": 139,
+        "max": 149
+      },
+      "taskBlocking": 6340,
+      "submit": {
+        "n": 187,
+        "mean": 5.6347593579062805,
+        "p50": 5.100000023841858,
+        "p95": 10.5,
+        "max": 15.700000047683716
+      },
+      "flush": {
+        "n": 187,
+        "mean": 5.677005345171148,
+        "p50": 5.100000023841858,
+        "p95": 10.599999904632568,
+        "max": 15.700000047683716
+      },
+      "flushOutsideSubmit": {
+        "n": 187,
+        "mean": 0.04224598726486777,
+        "p50": 0,
+        "p95": 0.10000002384185791,
+        "max": 0.20000004768371582
+      },
+      "chart": {
+        "n": 0,
+        "mean": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "map": {
+        "n": 187,
+        "mean": 0.4262032132735227,
+        "p50": 0.3999999761581421,
+        "p95": 0.7000000476837158,
+        "max": 1.100000023841858
+      },
+      "timer": {
+        "n": 90,
+        "mean": 33.002222221427495,
+        "p50": 29.299999952316284,
+        "p95": 58,
+        "max": 90.10000002384186
+      },
+      "stages": {
+        "preRender": {
+          "n": 94,
+          "mean": 2.065957453656704,
+          "p50": 0.20000004768371582,
+          "p95": 8.400000095367432,
+          "max": 11.600000023841858
+        },
+        "beforeStyle": {
+          "n": 94,
+          "mean": 114.35319149240534,
+          "p50": 114.40000009536743,
+          "p95": 135.60000002384186,
+          "max": 159.80000007152557
+        },
+        "afterStyle": {
+          "n": 94,
+          "mean": 0.09255318565571562,
+          "p50": 0.10000002384185791,
+          "p95": 0.20000004768371582,
+          "max": 0.3999999761581421
+        }
+      },
+      "heapBeforeMiB": 337.60193252563477,
+      "heapAfterMiB": 866.0475845336914,
+      "initial": {
+        "pending": 10000,
+        "history": 6000,
+        "physical": 6000,
+        "map": 6000,
+        "enqueueMs": 66.79999995231628,
+        "enqueue20Ms": [],
+        "viewport": {
+          "width": 1422,
+          "height": 804,
+          "dpr": 1
+        },
+        "mapView": {
+          "center": [
+            12948683.169073582,
+            4865942.279503176
+          ],
+          "zoom": 16,
+          "visiblePoints": 6000
+        },
+        "observed": {
+          "client": true,
+          "queue": true,
+          "queueArray": true,
+          "firstPoint": true,
+          "mapStore": true
+        }
+      },
+      "final": {
+        "pending": 9813,
+        "oldestMs": 12650.099999904633,
+        "enqueued": 10000,
+        "consumed": 187,
+        "chartPoints": 6000,
+        "mapPoints": 6187,
+        "physicalPoints": 6187,
+        "signal": ""
+      },
+      "excludedOutsideWindow": 0,
+      "errors": [],
+      "visibility": "visible",
+      "invokers": {
+        "user-callback | FrameRequestCallback |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 10694.79999935627,
+        "user-callback | TimerHandler:setTimeout |  | ": 35.39999997615814
+      }
+    },
+    {
+      "case": "charts-frozen6000",
+      "repeat": 2,
+      "config": {
+        "id": "charts-frozen6000",
+        "history": 6000,
+        "pending": 10000,
+        "batch": 1,
+        "mode": "charts-frozen",
+        "repeat": 2,
+        "probeEnqueue": false,
+        "centeredMap": true
+      },
+      "file": "charts-frozen6000-r2.json",
+      "duration": 12.0835,
+      "fps": 16.882525758265402,
+      "consumeRate": 16.882525758265402,
+      "frameInterval": {
+        "n": 203,
+        "mean": 58.85270935960591,
+        "p50": 24.200000000000728,
+        "p95": 127.30000000000109,
+        "max": 145.5
+      },
+      "loaf": {
+        "n": 102,
+        "mean": 106.03235293837155,
+        "p50": 103,
+        "p95": 137.09999990463257,
+        "max": 144.70000004768372
+      },
+      "loafBlocking": 5596.399999999996,
+      "task": {
+        "n": 102,
+        "mean": 107.68627450980392,
+        "p50": 106,
+        "p95": 137,
+        "max": 147
+      },
+      "taskBlocking": 5884,
+      "submit": {
+        "n": 204,
+        "mean": 5.218627451681623,
+        "p50": 4.599999904632568,
+        "p95": 10.5,
+        "max": 17.199999928474426
+      },
+      "flush": {
+        "n": 204,
+        "mean": 5.258823532684176,
+        "p50": 4.600000023841858,
+        "p95": 10.599999904632568,
+        "max": 17.199999928474426
+      },
+      "flushOutsideSubmit": {
+        "n": 204,
+        "mean": 0.040196081002553306,
+        "p50": 0,
+        "p95": 0.10000002384185791,
+        "max": 0.3999999761581421
+      },
+      "chart": {
+        "n": 0,
+        "mean": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "map": {
+        "n": 204,
+        "mean": 0.40343137757450925,
+        "p50": 0.3999999761581421,
+        "p95": 0.7000000476837158,
+        "max": 1.2000000476837158
+      },
+      "timer": {
+        "n": 91,
+        "mean": 31.058241757717763,
+        "p50": 25,
+        "p95": 88.89999997615814,
+        "max": 107.39999997615814
+      },
+      "stages": {
+        "preRender": {
+          "n": 102,
+          "mean": 1.9441176465913361,
+          "p50": 0.20000004768371582,
+          "p95": 8.100000023841858,
+          "max": 14.5
+        },
+        "beforeStyle": {
+          "n": 102,
+          "mean": 104.00686273855321,
+          "p50": 102.19999992847443,
+          "p95": 131.89999997615814,
+          "max": 142.20000004768372
+        },
+        "afterStyle": {
+          "n": 102,
+          "mean": 0.08137255322699453,
+          "p50": 0.10000002384185791,
+          "p95": 0.20000004768371582,
+          "max": 0.6000000238418579
+        }
+      },
+      "heapBeforeMiB": 337.59560775756836,
+      "heapAfterMiB": 902.1303176879883,
+      "initial": {
+        "pending": 10000,
+        "history": 6000,
+        "physical": 6000,
+        "map": 6000,
+        "enqueueMs": 66.09999990463257,
+        "enqueue20Ms": [],
+        "viewport": {
+          "width": 1422,
+          "height": 804,
+          "dpr": 1
+        },
+        "mapView": {
+          "center": [
+            12948683.169073582,
+            4865942.279503176
+          ],
+          "zoom": 16,
+          "visiblePoints": 6000
+        },
+        "observed": {
+          "client": true,
+          "queue": true,
+          "queueArray": true,
+          "firstPoint": true,
+          "mapStore": true
+        }
+      },
+      "final": {
+        "pending": 9796,
+        "oldestMs": 12609.400000095367,
+        "enqueued": 10000,
+        "consumed": 204,
+        "chartPoints": 6000,
+        "mapPoints": 6204,
+        "physicalPoints": 6204,
+        "signal": ""
+      },
+      "excludedOutsideWindow": 0,
+      "errors": [],
+      "visibility": "visible",
+      "invokers": {
+        "user-callback | FrameRequestCallback |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 10540.100000619888,
+        "user-callback | TimerHandler:setTimeout |  | ": 53.40000009536743
+      }
+    },
+    {
+      "case": "charts-frozen6000",
+      "repeat": 3,
+      "config": {
+        "id": "charts-frozen6000",
+        "history": 6000,
+        "pending": 10000,
+        "batch": 1,
+        "mode": "charts-frozen",
+        "repeat": 3,
+        "probeEnqueue": false,
+        "centeredMap": true
+      },
+      "file": "charts-frozen6000-r3.json",
+      "duration": 12.078399999976158,
+      "fps": 17.303616373063697,
+      "consumeRate": 17.303616373063697,
+      "frameInterval": {
+        "n": 208,
+        "mean": 57.99278846153846,
+        "p50": 24.299999999999272,
+        "p95": 127.10000000000036,
+        "max": 145.5
+      },
+      "loaf": {
+        "n": 105,
+        "mean": 103.44571428526015,
+        "p50": 100,
+        "p95": 127.80000007152557,
+        "max": 140.09999990463257
+      },
+      "loafBlocking": 5559.4000000000015,
+      "task": {
+        "n": 104,
+        "mean": 106,
+        "p50": 104,
+        "p95": 130,
+        "max": 144
+      },
+      "taskBlocking": 5824,
+      "submit": {
+        "n": 209,
+        "mean": 4.56363636511935,
+        "p50": 4.299999952316284,
+        "p95": 7,
+        "max": 8
+      },
+      "flush": {
+        "n": 209,
+        "mean": 4.60239234666505,
+        "p50": 4.300000071525574,
+        "p95": 7.099999904632568,
+        "max": 8
+      },
+      "flushOutsideSubmit": {
+        "n": 209,
+        "mean": 0.03875598154569927,
+        "p50": 0,
+        "p95": 0.10000002384185791,
+        "max": 0.6000000238418579
+      },
+      "chart": {
+        "n": 0,
+        "mean": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "map": {
+        "n": 209,
+        "mean": 0.3995215350931341,
+        "p50": 0.3999999761581421,
+        "p95": 0.7000000476837158,
+        "max": 1.100000023841858
+      },
+      "timer": {
+        "n": 93,
+        "mean": 28.429032257808153,
+        "p50": 21.59999990463257,
+        "p95": 90.20000004768372,
+        "max": 113.39999997615814
+      },
+      "stages": {
+        "preRender": {
+          "n": 105,
+          "mean": 1.0038095235824585,
+          "p50": 0.19999992847442627,
+          "p95": 6.100000023841858,
+          "max": 10.899999976158142
+        },
+        "beforeStyle": {
+          "n": 105,
+          "mean": 102.36761904784612,
+          "p50": 99.29999995231628,
+          "p95": 125.60000002384186,
+          "max": 139.69999992847443
+        },
+        "afterStyle": {
+          "n": 105,
+          "mean": 0.07428571383158365,
+          "p50": 0.10000002384185791,
+          "p95": 0.20000004768371582,
+          "max": 0.30000007152557373
+        }
+      },
+      "heapBeforeMiB": 337.55249786376953,
+      "heapAfterMiB": 927.6901206970215,
+      "initial": {
+        "pending": 10000,
+        "history": 6000,
+        "physical": 6000,
+        "map": 6000,
+        "enqueueMs": 62.300000071525574,
+        "enqueue20Ms": [],
+        "viewport": {
+          "width": 1422,
+          "height": 804,
+          "dpr": 1
+        },
+        "mapView": {
+          "center": [
+            12948683.169073582,
+            4865942.279503176
+          ],
+          "zoom": 16,
+          "visiblePoints": 6000
+        },
+        "observed": {
+          "client": true,
+          "queue": true,
+          "queueArray": true,
+          "firstPoint": true,
+          "mapStore": true
+        }
+      },
+      "final": {
+        "pending": 9791,
+        "oldestMs": 12601.100000023842,
+        "enqueued": 10000,
+        "consumed": 209,
+        "chartPoints": 6000,
+        "mapPoints": 6209,
+        "physicalPoints": 6209,
+        "signal": ""
+      },
+      "excludedOutsideWindow": 0,
+      "errors": [],
+      "visibility": "visible",
+      "invokers": {
+        "user-callback | FrameRequestCallback |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 10687.20000064373,
+        "user-callback | TimerHandler:setTimeout |  | ": 24.800000071525574
+      }
+    },
+    {
+      "case": "history6000",
+      "repeat": 1,
+      "config": {
+        "id": "history6000",
+        "history": 6000,
+        "pending": 10000,
+        "batch": 1,
+        "mode": "full",
+        "repeat": 1,
+        "probeEnqueue": false,
+        "centeredMap": true
+      },
+      "file": "history6000-r1.json",
+      "duration": 12.841600000023842,
+      "fps": 2.1804136556151894,
+      "consumeRate": 2.1804136556151894,
+      "frameInterval": {
+        "n": 27,
+        "mean": 466.4962962962963,
+        "p50": 502.90000000000146,
+        "p95": 848.0999999999985,
+        "max": 866.3999999999996
+      },
+      "loaf": {
+        "n": 25,
+        "mean": 497.96000001430514,
+        "p50": 552,
+        "p95": 837.3999999761581,
+        "max": 958.1000000238419
+      },
+      "loafBlocking": 10245.5,
+      "task": {
+        "n": 26,
+        "mean": 433.11538461538464,
+        "p50": 424,
+        "p95": 749,
+        "max": 845
+      },
+      "taskBlocking": 9961,
+      "submit": {
+        "n": 28,
+        "mean": 5.435714287417276,
+        "p50": 5,
+        "p95": 9.200000047683716,
+        "max": 12.400000095367432
+      },
+      "flush": {
+        "n": 28,
+        "mean": 5.485714273793357,
+        "p50": 5.100000023841858,
+        "p95": 9.299999952316284,
+        "max": 12.5
+      },
+      "flushOutsideSubmit": {
+        "n": 28,
+        "mean": 0.0499999863760812,
+        "p50": 0,
+        "p95": 0.10000002384185791,
+        "max": 0.10000002384185791
+      },
+      "chart": {
+        "n": 65,
+        "mean": 21.159999994131233,
+        "p50": 21.200000047683716,
+        "p95": 33,
+        "max": 37.39999997615814
+      },
+      "map": {
+        "n": 28,
+        "mean": 0.578571447304317,
+        "p50": 0.5,
+        "p95": 0.9000000953674316,
+        "max": 1.100000023841858
+      },
+      "timer": {
+        "n": 16,
+        "mean": 687.6374999955297,
+        "p50": 738.2999999523163,
+        "p95": 1087.5,
+        "max": 1087.5
+      },
+      "stages": {
+        "preRender": {
+          "n": 25,
+          "mean": 61.44400001049042,
+          "p50": 71.30000007152557,
+          "p95": 116.5,
+          "max": 121.30000007152557
+        },
+        "beforeStyle": {
+          "n": 25,
+          "mean": 436.27199998855593,
+          "p50": 454.59999990463257,
+          "p95": 739.7000000476837,
+          "max": 836.3999999761581
+        },
+        "afterStyle": {
+          "n": 25,
+          "mean": 0.24400001525878906,
+          "p50": 0.20000004768371582,
+          "p95": 0.40000009536743164,
+          "max": 0.5
+        }
+      },
+      "heapBeforeMiB": 337.4748344421387,
+      "heapAfterMiB": 998.2275695800781,
+      "initial": {
+        "pending": 10000,
+        "history": 6000,
+        "physical": 6000,
+        "map": 6000,
+        "enqueueMs": 108.29999995231628,
+        "enqueue20Ms": [],
+        "viewport": {
+          "width": 1422,
+          "height": 804,
+          "dpr": 1
+        },
+        "mapView": {
+          "center": [
+            12948683.169073582,
+            4865942.279503176
+          ],
+          "zoom": 16,
+          "visiblePoints": 6000
+        },
+        "observed": {
+          "client": true,
+          "queue": true,
+          "queueArray": true,
+          "firstPoint": true,
+          "mapStore": true
+        }
+      },
+      "final": {
+        "pending": 9972,
+        "oldestMs": 14156.800000071526,
+        "enqueued": 10000,
+        "consumed": 28,
+        "chartPoints": 6000,
+        "mapPoints": 6028,
+        "physicalPoints": 6028,
+        "signal": ""
+      },
+      "excludedOutsideWindow": 0,
+      "errors": [],
+      "visibility": "visible",
+      "invokers": {
+        "user-callback | FrameRequestCallback |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 1626.9999998807907,
+        "user-callback | TimerHandler:setTimeout |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 1470.6999996900558,
+        "user-callback | FrameRequestCallback | e | http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js": 9252.099999904633,
+        "user-callback | TimerHandler:setTimeout |  | ": 31.600000023841858
+      }
+    },
+    {
+      "case": "history6000",
+      "repeat": 2,
+      "config": {
+        "id": "history6000",
+        "history": 6000,
+        "pending": 10000,
+        "batch": 1,
+        "mode": "full",
+        "repeat": 2,
+        "probeEnqueue": false,
+        "centeredMap": true
+      },
+      "file": "history6000-r2.json",
+      "duration": 12.736699999928474,
+      "fps": 2.512424725413938,
+      "consumeRate": 2.512424725413938,
+      "frameInterval": {
+        "n": 31,
+        "mean": 397.3096774193548,
+        "p50": 430.10000000000036,
+        "p95": 666.5,
+        "max": 672.3999999999978
+      },
+      "loaf": {
+        "n": 29,
+        "mean": 419.47931034400546,
+        "p50": 427.60000002384186,
+        "p95": 663.3999999761581,
+        "max": 668.4000000953674
+      },
+      "loafBlocking": 9808.9,
+      "task": {
+        "n": 30,
+        "mean": 365.06666666666666,
+        "p50": 354,
+        "p95": 564,
+        "max": 573
+      },
+      "taskBlocking": 9452,
+      "submit": {
+        "n": 32,
+        "mean": 4.643749989569187,
+        "p50": 4.299999952316284,
+        "p95": 9.299999952316284,
+        "max": 10.099999904632568
+      },
+      "flush": {
+        "n": 32,
+        "mean": 4.68749999627471,
+        "p50": 4.300000071525574,
+        "p95": 9.399999976158142,
+        "max": 10.199999928474426
+      },
+      "flushOutsideSubmit": {
+        "n": 32,
+        "mean": 0.04375000670552254,
+        "p50": 0,
+        "p95": 0.10000002384185791,
+        "max": 0.20000004768371582
+      },
+      "chart": {
+        "n": 82,
+        "mean": 18.925609747084177,
+        "p50": 18.399999976158142,
+        "p95": 33.10000002384186,
+        "max": 40.299999952316284
+      },
+      "map": {
+        "n": 32,
+        "mean": 0.5437499955296516,
+        "p50": 0.5,
+        "p95": 0.8999999761581421,
+        "max": 1.100000023841858
+      },
+      "timer": {
+        "n": 19,
+        "mean": 548.9842105225513,
+        "p50": 581,
+        "p95": 922.3999999761581,
+        "max": 922.3999999761581
+      },
+      "stages": {
+        "preRender": {
+          "n": 29,
+          "mean": 56.072413793925584,
+          "p50": 55.800000071525574,
+          "p95": 104.20000004768372,
+          "max": 108.70000004768372
+        },
+        "beforeStyle": {
+          "n": 29,
+          "mean": 363.12758621265147,
+          "p50": 347.5,
+          "p95": 560.1000000238419,
+          "max": 570.6000000238419
+        },
+        "afterStyle": {
+          "n": 29,
+          "mean": 0.2793103374283889,
+          "p50": 0.2999999523162842,
+          "p95": 0.40000009536743164,
+          "max": 0.5
+        }
+      },
+      "heapBeforeMiB": 337.5478744506836,
+      "heapAfterMiB": 1091.253044128418,
+      "initial": {
+        "pending": 10000,
+        "history": 6000,
+        "physical": 6000,
+        "map": 6000,
+        "enqueueMs": 58.89999997615814,
+        "enqueue20Ms": [],
+        "viewport": {
+          "width": 1422,
+          "height": 804,
+          "dpr": 1
+        },
+        "mapView": {
+          "center": [
+            12948683.169073582,
+            4865942.279503176
+          ],
+          "zoom": 16,
+          "visiblePoints": 6000
+        },
+        "observed": {
+          "client": true,
+          "queue": true,
+          "queueArray": true,
+          "firstPoint": true,
+          "mapStore": true
+        }
+      },
+      "final": {
+        "pending": 9968,
+        "oldestMs": 13573.799999952316,
+        "enqueued": 10000,
+        "consumed": 32,
+        "chartPoints": 6000,
+        "mapPoints": 6032,
+        "physicalPoints": 6032,
+        "signal": ""
+      },
+      "excludedOutsideWindow": 0,
+      "errors": [],
+      "visibility": "visible",
+      "invokers": {
+        "user-callback | FrameRequestCallback |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 1594.799999833107,
+        "user-callback | TimerHandler:setTimeout |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 1547.5000004768372,
+        "user-callback | FrameRequestCallback | e | http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js": 8907.299999833107,
+        "user-callback | TimerHandler:setTimeout |  | ": 25
+      }
+    },
+    {
+      "case": "history6000",
+      "repeat": 3,
+      "config": {
+        "id": "history6000",
+        "history": 6000,
+        "pending": 10000,
+        "batch": 1,
+        "mode": "full",
+        "repeat": 3,
+        "probeEnqueue": false,
+        "centeredMap": true
+      },
+      "file": "history6000-r3.json",
+      "duration": 12.523899999976159,
+      "fps": 2.2357252932435823,
+      "consumeRate": 2.2357252932435823,
+      "frameInterval": {
+        "n": 27,
+        "mean": 444.0555555555556,
+        "p50": 375.5,
+        "p95": 842.0999999999985,
+        "max": 884.5
+      },
+      "loaf": {
+        "n": 25,
+        "mean": 474.4319999885559,
+        "p50": 395.09999990463257,
+        "p95": 873.3999999761581,
+        "max": 878.7000000476837
+      },
+      "loafBlocking": 9836.999999999998,
+      "task": {
+        "n": 26,
+        "mean": 425,
+        "p50": 305,
+        "p95": 782,
+        "max": 791
+      },
+      "taskBlocking": 9750,
+      "submit": {
+        "n": 28,
+        "mean": 3.8857142754963467,
+        "p50": 3.899999976158142,
+        "p95": 6.5,
+        "max": 7.5
+      },
+      "flush": {
+        "n": 28,
+        "mean": 3.9214285612106323,
+        "p50": 3.899999976158142,
+        "p95": 6.600000023841858,
+        "max": 7.699999928474426
+      },
+      "flushOutsideSubmit": {
+        "n": 28,
+        "mean": 0.03571428571428571,
+        "p50": 0,
+        "p95": 0.10000002384185791,
+        "max": 0.19999992847442627
+      },
+      "chart": {
+        "n": 73,
+        "mean": 17.47123287311972,
+        "p50": 17.100000023841858,
+        "p95": 34.299999952316284,
+        "max": 37.700000047683716
+      },
+      "map": {
+        "n": 28,
+        "mean": 0.45714288098471506,
+        "p50": 0.40000009536743164,
+        "p95": 0.7999999523162842,
+        "max": 0.9000000953674316
+      },
+      "timer": {
+        "n": 16,
+        "mean": 649.4187499955297,
+        "p50": 782.1000000238419,
+        "p95": 945.1000000238419,
+        "max": 945.1000000238419
+      },
+      "stages": {
+        "preRender": {
+          "n": 25,
+          "mean": 52.675999999046326,
+          "p50": 52.39999997615814,
+          "p95": 102.5,
+          "max": 105.79999995231628
+        },
+        "beforeStyle": {
+          "n": 25,
+          "mean": 421.5439999961853,
+          "p50": 303.60000002384186,
+          "p95": 778.0999999046326,
+          "max": 782.1999999284744
+        },
+        "afterStyle": {
+          "n": 25,
+          "mean": 0.2119999933242798,
+          "p50": 0.20000004768371582,
+          "p95": 0.30000007152557373,
+          "max": 0.3999999761581421
+        }
+      },
+      "heapBeforeMiB": 338.03103256225586,
+      "heapAfterMiB": 1104.3806762695312,
+      "initial": {
+        "pending": 10000,
+        "history": 6000,
+        "physical": 6000,
+        "map": 6000,
+        "enqueueMs": 63.39999997615814,
+        "enqueue20Ms": [],
+        "viewport": {
+          "width": 1422,
+          "height": 804,
+          "dpr": 1
+        },
+        "mapView": {
+          "center": [
+            12948683.169073582,
+            4865942.279503176
+          ],
+          "zoom": 16,
+          "visiblePoints": 6000
+        },
+        "observed": {
+          "client": true,
+          "queue": true,
+          "queueArray": true,
+          "firstPoint": true,
+          "mapStore": true
+        }
+      },
+      "final": {
+        "pending": 9972,
+        "oldestMs": 13909.5,
+        "enqueued": 10000,
+        "consumed": 28,
+        "chartPoints": 6000,
+        "mapPoints": 6028,
+        "physicalPoints": 6028,
+        "signal": ""
+      },
+      "excludedOutsideWindow": 0,
+      "errors": [],
+      "visibility": "visible",
+      "invokers": {
+        "user-callback | FrameRequestCallback |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 1354.7999999523163,
+        "user-callback | TimerHandler:setTimeout |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 1256.1000001430511,
+        "user-callback | FrameRequestCallback | e | http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js": 9145.399999976158,
+        "user-callback | TimerHandler:setTimeout |  | ": 11.899999976158142
+      }
+    },
+    {
+      "case": "map-frozen6000",
+      "repeat": 1,
+      "config": {
+        "id": "map-frozen6000",
+        "history": 6000,
+        "pending": 10000,
+        "batch": 1,
+        "mode": "map-frozen",
+        "repeat": 1,
+        "probeEnqueue": false,
+        "centeredMap": true
+      },
+      "file": "map-frozen6000-r1.json",
+      "duration": 12.515600000023841,
+      "fps": 4.1548147911327415,
+      "consumeRate": 4.1548147911327415,
+      "frameInterval": {
+        "n": 51,
+        "mean": 240.07450980392156,
+        "p50": 163.59999999999854,
+        "p95": 642.1000000000022,
+        "max": 654.4000000000015
+      },
+      "loaf": {
+        "n": 31,
+        "mean": 388.1387096643448,
+        "p50": 407.3000000715256,
+        "p95": 651.6000000238419,
+        "max": 651.9000000953674
+      },
+      "loafBlocking": 9352.800000000001,
+      "task": {
+        "n": 32,
+        "mean": 326,
+        "p50": 342,
+        "p95": 555,
+        "max": 559
+      },
+      "taskBlocking": 8832,
+      "submit": {
+        "n": 52,
+        "mean": 4.124999986245082,
+        "p50": 3.899999976158142,
+        "p95": 6.299999952316284,
+        "max": 8.600000023841858
+      },
+      "flush": {
+        "n": 52,
+        "mean": 4.15576921747281,
+        "p50": 3.899999976158142,
+        "p95": 6.399999976158142,
+        "max": 8.600000023841858
+      },
+      "flushOutsideSubmit": {
+        "n": 52,
+        "mean": 0.030769231227728035,
+        "p50": 0,
+        "p95": 0.10000002384185791,
+        "max": 0.3999999761581421
+      },
+      "chart": {
+        "n": 93,
+        "mean": 18.605376346136936,
+        "p50": 18.799999952316284,
+        "p95": 31.800000071525574,
+        "max": 35.90000009536743
+      },
+      "map": {
+        "n": 52,
+        "mean": 0,
+        "p50": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "timer": {
+        "n": 23,
+        "mean": 432.460869566254,
+        "p50": 518.3999999761581,
+        "p95": 661.5,
+        "max": 753.7000000476837
+      },
+      "stages": {
+        "preRender": {
+          "n": 31,
+          "mean": 59.016129032258064,
+          "p50": 67.20000004768372,
+          "p95": 117.60000002384186,
+          "max": 118.79999995231628
+        },
+        "beforeStyle": {
+          "n": 31,
+          "mean": 328.8838709631274,
+          "p50": 347.09999990463257,
+          "p95": 551.1999999284744,
+          "max": 556.8999999761581
+        },
+        "afterStyle": {
+          "n": 31,
+          "mean": 0.23870966895934073,
+          "p50": 0.20000004768371582,
+          "p95": 0.5,
+          "max": 0.6000000238418579
+        }
+      },
+      "heapBeforeMiB": 337.5441207885742,
+      "heapAfterMiB": 1096.6560173034668,
+      "initial": {
+        "pending": 10000,
+        "history": 6000,
+        "physical": 6000,
+        "map": 6000,
+        "enqueueMs": 65,
+        "enqueue20Ms": [],
+        "viewport": {
+          "width": 1422,
+          "height": 804,
+          "dpr": 1
+        },
+        "mapView": {
+          "center": [
+            12948683.169073582,
+            4865942.279503176
+          ],
+          "zoom": 16,
+          "visiblePoints": 6000
+        },
+        "observed": {
+          "client": true,
+          "queue": true,
+          "queueArray": true,
+          "firstPoint": true,
+          "mapStore": true
+        }
+      },
+      "final": {
+        "pending": 9948,
+        "oldestMs": 13523.700000047684,
+        "enqueued": 10000,
+        "consumed": 52,
+        "chartPoints": 6000,
+        "mapPoints": 6052,
+        "physicalPoints": 6000,
+        "signal": ""
+      },
+      "excludedOutsideWindow": 0,
+      "errors": [],
+      "visibility": "visible",
+      "invokers": {
+        "user-callback | TimerHandler:setTimeout |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 1765.3000004291534,
+        "user-callback | FrameRequestCallback |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 213.19999980926514,
+        "user-callback | FrameRequestCallback | e | http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js": 9934.39999961853
+      }
+    },
+    {
+      "case": "map-frozen6000",
+      "repeat": 2,
+      "config": {
+        "id": "map-frozen6000",
+        "history": 6000,
+        "pending": 10000,
+        "batch": 1,
+        "mode": "map-frozen",
+        "repeat": 2,
+        "probeEnqueue": false,
+        "centeredMap": true
+      },
+      "file": "map-frozen6000-r2.json",
+      "duration": 12.569699999928474,
+      "fps": 4.216488858151076,
+      "consumeRate": 4.216488858151076,
+      "frameInterval": {
+        "n": 52,
+        "mean": 237.32884615384611,
+        "p50": 193.8000000000011,
+        "p95": 618,
+        "max": 672.4000000000015
+      },
+      "loaf": {
+        "n": 31,
+        "mean": 371.9451612810935,
+        "p50": 330.39999997615814,
+        "p95": 656.5,
+        "max": 671.1999999284744
+      },
+      "loafBlocking": 8963.500000000002,
+      "task": {
+        "n": 33,
+        "mean": 316.06060606060606,
+        "p50": 302,
+        "p95": 573,
+        "max": 577
+      },
+      "taskBlocking": 8780,
+      "submit": {
+        "n": 53,
+        "mean": 4.337735862102148,
+        "p50": 4.300000071525574,
+        "p95": 5.899999976158142,
+        "max": 12.299999952316284
+      },
+      "flush": {
+        "n": 53,
+        "mean": 4.3754717089095205,
+        "p50": 4.300000071525574,
+        "p95": 6.099999904632568,
+        "max": 12.299999952316284
+      },
+      "flushOutsideSubmit": {
+        "n": 53,
+        "mean": 0.037735846807371895,
+        "p50": 0,
+        "p95": 0.10000002384185791,
+        "max": 0.29999983310699463
+      },
+      "chart": {
+        "n": 98,
+        "mean": 18.07857143027442,
+        "p50": 18.100000023841858,
+        "p95": 32.60000002384186,
+        "max": 39.10000002384186
+      },
+      "map": {
+        "n": 53,
+        "mean": 0.0018867929026765643,
+        "p50": 0,
+        "p95": 0,
+        "max": 0.10000002384185791
+      },
+      "timer": {
+        "n": 24,
+        "mean": 414.1999999980132,
+        "p50": 461.7999999523163,
+        "p95": 639,
+        "max": 656.6000000238419
+      },
+      "stages": {
+        "preRender": {
+          "n": 31,
+          "mean": 58.09032257141605,
+          "p50": 56.799999952316284,
+          "p95": 107,
+          "max": 107.20000004768372
+        },
+        "beforeStyle": {
+          "n": 31,
+          "mean": 313.6161290407181,
+          "p50": 300.39999997615814,
+          "p95": 568.5,
+          "max": 573.3999999761581
+        },
+        "afterStyle": {
+          "n": 31,
+          "mean": 0.23870966895934073,
+          "p50": 0.20000004768371582,
+          "p95": 0.3999999761581421,
+          "max": 0.40000009536743164
+        }
+      },
+      "heapBeforeMiB": 337.5409927368164,
+      "heapAfterMiB": 1112.7738227844238,
+      "initial": {
+        "pending": 10000,
+        "history": 6000,
+        "physical": 6000,
+        "map": 6000,
+        "enqueueMs": 67.5,
+        "enqueue20Ms": [],
+        "viewport": {
+          "width": 1422,
+          "height": 804,
+          "dpr": 1
+        },
+        "mapView": {
+          "center": [
+            12948683.169073582,
+            4865942.279503176
+          ],
+          "zoom": 16,
+          "visiblePoints": 6000
+        },
+        "observed": {
+          "client": true,
+          "queue": true,
+          "queueArray": true,
+          "firstPoint": true,
+          "mapStore": true
+        }
+      },
+      "final": {
+        "pending": 9947,
+        "oldestMs": 13492.699999928474,
+        "enqueued": 10000,
+        "consumed": 53,
+        "chartPoints": 6000,
+        "mapPoints": 6053,
+        "physicalPoints": 6000,
+        "signal": ""
+      },
+      "excludedOutsideWindow": 0,
+      "errors": [],
+      "visibility": "visible",
+      "invokers": {
+        "user-callback | TimerHandler:setTimeout |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 1713.799999833107,
+        "user-callback | FrameRequestCallback |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 201.70000040531158,
+        "user-callback | FrameRequestCallback | e | http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js": 9475.400000691414,
+        "user-callback | TimerHandler:setTimeout |  | ": 18.300000071525574
+      }
+    },
+    {
+      "case": "map-frozen6000",
+      "repeat": 3,
+      "config": {
+        "id": "map-frozen6000",
+        "history": 6000,
+        "pending": 10000,
+        "batch": 1,
+        "mode": "map-frozen",
+        "repeat": 3,
+        "probeEnqueue": false,
+        "centeredMap": true
+      },
+      "file": "map-frozen6000-r3.json",
+      "duration": 12.889,
+      "fps": 3.724105826673908,
+      "consumeRate": 3.724105826673908,
+      "frameInterval": {
+        "n": 47,
+        "mean": 261.2744680851063,
+        "p50": 163.60000000000218,
+        "p95": 630.1000000000004,
+        "max": 842.1999999999989
+      },
+      "loaf": {
+        "n": 32,
+        "mean": 377.24062498658895,
+        "p50": 391.7999999523163,
+        "p95": 677.5999999046326,
+        "max": 838.7999999523163
+      },
+      "loafBlocking": 9427.700000000003,
+      "task": {
+        "n": 34,
+        "mean": 322.1764705882353,
+        "p50": 340,
+        "p95": 572,
+        "max": 724
+      },
+      "taskBlocking": 9254,
+      "submit": {
+        "n": 48,
+        "mean": 5.020833330849807,
+        "p50": 4.899999976158142,
+        "p95": 7.699999928474426,
+        "max": 9.100000023841858
+      },
+      "flush": {
+        "n": 48,
+        "mean": 5.070833335320155,
+        "p50": 5,
+        "p95": 7.699999928474426,
+        "max": 9.100000023841858
+      },
+      "flushOutsideSubmit": {
+        "n": 48,
+        "mean": 0.05000000447034836,
+        "p50": 0,
+        "p95": 0.20000004768371582,
+        "max": 0.20000004768371582
+      },
+      "chart": {
+        "n": 88,
+        "mean": 18.477272727272727,
+        "p50": 18.700000047683716,
+        "p95": 31.899999976158142,
+        "max": 54.60000002384186
+      },
+      "map": {
+        "n": 48,
+        "mean": 0.004166667660077413,
+        "p50": 0,
+        "p95": 0,
+        "max": 0.10000002384185791
+      },
+      "timer": {
+        "n": 23,
+        "mean": 424.3695652122083,
+        "p50": 506.2000000476837,
+        "p95": 668.5,
+        "max": 744
+      },
+      "stages": {
+        "preRender": {
+          "n": 32,
+          "mean": 53.85937498882413,
+          "p50": 48.799999952316284,
+          "p95": 117.29999995231628,
+          "max": 119
+        },
+        "beforeStyle": {
+          "n": 32,
+          "mean": 323.13437501341105,
+          "p50": 338.3000000715256,
+          "p95": 567.6000000238419,
+          "max": 719.6000000238419
+        },
+        "afterStyle": {
+          "n": 32,
+          "mean": 0.24687498435378075,
+          "p50": 0.20000004768371582,
+          "p95": 0.3999999761581421,
+          "max": 0.5
+        }
+      },
+      "heapBeforeMiB": 337.5348777770996,
+      "heapAfterMiB": 1074.3030281066895,
+      "initial": {
+        "pending": 10000,
+        "history": 6000,
+        "physical": 6000,
+        "map": 6000,
+        "enqueueMs": 63.39999997615814,
+        "enqueue20Ms": [],
+        "viewport": {
+          "width": 1422,
+          "height": 804,
+          "dpr": 1
+        },
+        "mapView": {
+          "center": [
+            12948683.169073582,
+            4865942.279503176
+          ],
+          "zoom": 16,
+          "visiblePoints": 6000
+        },
+        "observed": {
+          "client": true,
+          "queue": true,
+          "queueArray": true,
+          "firstPoint": true,
+          "mapStore": true
+        }
+      },
+      "final": {
+        "pending": 9952,
+        "oldestMs": 13504.699999928474,
+        "enqueued": 10000,
+        "consumed": 48,
+        "chartPoints": 6000,
+        "mapPoints": 6048,
+        "physicalPoints": 6000,
+        "signal": ""
+      },
+      "excludedOutsideWindow": 0,
+      "errors": [],
+      "visibility": "visible",
+      "invokers": {
+        "user-callback | TimerHandler:setTimeout |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 1637.899999499321,
+        "user-callback | FrameRequestCallback |  | http://127.0.0.1:18080/static/js/957.dab11c27.js": 238.60000002384186,
+        "user-callback | FrameRequestCallback | e | http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js": 10056.200000166893,
+        "user-callback | TimerHandler:setTimeout |  | ": 33.39999997615814
+      }
+    }
+  ]
+}

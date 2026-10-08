@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="264" viewBox="0 0 1000 264">
+<rect width="100%" height="100%" fill="#0b1424"/>
+<g font-family="Microsoft YaHei,Arial,sans-serif" fill="#e5edf9">
+<text x="28" y="35" font-size="21">队列积压与渲染成本：3 轮对照</text>
+<text x="28" y="61" font-size="13" fill="#9daec8">rAF 调度次数/秒，条末为均值；蓝条长度按统一 180 次/秒刻度</text>
+<text x="28" y="122" font-size="14">paused-q1000</text><rect x="240" y="105" width="541.2821503569021" height="24" rx="4" fill="#4d91ed"/><text x="796.2821503569021" y="122" font-size="14">165.14</text>
+<text x="28" y="165" font-size="14">paused-q10000</text><rect x="240" y="148" width="540.9540893518288" height="24" rx="4" fill="#4d91ed"/><text x="795.9540893518288" y="165" font-size="14">165.04</text>
+<text x="28" y="208" font-size="14">paused-q50000</text><rect x="240" y="191" width="541.2129375060981" height="24" rx="4" fill="#4d91ed"/><text x="796.2129375060981" y="208" font-size="14">165.12</text>
+<text x="28" y="252" font-size="12" fill="#9daec8">2026-10-08 · Chrome headless · 相同生产构建 · 3 轮 · 非 GPU 呈现帧率</text>
+</g></svg>

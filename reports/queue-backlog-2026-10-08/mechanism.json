@@ -1,0 +1,244 @@
+{
+  "note": "Actual queue executed with injected deterministic virtual clock; these are mechanism assertions, not measured FPS or CPU milliseconds.",
+  "throughput": [
+    {
+      "arrivalRate": 20,
+      "availableFps": 10,
+      "batch": 1,
+      "series": [
+        {
+          "second": 1,
+          "pending": 10,
+          "oldestMs": 1000,
+          "enqueued": 20,
+          "consumed": 10
+        },
+        {
+          "second": 2,
+          "pending": 20,
+          "oldestMs": 1000,
+          "enqueued": 40,
+          "consumed": 20
+        },
+        {
+          "second": 3,
+          "pending": 30,
+          "oldestMs": 2000,
+          "enqueued": 60,
+          "consumed": 30
+        },
+        {
+          "second": 4,
+          "pending": 40,
+          "oldestMs": 2000,
+          "enqueued": 80,
+          "consumed": 40
+        },
+        {
+          "second": 5,
+          "pending": 50,
+          "oldestMs": 3000,
+          "enqueued": 100,
+          "consumed": 50
+        },
+        {
+          "second": 6,
+          "pending": 60,
+          "oldestMs": 3000,
+          "enqueued": 120,
+          "consumed": 60
+        },
+        {
+          "second": 7,
+          "pending": 70,
+          "oldestMs": 4000,
+          "enqueued": 140,
+          "consumed": 70
+        },
+        {
+          "second": 8,
+          "pending": 80,
+          "oldestMs": 4000,
+          "enqueued": 160,
+          "consumed": 80
+        },
+        {
+          "second": 9,
+          "pending": 90,
+          "oldestMs": 5000,
+          "enqueued": 180,
+          "consumed": 90
+        },
+        {
+          "second": 10,
+          "pending": 100,
+          "oldestMs": 5000,
+          "enqueued": 200,
+          "consumed": 100
+        }
+      ]
+    },
+    {
+      "arrivalRate": 20,
+      "availableFps": 10,
+      "batch": 2,
+      "series": [
+        {
+          "second": 1,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 20,
+          "consumed": 20
+        },
+        {
+          "second": 2,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 40,
+          "consumed": 40
+        },
+        {
+          "second": 3,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 60,
+          "consumed": 60
+        },
+        {
+          "second": 4,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 80,
+          "consumed": 80
+        },
+        {
+          "second": 5,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 100,
+          "consumed": 100
+        },
+        {
+          "second": 6,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 120,
+          "consumed": 120
+        },
+        {
+          "second": 7,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 140,
+          "consumed": 140
+        },
+        {
+          "second": 8,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 160,
+          "consumed": 160
+        },
+        {
+          "second": 9,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 180,
+          "consumed": 180
+        },
+        {
+          "second": 10,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 200,
+          "consumed": 200
+        }
+      ]
+    },
+    {
+      "arrivalRate": 20,
+      "availableFps": 10,
+      "batch": 5,
+      "series": [
+        {
+          "second": 1,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 20,
+          "consumed": 20
+        },
+        {
+          "second": 2,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 40,
+          "consumed": 40
+        },
+        {
+          "second": 3,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 60,
+          "consumed": 60
+        },
+        {
+          "second": 4,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 80,
+          "consumed": 80
+        },
+        {
+          "second": 5,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 100,
+          "consumed": 100
+        },
+        {
+          "second": 6,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 120,
+          "consumed": 120
+        },
+        {
+          "second": 7,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 140,
+          "consumed": 140
+        },
+        {
+          "second": 8,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 160,
+          "consumed": 160
+        },
+        {
+          "second": 9,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 180,
+          "consumed": 180
+        },
+        {
+          "second": 10,
+          "pending": 0,
+          "oldestMs": 0,
+          "enqueued": 200,
+          "consumed": 200
+        }
+      ]
+    }
+  ],
+  "budget": {
+    "extractionBudgetMs": 5,
+    "callbackConfiguredMs": 80,
+    "wholeFlushVirtualMs": 80,
+    "consumedPoints": 20,
+    "pending": 20,
+    "passed": true
+  }
+}

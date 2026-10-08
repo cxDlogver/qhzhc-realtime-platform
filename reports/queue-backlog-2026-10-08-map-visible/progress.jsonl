@@ -1,0 +1,9 @@
+{"case":"history6000","repeat":1,"at":"2026-10-08T06:19:07.932Z","fps":2.1804136556151894,"pending":9972,"consumed":28,"loafP95":837.3999999761581}
+{"case":"map-frozen6000","repeat":1,"at":"2026-10-08T06:19:28.131Z","fps":4.1548147911327415,"pending":9948,"consumed":52,"loafP95":651.6000000238419}
+{"case":"charts-frozen6000","repeat":1,"at":"2026-10-08T06:19:47.418Z","fps":15.43770432249644,"pending":9813,"consumed":187,"loafP95":137.79999995231628}
+{"case":"charts-frozen6000","repeat":2,"at":"2026-10-08T06:20:06.664Z","fps":16.882525758265402,"pending":9796,"consumed":204,"loafP95":137.09999990463257}
+{"case":"map-frozen6000","repeat":2,"at":"2026-10-08T06:20:26.833Z","fps":4.216488858151076,"pending":9947,"consumed":53,"loafP95":656.5}
+{"case":"history6000","repeat":2,"at":"2026-10-08T06:20:47.115Z","fps":2.512424725413938,"pending":9968,"consumed":32,"loafP95":663.3999999761581}
+{"case":"history6000","repeat":3,"at":"2026-10-08T06:21:07.616Z","fps":2.2357252932435823,"pending":9972,"consumed":28,"loafP95":873.3999999761581}
+{"case":"map-frozen6000","repeat":3,"at":"2026-10-08T06:21:27.734Z","fps":3.724105826673908,"pending":9952,"consumed":48,"loafP95":677.5999999046326}
+{"case":"charts-frozen6000","repeat":3,"at":"2026-10-08T06:21:47.055Z","fps":17.303616373063697,"pending":9791,"consumed":209,"loafP95":127.80000007152557}

@@ -1,0 +1,48 @@
+{
+  "createdAt": "2026-10-08T06:18:46.643Z",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/154.0.8037.97",
+    "revision": "@b510e9d7cd3a2fbd78d0ddc42234103206c5f78d",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "jsVersion": "15.4.80.20"
+  },
+  "node": "v24.19.0",
+  "cpu": "Intel(R) Core(TM) i7-14650HX",
+  "logicalCpus": 24,
+  "memoryBytes": 34053414912,
+  "os": "win32 10.0.26200",
+  "requestedWindow": "1440x900",
+  "seconds": 12,
+  "repetitions": 3,
+  "cases": [
+    {
+      "id": "history6000",
+      "history": 6000,
+      "pending": 10000,
+      "batch": 1,
+      "mode": "full"
+    },
+    {
+      "id": "map-frozen6000",
+      "history": 6000,
+      "pending": 10000,
+      "batch": 1,
+      "mode": "map-frozen"
+    },
+    {
+      "id": "charts-frozen6000",
+      "history": 6000,
+      "pending": 10000,
+      "batch": 1,
+      "mode": "charts-frozen"
+    }
+  ],
+  "sourceHashes": {
+    "QHZHC_Web/src/views/DataVisualization/services/FrameTelemetryQueue.ts": "a884f69b20630a097685cb413631e045519730a4fefabc12fd0c20a8df980b0a",
+    "QHZHC_Web/src/views/DataVisualization/dataVisualization.vue": "ea025ab15b97a35a3784174d85c9baeca448a9ac7af73fb89b67a1fc6bddc549",
+    "QHZHC_Web/src/views/DataVisualization/components/Charts.vue": "3153d076d0a4c40f32cce8c6ffcc6b79b6d1adec60962dc393d271939de11ba8",
+    "QHZHC_Web/src/views/DataVisualization/components/PlanimetricMap.vue": "042bfa59d07ad4b9f5a2ea1d623b7c9470faa4a3e56837f8823fbf3eefcc267c"
+  },
+  "note": "Fresh production build; isolated SQLite; simulated WebSocket conversion and original frameQueue.publishFrame path; deterministic first-N prefix, no network arrival except stream cases; external basemap blocked."
+}

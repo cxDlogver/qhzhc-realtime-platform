@@ -170,6 +170,7 @@ npm run test:integration -w QHZHC_Server
 - [WebSocket 鉴权与可恢复实时连接](docs/WebSocket鉴权与可恢复实时连接.md)
 - [页面连续渲染流畅度与掉帧优化](docs/页面连续渲染流畅度与掉帧优化.md)
 - [浏览器主线程与实时任务调度](docs/浏览器主线程与实时任务调度.md)
+- [队列积压对页面渲染性能的影响：2026-10-08 对照实验](reports/queue-backlog-2026-10-08/实验记录.md)
 
 ## 性能监控
 

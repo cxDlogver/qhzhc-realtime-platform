@@ -1,0 +1,854 @@
+[
+  {
+    "file": "charts-frozen6000-r1-trace.json",
+    "measuredDurationMs": 12016.613,
+    "mainThread": {
+      "pid": 51804,
+      "tid": 62592
+    },
+    "gc": {
+      "MajorGC": {
+        "count": 1,
+        "totalMs": 9.675,
+        "maxMs": 9.675
+      },
+      "MinorGC": {
+        "count": 116,
+        "totalMs": 168.09399999999997,
+        "maxMs": 9.045
+      }
+    },
+    "cpuSampledMs": 12018.733,
+    "cpuSelfHotspots": [
+      {
+        "name": "(anonymous)",
+        "url": "http://127.0.0.1:18080/static/js/957.dab11c27.js",
+        "line": 1,
+        "column": 413193,
+        "selfMs": 3227.157,
+        "samplePercent": 26.85105826046722
+      },
+      {
+        "name": "(program)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 2431.789,
+        "samplePercent": 20.233322430908483
+      },
+      {
+        "name": "get",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 8378,
+        "selfMs": 788.599,
+        "samplePercent": 6.561415417082649
+      },
+      {
+        "name": "$p",
+        "url": "http://127.0.0.1:18080/static/js/957.dab11c27.js",
+        "line": 1,
+        "column": 413109,
+        "selfMs": 660.592,
+        "samplePercent": 5.496353068164506
+      },
+      {
+        "name": "Vt",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 7898,
+        "selfMs": 273.903,
+        "samplePercent": 2.2789673420650916
+      },
+      {
+        "name": "C",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 1281,
+        "selfMs": 229.438,
+        "samplePercent": 1.9090032202229636
+      },
+      {
+        "name": "Sa",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 60576,
+        "selfMs": 173.091,
+        "samplePercent": 1.4401767640565772
+      },
+      {
+        "name": "(garbage collector)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 152.498,
+        "samplePercent": 1.2688359080778315
+      },
+      {
+        "name": "Nr",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 41489,
+        "selfMs": 114.224,
+        "samplePercent": 0.9503830395433529
+      },
+      {
+        "name": "$i",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 32473,
+        "selfMs": 106.753,
+        "samplePercent": 0.8882217451706432
+      },
+      {
+        "name": "t.observeArray",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 7824,
+        "selfMs": 77.512,
+        "samplePercent": 0.6449265492460811
+      },
+      {
+        "name": "o.inspectSource",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 35,
+        "column": 23053,
+        "selfMs": 76.019,
+        "samplePercent": 0.6325042747850377
+      },
+      {
+        "name": "O",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 57073,
+        "selfMs": 66.54,
+        "samplePercent": 0.5536357284915141
+      },
+      {
+        "name": "In.t._render",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 21917,
+        "selfMs": 64.442,
+        "samplePercent": 0.5361796455583131
+      },
+      {
+        "name": "$i",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 32473,
+        "selfMs": 53.302,
+        "samplePercent": 0.44349100691395676
+      },
+      {
+        "name": "Sa",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 60576,
+        "selfMs": 48.953,
+        "samplePercent": 0.40730582832649664
+      },
+      {
+        "name": "get",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 8378,
+        "selfMs": 44.21,
+        "samplePercent": 0.36784243397369754
+      },
+      {
+        "name": "(anonymous)",
+        "url": "http://127.0.0.1:18080/static/js/957.dab11c27.js",
+        "line": 1,
+        "column": 325792,
+        "selfMs": 41.475,
+        "samplePercent": 0.34508629154171244
+      },
+      {
+        "name": "Rn",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 23796,
+        "selfMs": 39.257,
+        "samplePercent": 0.32663176725866194
+      },
+      {
+        "name": "(anonymous)",
+        "url": "http://127.0.0.1:18080/static/js/957.dab11c27.js",
+        "line": 1,
+        "column": 413443,
+        "selfMs": 37.936,
+        "samplePercent": 0.315640592065736
+      },
+      {
+        "name": "Nr",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 41489,
+        "selfMs": 37.302,
+        "samplePercent": 0.3103654936006982
+      },
+      {
+        "name": "Rd",
+        "url": "http://127.0.0.1:18080/static/js/957.dab11c27.js",
+        "line": 1,
+        "column": 433859,
+        "selfMs": 36.96,
+        "samplePercent": 0.30751993575362724
+      },
+      {
+        "name": "(anonymous)",
+        "url": "http://127.0.0.1:18080/static/js/957.dab11c27.js",
+        "line": 1,
+        "column": 413486,
+        "selfMs": 36.417,
+        "samplePercent": 0.30300198864555855
+      },
+      {
+        "name": "Z",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 3578,
+        "selfMs": 31.874,
+        "samplePercent": 0.26520266320917524
+      },
+      {
+        "name": "dataForm",
+        "url": "http://127.0.0.1:18080/static/js/957.dab11c27.js",
+        "line": 1,
+        "column": 410993,
+        "selfMs": 31.691,
+        "samplePercent": 0.26368004015065477
+      }
+    ],
+    "timelineEvents": [
+      [
+        "v8.callFunction",
+        {
+          "count": 7004,
+          "inclusiveMs": 11330.518000000051,
+          "maxMs": 16.887
+        }
+      ],
+      [
+        "FireAnimationFrame",
+        {
+          "count": 6173,
+          "inclusiveMs": 11230.147999999956,
+          "maxMs": 16.894
+        }
+      ],
+      [
+        "FunctionCall",
+        {
+          "count": 7004,
+          "inclusiveMs": 7514.904000000105,
+          "maxMs": 11.472
+        }
+      ],
+      [
+        "MinorGC",
+        {
+          "count": 116,
+          "inclusiveMs": 168.09399999999997,
+          "maxMs": 9.045
+        }
+      ],
+      [
+        "TimerFire",
+        {
+          "count": 831,
+          "inclusiveMs": 160.4769999999998,
+          "maxMs": 8.621
+        }
+      ],
+      [
+        "V8.GCScavenger",
+        {
+          "count": 116,
+          "inclusiveMs": 154.98800000000003,
+          "maxMs": 8.95
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER",
+        {
+          "count": 116,
+          "inclusiveMs": 151.68000000000004,
+          "maxMs": 8.933
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER_SCAVENGE",
+        {
+          "count": 116,
+          "inclusiveMs": 148.88500000000002,
+          "maxMs": 8.914
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+        {
+          "count": 116,
+          "inclusiveMs": 95.91099999999999,
+          "maxMs": 8.496
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER_SCAVENGE_PARALLEL",
+        {
+          "count": 135,
+          "inclusiveMs": 65.113,
+          "maxMs": 2.761
+        }
+      ],
+      [
+        "PrePaint",
+        {
+          "count": 1372,
+          "inclusiveMs": 58.70799999999991,
+          "maxMs": 2.152
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+        {
+          "count": 116,
+          "inclusiveMs": 26.898000000000003,
+          "maxMs": 2.232
+        }
+      ],
+      [
+        "Layout",
+        {
+          "count": 97,
+          "inclusiveMs": 26.249000000000006,
+          "maxMs": 1.498
+        }
+      ],
+      [
+        "Paint",
+        {
+          "count": 194,
+          "inclusiveMs": 19.759,
+          "maxMs": 0.455
+        }
+      ],
+      [
+        "MajorGC",
+        {
+          "count": 1,
+          "inclusiveMs": 9.675,
+          "maxMs": 9.675
+        }
+      ],
+      [
+        "V8.GCFinalizeMC",
+        {
+          "count": 1,
+          "inclusiveMs": 9.493,
+          "maxMs": 9.493
+        }
+      ],
+      [
+        "V8.GC_MARK_COMPACTOR",
+        {
+          "count": 1,
+          "inclusiveMs": 9.476,
+          "maxMs": 9.476
+        }
+      ],
+      [
+        "V8.DeoptimizeCode",
+        {
+          "count": 474,
+          "inclusiveMs": 9.00299999999998,
+          "maxMs": 0.104
+        }
+      ],
+      [
+        "Layerize",
+        {
+          "count": 1372,
+          "inclusiveMs": 8.391999999999975,
+          "maxMs": 0.134
+        }
+      ],
+      [
+        "V8.GCIncrementalMarking",
+        {
+          "count": 300,
+          "inclusiveMs": 7.6439999999999895,
+          "maxMs": 1.153
+        }
+      ],
+      [
+        "V8.GC_MC_EVACUATE",
+        {
+          "count": 2,
+          "inclusiveMs": 7.081,
+          "maxMs": 7.078
+        }
+      ],
+      [
+        "V8.GC_MC_INCREMENTAL",
+        {
+          "count": 300,
+          "inclusiveMs": 6.603999999999988,
+          "maxMs": 1.149
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+        {
+          "count": 116,
+          "inclusiveMs": 6.586999999999999,
+          "maxMs": 0.436
+        }
+      ],
+      [
+        "V8.GC_MC_EVACUATE_COPY",
+        {
+          "count": 1,
+          "inclusiveMs": 4.365,
+          "maxMs": 4.365
+        }
+      ],
+      [
+        "MarkCompactCollector::EvacuatePagesInParallel",
+        {
+          "count": 1,
+          "inclusiveMs": 4.343,
+          "maxMs": 4.343
+        }
+      ]
+    ],
+    "note": "CPU self time is sampled, not exact. Timeline events are inclusive and overlap; never add all categories. GC values use only top-level MinorGC/MajorGC on the measurement main thread. Trace/profiler overhead prevents mixing these runs with primary data."
+  },
+  {
+    "file": "history6000-r1-trace.json",
+    "measuredDurationMs": 13388.442,
+    "mainThread": {
+      "pid": 49616,
+      "tid": 78260
+    },
+    "gc": {
+      "MajorGC": {
+        "count": 1,
+        "totalMs": 8.979,
+        "maxMs": 8.979
+      },
+      "MinorGC": {
+        "count": 72,
+        "totalMs": 391.65500000000003,
+        "maxMs": 10.467
+      }
+    },
+    "cpuSampledMs": 13388.472,
+    "cpuSelfHotspots": [
+      {
+        "name": "(garbage collector)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 427.649,
+        "samplePercent": 3.1941583774459104
+      },
+      {
+        "name": "(program)",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 322.132,
+        "samplePercent": 2.406040061927903
+      },
+      {
+        "name": "zx",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 287487,
+        "selfMs": 205.124,
+        "samplePercent": 1.5320941777373849
+      },
+      {
+        "name": "(anonymous)",
+        "url": "http://127.0.0.1:18080/static/js/957.dab11c27.js",
+        "line": 1,
+        "column": 405358,
+        "selfMs": 185.262,
+        "samplePercent": 1.3837426705601654
+      },
+      {
+        "name": "t._updateAndAddDisplayable",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 32447,
+        "selfMs": 161.984,
+        "samplePercent": 1.209876675994094
+      },
+      {
+        "name": "Ba",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 93596,
+        "selfMs": 152.435,
+        "samplePercent": 1.1385541232785936
+      },
+      {
+        "name": "fill",
+        "url": "",
+        "line": 0,
+        "column": 0,
+        "selfMs": 140.062,
+        "samplePercent": 1.0461387976163372
+      },
+      {
+        "name": "t.updateTransform",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 67309,
+        "selfMs": 138.346,
+        "samplePercent": 1.0333218010240453
+      },
+      {
+        "name": "t.updateTransform",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 67309,
+        "selfMs": 131.666,
+        "samplePercent": 0.9834281313057981
+      },
+      {
+        "name": "t._updateAndAddDisplayable",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 32447,
+        "selfMs": 122.065,
+        "samplePercent": 0.9117171847541676
+      },
+      {
+        "name": "e._updateCommon",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 423197,
+        "selfMs": 118.663,
+        "samplePercent": 0.8863072649365813
+      },
+      {
+        "name": "cA",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 461917,
+        "selfMs": 103.271,
+        "samplePercent": 0.7713426894420813
+      },
+      {
+        "name": "t.getItemStyle",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 160701,
+        "selfMs": 96.244,
+        "samplePercent": 0.7188572377788892
+      },
+      {
+        "name": "Sh",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 151534,
+        "selfMs": 95.399,
+        "samplePercent": 0.7125458379417756
+      },
+      {
+        "name": "op",
+        "url": "http://127.0.0.1:18080/static/js/957.dab11c27.js",
+        "line": 1,
+        "column": 384460,
+        "selfMs": 95.168,
+        "samplePercent": 0.7108204730158901
+      },
+      {
+        "name": "t._initIndexMap",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 318858,
+        "selfMs": 92.01,
+        "samplePercent": 0.6872330165832217
+      },
+      {
+        "name": "t",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 7440,
+        "selfMs": 88.843,
+        "samplePercent": 0.663578338140454
+      },
+      {
+        "name": "tO",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 428954,
+        "selfMs": 86.207,
+        "samplePercent": 0.6438897582935529
+      },
+      {
+        "name": "(anonymous)",
+        "url": "http://127.0.0.1:18080/static/js/957.dab11c27.js",
+        "line": 1,
+        "column": 413193,
+        "selfMs": 85.825,
+        "samplePercent": 0.6410365574204435
+      },
+      {
+        "name": "t.getLocalTransform",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 66806,
+        "selfMs": 84.935,
+        "samplePercent": 0.6343890475328328
+      },
+      {
+        "name": "Z",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 3578,
+        "selfMs": 78.448,
+        "samplePercent": 0.5859369164756068
+      },
+      {
+        "name": "e.getBoundingRect",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 130120,
+        "selfMs": 78.265,
+        "samplePercent": 0.5845700689369183
+      },
+      {
+        "name": "Z",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 3578,
+        "selfMs": 77.942,
+        "samplePercent": 0.5821575456855719
+      },
+      {
+        "name": "e.shouldBePainted",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 50,
+        "column": 110675,
+        "selfMs": 77.918,
+        "samplePercent": 0.5819782869919734
+      },
+      {
+        "name": "t",
+        "url": "http://127.0.0.1:18080/static/js/chunk-vendors.7c5a6010.js",
+        "line": 30,
+        "column": 7440,
+        "selfMs": 75.952,
+        "samplePercent": 0.5672940123413636
+      }
+    ],
+    "timelineEvents": [
+      [
+        "v8.callFunction",
+        {
+          "count": 425,
+          "inclusiveMs": 13284.788,
+          "maxMs": 458.196
+        }
+      ],
+      [
+        "FunctionCall",
+        {
+          "count": 425,
+          "inclusiveMs": 13032.747000000001,
+          "maxMs": 458.188
+        }
+      ],
+      [
+        "FireAnimationFrame",
+        {
+          "count": 277,
+          "inclusiveMs": 11808.618000000004,
+          "maxMs": 458.208
+        }
+      ],
+      [
+        "TimerFire",
+        {
+          "count": 107,
+          "inclusiveMs": 1477.923,
+          "maxMs": 46.267
+        }
+      ],
+      [
+        "MinorGC",
+        {
+          "count": 72,
+          "inclusiveMs": 391.65500000000003,
+          "maxMs": 10.467
+        }
+      ],
+      [
+        "V8.GCScavenger",
+        {
+          "count": 72,
+          "inclusiveMs": 381.155,
+          "maxMs": 10.321
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER",
+        {
+          "count": 72,
+          "inclusiveMs": 373.45600000000013,
+          "maxMs": 10.302
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER_SCAVENGE",
+        {
+          "count": 72,
+          "inclusiveMs": 370.78,
+          "maxMs": 10.205
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER_SCAVENGE_PARALLEL_PHASE",
+        {
+          "count": 72,
+          "inclusiveMs": 298.33099999999996,
+          "maxMs": 8.497
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER_SCAVENGE_PARALLEL",
+        {
+          "count": 122,
+          "inclusiveMs": 248.59400000000002,
+          "maxMs": 7.856
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER_SCAVENGE_COLLECT_OLD_TO_NEW_PAGES",
+        {
+          "count": 72,
+          "inclusiveMs": 23.964,
+          "maxMs": 1.409
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER_FREE_REMEMBERED_SET",
+        {
+          "count": 72,
+          "inclusiveMs": 20.57,
+          "maxMs": 1.502
+        }
+      ],
+      [
+        "Layout",
+        {
+          "count": 63,
+          "inclusiveMs": 13.731000000000003,
+          "maxMs": 0.484
+        }
+      ],
+      [
+        "UpdateLayoutTree",
+        {
+          "count": 120,
+          "inclusiveMs": 12.844000000000001,
+          "maxMs": 3.867
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER_SCAVENGE_FINALIZE",
+        {
+          "count": 72,
+          "inclusiveMs": 10.190000000000001,
+          "maxMs": 0.814
+        }
+      ],
+      [
+        "V8.GCHandleGCRequest",
+        {
+          "count": 1,
+          "inclusiveMs": 9.024,
+          "maxMs": 9.024
+        }
+      ],
+      [
+        "MajorGC",
+        {
+          "count": 1,
+          "inclusiveMs": 8.979,
+          "maxMs": 8.979
+        }
+      ],
+      [
+        "V8.GCFinalizeMC",
+        {
+          "count": 1,
+          "inclusiveMs": 8.782,
+          "maxMs": 8.782
+        }
+      ],
+      [
+        "V8.GC_MARK_COMPACTOR",
+        {
+          "count": 1,
+          "inclusiveMs": 8.745,
+          "maxMs": 8.745
+        }
+      ],
+      [
+        "V8.GCIncrementalMarking",
+        {
+          "count": 280,
+          "inclusiveMs": 6.9649999999999865,
+          "maxMs": 2.413
+        }
+      ],
+      [
+        "V8.GC_MC_INCREMENTAL",
+        {
+          "count": 280,
+          "inclusiveMs": 6.057999999999986,
+          "maxMs": 2.412
+        }
+      ],
+      [
+        "V8.GC_TIME_TO_SAFEPOINT",
+        {
+          "count": 70,
+          "inclusiveMs": 6.012000000000009,
+          "maxMs": 5.702
+        }
+      ],
+      [
+        "V8.GC_SCAVENGER_SCAVENGE_ROOTS",
+        {
+          "count": 72,
+          "inclusiveMs": 5.396000000000001,
+          "maxMs": 0.275
+        }
+      ],
+      [
+        "V8.GC_MC_EVACUATE",
+        {
+          "count": 2,
+          "inclusiveMs": 5.262,
+          "maxMs": 5.258
+        }
+      ],
+      [
+        "Paint",
+        {
+          "count": 86,
+          "inclusiveMs": 3.9429999999999983,
+          "maxMs": 0.341
+        }
+      ]
+    ],
+    "note": "CPU self time is sampled, not exact. Timeline events are inclusive and overlap; never add all categories. GC values use only top-level MinorGC/MajorGC on the measurement main thread. Trace/profiler overhead prevents mixing these runs with primary data."
+  }
+]

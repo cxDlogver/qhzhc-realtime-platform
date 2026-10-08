@@ -1,0 +1,113 @@
+<svg width="1200" height="700" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 1200 700">
+<rect width="1200" height="700" x="0" y="0" fill="#fff"></rect>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:sans-serif;" xml:space="preserve" y="6.5" transform="translate(25 62)" fill="#526a88">各组为 3 轮均值。地图可见性改变结果，两个视角分别对照。</text>
+<path d="M0 0l270 0l0 140l-270 0Z" transform="translate(690 465)" fill="none" pointer-events="visible" class="zr0-cls-0"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:15px;font-family:sans-serif;" xml:space="preserve" y="14" transform="translate(690 465)" fill="#172b46">响应式队列：449.97 ms / 289.87 MiB</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:15px;font-family:sans-serif;" xml:space="preserve" y="42" transform="translate(690 465)" fill="#172b46">独立普通队列：2.27 ms / 80.12 MiB</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:15px;font-family:sans-serif;" y="98" transform="translate(690 465)" fill="#172b46">同一批次、同一队列类、同一绘制回调。</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:15px;font-family:sans-serif;" xml:space="preserve" y="126" transform="translate(690 465)" fill="#172b46">仅改变队列是否进入 Vue 深度响应式。</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:13px;font-family:sans-serif;" xml:space="preserve" y="6.5" transform="translate(25 662)" fill="#526a88">Chrome headless · rAF/s 为调度机会，不是 GPU 实际呈现帧率 · 单批 50000 点耗时不代表每批 20 点耗时</text>
+<path d="M145.5 153L145.5 353" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M210.5 153L210.5 353" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M275.5 153L275.5 353" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M340.5 153L340.5 353" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M405.5 153L405.5 353" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M470.5 153L470.5 353" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M535.5 153L535.5 353" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M735.5 153L735.5 353" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M820.5 153L820.5 353" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M905.5 153L905.5 353" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M990.5 153L990.5 353" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M1075.5 153L1075.5 353" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M145.5 495L145.5 605" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M216.5 495L216.5 605" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M287.5 495L287.5 605" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M357.5 495L357.5 605" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M428.5 495L428.5 605" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M499.5 495L499.5 605" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<path d="M535.5 495L535.5 605" fill="none" pointer-events="visible" stroke="#e8edf5" class="zr0-cls-1"></path>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" xml:space="preserve" y="6" transform="translate(340 383)" fill="#172b46">rAF 调度次数 / 秒</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" xml:space="preserve" y="6" transform="translate(905 383)" fill="#172b46">rAF 调度次数 / 秒</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" xml:space="preserve" y="6" transform="translate(340 635)" fill="#172b46">同步入队耗时 / ms</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(137 178)" fill="#172b46">完整渲染</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(137 228)" fill="#172b46">冻结地图</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(137 278)" fill="#172b46">冻结图表</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(137 328)" fill="#172b46">空渲染</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(727 186.3333)" fill="#172b46">完整渲染</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(727 253)" fill="#172b46">冻结地图</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(727 319.6667)" fill="#172b46">冻结图表</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(137 522.5)" fill="#172b46">响应式队列</text>
+<text dominant-baseline="central" text-anchor="end" style="font-size:13px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(137 577.5)" fill="#172b46">独立普通队列</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(145 361)" fill="#172b46">0</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(210 361)" fill="#172b46">30</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(275 361)" fill="#172b46">60</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(340 361)" fill="#172b46">90</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(405 361)" fill="#172b46">120</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(470 361)" fill="#172b46">150</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(535 361)" fill="#172b46">180</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(735 361)" fill="#172b46">0</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(820 361)" fill="#172b46">5</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(905 361)" fill="#172b46">10</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(990 361)" fill="#172b46">15</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(1075 361)" fill="#172b46">20</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(145 613)" fill="#172b46">0</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(215.9091 613)" fill="#172b46">100</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(286.8182 613)" fill="#172b46">200</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(357.7273 613)" fill="#172b46">300</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(428.6364 613)" fill="#172b46">400</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(499.5455 613)" fill="#172b46">500</text>
+<text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:Microsoft YaHei,Arial,sans-serif;" y="6" transform="translate(535 613)" fill="#172b46">550</text>
+<path d="M145 163.5l8 0l0 29l-8 0Z" fill="#3565ad" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr0-cls-2"></path>
+<path d="M145 213.5l8.6 0l0 29l-8.6 0Z" fill="#6687be" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr0-cls-3"></path>
+<path d="M145 263.5l256.7 0l0 29l-256.7 0Z" fill="#24a086" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr0-cls-4"></path>
+<path d="M145 313.5l357.7 0l0 29l-357.7 0Z" fill="#76b8a9" ecmeta_series_index="0" ecmeta_data_index="3" ecmeta_ssr_type="chart" class="zr0-cls-5"></path>
+<path d="M735 171.8l39.3 0l0 29l-39.3 0Z" fill="#3565ad" ecmeta_series_index="1" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr0-cls-2"></path>
+<path d="M735 238.5l68.5 0l0 29l-68.5 0Z" fill="#6687be" ecmeta_series_index="1" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr0-cls-3"></path>
+<path d="M735 305.2l281.2 0l0 29l-281.2 0Z" fill="#24a086" ecmeta_series_index="1" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr0-cls-4"></path>
+<path d="M145 508l319.1 0l0 29l-319.1 0Z" fill="#3565ad" ecmeta_series_index="2" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr0-cls-2"></path>
+<path d="M145 563l1.6 0l0 29l-1.6 0Z" fill="#6687be" ecmeta_series_index="2" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr0-cls-3"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:14px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(158.0058 178)" fill="#172b46">3.69</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:14px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(158.5633 228)" fill="#172b46">3.95</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:14px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(406.6552 278)" fill="#172b46">118.46</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:14px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(507.6987 328)" fill="#172b46">165.09</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:14px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(779.2619 186.3333)" fill="#172b46">2.31</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:14px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(808.5407 253)" fill="#172b46">4.03</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:14px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(1021.2018 319.6667)" fill="#172b46">16.54</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:14px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(469.0673 522.5)" fill="#172b46">449.97</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:14px;font-family:Microsoft YaHei,Arial,sans-serif;" transform="translate(151.6073 577.5)" fill="#172b46">2.27</text>
+<path d="M-5 -5l440.1 0l0 33l-440.1 0Z" transform="translate(30 25)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#ccc" stroke-width="0" class="zr0-cls-1"></path>
+<path d="M-5 -5l262 0l0 26l-262 0Z" transform="translate(30 110)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#ccc" stroke-width="0" class="zr0-cls-1"></path>
+<path d="M-5 -5l262 0l0 26l-262 0Z" transform="translate(625 110)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#ccc" stroke-width="0" class="zr0-cls-1"></path>
+<path d="M-5 -5l260.2 0l0 26l-260.2 0Z" transform="translate(30 440)" fill="rgb(0,0,0)" fill-opacity="0" stroke="#ccc" stroke-width="0" class="zr0-cls-1"></path>
+<text dominant-baseline="central" text-anchor="start" style="font-size:23px;font-family:Microsoft YaHei,Arial,sans-serif;font-weight:bold;" xml:space="preserve" y="11.5" transform="translate(30 25)" fill="#464646">队列积压对渲染性能的影响 · 2026-10-08</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:16px;font-family:Microsoft YaHei,Arial,sans-serif;font-weight:bold;" xml:space="preserve" y="8" transform="translate(30 110)" fill="#464646">A. 6000 点历史：地图点位在视野外</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:16px;font-family:Microsoft YaHei,Arial,sans-serif;font-weight:bold;" xml:space="preserve" y="8" transform="translate(625 110)" fill="#464646">B. 6000 点历史：全部地图点位可见</text>
+<text dominant-baseline="central" text-anchor="start" style="font-size:16px;font-family:Microsoft YaHei,Arial,sans-serif;font-weight:bold;" xml:space="preserve" y="8" transform="translate(30 440)" fill="#464646">C. 相同原类：一次性入队 50000 点</text>
+<style ><![CDATA[
+.zr0-cls-0:hover {
+cursor:pointer;
+}
+.zr0-cls-1:hover {
+pointer-events:none;
+}
+.zr0-cls-2:hover {
+cursor:pointer;
+fill:rgba(58,111,190,1);
+}
+.zr0-cls-3:hover {
+cursor:pointer;
+fill:rgba(112,148,209,1);
+}
+.zr0-cls-4:hover {
+cursor:pointer;
+fill:rgba(39,176,147,1);
+}
+.zr0-cls-5:hover {
+cursor:pointer;
+fill:rgba(129,202,185,1);
+}
+
+]]>
+
+</style>
+</svg>

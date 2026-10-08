@@ -1,0 +1,9 @@
+{"case":"paused-q1000","repeat":1,"at":"2026-10-08T06:22:42.344Z","fps":165.19567027477103,"pending":1000,"consumed":0,"loafP95":null}
+{"case":"paused-q10000","repeat":1,"at":"2026-10-08T06:22:51.775Z","fps":164.60631101798523,"pending":10000,"consumed":0,"loafP95":null}
+{"case":"paused-q50000","repeat":1,"at":"2026-10-08T06:23:01.861Z","fps":165.2452025638856,"pending":50000,"consumed":0,"loafP95":null}
+{"case":"paused-q50000","repeat":2,"at":"2026-10-08T06:23:11.928Z","fps":165.20117239672885,"pending":50000,"consumed":0,"loafP95":null}
+{"case":"paused-q10000","repeat":2,"at":"2026-10-08T06:23:21.290Z","fps":165.2341928202675,"pending":10000,"consumed":0,"loafP95":null}
+{"case":"paused-q1000","repeat":2,"at":"2026-10-08T06:23:30.405Z","fps":165.35249691989068,"pending":1000,"consumed":0,"loafP95":null}
+{"case":"paused-q1000","repeat":3,"at":"2026-10-08T06:23:39.537Z","fps":164.86261448792672,"pending":1000,"consumed":0,"loafP95":null}
+{"case":"paused-q10000","repeat":3,"at":"2026-10-08T06:23:49.070Z","fps":165.27001861935332,"pending":10000,"consumed":0,"loafP95":null}
+{"case":"paused-q50000","repeat":3,"at":"2026-10-08T06:23:59.233Z","fps":164.90105936700084,"pending":50000,"consumed":0,"loafP95":null}
