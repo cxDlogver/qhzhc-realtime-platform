@@ -8,6 +8,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import { monitorPlugin } from "@/plugins/monitor";
+import monitorConfig from "@/config/monitor.local.json";
 import "./assets/css/reset.scss";
 import "./assets/icon/iconfont.css";
 import "./assets/weather-icon/iconfont.css";
@@ -25,10 +26,10 @@ Vue.use(ElementUI);
 Vue.use(monitorPlugin, {
   router,
   enabled: process.env.VUE_APP_MONITOR_ENABLED === "true",
-  dsn: process.env.VUE_APP_MONITOR_DSN ?? "",
-  appName: process.env.VUE_APP_MONITOR_APP_NAME ?? "qhzhc",
-  release: process.env.VUE_APP_MONITOR_RELEASE ?? "1.0.0",
-  environment: "production",
+  dsn: monitorConfig.transport.dsn,
+  appName: monitorConfig.app.name,
+  release: monitorConfig.app.version,
+  environment: monitorConfig.app.environment,
 });
 
 new Vue({

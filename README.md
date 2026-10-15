@@ -15,14 +15,14 @@
 
 项目独立维护在 [cxDlogver/qhzhc-realtime-platform](https://github.com/cxDlogver/qhzhc-realtime-platform)。[cx-learn-notes](https://github.com/cxDlogver/cx-learn-notes) 通过 Git submodule 保留 `qhzhc-realtime-platform/` 目录及固定提交引用。
 
-当前前端通过 `cx-browser-monitor-sdk: workspace:*` 使用同级 `browser-monitor/sdk`，推荐从父仓库获取完整工作区：
+当前前端通过 `@cxdlogver/browser-monitor-sdk: workspace:*` 使用同级 `browser-monitor/sdk`，推荐从父仓库获取完整工作区：
 
 ```bash
 git clone --recurse-submodules https://github.com/cxDlogver/cx-learn-notes.git
 cd cx-learn-notes
 pnpm install
-pnpm --filter @browser-monitor/protocol build
-pnpm --filter cx-browser-monitor-sdk build
+pnpm --filter @cxdlogver/browser-monitor-protocol build
+pnpm --filter @cxdlogver/browser-monitor-sdk build
 cd qhzhc-realtime-platform
 npm install --prefix QHZHC_Server
 npm run dev
@@ -190,7 +190,7 @@ npm run test:integration -w QHZHC_Server
 接入位置与约定：
 
 - 插件：[`QHZHC_Web/src/plugins/monitor.ts`](QHZHC_Web/src/plugins/monitor.ts)，在 `QHZHC_Web/src/main.ts` 通过 `Vue.use` 安装，实例挂在 `Vue.prototype.$monitor`（与 `$axios`、`$echarts` 同一风格）。
-- 依赖以 `workspace:*` 引入，走航车 Web 是仓库根 `pnpm-workspace.yaml` 的成员；安装需先构建 SDK：`pnpm --filter @browser-monitor/protocol build`、`pnpm --filter cx-browser-monitor-sdk build`，再在仓库根执行 `pnpm install`。
+- 依赖以 `workspace:*` 引入，走航车 Web 是仓库根 `pnpm-workspace.yaml` 的成员；安装需先构建 SDK：`pnpm --filter @cxdlogver/browser-monitor-protocol build`、`pnpm --filter @cxdlogver/browser-monitor-sdk build`，再在仓库根执行 `pnpm install`。
 - 上报地址必须使用指向监控平台的绝对地址（如 `http://localhost:8080/api/v3/ingest/<publicKey>/envelopes`），不能用 `/api/...` 相对路径——`vue.config.js` 已把 `/api` 代理到走航车后端 18080。
 - 监控平台项目需先把前端来源加入 `allowed_origins`（开发环境为 `http://127.0.0.1:9527`、`http://localhost:9527`），且项目的 `appName` 必须与 `VUE_APP_MONITOR_APP_NAME` 完全一致，否则上报会被逐条拒绝。
 - 平台需运行协议 3.0 版本（`POST /api/v3/ingest/:publicKey/envelopes`）；若平台仍是旧镜像，上报会返回 `unsupported_protocol`，此时需重建平台 api 与 worker 容器。

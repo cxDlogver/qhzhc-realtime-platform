@@ -13,6 +13,6 @@ declare module "vue/types/vue" {
     $echarts: typeof import("echarts");
     $bus: Vue;
     /** 监控未启用或未处于采集路由时为 null。 */
-    $monitor: import("cx-browser-monitor-sdk").Monitor | null;
+    $monitor: import("@cxdlogver/browser-monitor-sdk").Monitor | null;
   }
 }

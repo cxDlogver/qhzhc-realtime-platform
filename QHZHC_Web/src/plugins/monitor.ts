@@ -1,4 +1,4 @@
-import { createMonitor, type Monitor, type MonitorOptions } from "cx-browser-monitor-sdk";
+import { createMonitor, type Monitor, type MonitorOptions } from "@cxdlogver/browser-monitor-sdk";
 import type { PluginObject } from "vue";
 import type VueRouter from "vue-router";
 
